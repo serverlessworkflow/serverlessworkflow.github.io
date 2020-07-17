@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/sws.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/calendartheme.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169200952-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -49,9 +50,6 @@
                     <a class="nav-link" href="https://github.com/serverlessworkflow/specification" target="_blank"><i class="fa fa-external-link" style="color: #ffffff;"></i> Specification</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://github.com/serverlessworkflow/specification/wiki" target="_blank"><i class="fa fa-external-link" style="color: #ffffff;"></i> Primer</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="https://github.com/serverlessworkflow/specification/tree/master/specification/examples" target="_blank"><i class="fa fa-external-link" style="color: #ffffff;"></i> Examples</a>
                 </li>
                 <li class="nav-item">
@@ -69,7 +67,10 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://github.com/serverlessworkflow" target="_blank"><i class="fa fa-github" style="color: #ffffff;"></i> Github Org</a>
+                    <a class="nav-link" href="#meetcal" ><i class="fa fa-external-link" style="color: #ffffff;"></i> Calendar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/serverlessworkflow" target="_blank"><i class="fa fa-github" style="color: #ffffff;"></i> Github</a>
                 </li>
             </ul>
         </div>
@@ -85,8 +86,7 @@
             <div class="col-sm-8" style="align-self: center;">
                 <h1>Serverless Workflow</h1>
                 <hr/>
-                <h2>A specification for defining <strong>declarative</strong> workflow models
-                    that orchestrate Event-driven, Serverless applications.</h2>
+                <h2>A specification for defining <strong>declarative workflow models</strong> that orchestrate event-driven, serverless applications.</h2>
             </div>
         </div>
     </div>
@@ -168,7 +168,25 @@
     </div>
 </section>
 
-<section id="contribute">
+<section id="meetcal">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2>Serverless Workflow Team Meeting Calendar</h2>
+                <hr class="hr-short"/>
+                <p class="lead">
+                    The Serverless Workflow Team meets biweekly, every second Monday at 10AM PT (USA Pacific) via <a href="https://zoom.us/my/cncfserverlesswg" target="_blank">Zoom</a>.
+                    <br/><br>
+                    Here is the meeting calendar through 2020:
+                    <br><br>
+                    <div id="meetingCalendar"></div>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contribute" class="section-dark">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto">
@@ -183,7 +201,7 @@
                     Everyone is encouraged to join us! If you're interested in contributing, please collaborate with us via:
                     <ul class="lead">
                       <li><a href="https://github.com/serverlessworkflow" target="_blank">Serverless Workflow Github Org</a></li>
-                      <li>Weekly call on the first Monday every month at 10AM PT (USA Pacific) via <a href="https://zoom.us/my/cncfserverlesswg" target="_blank">Zoom</a></li>
+                      <li>Biweekly call on Mondays. See the <a href="#meetcal">meeting calendar</a> section for more information.</li>
                       <li>Community Slack Channel: <a href="https://slack.cncf.io/">https://slack.cncf.io/</a> #serverless-workflow</li>
                       <li>Email: <a href="mailto:cncf-wg-serverless@lists.cncf.io">cncf-wg-serverless</a></li>
                       <li>Subscribe to: <a href="https://lists.cncf.io/g/cncf-wg-serverless">https://lists.cncf.io/g/cncf-wg-serverless</a></li>
@@ -209,7 +227,7 @@
     </div>
 </section>
 
-<section id="resources" class="section-dark">
+<section id="resources">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto">
@@ -244,7 +262,7 @@
     </div>
 </section>
 
-<footer class="page-footer font-small">
+<footer class="page-footer font-small section-dark">
     <div class="footer-copyright text-center py-3" style="color: 000000;">© Serverless Workflow Specification Authors 2020 | Documentation Distributed under CC-BY-4.0<br/><br/>
         © 2020 The Linux Foundation. All rights reserved.
         The Linux Foundation has registered trademarks and uses trademarks.<br/>
@@ -258,6 +276,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
-
+<script type="text/javascript" src="js/calendar.min.js"></script>
+<script type="text/javascript" src="js/meetingdates.js"></script>
 </body>
 </html>
