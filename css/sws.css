@@ -29,11 +29,11 @@ section {
 }
 hr{
    height: 4px;
-   background-color: #a332ff;
+   background-color: #448cfb;
    border: none;
 }
 a {
-  color: #a332ff;
+  color: #448cfb;
 }
 .navbar-custom {
     background-color: #000000;
@@ -58,6 +58,6 @@ a {
 }
 .hr-short{
    height: 4px;
-   background-color: #a332ff;
+   background-color: #448cfb;
    border: none;
 }
