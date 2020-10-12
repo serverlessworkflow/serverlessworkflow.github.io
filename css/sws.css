@@ -61,3 +61,8 @@ a {
    background-color: #448cfb;
    border: none;
 }
+.jumbotron {
+    color: white;
+    background-color: #448cfb;
+    height: 40vh;
+}

@@ -79,7 +79,7 @@
 <header class="text-white" style="background-color: #000000">
     <div class="container welcome-custom">
         <div class="row">
-            <div class="col-sm-4" style="align-items: top;">
+            <div class="col-sm-4" style="align-items: start;">
                 <img src="img/sw-logo-header.png" width="330"/>
             </div>
             <div class="col-sm-8" style="align-self: center;">
@@ -90,6 +90,18 @@
         </div>
     </div>
 </header>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1>Serverless Workflow at <a style="color: #ffffff" href="https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america">KubeCon North America 2020</a> (November 17 - 20)</h1>
+        <p>
+        <ul class="list-group justify-content-center">
+        <li class="list-group-item" style="color: #448cfb"><h4><a href="https://sched.co/ekEn">New Approach to Container Orchestration (Tihomir Surdilovic & Ricardo Zanini Fernandes)</a> <br/> Friday, November 20 3:10pm - 3:45pm EST</h4></li>
+        <li class="list-group-item" style="color: #448cfb"><h4><a href="https://sched.co/ekIH">CNCF Serverless WG: CloudEvents and Serverless Workflow (Doug Davis & Tihomir Surdilovic)</a> <br/> Friday, November 20 5:05pm - 5:40pm EST</h4></li>
+        </ul>
+        </p>
+    </div>
+</div>
 
 <section id="about">
     <div class="container">
@@ -239,39 +251,55 @@
                 <h2>Resources</h2>
                 <hr class="hr-short"/>
                 <p class="lead">
-                <h2>Videos and Presentations</h2>
+                <h3>Videos</h3>
                 <table class="table">
                     <thead>
                     <tr>
                         <th>Title</th>
-                        <th>Speakers</th>
+                        <th>Platform</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><a href="https://www.youtube.com/watch?v=xOk5TsCFB-k" target="_blank">Serverless Workflow - VSCode Extension</a></td>
+                        <td>YouTube</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://www.youtube.com/watch?v=dTo1DOI4qH0" target="_blank">Serverless Workflow - JAVA SDK</a></td>
+                        <td>YouTube</td>
+                    </tr>
+                    </tbody>
+                </table>
+                </p>
+
+                <p class="lead">
+                <h3>Conference talks</h3>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Title</th>
                         <th>Event</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
                         <td><a href="https://www.youtube.com/watch?v=sTgto7c_iNQ&feature=emb_logo" target="_blank">Serverless Workflow: New approach to Kubernetes service orchestration</a></td>
-                        <td>Tihomir Surdilovic</td>
                         <td>DevNation Tech Talk - 2020</td>
                     </tr>
                     <tr>
                         <td><a href="https://drive.google.com/file/d/1LlY_G2XCdvSih4WaLuXHp-imMNnk0XQL/view" target="_blank">Low-Latency and Session-Oriented Serverless Workflows</a></td>
-                        <td>Manuel Stein and Paarijaat Aditya</td>
                         <td>Serverless Practitioners Summit 2020</td>
                     </tr>
                     <tr>
                         <td><a href="https://drive.google.com/file/d/1QJMRxidGUhPcuZ0eRICtgoCRQxPZ9_yQ/view" target="_blank">CNCF Serverless WG: CloudEvents & Serverless Workflow Updates</a></td>
-                        <td>Doug Davis and Tihomir Surdilovic</td>
                         <td>KubeCon Europe 2020</td>
                     </tr>
                     <tr>
                         <td><a href="https://github.com/serverlessworkflow/specification/blob/master/specification/community/presentations/2020-4-15-toc-pres.pdf" target="_blank">Introduction to Serverless Workflow Specification</a></td>
-                        <td>Tihomir Surdilovic</td>
                         <td>CNCF TOC Sandbox Proposal</td>
                     </tr>
                     <tr>
                         <td><a href="https://www.youtube.com/watch?v=2MPX3CGUsVE" target="_blank">Serverless Workflow, a New Approach to Business Automation</a></td>
-                        <td>Tihomir Surdilovic</td>
                         <td>YouTube Live Event</td>
                     </tr>
                     </tbody>
@@ -283,7 +311,7 @@
 </section>
 
 <footer class="page-footer font-small section-dark">
-    <div class="footer-copyright text-center py-3" style="color: 000000;">© Serverless Workflow Specification Authors 2020 | Documentation Distributed under CC-BY-4.0<br/><br/>
+    <div class="footer-copyright text-center py-3">© Serverless Workflow Specification Authors 2020 | Documentation Distributed under CC-BY-4.0<br/><br/>
         © 2020 The Linux Foundation. All rights reserved.
         The Linux Foundation has registered trademarks and uses trademarks.<br/>
         For a list of trademarks of The Linux Foundation, please see our Trademark Usage page.
