@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<!--
+ Copyright 2020 The Serverless Workflow Specification Authors
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="img/sw-logo-header.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/sws.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" data-name="vs/editor/editor.main" href="css/editor/editor.main.css"/>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169200952-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', 'UA-169200952-1');
+    </script>
+    <title>Serverless Workflow Online Editor</title>
+</head>
+
+<body id="page-top">
+<nav class="navbar navbar-expand-lg navbar-custom fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger justify-content-left" href="https://www.cncf.io/" target="_blank">
+            <img src="img/cncf-white.png" width="220px"/></a>
+        &nbsp;&nbsp;
+        <a class="navbar-brand js-scroll-trigger justify-content-left" href="https://cloudevents.io/" target="_blank">
+            <img src="img/ce-logo-white.png" width="220px"/></a>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="https://github.com/serverlessworkflow/specification/blob/master/specification.md"
+                       target="_blank"><i class="fa fa-external-link" style="color: #ffffff;"></i> Specification</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="https://github.com/serverlessworkflow/specification/blob/master/examples/examples.md"
+                       target="_blank"><i class="fa fa-external-link" style="color: #ffffff;"></i> Examples</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/serverlessworkflow/specification/tree/master/usecases"
+                       target="_blank"><i class="fa fa-external-link" style="color: #ffffff;"></i> Use Cases</a>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle" type="btn" id="specsdks" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-external-link" style="color: #ffffff;"></i> SDKs
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="https://github.com/serverlessworkflow/sdk-go">Go</a>
+                            <a class="dropdown-item" href="https://github.com/serverlessworkflow/sdk-java">Java</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#meetcal"><i class="fa fa-external-link" style="color: #ffffff;"></i>
+                        Meetings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/serverlessworkflow" target="_blank"><i
+                            class="fa fa-github" style="color: #ffffff;"></i> Github</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section id="test">
+    <div class="container">
+        <h2>Serverless Workflow Online Editor</h2>
+        <hr class="hr-short"/>
+        Edit your workflow and select the "Generate workflow diagram" button to update the image.
+        <br/>You can also select one of the existing workflow examples from the dropdown.
+        <br/><br/>
+        <p class="lead">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+        <p class="card-title">
+            <select id="ddl" name="ddl" onmousedown="this.value='';" onchange="selectExample(this.value);">
+                <option value='' selected>Select an existing workflow example&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                <option value='helloworld'>Hello World Example</option>
+                <option value='parallelexecution'>Parallel execution example</option>
+                <option value='eventbaseddecisions'>Event-based decisions example</option>
+                <option value='provisionorders'>Provision orders Example</option>
+                <option value='monitorjobs'>Monitor jobs example</option>
+                <option value='vetappointment'>Vet appointment example</option>
+            </select>
+        </p>
+        <div id="sweditor" style="width: 100%; height: 600px; border: 1px solid grey"></div>
+        <br/>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-6" style="border: 0px solid">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="#" class="btn btn-primary btn-sm" onclick="generateDiagram(this.value);return false;">Generate workflow diagram</a></h5>
+                    <br/><br/>
+                    <div class="workflowdiagram">
+                <br/>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</section>
+
+<script>
+    var require = {paths: {vs: 'min/vs'}};
+</script>
+<script src="js/loader.js"></script>
+<script src="js/editor.main.nls.js"></script>
+<script src="js/editor.main.js"></script>
+<script src="js/workflowschema.js"></script>
+<script src="js/swedtior.js"></script>
+<script>
+    var jsonCode = [
+        '{',
+
+        "}"
+    ].join('\n');
+    var modelUri = monaco.Uri.parse("a://b/foo.json");
+    var model = monaco.editor.createModel(JSON.stringify(helloWorldExample, null, 2), "json", modelUri);
+
+    // configure the JSON language support with schemas and schema associations
+    monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
+        validate: true,
+        schemas: [{
+            uri: "http://myserver/foo-schema.json", // id of the first schema
+            fileMatch: [modelUri.toString()], // associate with our model
+            schema: workflowschema
+        }]
+    });
+
+    monaco.editor.create(document.getElementById("sweditor"), {
+        model: model
+    });
+
+    generateDiagram();
+
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+<footer class="page-footer font-small section-dark">
+    <div class="footer-copyright text-center py-3">© Serverless Workflow Specification Authors 2020 | Documentation Distributed under CC-BY-4.0<br/><br/>
+        © 2020 The Linux Foundation. All rights reserved.
+        The Linux Foundation has registered trademarks and uses trademarks.<br/>
+        For a list of trademarks of The Linux Foundation, please see our Trademark Usage page.
+    </div>
+</footer>
+</body>
+</html>
