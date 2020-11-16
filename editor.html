@@ -105,14 +105,21 @@
                     <div class="card">
                         <div class="card-body">
         <p class="card-title">
-            <select id="ddl" name="ddl" onchange="selectExample(this.value);">
-                <option value='' selected>Select an existing workflow example&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+            <select id="examples" name="examples" onchange="selectExample(this.value);">
+                <option value='' selected>Select an existing workflow example </option>
                 <option value='helloworld'>Hello World Example</option>
                 <option value='parallelexecution'>Parallel execution example</option>
                 <option value='eventbaseddecisions'>Event-based decisions example</option>
                 <option value='provisionorders'>Provision orders Example</option>
                 <option value='monitorjobs'>Monitor jobs example</option>
                 <option value='vetappointment'>Vet appointment example</option>
+            </select>
+
+            <select id="theme" name="theme" onchange="changeTheme(this.value);">
+                <option value='' selected>Change editor color theme</option>
+                <option value='vs'>Default</option>
+                <option value='vs-dark'>Dark</option>
+                <option value='hc-black'>High Contrast Dark</option>
             </select>
         </p>
         <div id="sweditor" style="width: 100%; height: 600px; border: 1px solid grey"></div>

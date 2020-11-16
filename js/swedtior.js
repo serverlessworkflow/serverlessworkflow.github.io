@@ -465,3 +465,9 @@ function callUrl(type, url, data, callback){
     xhr.send(data);
     return xhr;
 }
+
+function changeTheme(theme) {
+    if(theme.length > 0) {
+        monaco.editor.setTheme(theme);
+    }
+}
