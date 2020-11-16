@@ -467,7 +467,6 @@ function callUrl(type, url, data, callback){
 }
 
 function changeTheme(theme) {
-    //var newTheme = (theme === 1 ? 'vs-dark' : ( theme === 0 ? 'vs' : 'hc-black' ));
     if(theme.length > 0) {
         monaco.editor.setTheme(theme);
     }
