@@ -14,32 +14,11 @@
  * limitations under the License.
  */
 
-(function($) {
-  "use strict";
-
-  // Smooth scrolling using jQuery easing
-  $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
-    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-      var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-      if (target.length) {
-        $('html, body').animate({
-          scrollTop: (target.offset().top - 56)
-        }, 1000, "easeInOutExpo");
-        return false;
-      }
-    }
+$(document).ready(function(){
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
+    var activeTab = $(e.target).text(); // Get the name of active tab
+    var previousTab = $(e.relatedTarget).text(); // Get the name of previous tab
+    $(".active-tab span").html(activeTab);
+    $(".previous-tab span").html(previousTab);
   });
-
-  // Closes responsive menu when a scroll trigger link is clicked
-  $('.js-scroll-trigger').click(function() {
-    $('.navbar-collapse').collapse('hide');
-  });
-
-  // Activate scrollspy to add active class to navbar items on scroll
-  $('body').scrollspy({
-    target: '#mainNav',
-    offset: 56
-  });
-
-})(jQuery);
+});

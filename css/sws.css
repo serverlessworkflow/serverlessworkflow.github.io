@@ -16,6 +16,7 @@
 
 body {
     font-family: 'Lato', sans-serif;
+    background-color: #ffffff;
 }
 header {
   padding: 156px 0 100px;
@@ -23,8 +24,8 @@ header {
 section {
   padding: 150px 0;
 }
-.section-dark {
-    background-color: #000000;
+.section-blue {
+    background-color: #448cfb;
     color: #ffffff;
 }
 hr{
@@ -36,7 +37,7 @@ a {
   color: #448cfb;
 }
 .navbar-custom {
-    background-color: #000000;
+    background-color: #448cfb;
 }
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-text {
