@@ -72,3 +72,7 @@ a {
     left: 50%;
     transform: translatex(-50%);
 }
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #ff6900;
+}
