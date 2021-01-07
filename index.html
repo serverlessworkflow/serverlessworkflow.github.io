@@ -17,7 +17,6 @@
 
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/png" href="img/sw-logo-header.png">
@@ -114,22 +113,25 @@
                     <div class="bs-example">
                         <ul id="myTab" class="nav nav-tabs">
                             <li class="nav-item">
-                                <a href="#releasestab" class="nav-link active" data-toggle="tab"><h5>Releases</h5></a>
+                                <a href="#releasestab" class="nav-link active" data-toggle="tab"><h6>Releases</h6></a>
                             </li>
                             <li class="nav-item">
-                                <a href="#backgroundtab" class="nav-link" data-toggle="tab"><h5>Background</h5></a>
+                                <a href="#backgroundtab" class="nav-link" data-toggle="tab"><h6>Background</h6></a>
                             </li>
                             <li class="nav-item">
-                                <a href="#abouttab" class="nav-link" data-toggle="tab"><h5>About</h5></a>
+                                <a href="#abouttab" class="nav-link" data-toggle="tab"><h6>About</h6></a>
                             </li>
                             <li class="nav-item">
-                                <a href="#meetingstab" class="nav-link" data-toggle="tab"><h5>Meetings</h5></a>
+                                <a href="#meetingstab" class="nav-link" data-toggle="tab"><h6>Meetings</h6></a>
                             </li>
                             <li class="nav-item">
-                                <a href="#contributetab" class="nav-link" data-toggle="tab"><h5>Contribute</h5></a>
+                                <a href="#contributetab" class="nav-link" data-toggle="tab"><h6>Contribute</h6></a>
                             </li>
                             <li class="nav-item">
-                                <a href="#resourcestab" class="nav-link" data-toggle="tab"><h5>Resources</h5></a>
+                                <a href="#resourcestab" class="nav-link" data-toggle="tab"><h6>Resources</h6></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#githubtab" class="nav-link" data-toggle="tab"><h6>Github</h6></a>
                             </li>
                         </ul>
                         <div class="tab-content">
@@ -426,6 +428,32 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <div class="tab-pane fade" id="githubtab">
+                                <br/>
+                                <h5 align="center"><img src="img/github.svg" width="32px">&nbsp;&nbsp;<a href="https://github.com/serverlessworkflow/specification" target="_blank">Specification Github Repo</a></h5>
+                                <p class="lead">
+                                <h6><img src="img/pr.svg"> Pull Requests</h6>
+                                <table class="table" id="githubprtable">
+                                    <thead>
+                                    <tr>
+                                        <th data-field="number" data-formatter="idformatter">Id</th>
+                                        <th data-formatter="prformatter">Title</th>
+                                        <th data-field="user.login" data-formatter="userformatter">Opened by</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                                <p class="lead">
+                                <h6><img src="img/issue.svg"> Issues</h6>
+                                <table class="table" id="githubissuetable">
+                                    <thead>
+                                    <tr>
+                                        <th data-field="number" data-formatter="idformatter">Id</th>
+                                        <th data-formatter="issueformatter">Title</th>
+                                        <th data-field="user.login" data-formatter="userformatter">Opened by</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -442,12 +470,78 @@
         For a list of trademarks of The Linux Foundation, please see our Trademark Usage page.
     </div>
 </footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/bootstrap-table@1.18.1/dist/bootstrap-table.min.js"></script>
+<script>
+    function prformatter(value, row, index) {
+        return "<a href='"+row.diff_url.slice(0,-5)+"' target='_blank'>"+row.title+"</a>";
+    }
+    function userformatter(value, row, index) {
+        return "<a href='https://github.com/"+value+"' target='_blank'>"+value+"</a>";
+    }
+    function issueformatter(value, row, index) {
+        return "<a href='"+row.html_url+"' target='_blank'>"+row.title+"</a>";
+    }
+    function idformatter(value, row, index) {
+        return "#"+value;
+    }
+</script>
+<script type="module">
+    import { Octokit } from "https://cdn.skypack.dev/@octokit/rest";
+    const octokit = new Octokit({
+        baseUrl: 'https://api.github.com',
+        log: {
+            warn: console.warn,
+            error: console.error
+        }
+    });
+    const checkPrs = () => {
+        octokit.pulls.list({
+            owner: "serverlessworkflow",
+            repo: "specification",
+        })
+            .then(pulls => {
+                    $('#githubprtable').bootstrapTable({
+                        data: pulls.data,
+                        formatLoadingMessage: function() {
+                            return '';
+                        }
+                    });
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    }
+    checkPrs();
 
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"/>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    const checkIssues = () => {
+        octokit.issues.listForRepo({
+            owner: "serverlessworkflow",
+            repo: "specification",
+        })
+            .then(issues => {
+                console.log(issues.data);
+                var filteredIssues = issues.data.filter(
+                    function(issue) {
+                        return !issue.html_url.includes("pull");
+                    }
+                );
+
+                $('#githubissuetable').bootstrapTable({
+                    data: filteredIssues,
+                    formatLoadingMessage: function() {
+                        return '';
+                    }
+                });
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    }
+
+    checkIssues();
+</script>
 </body>
 </html>
