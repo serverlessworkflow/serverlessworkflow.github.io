@@ -522,7 +522,6 @@
             repo: "specification",
         })
             .then(issues => {
-                console.log(issues.data);
                 var filteredIssues = issues.data.filter(
                     function(issue) {
                         return !issue.html_url.includes("pull");
