@@ -1,2 +1,3 @@
-# See: https://docs.netlify.com/routing/redirects/
-/schemas/latest /schemas/0.5
+# See:  https://docs.netlify.com/routing/redirects/
+#       https://docs.netlify.com/routing/redirects/redirect-options/
+/schemas/latest/* /schemas/0.5/:splat    200
