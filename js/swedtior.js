@@ -442,7 +442,7 @@ function generateDiagram() {
     var modelVal = model.getValue();
 
 
-    callUrl('POST', 'https://diagram-service-secure-mmagnani.apps.kogito-cloud.automation.rhmw.io/swdiagram', modelVal, function showDiagram(res){
+    callUrl('POST', '/services/diagrams/generate', modelVal, function showDiagram(res){
         if (res !== null) {
             var container = document.querySelector(".workflowdiagram");
             container.innerHTML = res;

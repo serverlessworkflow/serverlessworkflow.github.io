@@ -2,4 +2,4 @@
 #       https://docs.netlify.com/routing/redirects/redirect-options/
 /schemas/latest/* /schemas/0.5/:splat    200
 /schemas/snapshot/* /schemas/0.6-alpha/:splat    200
-/services/diagrams/generate http://diagram-service-mmagnani.apps.kogito-cloud.automation.rhmw.io/   200 
+/services/diagrams/generate https://diagram-service-secure-mmagnani.apps.kogito-cloud.automation.rhmw.io/swdiagram 200
