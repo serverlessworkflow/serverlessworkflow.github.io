@@ -459,42 +459,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-header actext" id="headingGithub" data-toggle="collapse"  data-target="#collapseGithub">
-                            <h5>7. Github</h5>
-                        </div>
-                        <div id="collapseGithub" class="collapse" aria-labelledby="headingGithub"
-                             data-parent="#swaccordion">
-                            <div class="card-body">
-                                <br/>
-                                <h5 align="center"><img src="img/github.svg" width="32px">&nbsp;&nbsp;<a
-                                        href="https://github.com/serverlessworkflow/specification" target="_blank">Specification
-                                    Github Repo</a></h5>
-                                <p class="lead">
-                                <h6><img src="img/pr.svg"> Pull Requests</h6>
-                                <table class="table" id="githubprtable">
-                                    <thead>
-                                    <tr>
-                                        <th data-field="number" data-formatter="idformatter">Id</th>
-                                        <th data-formatter="prformatter">Title</th>
-                                        <th data-field="user.login" data-formatter="userformatter">Opened by</th>
-                                    </tr>
-                                    </thead>
-                                </table>
-                                <p class="lead">
-                                <h6><img src="img/issue.svg"> Issues</h6>
-                                <table class="table" id="githubissuetable">
-                                    <thead>
-                                    <tr>
-                                        <th data-field="number" data-formatter="idformatter">Id</th>
-                                        <th data-formatter="issueformatter">Title</th>
-                                        <th data-field="user.login" data-formatter="userformatter">Opened by</th>
-                                    </tr>
-                                    </thead>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 </div>
             </div>
@@ -520,77 +484,5 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 <script src="https://unpkg.com/bootstrap-table@1.18.1/dist/bootstrap-table.min.js"></script>
-<script>
-    function prformatter(value, row, index) {
-        return "<a href='" + row.diff_url.slice(0, -5) + "' target='_blank'>" + row.title + "</a>";
-    }
-
-    function userformatter(value, row, index) {
-        return "<a href='https://github.com/" + value + "' target='_blank'>" + value + "</a>";
-    }
-
-    function issueformatter(value, row, index) {
-        return "<a href='" + row.html_url + "' target='_blank'>" + row.title + "</a>";
-    }
-
-    function idformatter(value, row, index) {
-        return "#" + value;
-    }
-</script>
-<script type="module">
-    import {Octokit} from "https://cdn.skypack.dev/@octokit/rest";
-
-    const octokit = new Octokit({
-        baseUrl: 'https://api.github.com',
-        log: {
-            warn: console.warn,
-            error: console.error
-        }
-    });
-    const checkPrs = () => {
-        octokit.pulls.list({
-            owner: "serverlessworkflow",
-            repo: "specification",
-        })
-            .then(pulls => {
-                $('#githubprtable').bootstrapTable({
-                    data: pulls.data,
-                    formatLoadingMessage: function () {
-                        return '';
-                    }
-                });
-            })
-            .catch(err => {
-                console.error(err);
-            })
-    }
-    checkPrs();
-
-    const checkIssues = () => {
-        octokit.issues.listForRepo({
-            owner: "serverlessworkflow",
-            repo: "specification",
-        })
-            .then(issues => {
-                var filteredIssues = issues.data.filter(
-                    function (issue) {
-                        return !issue.html_url.includes("pull");
-                    }
-                );
-
-                $('#githubissuetable').bootstrapTable({
-                    data: filteredIssues,
-                    formatLoadingMessage: function () {
-                        return '';
-                    }
-                });
-            })
-            .catch(err => {
-                console.error(err);
-            })
-    }
-
-    checkIssues();
-</script>
 </body>
 </html>
