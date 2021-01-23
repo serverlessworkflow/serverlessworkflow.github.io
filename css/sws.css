@@ -78,7 +78,6 @@ a {
 }
 
 .tab-pane {
-
     border-left: 1px solid #ddd;
     border-right: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
@@ -88,4 +87,9 @@ a {
 
 .nav-tabs {
     margin-bottom: 0;
+}
+
+.accordion .card,
+.accordion .card-header {
+    border-color:  #448cfb;
 }

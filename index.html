@@ -40,9 +40,9 @@
 
 <body id="page-top">
 <nav class="navbar navbar-expand-lg navbar-custom" id="mainNav">
-        <a class="navbar-brand justify-content-left" href="https://www.cncf.io/" target="_blank">
-            <img src="img/cncf-white.png" width="220px"/></a>
-        <div class="collapse navbar-collapse">
+    <a class="navbar-brand justify-content-left" href="https://www.cncf.io/" target="_blank">
+        <img src="img/cncf-white.png" width="220px"/></a>
+    <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link" href="editor.html"><i class="fa fa-external-link" style="color: #ffffff;"></i>
@@ -89,7 +89,9 @@
             <div class="col-sm-12" style="align-items: start;">
                 <br/>
                 <div class="alert alert-primary alert-dismissible fade show text-center" role="alert">
-                    <strong>Happy New Year!</strong> Our next community meeting is on <a href="https://docs.google.com/document/d/1xwcsWQmMiRN24a7o7oy9MstzMroAup31oOkM5Dru1jQ/edit#heading=h.g2rizfze8av2" target="_blank">Jan. 25th 2021 @ 10-11am Pacific Time </a>.
+                    <strong>Happy New Year!</strong> Our next community meeting is on <a
+                        href="https://docs.google.com/document/d/1xwcsWQmMiRN24a7o7oy9MstzMroAup31oOkM5Dru1jQ/edit#heading=h.g2rizfze8av2"
+                        target="_blank">Jan. 25th 2021 @ 10-11am Pacific Time </a>.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -108,179 +110,218 @@
     <section id="tabs" style="align-items: center; padding: 100px;">
         <div class="container">
             <div class="row">
-                <div class="col-lg-10 mx-auto">
-                    <div class="sw-tabs">
-                        <ul id="myTab" class="nav nav-tabs">
-                            <li class="nav-item">
-                                <a href="#releasestab" class="nav-link active" data-toggle="tab"><h6>Releases</h6></a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#backgroundtab" class="nav-link" data-toggle="tab"><h6>Background</h6></a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#abouttab" class="nav-link" data-toggle="tab"><h6>About</h6></a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#meetingstab" class="nav-link" data-toggle="tab"><h6>Meetings</h6></a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#contributetab" class="nav-link" data-toggle="tab"><h6>Contribute</h6></a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#resourcestab" class="nav-link" data-toggle="tab"><h6>Resources</h6></a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#githubtab" class="nav-link" data-toggle="tab"><h6>Github</h6></a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane fade show active" id="releasestab">
-                                <br/><br/>
-                                <p class="lead">
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">Component</th>
-                                        <th scope="col">Latest Release</th>
-                                        <th scope="col">Release date</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <th scope="row">Specification</th>
-                                        <td>
-                                            <a href="https://github.com/serverlessworkflow/specification/releases">v0.5</a>
-                                        </td>
-                                        <td>11/11/2020</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">JAVA SDK</th>
-                                        <td>
-                                            <a href="https://github.com/serverlessworkflow/sdk-java/releases">1.0.3.Final</a>
-                                        </td>
-                                        <td>11/13/2020</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">GO SDK</th>
-                                        <td><a href="https://github.com/serverlessworkflow/sdk-go/releases">v1.0.0</a>
-                                        </td>
-                                        <td>11/12/2020</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">VSCode Extension</th>
-                                        <td>
-                                            <a href="https://marketplace.visualstudio.com/items?itemName=serverlessworkflow.serverless-workflow-vscode-extension">1.3.0</a>
-                                        </td>
-                                        <td>9/3/2020</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                </p>
+                <div class="col-md-12">
+                    <div class="accordion" id="swaccordion">
+                        <div class="card">
+                            <div class="card-header" id="headingReleases">
+                                <h2 class="mb-0">
+                                    <button type="button" class="btn btn-link" data-toggle="collapse"
+                                            data-target="#collapseReleases">1. Releases
+                                    </button>
+                                </h2>
                             </div>
-                            <div class="tab-pane fade" id="backgroundtab">
-                                <br/><br/>
-                                <p class="lead">
-                                    Workflows have become key components of Serverless applications, yet implementations
-                                    tend
-                                    to describe workflows differently.
-                                </p>
-                                <br/>
-                                <div class="card-group">
-                                    <div class="card text-center">
-                                        <div style="font-size: 30px;"><i class="fa fa-code" style="color: #448cfb;"></i>
-                                            Consistency
+                            <div id="collapseReleases" class="collapse show" aria-labelledby="headingReleases"
+                                 data-parent="#swaccordion">
+                                <div class="card-body">
+                                    <br/>
+                                    <table class="table" width="100%">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Component</th>
+                                            <th scope="col">Latest Release</th>
+                                            <th scope="col">Release date</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <th scope="row">Specification</th>
+                                            <td>
+                                                <a href="https://github.com/serverlessworkflow/specification/releases">v0.5</a>
+                                            </td>
+                                            <td>11/11/2020</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">JAVA SDK</th>
+                                            <td>
+                                                <a href="https://github.com/serverlessworkflow/sdk-java/releases">1.0.3.Final</a>
+                                            </td>
+                                            <td>11/13/2020</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">GO SDK</th>
+                                            <td>
+                                                <a href="https://github.com/serverlessworkflow/sdk-go/releases">v1.0.0</a>
+                                            </td>
+                                            <td>11/12/2020</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">VSCode Extension</th>
+                                            <td>
+                                                <a href="https://marketplace.visualstudio.com/items?itemName=serverlessworkflow.serverless-workflow-vscode-extension">1.3.0</a>
+                                            </td>
+                                            <td>9/3/2020</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingBackground">
+                                <h2 class="mb-0">
+                                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapseBackground">2. Background
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseBackground" class="collapse" aria-labelledby="headingBackground"
+                                 data-parent="#swaccordion">
+                                <div class="card-body">
+                                    <br/>
+                                    <p class="lead">
+                                        Workflows have become key components of Serverless applications, yet
+                                        implementations
+                                        tend
+                                        to describe workflows differently.
+                                    </p>
+                                    <br/>
+                                    <div class="card-group">
+                                        <div class="card text-center">
+                                            <div style="font-size: 30px;"><i class="fa fa-code"
+                                                                             style="color: #448cfb;"></i>
+                                                Consistency
+                                            </div>
+                                            <div class="card-body">
+                                                <p class="mt-auto"><h5>
+                                                The lack of a common way of describing serverless workflows means
+                                                developers
+                                                do not have a consistent way of modelling their serverless
+                                                orchestrations.
+                                            </h5>
+                                            </div>
                                         </div>
-                                        <div class="card-body">
-                                            <p class="mt-auto"><h5>
-                                            The lack of a common way of describing serverless workflows means developers
-                                            do not have a consistent way of modelling their serverless orchestrations.
-                                        </h5>
+                                        <div class="card text-center">
+                                            <div style="font-size: 30px;"><i class="fa fa-globe"
+                                                                             style="color: #448cfb;"></i>
+                                                Portability
+                                            </div>
+                                            <div class="card-body">
+                                                <p class="mt-auto"><h5>
+                                                The portability and productivity we can achieve from modeling serverless
+                                                workflows is hindered overall.
+                                            </h5>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="card text-center">
-                                        <div style="font-size: 30px;"><i class="fa fa-globe"
-                                                                         style="color: #448cfb;"></i>
-                                            Portability
-                                        </div>
-                                        <div class="card-body">
-                                            <p class="mt-auto"><h5>
-                                            The portability and productivity we can achieve from modeling serverless
-                                            workflows is hindered overall.
-                                        </h5>
-                                        </div>
-                                    </div>
-                                    <div class="card text-center">
-                                        <div style="font-size: 30px;"><i class="fa fa-cogs" style="color: #448cfb;"></i>
-                                            Accessibility
-                                        </div>
-                                        <div class="card-body">
-                                            <p class="mt-auto"><h5>
-                                            No common workflow format means no common libraries, tooling, and
-                                            infrastructure
-                                            for modeling
-                                            serverless workflows across different cloud platforms and/or containers.
-                                        </h5>
+                                        <div class="card text-center">
+                                            <div style="font-size: 30px;"><i class="fa fa-cogs"
+                                                                             style="color: #448cfb;"></i>
+                                                Accessibility
+                                            </div>
+                                            <div class="card-body">
+                                                <p class="mt-auto"><h5>
+                                                No common workflow format means no common libraries, tooling, and
+                                                infrastructure
+                                                for modeling
+                                                serverless workflows across different cloud platforms and/or containers.
+                                            </h5>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="abouttab">
-                                <br/><br/>
-                                <p class="lead">
-                                    Serverless Workflow is a <a
-                                        href="https://github.com/serverlessworkflow/specification"
-                                        target="_blank">specification</a>
-                                    for describing workflows in a common way.
-                                    It provides a <strong>vendor-neutral</strong> and
-                                    <strong>platform-independent</strong>
-                                    markup for
-                                    orchestrating services on multiple runtimes and cloud/container platforms.
-                                </p>
-
-                                <p class="lead">
-                                    Serverless Workflow is a new effort and it's still under active development.
-                                    Its working group consists of a number of leaders in the business automation
-                                    industry
-                                    and enthusiasts in that field.
-                                </p>
-
-                                <p class="lead">
-                                    The Serverless Workflow specification is a <a href="https://cncf.io/"
-                                                                                  target="_blank">CNCF</a>
-                                    Cloud Native Sandbox level project.
-                                </p>
-
-
-                                <p class="lead">
-                                    <br/>
-                                <center><img src="img/sw-spec-overview.png" width="670px"/></center>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingAbout">
+                                <h2 class="mb-0">
+                                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapseAbout">3. About
+                                    </button>
+                                </h2>
                             </div>
-                            <div class="tab-pane fade" id="meetingstab">
-                                <br/><br/>
-                                <p class="lead">
-                                    The Serverless Workflow Team meets weekly, every Monday at 10AM PT (USA Pacific) via
-                                    <a
-                                            href="https://zoom.us/my/cncfserverlesswg?pwd=YjNqYzhOdjRRd01YWFkzS1lHbDZqUT09"
-                                            target="_blank">Zoom</a>.
-                                    <br/>
-                                    Anyone is encouraged to join and collaborate. Please read our
-                                    our <a
-                                        href="https://github.com/serverlessworkflow/specification/blob/master/code-of-conduct.md">Code
-                                    of Conduct</a>
-                                    before joining the first time.
+                            <div id="collapseAbout" class="collapse" aria-labelledby="headingAbout"
+                                 data-parent="#swaccordion">
+                                <div class="card-body">
                                     <br/><br/>
-                                    Below is the CNCF Public Events Calendar which includes all of the Serverless
-                                    Workflow
-                                    team meetings:
-                                </p>
-                                <p class="lead">
-                                    <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FNew_York&amp;src=bGludXhmb3VuZGF0aW9uLm9yZ19vNWF2amx2dDJjYWU5YnE3YTk1ZW1jNDc0MEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%23D50000&amp;title=CNCF%20Public%20Events%20Calendar"
-                                            style="border:solid 1px #777" width="100%" height="600" frameborder="0"
-                                            scrolling="no"></iframe>
-                                </p>
+                                    <p class="lead">
+                                        Serverless Workflow is a <a
+                                            href="https://github.com/serverlessworkflow/specification"
+                                            target="_blank">specification</a>
+                                        for describing workflows in a common way.
+                                        It provides a <strong>vendor-neutral</strong> and
+                                        <strong>platform-independent</strong>
+                                        markup for
+                                        orchestrating services on multiple runtimes and cloud/container platforms.
+                                    </p>
+
+                                    <p class="lead">
+                                        Serverless Workflow is a new effort and it's still under active development.
+                                        Its working group consists of a number of leaders in the business automation
+                                        industry
+                                        and enthusiasts in that field.
+                                    </p>
+
+                                    <p class="lead">
+                                        The Serverless Workflow specification is a <a href="https://cncf.io/"
+                                                                                      target="_blank">CNCF</a>
+                                        Cloud Native Sandbox level project.
+                                    </p>
+
+
+                                    <p class="lead">
+                                        <br/>
+                                    <center><img src="img/sw-spec-overview.png" width="100%"/></center>
+                                </div>
                             </div>
-                            <div class="tab-pane fade" id="contributetab">
-                                <br/><br/>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingMeetings">
+                                <h2 class="mb-0">
+                                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapseMeetings">4. Meetings
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseMeetings" class="collapse" aria-labelledby="headingMeetings"
+                                 data-parent="#swaccordion">
+                                <div class="card-body">
+                                    <br/>
+                                    <p class="lead">
+                                        The Serverless Workflow Team meets weekly, every Monday at 10AM PT (USA Pacific)
+                                        via
+                                        <a
+                                                href="https://zoom.us/my/cncfserverlesswg?pwd=YjNqYzhOdjRRd01YWFkzS1lHbDZqUT09"
+                                                target="_blank">Zoom</a>.
+                                        <br/>
+                                        Anyone is encouraged to join and collaborate. Please read our
+                                        our <a
+                                            href="https://github.com/serverlessworkflow/specification/blob/master/code-of-conduct.md">Code
+                                        of Conduct</a>
+                                        before joining the first time.
+                                        <br/><br/>
+                                        Below is the CNCF Public Events Calendar which includes all of the Serverless
+                                        Workflow
+                                        team meetings:
+                                    </p>
+                                    <p class="lead">
+                                        <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FNew_York&amp;src=bGludXhmb3VuZGF0aW9uLm9yZ19vNWF2amx2dDJjYWU5YnE3YTk1ZW1jNDc0MEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%23D50000&amp;title=CNCF%20Public%20Events%20Calendar"
+                                                style="border:solid 1px #777" width="100%" height="600" frameborder="0"
+                                                scrolling="no"></iframe>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="card">
+                        <div class="card-header" id="headingContrib">
+                            <h2 class="mb-0">
+                                <button type="button" class="btn btn-link collapsed" data-toggle="collapse"
+                                        data-target="#collapseContrib">5. Contribute
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseContrib" class="collapse" aria-labelledby="headingContrib"
+                             data-parent="#swaccordion">
+                            <div class="card-body">
+                                <br/>
                                 <p class="lead">
                                     Serverless Workflow is organized via the CNCF's <a
                                         href="https://github.com/serverlessworkflow" target="_blank">Serverless Working
@@ -327,8 +368,20 @@
                                         href="https://github.com/serverlessworkflow/specification/blob/master/code-of-conduct.md">here</a>.
                                 </p>
                             </div>
-                            <div class="tab-pane fade" id="resourcestab">
-                                <br/><br/>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingResources">
+                            <h2 class="mb-0">
+                                <button type="button" class="btn btn-link collapsed" data-toggle="collapse"
+                                        data-target="#collapseResources">6. Resources
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseResources" class="collapse" aria-labelledby="headingResources"
+                             data-parent="#swaccordion">
+                            <div class="card-body">
+                                <br/>
                                 <p class="lead">
                                 <h3>Videos</h3>
                                 <table class="table">
@@ -389,7 +442,8 @@
                                     </tr>
                                     <tr>
                                         <td><a href="https://www.youtube.com/watch?v=JivHFG1rVE4"
-                                               target="_blank">Serverless WG Updates - CloudEvents and Serverless Workflow</a></td>
+                                               target="_blank">Serverless WG Updates - CloudEvents and Serverless
+                                            Workflow</a></td>
                                         <td>KubeCon North America 2020</td>
                                     </tr>
                                     <tr>
@@ -427,9 +481,23 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="tab-pane fade" id="githubtab">
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingGithub">
+                            <h2 class="mb-0">
+                                <button type="button" class="btn btn-link collapsed" data-toggle="collapse"
+                                        data-target="#collapseGithub">7. Github
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseGithub" class="collapse" aria-labelledby="headingGithub"
+                             data-parent="#swaccordion">
+                            <div class="card-body">
                                 <br/>
-                                <h5 align="center"><img src="img/github.svg" width="32px">&nbsp;&nbsp;<a href="https://github.com/serverlessworkflow/specification" target="_blank">Specification Github Repo</a></h5>
+                                <h5 align="center"><img src="img/github.svg" width="32px">&nbsp;&nbsp;<a
+                                        href="https://github.com/serverlessworkflow/specification" target="_blank">Specification
+                                    Github Repo</a></h5>
                                 <p class="lead">
                                 <h6><img src="img/pr.svg"> Pull Requests</h6>
                                 <table class="table" id="githubprtable">
@@ -456,6 +524,7 @@
                         </div>
                     </div>
                 </div>
+                </div>
             </div>
         </div>
     </section>
@@ -469,26 +538,36 @@
         For a list of trademarks of The Linux Foundation, please see our Trademark Usage page.
     </div>
 </footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 <script src="https://unpkg.com/bootstrap-table@1.18.1/dist/bootstrap-table.min.js"></script>
 <script>
     function prformatter(value, row, index) {
-        return "<a href='"+row.diff_url.slice(0,-5)+"' target='_blank'>"+row.title+"</a>";
+        return "<a href='" + row.diff_url.slice(0, -5) + "' target='_blank'>" + row.title + "</a>";
     }
+
     function userformatter(value, row, index) {
-        return "<a href='https://github.com/"+value+"' target='_blank'>"+value+"</a>";
+        return "<a href='https://github.com/" + value + "' target='_blank'>" + value + "</a>";
     }
+
     function issueformatter(value, row, index) {
-        return "<a href='"+row.html_url+"' target='_blank'>"+row.title+"</a>";
+        return "<a href='" + row.html_url + "' target='_blank'>" + row.title + "</a>";
     }
+
     function idformatter(value, row, index) {
-        return "#"+value;
+        return "#" + value;
     }
 </script>
 <script type="module">
-    import { Octokit } from "https://cdn.skypack.dev/@octokit/rest";
+    import {Octokit} from "https://cdn.skypack.dev/@octokit/rest";
+
     const octokit = new Octokit({
         baseUrl: 'https://api.github.com',
         log: {
@@ -502,12 +581,12 @@
             repo: "specification",
         })
             .then(pulls => {
-                    $('#githubprtable').bootstrapTable({
-                        data: pulls.data,
-                        formatLoadingMessage: function() {
-                            return '';
-                        }
-                    });
+                $('#githubprtable').bootstrapTable({
+                    data: pulls.data,
+                    formatLoadingMessage: function () {
+                        return '';
+                    }
+                });
             })
             .catch(err => {
                 console.error(err);
@@ -522,14 +601,14 @@
         })
             .then(issues => {
                 var filteredIssues = issues.data.filter(
-                    function(issue) {
+                    function (issue) {
                         return !issue.html_url.includes("pull");
                     }
                 );
 
                 $('#githubissuetable').bootstrapTable({
                     data: filteredIssues,
-                    formatLoadingMessage: function() {
+                    formatLoadingMessage: function () {
                         return '';
                     }
                 });
