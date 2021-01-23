@@ -40,9 +40,9 @@
 
 <body id="page-top">
 <nav class="navbar navbar-expand-lg navbar-custom" id="mainNav">
-    <div class="container">
         <a class="navbar-brand justify-content-left" href="https://www.cncf.io/" target="_blank">
             <img src="img/cncf-white.png" width="220px"/></a>
+        <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link" href="editor.html"><i class="fa fa-external-link" style="color: #ffffff;"></i>
@@ -95,7 +95,7 @@
                     </button>
                 </div>
                 <br/>
-                <center><img src="img/sw-banner1.png" width="800px"/></center>
+                <center><img src="img/sw-banner1.png" width="80%"/></center>
             </div>
             <div class="col-sm-12" style="align-items: start;">
                 <center><h4 style="color: #448cfb">A specification that defines a <strong style="color: #ff6900">vendor-neutral</strong>
@@ -109,7 +109,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 mx-auto">
-                    <div class="bs-example">
+                    <div class="sw-tabs">
                         <ul id="myTab" class="nav nav-tabs">
                             <li class="nav-item">
                                 <a href="#releasestab" class="nav-link active" data-toggle="tab"><h6>Releases</h6></a>
@@ -455,6 +455,7 @@
                             </div>
                         </div>
                     </div>
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"></div>
                 </div>
             </div>
         </div>
@@ -473,7 +474,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/bootstrap-table@1.18.1/dist/bootstrap-table.min.js"></script>
+<script src="js/accordion.js"></script>
 <script>
+    getAccordion("#myTab",768);
     function prformatter(value, row, index) {
         return "<a href='"+row.diff_url.slice(0,-5)+"' target='_blank'>"+row.title+"</a>";
     }
