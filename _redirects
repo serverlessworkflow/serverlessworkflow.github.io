@@ -1,5 +1,6 @@
 # See:  https://docs.netlify.com/routing/redirects/
 #       https://docs.netlify.com/routing/redirects/redirect-options/
-/schemas/latest/* /schemas/0.5/:splat    200
-/schemas/snapshot/* /schemas/0.6-alpha/:splat    200
+/schemas/previous/* /schemas/0.5/:splat    200
+/schemas/latest/* /schemas/0.6/:splat    200
+/schemas/snapshot/* /schemas/0.7-alpha/:splat    200
 /services/diagrams https://diagram-service-secure-mmagnani.apps.kogito-cloud.automation.rhmw.io/swdiagram 200
