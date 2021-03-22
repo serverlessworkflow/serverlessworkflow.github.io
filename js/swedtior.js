@@ -3,19 +3,15 @@ var helloWorldExample = {
     "version": "1.0",
     "name": "Hello World Workflow",
     "description": "Inject Hello World",
+    "start": "HelloState",
     "states":[
         {
             "name":"HelloState",
             "type":"inject",
-            "start": {
-                "kind": "default"
-            },
             "data": {
                 "result": "Hello World!"
             },
-            "end": {
-                "kind": "default"
-            }
+            "end": true
         }
     ]
 };
@@ -25,13 +21,11 @@ var parallelStateExample = {
     "version": "1.0",
     "name": "Parallel Execution Workflow",
     "description": "Executes two branches in parallel",
+    "start": "ParallelExec",
     "states":[
         {
             "name": "ParallelExec",
             "type": "parallel",
-            "start": {
-                "kind": "default"
-            },
             "completionType": "and",
             "branches": [
                 {
@@ -43,9 +37,7 @@ var parallelStateExample = {
                     "workflowId": "longdelayworkflowid"
                 }
             ],
-            "end": {
-                "kind": "default"
-            }
+            "end": true
         }
     ]
 };
@@ -55,6 +47,7 @@ var eventBasedSwitchState = {
     "version": "1.0",
     "name": "Event Based Switch Transitions",
     "description": "Event Based Switch Transitions",
+    "start": "CheckVisaStatus",
     "events": [
         {
             "name": "visaApprovedEvent",
@@ -71,53 +64,38 @@ var eventBasedSwitchState = {
         {
             "name":"CheckVisaStatus",
             "type":"switch",
-            "start": {
-                "kind": "default"
-            },
             "eventConditions": [
                 {
                     "eventRef": "visaApprovedEvent",
-                    "transition": {
-                        "nextState": "HandleApprovedVisa"
-                    }
+                    "transition": "HandleApprovedVisa"
                 },
                 {
                     "eventRef": "visaRejectedEvent",
-                    "transition": {
-                        "nextState": "HandleRejectedVisa"
-                    }
+                    "transition": "HandleRejectedVisa"
                 }
             ],
             "eventTimeout": "PT1H",
             "default": {
-                "transition": {
-                    "nextState": "HandleNoVisaDecision"
-                }
+                "transition": "HandleNoVisaDecision"
             }
         },
         {
             "name": "HandleApprovedVisa",
             "type": "subflow",
             "workflowId": "handleApprovedVisaWorkflowID",
-            "end": {
-                "kind": "default"
-            }
+            "end": true
         },
         {
             "name": "HandleRejectedVisa",
             "type": "subflow",
             "workflowId": "handleRejectedVisaWorkflowID",
-            "end": {
-                "kind": "default"
-            }
+            "end": true
         },
         {
             "name": "HandleNoVisaDecision",
             "type": "subflow",
             "workflowId": "handleNoVisaDecisionWorkfowId",
-            "end": {
-                "kind": "default"
-            }
+            "end": true
         }
     ]
 };
@@ -127,6 +105,7 @@ var provisionOrdersExample = {
     "version": "1.0",
     "name": "Provision Orders",
     "description": "Provision Orders and handle errors thrown",
+    "start": "ProvisionOrder",
     "functions": [
         {
             "name": "provisionOrderFunction",
@@ -137,44 +116,33 @@ var provisionOrdersExample = {
         {
             "name":"ProvisionOrder",
             "type":"operation",
-            "start": {
-                "kind": "default"
-            },
             "actionMode":"sequential",
             "actions":[
                 {
                     "functionRef": {
                         "refName": "provisionOrderFunction",
-                        "parameters": {
-                            "order": "{{ $.order }}"
+                        "arguments": {
+                            "order": "${ .order }"
                         }
                     }
                 }
             ],
             "stateDataFilter": {
-                "dataOutputPath": "{{ $.exceptions }}"
+                "output": "${ .exceptions }"
             },
-            "transition": {
-                "nextState":"ApplyOrder"
-            },
+            "transition": "ApplyOrder",
             "onErrors": [
                 {
                     "error": "Missing order id",
-                    "transition": {
-                        "nextState": "MissingId"
-                    }
+                    "transition": "MissingId"
                 },
                 {
                     "error": "Missing order item",
-                    "transition": {
-                        "nextState": "MissingItem"
-                    }
+                    "transition": "MissingItem"
                 },
                 {
                     "error": "Missing order quantity",
-                    "transition": {
-                        "nextState": "MissingQuantity"
-                    }
+                    "transition": "MissingQuantity"
                 }
             ]
         },
@@ -182,33 +150,25 @@ var provisionOrdersExample = {
             "name": "MissingId",
             "type": "subflow",
             "workflowId": "handleMissingIdExceptionWorkflow",
-            "end": {
-                "kind": "default"
-            }
+            "end": true
         },
         {
             "name": "MissingItem",
             "type": "subflow",
             "workflowId": "handleMissingItemExceptionWorkflow",
-            "end": {
-                "kind": "default"
-            }
+            "end": true
         },
         {
             "name": "MissingQuantity",
             "type": "subflow",
             "workflowId": "handleMissingQuantityExceptionWorkflow",
-            "end": {
-                "kind": "default"
-            }
+            "end": true
         },
         {
             "name": "ApplyOrder",
             "type": "subflow",
             "workflowId": "applyOrderWorkflowId",
-            "end": {
-                "kind": "default"
-            }
+            "end": true
         }
     ]
 };
@@ -218,6 +178,7 @@ var monitorJobsExample = {
     "version": "1.0",
     "name": "Job Monitoring",
     "description": "Monitor finished execution of a submitted job",
+    "start": "SubmitJob",
     "functions": [
         {
             "name": "submitJob",
@@ -240,53 +201,42 @@ var monitorJobsExample = {
         {
             "name":"SubmitJob",
             "type":"operation",
-            "start": {
-                "kind": "default"
-            },
             "actionMode":"sequential",
             "actions":[
                 {
                     "functionRef": {
                         "refName": "submitJob",
-                        "parameters": {
-                            "name": "{{ $.job.name }}"
+                        "arguments": {
+                            "name": "${ .job.name }"
                         }
                     },
                     "actionDataFilter": {
-                        "dataResultsPath": "{{ $.jobuid }}"
+                        "results": "${ .jobuid }"
                     }
                 }
             ],
             "onErrors": [
                 {
                     "error": "*",
-                    "transition": {
-                        "nextState": "SubmitError"
-                    }
+                    "transition": "SubmitError"
                 }
             ],
             "stateDataFilter": {
-                "dataOutputPath": "{{ $.jobuid }}"
+                "output": "${ .jobuid }"
             },
-            "transition": {
-                "nextState":"WaitForCompletion"
-            }
+            "transition": "WaitForCompletion'"
         },
         {
             "name": "SubmitError",
             "type": "subflow",
             "workflowId": "handleJobSubmissionErrorWorkflow",
-            "end": {
-                "kind": "default"
-            }
+            "end": true
         },
         {
             "name": "WaitForCompletion",
             "type": "delay",
             "timeDelay": "PT5S",
-            "transition": {
-                "nextState":"GetJobStatus"
-            }
+            "transition": "GetJobStatus"
         },
         {
             "name":"GetJobStatus",
@@ -296,43 +246,35 @@ var monitorJobsExample = {
                 {
                     "functionRef": {
                         "refName": "checkJobStatus",
-                        "parameters": {
-                            "name": "{{ $.jobuid }}"
+                        "arguments": {
+                            "name": "${ .jobuid }"
                         }
                     },
                     "actionDataFilter": {
-                        "dataResultsPath": "{{ $.jobstatus }}"
+                        "results": "${ .jobstatus }"
                     }
                 }
             ],
             "stateDataFilter": {
-                "dataOutputPath": "{{ $.jobstatus }}"
+                "output": "${ .jobstatus }"
             },
-            "transition": {
-                "nextState":"DetermineCompletion"
-            }
+            "transition": "DetermineCompletion"
         },
         {
             "name":"DetermineCompletion",
             "type":"switch",
             "dataConditions": [
                 {
-                    "condition": "{{ $[?(@.jobstatus == 'SUCCEEDED')] }}",
-                    "transition": {
-                        "nextState": "JobSucceeded"
-                    }
+                    "condition": "${ .jobStatus == \"SUCCEEDED\" }",
+                    "transition": "JobSucceeded"
                 },
                 {
-                    "condition": "{{ $[?(@.jobstatus == 'FAILED')] }}",
-                    "transition": {
-                        "nextState": "JobFailed"
-                    }
+                    "condition": "${ .jobStatus == \"FAILED\" }",
+                    "transition": "JobFailed"
                 }
             ],
             "default": {
-                "transition": {
-                    "nextState": "WaitForCompletion"
-                }
+                "transition": "WaitForCompletion"
             }
         },
         {
@@ -343,15 +285,13 @@ var monitorJobsExample = {
                 {
                     "functionRef": {
                         "refName": "reportJobSuceeded",
-                        "parameters": {
-                            "name": "{{ $.jobuid }}"
+                        "arguments": {
+                            "name": "${ .jobuid }"
                         }
                     }
                 }
             ],
-            "end": {
-                "kind": "default"
-            }
+            "end": true
         },
         {
             "name":"JobFailed",
@@ -361,15 +301,13 @@ var monitorJobsExample = {
                 {
                     "functionRef": {
                         "refName": "reportJobFailed",
-                        "parameters": {
-                            "name": "{{ $.jobuid }}"
+                        "arguments": {
+                            "name": "${ .jobuid }"
                         }
                     }
                 }
             ],
-            "end": {
-                "kind": "default"
-            }
+            "end": true
         }
     ]
 };
@@ -379,6 +317,7 @@ var vetAppointmentExample = {
     "name": "Vet Appointment Workflow",
     "description": "Vet service call via events",
     "version": "1.0",
+    "start": "MakeVetAppointmentState",
     "events": [
         {
             "name": "MakeVetAppointment",
@@ -395,26 +334,21 @@ var vetAppointmentExample = {
         {
             "name": "MakeVetAppointmentState",
             "type": "operation",
-            "start": {
-                "kind": "default"
-            },
             "actions": [
                 {
                     "name": "MakeAppointmentAction",
                     "eventRef": {
                         "triggerEventRef": "MakeVetAppointment",
-                        "data": "{{ $.patientInfo }}",
+                        "data": "${ .patientInfo }",
                         "resultEventRef":  "VetAppointmentInfo"
                     },
                     "actionDataFilter": {
-                        "dataResultsPath": "{{ $.appointmentInfo }}"
+                        "results": "${ .appointmentInfo }"
                     },
                     "timeout": "PT15M"
                 }
             ],
-            "end": {
-                "kind": "default"
-            }
+            "end": true
         }
     ]
 };
