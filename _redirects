@@ -3,4 +3,4 @@
 /schemas/previous/* /schemas/0.5/:splat    200
 /schemas/latest/* /schemas/0.6/:splat    200
 /schemas/snapshot/* /schemas/0.7-alpha/:splat    200
-/services/diagrams https://diagram-service-secure-mmagnani.apps.kogito-cloud.automation.rhmw.io/swdiagram 200
+/services/diagrams https://diagram-service-secure-serverless-workflow.apps.kogito-cloud.automation.rhmw.io/swdiagram 200
