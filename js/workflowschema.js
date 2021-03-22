@@ -3,232 +3,142 @@ var workflowschema = {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "description": "Serverless Workflow specification - workflow schema",
     "type": "object",
-    "oneOf": [
-        {
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "Workflow unique identifier",
-                    "minLength": 1
-                },
-                "name": {
-                    "type": "string",
-                    "description": "Workflow name",
-                    "minLength": 1
-                },
-                "description": {
-                    "type": "string",
-                    "description": "Workflow description"
-                },
-                "version": {
-                    "type": "string",
-                    "description": "Workflow version",
-                    "minLength": 1
-                },
-                "schemaVersion": {
-                    "type": "string",
-                    "description": "Serverless Workflow schema version",
-                    "minLength": 1
-                },
-                "dataInputSchema": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "URI to JSON Schema that workflow data input adheres to"
-                },
-                "dataOutputSchema": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "URI to JSON Schema that workflow data output adheres to"
-                },
-                "metadata": {
-                    "type": "object",
-                    "description": "Metadata information",
-                    "additionalProperties": {
-                        "type": "string"
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Workflow unique identifier",
+            "minLength": 1
+        },
+        "name": {
+            "type": "string",
+            "description": "Workflow name",
+            "minLength": 1
+        },
+        "description": {
+            "type": "string",
+            "description": "Workflow description"
+        },
+        "version": {
+            "type": "string",
+            "description": "Workflow version",
+            "minLength": 1
+        },
+        "start": {
+            "$ref": "#/definitions/startdef"
+        },
+        "schemaVersion": {
+            "type": "string",
+            "description": "Serverless Workflow schema version",
+            "minLength": 1
+        },
+        "expressionLang": {
+            "type": "string",
+            "description": "Identifies the expression language used for workflow expressions. Default is 'jq'",
+            "default": "jq",
+            "minLength": 1
+        },
+        "execTimeout": {
+            "$ref": "#/definitions/exectimeout"
+        },
+        "keepActive": {
+            "type": "boolean",
+            "default": false,
+            "description": "If 'true', workflow instances is not terminated when there are no active execution paths. Instance can be terminated via 'terminate end definition' or reaching defined 'execTimeout'"
+        },
+        "metadata": {
+            "$ref": "#/definitions/metadata"
+        },
+        "events": {
+            "$ref": "#/definitions/events"
+        },
+        "functions": {
+            "$ref": "#/definitions/functions"
+        },
+        "retries": {
+            "$ref": "retries.json#/retries"
+        },
+        "states": {
+            "type": "array",
+            "description": "State definitions",
+            "items": {
+                "anyOf": [
+                    {
+                        "title": "Delay State",
+                        "$ref": "#/definitions/delaystate"
+                    },
+                    {
+                        "title": "Event State",
+                        "$ref": "#/definitions/eventstate"
+                    },
+                    {
+                        "title": "Operation State",
+                        "$ref": "#/definitions/operationstate"
+                    },
+                    {
+                        "title": "Parallel State",
+                        "$ref": "#/definitions/parallelstate"
+                    },
+                    {
+                        "title": "Switch State",
+                        "$ref": "#/definitions/switchstate"
+                    },
+                    {
+                        "title": "SubFlow State",
+                        "$ref": "#/definitions/subflowstate"
+                    },
+                    {
+                        "title": "Inject State",
+                        "$ref": "#/definitions/injectstate"
+                    },
+                    {
+                        "title": "ForEach State",
+                        "$ref": "#/definitions/foreachstate"
+                    },
+                    {
+                        "title": "Callback State",
+                        "$ref": "#/definitions/callbackstate"
                     }
+                ]
+            },
+            "additionalItems": false,
+            "minItems": 1
+        }
+    },
+    "required": [
+        "id",
+        "name",
+        "version",
+        "start",
+        "states"
+    ],
+    "definitions": {
+        "metadata": {
+            "type": "object",
+            "description": "Metadata information",
+            "additionalProperties": {
+                "type": "string"
+            }
+        },
+        "retries": {
+            "oneOf": [
+                {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URI to a resource containing retry definitions (json or yaml)"
                 },
-                "events": {
-                    "type": "array",
-                    "description": "Workflow CloudEvent definitions. Defines CloudEvents that can be consumed or produced",
-                    "items": {
-                        "type": "object",
-                        "$ref": "#/definitions/eventdef"
-                    },
-                    "minItems": 1
-                },
-                "functions": {
-                    "type": "array",
-                    "description": "Workflow function definitions",
-                    "items": {
-                        "type": "object",
-                        "$ref": "#/definitions/function"
-                    },
-                    "minItems": 1
-                },
-                "retries": {
+                {
                     "type": "array",
                     "description": "Workflow Retry definitions. Define retry strategies that can be referenced in states onError definitions",
                     "items": {
                         "type": "object",
                         "$ref": "#/definitions/retrydef"
                     },
-                    "minItems": 1
-                },
-                "states": {
-                    "type": "array",
-                    "description": "State definitions",
-                    "items": {
-                        "anyOf": [
-                            {
-                                "title": "Delay State",
-                                "$ref": "#/definitions/delaystate"
-                            },
-                            {
-                                "title": "Event State",
-                                "$ref": "#/definitions/eventstate"
-                            },
-                            {
-                                "title": "Operation State",
-                                "$ref": "#/definitions/operationstate"
-                            },
-                            {
-                                "title": "Parallel State",
-                                "$ref": "#/definitions/parallelstate"
-                            },
-                            {
-                                "title": "Switch State",
-                                "$ref": "#/definitions/switchstate"
-                            },
-                            {
-                                "title": "SubFlow State",
-                                "$ref": "#/definitions/subflowstate"
-                            },
-                            {
-                                "title": "Inject State",
-                                "$ref": "#/definitions/injectstate"
-                            },
-                            {
-                                "title": "ForEach State",
-                                "$ref": "#/definitions/foreachstate"
-                            },
-                            {
-                                "title": "Callback State",
-                                "$ref": "#/definitions/callbackstate"
-                            }
-                        ]
-                    },
+                    "additionalItems": false,
                     "minItems": 1
                 }
-            }
+            ]
         },
-        {
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "Workflow unique identifier",
-                    "minLength": 1
-                },
-                "name": {
-                    "type": "string",
-                    "description": "Workflow name",
-                    "minLength": 1
-                },
-                "description": {
-                    "type": "string",
-                    "description": "Workflow description"
-                },
-                "version": {
-                    "type": "string",
-                    "description": "Workflow version",
-                    "minLength": 1
-                },
-                "schemaVersion": {
-                    "type": "string",
-                    "description": "Serverless Workflow schema version",
-                    "minLength": 1
-                },
-                "dataInputSchema": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "URI to JSON Schema that workflow data input adheres to"
-                },
-                "dataOutputSchema": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "URI to JSON Schema that workflow data output adheres to"
-                },
-                "metadata": {
-                    "type": "object",
-                    "description": "Metadata information",
-                    "additionalProperties": {
-                        "type": "string"
-                    }
-                },
-                "events": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "URI to a resource containing event definitions (json or yaml)"
-                },
-                "functions": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "URI to a resource containing function definitions (json or yaml)"
-                },
-                "states": {
-                    "type": "array",
-                    "description": "State definitions",
-                    "items": {
-                        "anyOf": [
-                            {
-                                "title": "Delay State",
-                                "$ref": "#/definitions/delaystate"
-                            },
-                            {
-                                "title": "Event State",
-                                "$ref": "#/definitions/eventstate"
-                            },
-                            {
-                                "title": "Operation State",
-                                "$ref": "#/definitions/operationstate"
-                            },
-                            {
-                                "title": "Parallel State",
-                                "$ref": "#/definitions/parallelstate"
-                            },
-                            {
-                                "title": "Switch State",
-                                "$ref": "#/definitions/switchstate"
-                            },
-                            {
-                                "title": "SubFlow State",
-                                "$ref": "#/definitions/subflowstate"
-                            },
-                            {
-                                "title": "Inject State",
-                                "$ref": "#/definitions/injectstate"
-                            },
-                            {
-                                "title": "ForEach State",
-                                "$ref": "#/definitions/foreachstate"
-                            },
-                            {
-                                "title": "Callback State",
-                                "$ref": "#/definitions/callbackstate"
-                            }
-                        ]
-                    },
-                    "minItems": 1
-                }
-            }
-        }
-    ],
-    "required": [
-        "id",
-        "name",
-        "version",
-        "states"
-    ],
-    "definitions": {
+
         "retrydef": {
             "type": "object",
             "properties": {
@@ -241,26 +151,66 @@ var workflowschema = {
                     "type": "string",
                     "description": "Time delay between retry attempts (ISO 8601 duration format)"
                 },
-                "multiplier": {
+                "maxDelay": {
                     "type": "string",
-                    "description": "Multiplier value by which interval increases during each attempt (ISO 8601 time format)"
+                    "description": "Maximum time delay between retry attempts (ISO 8601 duration format)"
+                },
+                "increment": {
+                    "type": "string",
+                    "description": "Static value by which the delay increases during each attempt (ISO 8601 time format)"
+                },
+                "multiplier": {
+                    "type": [
+                        "number",
+                        "string"
+                    ],
+                    "minimum": 0,
+                    "minLength": 1,
+                    "multipleOf": 0.01,
+                    "description": "Numeric value, if specified the delay between retries is multiplied by this value."
                 },
                 "maxAttempts": {
-                    "type": ["integer","string"],
+                    "type": [
+                        "number",
+                        "string"
+                    ],
                     "minimum": 1,
                     "minLength": 0,
                     "description": "Maximum number of retry attempts."
                 },
                 "jitter": {
-                    "type": ["number","string"],
-                    "minimum": 0.0,
-                    "maximum": 1.0,
-                    "description": "If float type, maximum amount of random time added or subtracted from the delay between each retry relative to total delay (between 0.0 and 1.0). If string type, absolute maximum amount of random time added or subtracted from the delay between each retry (ISO 8601 duration format)"
+                    "type": [
+                        "number",
+                        "string"
+                    ],
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "If float type, maximum amount of random time added or subtracted from the delay between each retry relative to total delay (between 0 and 1). If string type, absolute maximum amount of random time added or subtracted from the delay between each retry (ISO 8601 duration format)"
                 }
             },
+            "additionalProperties": false,
             "required": [
                 "name",
                 "maxAttempts"
+            ]
+        },
+        "functions": {
+            "oneOf": [
+                {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URI to a resource containing function definitions (json or yaml)"
+                },
+                {
+                    "type": "array",
+                    "description": "Workflow function definitions",
+                    "items": {
+                        "type": "object",
+                        "$ref": "#/definitions/function"
+                    },
+                    "additionalItems": false,
+                    "minItems": 1
+                }
             ]
         },
         "function": {
@@ -273,19 +223,43 @@ var workflowschema = {
                 },
                 "operation": {
                     "type": "string",
-                    "description": "Combination of the function/service OpenAPI definition URI and the operationID of the operation that needs to be invoked, separated by a '#'. For example 'https://petstore.swagger.io/v2/swagger.json#getPetById'",
+                    "description": "If type is `rest`, <path_to_openapi_definition>#<operation_id>. If type is `rpc`, <path_to_grpc_proto_file>#<service_name>#<service_method>. If type is `expression`, defines the workflow expression.",
                     "minLength": 1
                 },
-                "metadata": {
-                    "type": "object",
-                    "description": "Metadata information",
-                    "additionalProperties": {
-                        "type": "string"
-                    }
+                "type": {
+                    "type": "string",
+                    "description": "Defines the function type. Is either `rest`, `rpc` or `expression`. Default is `rest`",
+                    "enum": [
+                        "rest",
+                        "rpc",
+                        "expression"
+                    ],
+                    "default": "rest"
                 }
             },
+            "additionalProperties": false,
             "required": [
-                "name"
+                "name",
+                "operation"
+            ]
+        },
+        "events": {
+            "oneOf": [
+                {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URI to a resource containing event definitions (json or yaml)"
+                },
+                {
+                    "type": "array",
+                    "description": "Workflow CloudEvent definitions. Defines CloudEvents that can be consumed or produced",
+                    "items": {
+                        "type": "object",
+                        "$ref": "#/definitions/eventdef"
+                    },
+                    "additionalItems": false,
+                    "minItems": 1
+                }
             ]
         },
         "eventdef": {
@@ -295,15 +269,6 @@ var workflowschema = {
                     "type": "string",
                     "description": "Unique event name",
                     "minLength": 1
-                },
-                "names": {
-                    "type": "array",
-                    "description": "List of unique event names that share the rest of the properties (source, type, kind, default)",
-                    "items": {
-                        "type": "string"
-                    },
-                    "minItems": 2,
-                    "uniqueItems": true
                 },
                 "source": {
                     "type": "string",
@@ -329,16 +294,15 @@ var workflowschema = {
                     "items": {
                         "type": "object",
                         "$ref": "#/definitions/correlationDef"
-                    }
+                    },
+                    "additionalItems": false
                 },
                 "metadata": {
-                    "type": "object",
-                    "description": "Metadata information",
-                    "additionalProperties": {
-                        "type": "string"
-                    }
+                    "$ref": "#/definitions/metadata",
+                    "description": "Metadata information"
                 }
             },
+            "additionalProperties": false,
             "if": {
                 "properties": {
                     "kind": {
@@ -347,37 +311,16 @@ var workflowschema = {
                 }
             },
             "then": {
-                "oneOf": [
-                    {
-                        "required": [
-                            "name",
-                            "source",
-                            "type"
-                        ]
-                    },
-                    {
-                        "required": [
-                            "names",
-                            "source",
-                            "type"
-                        ]
-                    }
+                "required": [
+                    "name",
+                    "source",
+                    "type"
                 ]
             },
             "else": {
-                "oneOf": [
-                    {
-                        "required": [
-                            "name",
-                            "type"
-                        ]
-                    },
-                    {
-                        "required": [
-                            "names",
-                            "type"
-                        ]
-                    }
+                "required": [
+                    "name",
+                    "type"
                 ]
             }
         },
@@ -396,33 +339,96 @@ var workflowschema = {
                     "minLength": 1
                 }
             },
+            "additionalProperties": false,
             "required": [
                 "contextAttributeName"
             ]
         },
-        "transition": {
+        "crondef": {
+            "oneOf": [
+                {
+                    "type": "string",
+                    "description": "Cron expression defining when workflow instances should be created (automatically)",
+                    "minLength": 1
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "expression": {
+                            "type": "string",
+                            "description": "Repeating interval (cron expression) describing when the workflow instance should be created",
+                            "minLength": 1
+                        },
+                        "validUntil": {
+                            "type": "string",
+                            "description": "Specific date and time (ISO 8601 format) when the cron expression invocation is no longer valid"
+                        }
+                    },
+                    "additionalProperties": false,
+                    "required": ["expression"]
+                }
+            ]
+        },
+        "exectimeout": {
             "type": "object",
             "properties": {
-                "expression": {
+                "duration": {
                     "type": "string",
-                    "description": "JsonPath expression. Evaluates to true if returns non-empty result"
+                    "description": "Timeout duration (ISO 8601 duration format)",
+                    "minLength": 1
                 },
-                "produceEvents": {
-                    "type": "array",
-                    "description": "Array of events to be produced",
-                    "items": {
-                        "type": "object",
-                        "$ref": "#/definitions/produceeventdef"
-                    }
+                "interrupt": {
+                    "type": "boolean",
+                    "description": "If `false`, workflow instance is allowed to finish current execution. If `true`, current workflow execution is abrupted.",
+                    "default": false
                 },
-                "nextState": {
+                "runBefore": {
                     "type": "string",
-                    "description": "Name of state to transition to",
+                    "description": "Name of a workflow state to be executed before workflow instance is terminated",
                     "minLength": 1
                 }
             },
+            "additionalProperties": false,
             "required": [
-                "nextState"
+                "duration"
+            ]
+        },
+        "transition": {
+            "oneOf": [
+                {
+                    "type": "string",
+                    "description": "Name of state to transition to",
+                    "minLength": 1
+                },
+                {
+                    "type": "object",
+                    "description": "Function Reference",
+                    "properties": {
+                        "nextState": {
+                            "type": "string",
+                            "description": "Name of state to transition to",
+                            "minLength": 1
+                        },
+                        "produceEvents": {
+                            "type": "array",
+                            "description": "Array of events to be produced before the transition happens",
+                            "items": {
+                                "type": "object",
+                                "$ref": "#/definitions/produceeventdef"
+                            },
+                            "additionalItems": false
+                        },
+                        "compensate": {
+                            "type": "boolean",
+                            "default": false,
+                            "description": "If set to true, triggers workflow compensation when before this transition is taken. Default is false"
+                        }
+                    },
+                    "additionalProperties": false,
+                    "required": [
+                        "nextState"
+                    ]
+                }
             ]
         },
         "error": {
@@ -452,6 +458,7 @@ var workflowschema = {
                     "$ref": "#/definitions/end"
                 }
             },
+            "additionalProperties": false,
             "oneOf": [
                 {
                     "required": [
@@ -471,12 +478,13 @@ var workflowschema = {
             "type": "object",
             "properties": {
                 "eventRefs": {
-                    "type" : "array",
+                    "type": "array",
                     "description": "References one or more unique event names in the defined workflow events",
                     "minItems": 1,
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "additionalItems": false
                 },
                 "actionMode": {
                     "type": "string",
@@ -493,15 +501,17 @@ var workflowschema = {
                     "items": {
                         "type": "object",
                         "$ref": "#/definitions/action"
-                    }
+                    },
+                    "additionalItems": false
                 },
                 "eventDataFilter": {
+                    "description": "Event data filter",
                     "$ref": "#/definitions/eventdatafilter"
                 }
             },
+            "additionalProperties": false,
             "required": [
-                "eventRefs",
-                "actions"
+                "eventRefs"
             ]
         },
         "action": {
@@ -512,8 +522,31 @@ var workflowschema = {
                     "description": "Unique action definition name"
                 },
                 "functionRef": {
-                    "description": "References a reusable function definition",
-                    "$ref": "#/definitions/functionref"
+                    "oneOf": [
+                        {
+                            "type": "string",
+                            "description": "Name of the referenced function",
+                            "minLength": 1
+                        },
+                        {
+                            "type": "object",
+                            "description": "Function Reference",
+                            "properties": {
+                                "refName": {
+                                    "type": "string",
+                                    "description": "Name of the referenced function"
+                                },
+                                "arguments": {
+                                    "type": "object",
+                                    "description": "Function arguments"
+                                }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                                "refName"
+                            ]
+                        }
+                    ]
                 },
                 "eventRef": {
                     "description": "References a 'trigger' and 'result' reusable event definitions",
@@ -524,9 +557,11 @@ var workflowschema = {
                     "description": "Time period to wait for function execution to complete"
                 },
                 "actionDataFilter": {
+                    "description": "Action data filter",
                     "$ref": "#/definitions/actiondatafilter"
                 }
             },
+            "additionalProperties": false,
             "oneOf": [
                 {
                     "required": [
@@ -538,23 +573,6 @@ var workflowschema = {
                         "eventRef"
                     ]
                 }
-            ]
-        },
-        "functionref": {
-            "type": "object",
-            "description": "Function Reference",
-            "properties": {
-                "refName": {
-                    "type": "string",
-                    "description": "Name of the referenced function"
-                },
-                "parameters": {
-                    "type": "object",
-                    "description": "Function parameters"
-                }
-            },
-            "required": [
-                "refName"
             ]
         },
         "eventref": {
@@ -570,7 +588,10 @@ var workflowschema = {
                     "description": "Reference to the unique name of a 'consumed' event definition"
                 },
                 "data": {
-                    "type": ["string", "object"],
+                    "type": [
+                        "string",
+                        "object"
+                    ],
                     "description": "If string type, an expression which selects parts of the states data output to become the data (payload) of the event referenced by 'triggerEventRef'. If object type, a custom object to become the data (payload) of the event referenced by 'triggerEventRef'."
                 },
                 "contextAttributes": {
@@ -581,6 +602,7 @@ var workflowschema = {
                     }
                 }
             },
+            "additionalProperties": false,
             "required": [
                 "triggerEventRef",
                 "resultEventRef"
@@ -600,13 +622,15 @@ var workflowschema = {
                     "items": {
                         "type": "object",
                         "$ref": "#/definitions/action"
-                    }
+                    },
+                    "additionalItems": false
                 },
                 "workflowId": {
                     "type": "string",
                     "description": "Unique Id of a workflow to be executed in this branch"
                 }
             },
+            "additionalProperties": false,
             "oneOf": [
                 {
                     "required": [
@@ -640,15 +664,12 @@ var workflowschema = {
                     "const": "delay",
                     "description": "State type"
                 },
-                "start": {
-                    "$ref": "#/definitions/start",
-                    "description": "State start definition"
-                },
                 "end": {
                     "$ref": "#/definitions/end",
                     "description": "State end definition"
                 },
                 "stateDataFilter": {
+                    "description": "State data filter",
                     "$ref": "#/definitions/statedatafilter"
                 },
                 "timeDelay": {
@@ -661,66 +682,62 @@ var workflowschema = {
                     "items": {
                         "type": "object",
                         "$ref": "#/definitions/error"
-                    }
+                    },
+                    "additionalItems": false
                 },
                 "transition": {
                     "description": "Next transition of the workflow after the time delay",
                     "$ref": "#/definitions/transition"
                 },
-                "dataInputSchema": {
+                "compensatedBy": {
                     "type": "string",
-                    "format": "uri",
-                    "description": "URI to JSON Schema that state data input adheres to"
+                    "minLength": 1,
+                    "description": "Unique Name of a workflow state which is responsible for compensation of this state"
                 },
-                "dataOutputSchema": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "URI to JSON Schema that state data output adheres to"
+                "usedForCompensation": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If true, this state is used to compensate another state. Default is false"
                 },
                 "metadata": {
-                    "type": "object",
-                    "description": "Metadata information",
-                    "additionalProperties": {
-                        "type": "string"
+                    "$ref": "#/definitions/metadata"
+                }
+            },
+            "additionalProperties": false,
+            "if": {
+                "properties": {
+                    "usedForCompensation": {
+                        "const": true
                     }
                 }
             },
-            "oneOf": [
-                {
-                    "required": [
-                        "name",
-                        "type",
-                        "timeDelay",
-                        "end"
-                    ]
-                },
-                {
-                    "required": [
-                        "name",
-                        "type",
-                        "timeDelay",
-                        "transition"
-                    ]
-                },
-                {
-                    "required": [
-                        "start",
-                        "name",
-                        "type",
-                        "timeDelay",
-                        "transition"
-                    ]
-                },
-                {
-                    "required": [
-                        "start",
-                        "name",
-                        "type",
-                        "timeDelay",
-                        "end"
-                    ]
-                }
-            ]
+            "then": {
+                "required": [
+                    "name",
+                    "type",
+                    "timeDelay"
+                ]
+            },
+            "else": {
+                "oneOf": [
+                    {
+                        "required": [
+                            "name",
+                            "type",
+                            "timeDelay",
+                            "end"
+                        ]
+                    },
+                    {
+                        "required": [
+                            "name",
+                            "type",
+                            "timeDelay",
+                            "transition"
+                        ]
+                    }
+                ]
+            }
         },
         "eventstate": {
             "type": "object",
@@ -747,17 +764,19 @@ var workflowschema = {
                 },
                 "onEvents": {
                     "type": "array",
-                    "description": "Define what events trigger one or more actions to be performed",
+                    "description": "Define the events to be consumed and optional actions to be performed",
                     "items": {
                         "type": "object",
                         "$ref": "#/definitions/onevents"
-                    }
+                    },
+                    "additionalItems": false
                 },
                 "timeout": {
                     "type": "string",
                     "description": "Time period to wait for incoming events (ISO 8601 format)"
                 },
                 "stateDataFilter": {
+                    "description": "State data filter",
                     "$ref": "#/definitions/statedatafilter"
                 },
                 "onErrors": {
@@ -766,38 +785,27 @@ var workflowschema = {
                     "items": {
                         "type": "object",
                         "$ref": "#/definitions/error"
-                    }
-                },
-                "dataInputSchema": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "URI to JSON Schema that state data input adheres to"
-                },
-                "dataOutputSchema": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "URI to JSON Schema that state data output adheres to"
+                    },
+                    "additionalItems": false
                 },
                 "transition": {
                     "description": "Next transition of the workflow after all the actions have been performed",
                     "$ref": "#/definitions/transition"
                 },
-                "start": {
-                    "$ref": "#/definitions/start",
-                    "description": "State start definition"
-                },
                 "end": {
                     "$ref": "#/definitions/end",
                     "description": "State end definition"
                 },
+                "compensatedBy": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Unique Name of a workflow state which is responsible for compensation of this state"
+                },
                 "metadata": {
-                    "type": "object",
-                    "description": "Metadata information",
-                    "additionalProperties": {
-                        "type": "string"
-                    }
+                    "$ref": "#/definitions/metadata"
                 }
             },
+            "additionalProperties": false,
             "oneOf": [
                 {
                     "required": [
@@ -817,16 +825,6 @@ var workflowschema = {
                 },
                 {
                     "required": [
-                        "start",
-                        "name",
-                        "type",
-                        "onEvents",
-                        "transition"
-                    ]
-                },
-                {
-                    "required": [
-                        "start",
                         "name",
                         "type",
                         "onEvents",
@@ -853,15 +851,12 @@ var workflowschema = {
                     "const": "operation",
                     "description": "State type"
                 },
-                "start": {
-                    "$ref": "#/definitions/start",
-                    "description": "State start definition"
-                },
                 "end": {
                     "$ref": "#/definitions/end",
                     "description": "State end definition"
                 },
                 "stateDataFilter": {
+                    "description": "State data filter",
                     "$ref": "#/definitions/statedatafilter"
                 },
                 "actionMode": {
@@ -887,70 +882,70 @@ var workflowschema = {
                     "items": {
                         "type": "object",
                         "$ref": "#/definitions/error"
-                    }
+                    },
+                    "additionalItems": false
                 },
                 "transition": {
                     "description": "Next transition of the workflow after all the actions have been performed",
                     "$ref": "#/definitions/transition"
                 },
-                "dataInputSchema": {
+                "compensatedBy": {
                     "type": "string",
-                    "format": "uri",
-                    "description": "URI to JSON Schema that state data input adheres to"
+                    "minLength": 1,
+                    "description": "Unique Name of a workflow state which is responsible for compensation of this state"
                 },
-                "dataOutputSchema": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "URI to JSON Schema that state data output adheres to"
+                "usedForCompensation": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If true, this state is used to compensate another state. Default is false"
                 },
                 "metadata": {
-                    "type": "object",
-                    "description": "Metadata information",
-                    "additionalProperties": {
-                        "type": "string"
+                    "$ref": "#/definitions/metadata"
+                }
+            },
+            "additionalProperties": false,
+            "if": {
+                "properties": {
+                    "usedForCompensation": {
+                        "const": true
                     }
                 }
             },
-            "oneOf": [
-                {
-                    "required": [
-                        "name",
-                        "type",
-                        "actionMode",
-                        "actions",
-                        "end"
-                    ]
-                },
-                {
-                    "required": [
-                        "name",
-                        "type",
-                        "actionMode",
-                        "actions",
-                        "transition"
-                    ]
-                },
-                {
-                    "required": [
-                        "start",
-                        "name",
-                        "type",
-                        "actionMode",
-                        "actions",
-                        "transition"
-                    ]
-                },
-                {
-                    "required": [
-                        "start",
-                        "name",
-                        "type",
-                        "actionMode",
-                        "actions",
-                        "end"
-                    ]
-                }
-            ]
+            "then": {
+                "required": [
+                    "name",
+                    "type",
+                    "actions"
+                ]
+            },
+            "else": {
+                "oneOf": [
+                    {
+                        "required": [
+                            "name",
+                            "type",
+                            "actions",
+                            "end"
+                        ]
+                    },
+                    {
+                        "required": [
+                            "name",
+                            "type",
+                            "actions",
+                            "transition"
+                        ]
+                    },
+                    {
+                        "required": [
+                            "name",
+                            "type",
+                            "actions",
+                            "end"
+                        ]
+                    }
+                ]
+            }
         },
         "parallelstate": {
             "type": "object",
@@ -970,15 +965,12 @@ var workflowschema = {
                     "const": "parallel",
                     "description": "State type"
                 },
-                "start": {
-                    "$ref": "#/definitions/start",
-                    "description": "State start definition"
-                },
                 "end": {
                     "$ref": "#/definitions/end",
                     "description": "State end definition"
                 },
                 "stateDataFilter": {
+                    "description": "State data filter",
                     "$ref": "#/definitions/statedatafilter"
                 },
                 "branches": {
@@ -987,16 +979,24 @@ var workflowschema = {
                     "items": {
                         "type": "object",
                         "$ref": "#/definitions/branch"
-                    }
+                    },
+                    "additionalItems": false
                 },
                 "completionType": {
-                    "type" : "string",
-                    "enum": ["and", "xor", "n_of_m"],
+                    "type": "string",
+                    "enum": [
+                        "and",
+                        "xor",
+                        "n_of_m"
+                    ],
                     "description": "Option types on how to complete branch execution.",
                     "default": "and"
                 },
                 "n": {
-                    "type": ["integer","string"],
+                    "type": [
+                        "number",
+                        "string"
+                    ],
                     "minimum": 0,
                     "minLength": 0,
                     "description": "Used when completionType is set to 'n_of_m' to specify the 'N' value"
@@ -1007,67 +1007,70 @@ var workflowschema = {
                     "items": {
                         "type": "object",
                         "$ref": "#/definitions/error"
-                    }
+                    },
+                    "additionalItems": false
                 },
                 "transition": {
                     "description": "Next transition of the workflow after all branches have completed execution",
                     "$ref": "#/definitions/transition"
                 },
-                "dataInputSchema": {
+                "compensatedBy": {
                     "type": "string",
-                    "format": "uri",
-                    "description": "URI to JSON Schema that state data input adheres to"
+                    "minLength": 1,
+                    "description": "Unique Name of a workflow state which is responsible for compensation of this state"
                 },
-                "dataOutputSchema": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "URI to JSON Schema that state data output adheres to"
+                "usedForCompensation": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If true, this state is used to compensate another state. Default is false"
                 },
                 "metadata": {
-                    "type": "object",
-                    "description": "Metadata information",
-                    "additionalProperties": {
-                        "type": "string"
+                    "$ref": "#/definitions/metadata"
+                }
+            },
+            "additionalProperties": false,
+            "if": {
+                "properties": {
+                    "usedForCompensation": {
+                        "const": true
                     }
                 }
             },
-            "oneOf": [
-                {
-                    "required": [
-                        "name",
-                        "type",
-                        "branches",
-                        "end"
-                    ]
-                },
-                {
-                    "required": [
-                        "name",
-                        "type",
-                        "branches",
-                        "transition"
-                    ]
-                },
-                {
-                    "required": [
-                        "start",
-                        "name",
-                        "type",
-                        "branches",
-                        "transition"
-                    ]
-                },
-                {
-                    "required": [
-                        "start",
-                        "name",
-                        "type",
-                        "branches",
-                        "transition",
-                        "end"
-                    ]
-                }
-            ]
+            "then": {
+                "required": [
+                    "name",
+                    "type",
+                    "branches"
+                ]
+            },
+            "else": {
+                "oneOf": [
+                    {
+                        "required": [
+                            "name",
+                            "type",
+                            "branches",
+                            "end"
+                        ]
+                    },
+                    {
+                        "required": [
+                            "name",
+                            "type",
+                            "branches",
+                            "transition"
+                        ]
+                    },
+                    {
+                        "required": [
+                            "name",
+                            "type",
+                            "branches",
+                            "end"
+                        ]
+                    }
+                ]
+            }
         },
         "switchstate": {
             "oneOf": [
@@ -1097,11 +1100,8 @@ var workflowschema = {
                     "const": "switch",
                     "description": "State type"
                 },
-                "start": {
-                    "$ref": "#/definitions/start",
-                    "description": "State start definition"
-                },
                 "stateDataFilter": {
+                    "description": "State data filter",
                     "$ref": "#/definitions/statedatafilter"
                 },
                 "eventConditions": {
@@ -1110,7 +1110,8 @@ var workflowschema = {
                     "items": {
                         "type": "object",
                         "$ref": "#/definitions/eventcondition"
-                    }
+                    },
+                    "additionalItems": false
                 },
                 "onErrors": {
                     "type": "array",
@@ -1118,7 +1119,8 @@ var workflowschema = {
                     "items": {
                         "type": "object",
                         "$ref": "#/definitions/error"
-                    }
+                    },
+                    "additionalItems": false
                 },
                 "eventTimeout": {
                     "type": "string",
@@ -1128,42 +1130,25 @@ var workflowschema = {
                     "description": "Default transition of the workflow if there is no matching data conditions. Can include a transition or end definition",
                     "$ref": "#/definitions/defaultdef"
                 },
-                "dataInputSchema": {
+                "compensatedBy": {
                     "type": "string",
-                    "format": "uri",
-                    "description": "URI to JSON Schema that state data input adheres to"
+                    "minLength": 1,
+                    "description": "Unique Name of a workflow state which is responsible for compensation of this state"
                 },
-                "dataOutputSchema": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "URI to JSON Schema that state data output adheres to"
+                "usedForCompensation": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If true, this state is used to compensate another state. Default is false"
                 },
                 "metadata": {
-                    "type": "object",
-                    "description": "Metadata information",
-                    "additionalProperties": {
-                        "type": "string"
-                    }
+                    "$ref": "#/definitions/metadata"
                 }
             },
-            "oneOf": [
-                {
-                    "required": [
-                        "name",
-                        "type",
-                        "eventConditions",
-                        "default"
-                    ]
-                },
-                {
-                    "required": [
-                        "start",
-                        "name",
-                        "type",
-                        "eventConditions",
-                        "default"
-                    ]
-                }
+            "additionalProperties": false,
+            "required": [
+                "name",
+                "type",
+                "eventConditions"
             ]
         },
         "databasedswitch": {
@@ -1184,11 +1169,8 @@ var workflowschema = {
                     "const": "switch",
                     "description": "State type"
                 },
-                "start": {
-                    "$ref": "#/definitions/start",
-                    "description": "State start definition"
-                },
                 "stateDataFilter": {
+                    "description": "State data filter",
                     "$ref": "#/definitions/statedatafilter"
                 },
                 "dataConditions": {
@@ -1197,7 +1179,8 @@ var workflowschema = {
                     "items": {
                         "type": "object",
                         "$ref": "#/definitions/datacondition"
-                    }
+                    },
+                    "additionalItems": false
                 },
                 "onErrors": {
                     "type": "array",
@@ -1205,48 +1188,32 @@ var workflowschema = {
                     "items": {
                         "type": "object",
                         "$ref": "#/definitions/error"
-                    }
+                    },
+                    "additionalItems": false
                 },
                 "default": {
                     "description": "Default transition of the workflow if there is no matching data conditions. Can include a transition or end definition",
                     "$ref": "#/definitions/defaultdef"
                 },
-                "dataInputSchema": {
+                "compensatedBy": {
                     "type": "string",
-                    "format": "uri",
-                    "description": "URI to JSON Schema that state data input adheres to"
+                    "minLength": 1,
+                    "description": "Unique Name of a workflow state which is responsible for compensation of this state"
                 },
-                "dataOutputSchema": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "URI to JSON Schema that state data output adheres to"
+                "usedForCompensation": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If true, this state is used to compensate another state. Default is false"
                 },
                 "metadata": {
-                    "type": "object",
-                    "description": "Metadata information",
-                    "additionalProperties": {
-                        "type": "string"
-                    }
+                    "$ref": "#/definitions/metadata"
                 }
             },
-            "oneOf": [
-                {
-                    "required": [
-                        "name",
-                        "type",
-                        "dataConditions",
-                        "default"
-                    ]
-                },
-                {
-                    "required": [
-                        "start",
-                        "name",
-                        "type",
-                        "dataConditions",
-                        "default"
-                    ]
-                }
+            "additionalProperties": false,
+            "required": [
+                "name",
+                "type",
+                "dataConditions"
             ]
         },
         "defaultdef": {
@@ -1260,6 +1227,7 @@ var workflowschema = {
                     "$ref": "#/definitions/end"
                 }
             },
+            "additionalProperties": false,
             "oneOf": [
                 {
                     "required": [
@@ -1292,26 +1260,26 @@ var workflowschema = {
                     "description": "Event condition name"
                 },
                 "eventRef": {
-                    "type" : "string",
+                    "type": "string",
                     "description": "References an unique event name in the defined workflow events"
                 },
                 "transition": {
                     "description": "Next transition of the workflow if there is valid matches",
                     "$ref": "#/definitions/transition"
+                },
+                "eventDataFilter": {
+                    "description": "Event data filter definition",
+                    "$ref": "#/definitions/eventdatafilter"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/metadata"
                 }
             },
-            "eventDataFilter": {
-                "description": "Event data filter definition",
-                "$ref": "#/definitions/eventdatafilter"
-            },
-            "metadata": {
-                "type": "object",
-                "description": "Metadata information",
-                "additionalProperties": {
-                    "type": "string"
-                }
-            },
-            "required": ["eventRef", "transition"]
+            "additionalProperties": false,
+            "required": [
+                "eventRef",
+                "transition"
+            ]
         },
         "enddeventcondition": {
             "type": "object",
@@ -1322,26 +1290,26 @@ var workflowschema = {
                     "description": "Event condition name"
                 },
                 "eventRef": {
-                    "type" : "string",
+                    "type": "string",
                     "description": "References an unique event name in the defined workflow events"
                 },
                 "end": {
                     "$ref": "#/definitions/end",
                     "description": "Explicit transition to end"
+                },
+                "eventDataFilter": {
+                    "description": "Event data filter definition",
+                    "$ref": "#/definitions/eventdatafilter"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/metadata"
                 }
             },
-            "eventDataFilter": {
-                "description": "Event data filter definition",
-                "$ref": "#/definitions/eventdatafilter"
-            },
-            "metadata": {
-                "type": "object",
-                "description": "Metadata information",
-                "additionalProperties": {
-                    "type": "string"
-                }
-            },
-            "required": ["eventRef", "transition"]
+            "additionalProperties": false,
+            "required": [
+                "eventRef",
+                "end"
+            ]
         },
         "datacondition": {
             "oneOf": [
@@ -1363,21 +1331,21 @@ var workflowschema = {
                 },
                 "condition": {
                     "type": "string",
-                    "description": "JsonPath expression evaluated against state data. True if results are not empty"
+                    "description": "Workflow expression evaluated against state data. Must evaluate to true or false"
                 },
                 "transition": {
-                    "description": "Next transition of the workflow if there is valid matches",
+                    "description": "Workflow transition if condition is evaluated to true",
                     "$ref": "#/definitions/transition"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/metadata"
                 }
             },
-            "metadata": {
-                "type": "object",
-                "description": "Metadata information",
-                "additionalProperties": {
-                    "type": "string"
-                }
-            },
-            "required": ["condition", "transition"]
+            "additionalProperties": false,
+            "required": [
+                "condition",
+                "transition"
+            ]
         },
         "enddatacondition": {
             "type": "object",
@@ -1389,21 +1357,21 @@ var workflowschema = {
                 },
                 "condition": {
                     "type": "string",
-                    "description": "JsonPath expression evaluated against state data. True if results are not empty"
+                    "description": "Workflow expression evaluated against state data. Must evaluate to true or false"
                 },
                 "end": {
                     "$ref": "#/definitions/end",
-                    "description": "Explicit transition to end"
+                    "description": "Workflow end definition"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/metadata"
                 }
             },
-            "metadata": {
-                "type": "object",
-                "description": "Metadata information",
-                "additionalProperties": {
-                    "type": "string"
-                }
-            },
-            "required": ["condition", "end"]
+            "additionalProperties": false,
+            "required": [
+                "condition",
+                "end"
+            ]
         },
         "subflowstate": {
             "type": "object",
@@ -1423,10 +1391,6 @@ var workflowschema = {
                     "const": "subflow",
                     "description": "State type"
                 },
-                "start": {
-                    "$ref": "#/definitions/start",
-                    "description": "State start definition"
-                },
                 "end": {
                     "$ref": "#/definitions/end",
                     "description": "State end definition"
@@ -1440,7 +1404,12 @@ var workflowschema = {
                     "type": "string",
                     "description": "Sub-workflow unique id"
                 },
+                "repeat": {
+                    "$ref": "#/definitions/repeat",
+                    "description": "SubFlow state repeat exec definition"
+                },
                 "stateDataFilter": {
+                    "description": "State data filter",
                     "$ref": "#/definitions/statedatafilter"
                 },
                 "onErrors": {
@@ -1449,66 +1418,62 @@ var workflowschema = {
                     "items": {
                         "type": "object",
                         "$ref": "#/definitions/error"
-                    }
+                    },
+                    "additionalItems": false
                 },
                 "transition": {
                     "description": "Next transition of the workflow after SubFlow has completed execution",
                     "$ref": "#/definitions/transition"
                 },
-                "dataInputSchema": {
+                "compensatedBy": {
                     "type": "string",
-                    "format": "uri",
-                    "description": "URI to JSON Schema that state data input adheres to"
+                    "minLength": 1,
+                    "description": "Unique Name of a workflow state which is responsible for compensation of this state"
                 },
-                "dataOutputSchema": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "URI to JSON Schema that state data output adheres to"
+                "usedForCompensation": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If true, this state is used to compensate another state. Default is false"
                 },
                 "metadata": {
-                    "type": "object",
-                    "description": "Metadata information",
-                    "additionalProperties": {
-                        "type": "string"
+                    "$ref": "#/definitions/metadata"
+                }
+            },
+            "additionalProperties": false,
+            "if": {
+                "properties": {
+                    "usedForCompensation": {
+                        "const": true
                     }
                 }
             },
-            "oneOf": [
-                {
-                    "required": [
-                        "name",
-                        "type",
-                        "workflowId",
-                        "end"
-                    ]
-                },
-                {
-                    "required": [
-                        "name",
-                        "type",
-                        "workflowId",
-                        "transition"
-                    ]
-                },
-                {
-                    "required": [
-                        "start",
-                        "name",
-                        "type",
-                        "workflowId",
-                        "transition"
-                    ]
-                },
-                {
-                    "required": [
-                        "start",
-                        "name",
-                        "type",
-                        "workflowId",
-                        "end"
-                    ]
-                }
-            ]
+            "then": {
+                "required": [
+                    "name",
+                    "type",
+                    "workflowId"
+                ]
+            },
+            "else": {
+                "oneOf": [
+                    {
+                        "required": [
+                            "name",
+                            "type",
+                            "workflowId",
+                            "end"
+                        ]
+                    },
+                    {
+                        "required": [
+                            "name",
+                            "type",
+                            "workflowId",
+                            "transition"
+                        ]
+                    }
+                ]
+            }
         },
         "injectstate": {
             "type": "object",
@@ -1528,10 +1493,6 @@ var workflowschema = {
                     "const": "inject",
                     "description": "State type"
                 },
-                "start": {
-                    "$ref": "#/definitions/start",
-                    "description": "State start definition"
-                },
                 "end": {
                     "$ref": "#/definitions/end",
                     "description": "State end definition"
@@ -1541,62 +1502,62 @@ var workflowschema = {
                     "description": "JSON object which can be set as states data input and can be manipulated via filters"
                 },
                 "stateDataFilter": {
+                    "description": "State data filter",
                     "$ref": "#/definitions/statedatafilter"
                 },
                 "transition": {
                     "description": "Next transition of the workflow after subflow has completed",
                     "$ref": "#/definitions/transition"
                 },
-                "dataInputSchema": {
+                "compensatedBy": {
                     "type": "string",
-                    "format": "uri",
-                    "description": "URI to JSON Schema that state data input adheres to"
+                    "minLength": 1,
+                    "description": "Unique Name of a workflow state which is responsible for compensation of this state"
                 },
-                "dataOutputSchema": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "URI to JSON Schema that state data output adheres to"
+                "usedForCompensation": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If true, this state is used to compensate another state. Default is false"
                 },
                 "metadata": {
-                    "type": "object",
-                    "description": "Metadata information",
-                    "additionalProperties": {
-                        "type": "string"
+                    "$ref": "#/definitions/metadata"
+                }
+            },
+            "additionalProperties": false,
+            "if": {
+                "properties": {
+                    "usedForCompensation": {
+                        "const": true
                     }
                 }
             },
-            "oneOf": [
-                {
-                    "required": [
-                        "name",
-                        "type",
-                        "end"
-                    ]
-                },
-                {
-                    "required": [
-                        "name",
-                        "type",
-                        "transition"
-                    ]
-                },
-                {
-                    "required": [
-                        "start",
-                        "name",
-                        "type",
-                        "transition"
-                    ]
-                },
-                {
-                    "required": [
-                        "start",
-                        "name",
-                        "type",
-                        "end"
-                    ]
-                }
-            ]
+            "then": {
+                "required": [
+                    "name",
+                    "type",
+                    "data"
+                ]
+            },
+            "else": {
+                "oneOf": [
+                    {
+                        "required": [
+                            "name",
+                            "type",
+                            "data",
+                            "end"
+                        ]
+                    },
+                    {
+                        "required": [
+                            "name",
+                            "type",
+                            "data",
+                            "transition"
+                        ]
+                    }
+                ]
+            }
         },
         "foreachstate": {
             "type": "object",
@@ -1616,28 +1577,27 @@ var workflowschema = {
                     "const": "foreach",
                     "description": "State type"
                 },
-                "start": {
-                    "$ref": "#/definitions/start",
-                    "description": "State start definition"
-                },
                 "end": {
                     "$ref": "#/definitions/end",
                     "description": "State end definition"
                 },
                 "inputCollection": {
                     "type": "string",
-                    "description": "JsonPath expression selecting an array element of the states data"
+                    "description": "Workflow expression selecting an array element of the states data"
                 },
                 "outputCollection": {
                     "type": "string",
-                    "description": "JsonPath expression specifying an array element of the states data to add the results of each iteration"
+                    "description": "Workflow expression specifying an array element of the states data to add the results of each iteration"
                 },
                 "iterationParam": {
                     "type": "string",
                     "description": "Name of the iteration parameter that can be referenced in actions/workflow. For each parallel iteration, this param should contain an unique element of the inputCollection array"
                 },
                 "max": {
-                    "type": ["integer","string"],
+                    "type": [
+                        "number",
+                        "string"
+                    ],
                     "minimum": 0,
                     "minLength": 0,
                     "description": "Specifies how upper bound on how many iterations may run in parallel"
@@ -1648,13 +1608,15 @@ var workflowschema = {
                     "items": {
                         "type": "object",
                         "$ref": "#/definitions/action"
-                    }
+                    },
+                    "additionalItems": false
                 },
                 "workflowId": {
                     "type": "string",
                     "description": "Unique Id of a workflow to be executed for each of the elements of inputCollection"
                 },
                 "stateDataFilter": {
+                    "description": "State data filter",
                     "$ref": "#/definitions/statedatafilter"
                 },
                 "onErrors": {
@@ -1663,116 +1625,88 @@ var workflowschema = {
                     "items": {
                         "type": "object",
                         "$ref": "#/definitions/error"
-                    }
+                    },
+                    "additionalItems": false
                 },
                 "transition": {
                     "description": "Next transition of the workflow after state has completed",
                     "$ref": "#/definitions/transition"
                 },
-                "dataInputSchema": {
+                "compensatedBy": {
                     "type": "string",
-                    "format": "uri",
-                    "description": "URI to JSON Schema that state data input adheres to"
+                    "minLength": 1,
+                    "description": "Unique Name of a workflow state which is responsible for compensation of this state"
                 },
-                "dataOutputSchema": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "URI to JSON Schema that state data output adheres to"
+                "usedForCompensation": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If true, this state is used to compensate another state. Default is false"
                 },
                 "metadata": {
-                    "type": "object",
-                    "description": "Metadata information",
-                    "additionalProperties": {
-                        "type": "string"
+                    "$ref": "#/definitions/metadata"
+                }
+            },
+            "additionalProperties": false,
+            "if": {
+                "properties": {
+                    "usedForCompensation": {
+                        "const": true
                     }
                 }
             },
-            "oneOf": [
-                {
-                    "required": [
-                        "name",
-                        "type",
-                        "inputCollection",
-                        "inputParameter",
-                        "workflowId",
-                        "end"
-                    ]
-                },
-                {
-                    "required": [
-                        "name",
-                        "type",
-                        "inputCollection",
-                        "inputParameter",
-                        "workflowId",
-                        "transition"
-                    ]
-                },
-                {
-                    "required": [
-                        "start",
-                        "name",
-                        "type",
-                        "inputCollection",
-                        "inputParameter",
-                        "workflowId",
-                        "end"
-                    ]
-                },
-                {
-                    "required": [
-                        "start",
-                        "name",
-                        "type",
-                        "inputCollection",
-                        "inputParameter",
-                        "workflowId",
-                        "transition"
-                    ]
-                },
-                {
-                    "required": [
-                        "name",
-                        "type",
-                        "inputCollection",
-                        "inputParameter",
-                        "actions",
-                        "end"
-                    ]
-                },
-                {
-                    "required": [
-                        "name",
-                        "type",
-                        "inputCollection",
-                        "inputParameter",
-                        "actions",
-                        "transition"
-                    ]
-                },
-                {
-                    "required": [
-                        "start",
-                        "name",
-                        "type",
-                        "inputCollection",
-                        "inputParameter",
-                        "actions",
-                        "end"
-                    ]
-                },
-                {
-                    "required": [
-                        "start",
-                        "name",
-                        "type",
-                        "inputCollection",
-                        "inputParameter",
-                        "actions",
-                        "transition"
-                    ]
-                }
-            ]
+            "then": {
+                "required": [
+                    "name",
+                    "type",
+                    "inputCollection",
+                    "iterationParam",
+                    "workflowId"
+                ]
+            },
+            "else": {
+                "oneOf": [
+                    {
+                        "required": [
+                            "name",
+                            "type",
+                            "inputCollection",
+                            "iterationParam",
+                            "workflowId",
+                            "end"
+                        ]
+                    },
+                    {
+                        "required": [
+                            "name",
+                            "type",
+                            "inputCollection",
+                            "iterationParam",
+                            "workflowId",
+                            "transition"
+                        ]
+                    },
+                    {
+                        "required": [
+                            "name",
+                            "type",
+                            "inputCollection",
+                            "iterationParam",
+                            "actions",
+                            "end"
+                        ]
+                    },
+                    {
+                        "required": [
+                            "name",
+                            "type",
+                            "inputCollection",
+                            "iterationParam",
+                            "actions",
+                            "transition"
+                        ]
+                    }
+                ]
+            }
         },
         "callbackstate": {
             "type": "object",
@@ -1788,7 +1722,7 @@ var workflowschema = {
                     "description": "State name"
                 },
                 "type": {
-                    "type" : "string",
+                    "type": "string",
                     "const": "callback",
                     "description": "State type"
                 },
@@ -1797,7 +1731,7 @@ var workflowschema = {
                     "$ref": "#/definitions/action"
                 },
                 "eventRef": {
-                    "type" : "string",
+                    "type": "string",
                     "description": "References an unique callback event name in the defined workflow events"
                 },
                 "timeout": {
@@ -1805,11 +1739,11 @@ var workflowschema = {
                     "description": "Time period to wait for incoming events (ISO 8601 format)"
                 },
                 "eventDataFilter": {
-                    "description": "Callback event data filter definition",
+                    "description": "Event data filter",
                     "$ref": "#/definitions/eventdatafilter"
                 },
                 "stateDataFilter": {
-                    "description": "State data filter definition",
+                    "description": "State data filter",
                     "$ref": "#/definitions/statedatafilter"
                 },
                 "onErrors": {
@@ -1818,199 +1752,177 @@ var workflowschema = {
                     "items": {
                         "type": "object",
                         "$ref": "#/definitions/error"
-                    }
-                },
-                "dataInputSchema": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "URI to JSON Schema that state data input adheres to"
-                },
-                "dataOutputSchema": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "URI to JSON Schema that state data output adheres to"
+                    },
+                    "additionalItems": false
                 },
                 "transition": {
                     "description": "Next transition of the workflow after all the actions have been performed",
                     "$ref": "#/definitions/transition"
                 },
-                "start": {
-                    "$ref": "#/definitions/start",
-                    "description": "State start definition"
-                },
                 "end": {
                     "$ref": "#/definitions/end",
                     "description": "State end definition"
                 },
-                "metadata": {
-                    "type": "object",
-                    "description": "Metadata information",
-                    "additionalProperties": {
-                        "type": "string"
-                    }
-                }
-            },
-            "oneOf": [
-                {
-                    "required": [
-                        "name",
-                        "type",
-                        "action",
-                        "eventRef",
-                        "timeout",
-                        "end"
-                    ]
-                },
-                {
-                    "required": [
-                        "name",
-                        "type",
-                        "action",
-                        "eventRef",
-                        "timeout",
-                        "transition"
-                    ]
-                },
-                {
-                    "required": [
-                        "start",
-                        "name",
-                        "type",
-                        "action",
-                        "eventRef",
-                        "timeout",
-                        "end"
-                    ]
-                },
-                {
-                    "required": [
-                        "start",
-                        "name",
-                        "type",
-                        "action",
-                        "eventRef",
-                        "timeout",
-                        "transition"
-                    ]
-                }
-            ]
-        },
-        "start": {
-            "type": "object",
-            "description": "State start definition",
-            "properties": {
-                "kind": {
+                "compensatedBy": {
                     "type": "string",
-                    "enum": [
-                        "default",
-                        "scheduled"
-                    ],
-                    "description": "Kind of start definition"
+                    "minLength": 1,
+                    "description": "Unique Name of a workflow state which is responsible for compensation of this state"
                 },
-                "schedule": {
-                    "description": "If kind is 'scheduled', define when the time/repeating intervals at which workflow instances can/should be started",
-                    "$ref": "#/definitions/schedule"
+                "usedForCompensation": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If true, this state is used to compensate another state. Default is false"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/metadata"
                 }
             },
+            "additionalProperties": false,
             "if": {
                 "properties": {
-                    "kind": {
-                        "const": "scheduled"
+                    "usedForCompensation": {
+                        "const": true
                     }
                 }
             },
             "then": {
                 "required": [
-                    "kind",
-                    "schedule"
+                    "name",
+                    "type",
+                    "action",
+                    "eventRef",
+                    "timeout"
                 ]
             },
             "else": {
-                "required": [
-                    "kind"
+                "oneOf": [
+                    {
+                        "required": [
+                            "name",
+                            "type",
+                            "action",
+                            "eventRef",
+                            "timeout",
+                            "end"
+                        ]
+                    },
+                    {
+                        "required": [
+                            "name",
+                            "type",
+                            "action",
+                            "eventRef",
+                            "timeout",
+                            "transition"
+                        ]
+                    }
                 ]
             }
         },
-        "schedule": {
-            "type": "object",
-            "description": "Start state schedule definition",
-            "properties": {
-                "interval": {
-                    "type": "string",
-                    "description":  "Time interval (ISO 8601 format) describing when the workflow starting state is active"
-                },
-                "cron": {
-                    "type": "string",
-                    "description":  "Repeating interval (cron expression) describing when the workflow starting state should be triggered"
-                },
-                "directInvoke": {
-                    "description": "Define if workflow instances can be created outside of the defined interval/cron",
-                    "type": "string",
-                    "enum": [
-                        "allow",
-                        "deny"
-                    ]
-                },
-                "timezone": {
-                    "type": "string",
-                    "description":  "Timezone name used to evaluate the cron expression. Not used for interval as timezone can be specified there directly. If not specified, should default to local machine timezone."
-                }
-            },
+        "startdef": {
             "oneOf": [
                 {
-                    "required": [
-                        "interval",
-                        "directInvoke"
-                    ]
+                    "type": "string",
+                    "description": "Name of the starting workflow state",
+                    "minLength": 1
                 },
                 {
+                    "type": "object",
+                    "description": "Workflow start definition",
+                    "properties": {
+                        "stateName": {
+                            "type": "string",
+                            "description": "Name of the starting workflow state",
+                            "minLength": 1
+                        },
+                        "schedule": {
+                            "description": "Define the time/repeating intervals or cron at which workflow instances should be automatically started.",
+                            "$ref": "#/definitions/schedule"
+                        }
+                    },
+                    "additionalProperties": false,
                     "required": [
-                        "cron",
-                        "directInvoke"
+                        "stateName",
+                        "schedule"
+                    ]
+                }
+            ]
+        },
+        "schedule": {
+            "oneOf": [
+                {
+                    "type": "string",
+                    "description": "Time interval (must be repeating interval) described with ISO 8601 format. Declares when workflow instances will be automatically created.  (UTC timezone is assumed)",
+                    "minLength": 1
+                },
+                {
+                    "type": "object",
+                    "description": "Start state schedule definition",
+                    "properties": {
+                        "interval": {
+                            "type": "string",
+                            "description": "Time interval (must be repeating interval) described with ISO 8601 format. Declares when workflow instances will be automatically created.",
+                            "minLength": 1
+                        },
+                        "cron": {
+                            "$ref": "#/definitions/crondef"
+                        },
+                        "timezone": {
+                            "type": "string",
+                            "description": "Timezone name used to evaluate the interval & cron-expression. (default: UTC)"
+                        }
+                    },
+                    "additionalProperties": false,
+                    "oneOf": [
+                        {
+                            "required": [
+                                "interval"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "cron"
+                            ]
+                        }
                     ]
                 }
             ]
         },
         "end": {
-            "type": "object",
-            "description": "State end definition",
-            "properties": {
-                "kind": {
-                    "type": "string",
-                    "enum": [
-                        "default",
-                        "terminate",
-                        "event"
-                    ],
-                    "description": "Kind of end definition"
+            "oneOf": [
+                {
+                    "type": "boolean",
+                    "description": "State end definition",
+                    "default": true
                 },
-                "produceEvents": {
-                    "type": "array",
-                    "description": "Used if kind is event. Array of events to be produced",
-                    "items": {
-                        "type": "object",
-                        "$ref": "#/definitions/produceeventdef"
-                    }
+                {
+                    "type": "object",
+                    "description": "State end definition",
+                    "properties": {
+                        "terminate": {
+                            "type": "boolean",
+                            "default": false,
+                            "description": "If true, completes all execution flows in the given workflow instance"
+                        },
+                        "produceEvents": {
+                            "type": "array",
+                            "description": "Defines events that should be produced",
+                            "items": {
+                                "type": "object",
+                                "$ref": "#/definitions/produceeventdef"
+                            },
+                            "additionalItems": false
+                        },
+                        "compensate": {
+                            "type": "boolean",
+                            "default": false,
+                            "description": "If set to true, triggers workflow compensation. Default is false"
+                        }
+                    },
+                    "additionalProperties": false,
+                    "required": []
                 }
-            },
-            "if": {
-                "properties": {
-                    "kind": {
-                        "const": "event"
-                    }
-                }
-            },
-            "then": {
-                "required": [
-                    "kind",
-                    "produceEvents"
-                ]
-            },
-            "else": {
-                "required": [
-                    "kind"
-                ]
-            }
+            ]
         },
         "produceeventdef": {
             "type": "object",
@@ -2021,7 +1933,10 @@ var workflowschema = {
                     "description": "References a name of a defined event"
                 },
                 "data": {
-                    "type": ["string", "object"],
+                    "type": [
+                        "string",
+                        "object"
+                    ],
                     "description": "If String, expression which selects parts of the states data output to become the data of the produced event. If object a custom object to become the data of produced event."
                 },
                 "contextAttributes": {
@@ -2032,6 +1947,7 @@ var workflowschema = {
                     }
                 }
             },
+            "additionalProperties": false,
             "required": [
                 "eventRef"
             ]
@@ -2039,49 +1955,86 @@ var workflowschema = {
         "statedatafilter": {
             "type": "object",
             "properties": {
-                "dataInputPath": {
+                "input": {
                     "type": "string",
-                    "description": "JsonPath definition that selects parts of the states data input"
+                    "description": "Workflow expression to filter the state data input"
                 },
-                "dataOutputPath": {
+                "output": {
                     "type": "string",
-                    "description": "JsonPath definition that selects parts of the states data output"
+                    "description": "Workflow expression that filters the state data output"
                 }
             },
+            "additionalProperties": false,
             "required": []
         },
         "eventdatafilter": {
             "type": "object",
             "properties": {
-                "dataOutputPath": {
+                "data": {
                     "type": "string",
-                    "description": "JsonPath definition that selects parts of the event data, to be merged with the states data"
+                    "description": "Workflow expression that filters of the event data (payload)"
+                },
+                "toStateData": {
+                    "type": "string",
+                    "description": " Workflow expression that selects a state data element to which the event payload should be added/merged into. If not specified, denotes, the top-level state data element."
                 }
             },
+            "additionalProperties": false,
             "required": []
         },
         "actiondatafilter": {
             "type": "object",
             "properties": {
-                "dataInputPath": {
+                "fromStateData": {
                     "type": "string",
-                    "description": "JsonPath definition that selects parts of the states data input to be the action data"
+                    "description": "Workflow expression that selects state data that the state action can use"
                 },
-                "dataResultsPath": {
+                "results": {
                     "type": "string",
-                    "description": "JsonPath definition that selects parts of the actions data result, to be merged with the states data"
+                    "description": "Workflow expression that filters the actions data results"
+                },
+                "toStateData": {
+                    "type": "string",
+                    "description": "Workflow expression that selects a state data element to which the action results should be added/merged into. If not specified, denote, the top-level state data element"
                 }
             },
+            "additionalProperties": false,
             "required": []
         },
-        "errordatafilter": {
+        "repeat": {
             "type": "object",
             "properties": {
-                "dataOutputPath": {
+                "expression": {
                     "type": "string",
-                    "description": "JsonPath definition that selects parts of the error data, to be merged with the states data"
+                    "description": "Expression evaluated against SubFlow state data. SubFlow will repeat execution as long as this expression is true or until the max property count is reached",
+                    "minLength": 1
+                },
+                "checkBefore": {
+                    "type": "boolean",
+                    "description": "If true, the expression is evaluated before each repeat execution, if false the expression is evaluated after each repeat execution",
+                    "default": true
+                },
+                "max": {
+                    "type": "integer",
+                    "description": "Sets the maximum amount of repeat executions",
+                    "minimum": 0
+                },
+                "continueOnError": {
+                    "type": "boolean",
+                    "description": "If true, repeats executions in a case unhandled errors propagate from the sub-workflow to this state",
+                    "default": false
+                },
+                "stopOnEvents": {
+                    "type": "array",
+                    "description": "List referencing defined consumed workflow events. SubFlow will repeat execution until one of the defined events is consumed, or until the max property count is reached",
+                    "minItems": 1,
+                    "items": {
+                        "type": "string"
+                    },
+                    "additionalItems": false
                 }
             },
+            "additionalProperties": false,
             "required": []
         }
     }

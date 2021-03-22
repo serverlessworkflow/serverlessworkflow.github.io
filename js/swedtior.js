@@ -224,7 +224,7 @@ var monitorJobsExample = {
             "stateDataFilter": {
                 "output": "${ .jobuid }"
             },
-            "transition": "WaitForCompletion'"
+            "transition": "WaitForCompletion"
         },
         {
             "name": "SubmitError",
