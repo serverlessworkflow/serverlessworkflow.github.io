@@ -55,7 +55,7 @@ var workflowschema = {
             "$ref": "#/definitions/functions"
         },
         "retries": {
-            "$ref": "retries.json#/retries"
+            "$ref": "#definitions/retries"
         },
         "states": {
             "type": "array",
