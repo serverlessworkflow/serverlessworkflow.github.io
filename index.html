@@ -132,30 +132,30 @@
                                         </thead>
                                         <tbody>
                                         <tr>
-                                            <th scope="row">Specification</th>
+                                            <th scope="row"><a href="https://github.com/serverlessworkflow/specification" target="_blank">Specification</a></th>
                                             <td>
-                                                <a href="https://github.com/serverlessworkflow/specification/releases">v0.6</a>
+                                                <a href="https://github.com/serverlessworkflow/specification/releases" target="_blank">v0.6</a>
                                             </td>
                                             <td>3/22/2021</td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">JAVA SDK</th>
+                                            <th scope="row"><a href="https://github.com/serverlessworkflow/sdk-java" target="_blank">Java SDK</a></th>
                                             <td>
-                                                <a href="https://github.com/serverlessworkflow/sdk-java/releases">2.0.0.Final</a>
+                                                <a href="https://github.com/serverlessworkflow/sdk-java/releases" target="_blank">2.0.0.Final</a>
                                             </td>
                                             <td>3/22/2021</td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">GO SDK</th>
+                                            <th scope="row"><a href="https://github.com/serverlessworkflow/sdk-go" target="_blank">Go SDK</a></th>
                                             <td>
-                                                <a href="https://github.com/serverlessworkflow/sdk-go/releases">v1.0.0</a>
+                                                <a href="https://github.com/serverlessworkflow/sdk-go/releases" target="_blank">v1.0.0</a>
                                             </td>
                                             <td>11/12/2020</td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">VSCode Extension</th>
+                                            <th scope="row"><a href="https://github.com/serverlessworkflow/vscode-extension" target="_blank">VSCode Extension</a></th>
                                             <td>
-                                                <a href="https://marketplace.visualstudio.com/items?itemName=serverlessworkflow.serverless-workflow-vscode-extension">1.6.0</a>
+                                                <a href="https://marketplace.visualstudio.com/items?itemName=serverlessworkflow.serverless-workflow-vscode-extension" target="_blank">1.6.0</a>
                                             </td>
                                             <td>3/22/2021</td>
                                         </tr>
@@ -174,9 +174,7 @@
                                     <br/>
                                     <p class="lead">
                                         Workflows have become key components of Serverless applications, yet
-                                        implementations
-                                        tend
-                                        to describe workflows differently.
+                                        implementations tend to describe workflows differently.
                                     </p>
                                     <br/>
                                     <div class="card-group">
@@ -221,6 +219,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <br/>
+                                    <p class="lead">
+                                        Serverless Workflow addresses the need for a <strong style="color: #ff6900">community-driven</strong>,
+                                        <strong style="color: #ff6900">vendor-neutral</strong> and a
+                                        <strong style="color: #ff6900">platform-independent</strong> workflow language specification that targets the serverless computing technology domain.
+                                        <br/><br/>
+                                        Having and using a <strong style="color: #ff6900">specification-based</strong> workflow language allows us to model our workflows once and deploy them onto many different container/cloud platforms, expecting the same execution results.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -233,33 +239,29 @@
                                 <div class="card-body">
                                     <br/><br/>
                                     <p class="lead">
-                                        Serverless Workflow is a <a
-                                            href="https://github.com/serverlessworkflow/specification"
-                                            target="_blank">specification</a>
-                                        for describing workflows in a common way.
-                                        It provides a <strong>vendor-neutral</strong> and
-                                        <strong>platform-independent</strong>
-                                        markup for
-                                        orchestrating services on multiple runtimes and cloud/container platforms.
+                                        Serverless Workflow is based on well-established and known standards such as
+                                        <a href="https://cloudevents.io/" target="_blank">CloudEvents</a>,
+                                        <a href="https://www.openapis.org/" target="_blank">OpenApi</a>, and <a href="https://grpc.io/" target="_blank">gRPC</a>.
+                                    </p>
+                                    <p class="lead">
+                                        <center><img src="img/spec-parts.png" width="70%"/></center>
                                     </p>
 
                                     <p class="lead">
-                                        Serverless Workflow is a new effort and it's still under active development.
-                                        Its working group consists of a number of leaders in the business automation
-                                        industry
-                                        and enthusiasts in that field.
+                                        The specification includes multiple components:
                                     </p>
-
-                                    <p class="lead">
-                                        The Serverless Workflow specification is a <a href="https://cncf.io/"
-                                                                                      target="_blank">CNCF</a>
-                                        Cloud Native Sandbox level project.
-                                    </p>
-
+                                    <div class="list"><ul>
+                                            <li>Workflow DSL described by <a href="https://github.com/serverlessworkflow/specification/tree/main/schema" target="_blank">JSON Schemas</a></li>
+                                            <li>Software Development Kits (SDKs) for both <a href="https://github.com/serverlessworkflow/sdk-go" target="_blank">Go</a> and <a href="https://github.com/serverlessworkflow/sdk-java" target="_blank">Java</a> (more to be added in future)</li>
+                                            <li>Set of <a href="https://github.com/serverlessworkflow/specification/tree/main/extensions" target="_blank">Workflow Extensions</a> allowing you to enhancing your workflows to include things like Tracing, Observability, KPIs, etc.</li>
+                                            <li><a href="https://github.com/serverlessworkflow/vscode-extension" target="_blank">VSCode Extension</a> enhancing development experience</li>
+                                            <li><a href="https://github.com/serverlessworkflow/workflow-diagram-service" target="_blank">SVG Workflow diagram</a> generation</li>
+                                </ul></div>
 
                                     <p class="lead">
                                         <br/>
-                                    <center><img src="img/sw-spec-overview.png" width="100%"/></center>
+                                        <center><img src="img/spec-overview.png" width="70%"/></center>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -358,8 +360,32 @@
                         </div>
                         <div id="collapseResources" class="collapse" aria-labelledby="headingResources"
                              data-parent="#swaccordion">
+                            <br/>
+                            <div class="card-body">
+                                <h5>If you would like to add your articles, videos or presentations about Serverless Workflow, please open an issue <a href="https://github.com/serverlessworkflow/serverlessworkflow.github.io/issues" target="_blank">here</a>.</h5>
+                                </div>
                             <div class="card-body">
                                 <br/>
+                                <p class="lead">
+                                <h3>Articles</h3>
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><a href="https://medium.com/event-driven-utopia/3-specifications-to-consider-when-designing-event-driven-applications-c12685efd7ad" target="_blank">3 Specifications to Consider When Designing Event-Driven Applications</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://developers.redhat.com/blog/2020/11/26/event-driven-distributed-service-orchestration-with-serverless-workflow/" target="_blank">Orchestrate event-driven, distributed services with Serverless Workflow and Kubernetes</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://blog.kie.org/2021/03/restful-services-orchestration-with-kogito-and-openapi.html" target="_blank">Restful service Orchestration with Kogito and OpenApi</a></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                                 <p class="lead">
                                 <h3>Videos</h3>
                                 <table class="table">
@@ -471,7 +497,7 @@
         <div class="col-lg-12 mx-auto">
             <div width="100%" style="align-items: start;">
                 <center><h5 style="color: #448cfb">Serverless Workflow is a <a href="https://www.cncf.io/"><strong style="color: #ff6900">Cloud Native Computing Foundation</strong></a> Sandbox project</h5>
-                    <br/><a href="https://www.cncf.io/"><img src="img/cloud-native-computing.svg" width="50%"/></a></center>
+                    <br/><a href="https://www.cncf.io/" target="_blank"><img src="img/cloud-native-computing.svg" width="40%"/></a></center>
             </div>
         </div>
     </section>
