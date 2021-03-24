@@ -98,3 +98,8 @@ a {
     border-color:  #448cfb;
     background-color: #ffffff;
 }
+
+.list {
+    display: flex;
+    justify-content: center;
+}
