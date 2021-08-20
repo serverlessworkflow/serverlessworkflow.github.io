@@ -24,7 +24,12 @@
     <link rel="stylesheet" href="css/sws.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/github.min.css">
+    <link rel="stylesheet" href="css/termynal.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169200952-1"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -115,8 +120,55 @@
                     and <strong style="color: #ff6900">declarative</strong> workflow language<br/>
                     targeting the serverless computing domain</h5></center>
             </div>
+
+    <section id="swcodesamples" style="align-items: center; padding-left: 20px; padding-top: 35px; padding-bottom:30px; background-color:#448cfb;">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-5" id="termynal" data-termynal>
+                    <pre><code class="yaml">
+id: helloworld
+version: '1.0'
+specVersion: '0.7'
+name: Hello World Workflow
+description: Inject Hello World
+start: Hello State
+states:
+- name: Hello State
+  type: inject
+  data:
+    result: Hello World!
+  end: true
+                </code></pre>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-5" id="termynal" data-termynal>
+                    <pre><code class="json">
+{
+   "id": "helloworld",
+   "version": "1.0",
+   "specVersion": "0.7",
+   "name": "Hello World Workflow",
+   "description": "Inject Hello World",
+   "start": "Hello State",
+   "states":[
+     {
+        "name":"Hello State",
+        "type":"inject",
+        "data": {
+           "result": "Hello World!"
+        },
+        "end": true
+     }
+   ]
+}
+                </code></pre>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
+
 
     <section id="swcontent" style="align-items: center; padding-top: 35px; padding-bottom:30px;">
         <div class="container">
