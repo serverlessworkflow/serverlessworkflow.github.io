@@ -29,7 +29,10 @@
     <link rel="stylesheet" href="css/termynal.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169200952-1"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+    </script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -45,19 +48,23 @@
 
 <body id="page-top">
 <nav class="navbar navbar-expand-lg navbar-custom" id="mainNav">
-    <a class="navbar-brand justify-content-left" href="https://github.com/serverlessworkflow" target="_blank"><i class="fa fa-github" style="color: #ffffff;"></i> Github</a>
-    <a class="navbar-brand justify-content-left" href="https://cloud-native.slack.com/archives/CMBAZQSEP" target="_blank"><i class="fa fa-slack" style="color: #ffffff;"></i> Slack</a>
-    <a class="navbar-brand justify-content-left" href="https://twitter.com/CNCFWorkflow" target="_blank"><i class="fa fa-twitter" style="color: #ffffff;"></i> Twitter</a>
+    <a class="navbar-brand justify-content-left" href="https://github.com/serverlessworkflow" target="_blank"><i
+            class="fa fa-github" style="color: #ffffff;"></i> Github</a>
+    <a class="navbar-brand justify-content-left" href="https://cloud-native.slack.com/archives/CMBAZQSEP"
+       target="_blank"><i class="fa fa-slack" style="color: #ffffff;"></i> Slack</a>
+    <a class="navbar-brand justify-content-left" href="https://twitter.com/CNCFWorkflow" target="_blank"><i
+            class="fa fa-twitter" style="color: #ffffff;"></i> Twitter</a>
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="https://github.com/serverlessworkflow/synapse" target="_blank"><i class="fa fa-external-link" style="color: #ffffff;"></i>
+                <a class="nav-link" href="https://github.com/serverlessworkflow/synapse" target="_blank"><i
+                        class="fa fa-external-link" style="color: #ffffff;"></i>
                     Synapse</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="editor.html"><i class="fa fa-external-link" style="color: #ffffff;"></i>
-                    Online Editor</a>
-            </li>
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="editor.html"><i class="fa fa-external-link" style="color: #ffffff;"></i>-->
+<!--                    Online Editor</a>-->
+<!--            </li>-->
             <li class="nav-item">
                 <a class="nav-link"
                    href="https://github.com/serverlessworkflow/specification/blob/master/specification.md"
@@ -79,7 +86,8 @@
                         <i class="fa fa-external-link" style="color: #ffffff;"></i> SDKs
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="https://github.com/serverlessworkflow/sdk-typescript">TypeScript</a>
+                        <a class="dropdown-item"
+                           href="https://github.com/serverlessworkflow/sdk-typescript">TypeScript</a>
                         <a class="dropdown-item" href="https://github.com/serverlessworkflow/sdk-net">.NET</a>
                         <a class="dropdown-item" href="https://github.com/serverlessworkflow/sdk-go">Go</a>
                         <a class="dropdown-item" href="https://github.com/serverlessworkflow/sdk-java">Java</a>
@@ -87,7 +95,8 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="poster/index.html"><i class="fa fa-external-link" style="color: #ffffff;"></i> Poster</a>
+                <a class="nav-link" href="poster/index.html"><i class="fa fa-external-link" style="color: #ffffff;"></i>
+                    Poster</a>
             </li>
         </ul>
     </div>
@@ -106,536 +115,215 @@
                 </div>
                 <div class="alert alert-info alert-dismissible fade show text-center" role="alert">
                     <div id="joinmeetdiv2">
-                        Happy to announce specification release <a href="https://github.com/serverlessworkflow/specification/releases/tag/v0.7" target="_blank">0.7</a>!! Check out all the cool updates and fixes <a href="https://github.com/serverlessworkflow/specification/tree/0.7.x/roadmap#release-version-07" target="_blank">here!</a>
+                        Happy to announce specification release <a
+                            href="https://github.com/serverlessworkflow/specification/releases/tag/v0.7"
+                            target="_blank">0.7</a>!! Check out all the cool updates and fixes <a
+                            href="https://github.com/serverlessworkflow/specification/tree/0.7.x/roadmap#release-version-07"
+                            target="_blank">here!</a>
                     </div>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <br/>
-                <center><img src="img/sw-banner1.png" width="80%"/></center>
+                <center><img src="img/logo-frame.png" width="70%"/></center>
             </div>
-            <div width="100%" style="align-items: start;">
-                <center><h5 style="color: #448cfb">A specification that defines a <strong style="color: #ff6900">vendor-neutral</strong>
-                    and <strong style="color: #ff6900">declarative</strong> workflow language<br/>
-                    targeting the serverless computing domain</h5></center>
-            </div>
+            <br/><br/>
+            <section id="swintro"
+                     style="align-items: center; padding-left: 80px; padding-top: 0px; padding-bottom:50px;">
+                <div class="row" style="align-items: center; display: flex">
+                    <div class="col-md-3" style="align-items: start;">
+                        <center>
+                            <a href="https://github.com/serverlessworkflow/specification/blob/main/specification.md" target="_blank" class="btn btn-primary btn-lg" style="width: 300px;"><h2><i
+                                    class="fa fa-sitemap" style="color: #ffffff;"></i>&nbsp;&nbsp;Define</h2></a>
+                        </center>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-3" style="align-items: start;">
+                        <center>
+                            <a href="https://github.com/serverlessworkflow/specification#sdks" target="_blank" class="btn btn-info btn-lg" style="width: 300px;">
+                                <h2><i class="fa fa-terminal" style="color: #ffffff;"></i>&nbsp;&nbsp;Develop</h2>
+                            </a>
+                        </center>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-3" style="align-items: start;">
+                        <center>
+                            <a href="https://github.com/serverlessworkflow/specification#runtime" target="_blank" class="btn btn-success btn-lg" style="width: 300px;">
+                                <h2><i class="fa fa-gears" style="color: #ffffff;"></i>&nbsp;&nbsp;Execute</h2>
+                            </a>
+                        </center>
+                    </div>
+                </div>
+            </section>
 
-    <section id="swcodesamples" style="align-items: center; padding-left: 20px; padding-top: 35px; padding-bottom:30px; background-color:#448cfb;">
-        <div class="container">
+            <section id="githubinfo" style="align-items: center; padding-top: 0px; padding-bottom:30px;">
+                <div class="col-lg-12 mx-auto">
+                    <div width="100%" style="align-items: start;color: #448cfb;">
+                        <center><p>
+                            <h5><i class="fa fa-github"></i> <a href="https://github.com/serverlessworkflow/specification" target="_blank">Check out the project GitHub repos and give us a </a><i class="fa fa-star"></i></h5></p>
+                        </center>
+                    </div>
+                </div>
+            </section>
 
-            <div class="row">
-                <div class="col-md-5" id="termynal" data-termynal>
-                    <pre><code class="yaml">
-id: helloworld
-version: '1.0'
-specVersion: '0.7'
-name: Hello World Workflow
-description: Inject Hello World
-start: Hello State
+            <section id="swcodesamples"
+                     style="align-items: center; padding-left: 110px; padding-top: 20px; padding-bottom:20px;">
+                <div class="container">
+
+                    <div class="row" style="align-items: center; display: flex">
+                        <div class="col-md-5" style="align-items: start;">
+                            <center>
+                                <h6 style="color: #448cfb">Start workflows via events, define service invocations,
+                                    handle errors, automatic retries, ...</h6>
+                            </center>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5" style="align-items: start;">
+                            <center>
+                                <h8 style="color: #448cfb">Include human actors, define sequental / parallel
+                                    iterations, set specific timeouts, ...
+                            </center>
+                        </div>
+                    </div>
+
+                    <div class="row" style="align-items: center; display: flex">
+                        <div class="col-md-5" id="termynal" data-termynal>
+                    <pre><code class="yml">id: provisionorder
+name: Provision Order
+timeouts:
+  workflowExecTimeout: PT1M
+autoRetries: true
 states:
-- name: Hello State
-  type: inject
-  data:
-    result: Hello World!
+- name: Start Provisioning
+  type: event
+  onEvents:
+  - eventRefs:
+    - New Order Cloud Event
+    actions:
+    - functionRef:
+        refName: Provisioning Rest Function
+        arguments:
+          order: "${ .order }"
+      nonRetryableErrors:
+      - Invalid Order Error
+  onErrors:
+  - errorRef: Invalid Order Error
+    end:
+      continueAs: invalidorderworkflow
+  end:
+    produceEvents:
+    - eventRef: Order Provisioned Cloud Event
+
+                </code></pre>
+                        </div>
+
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5" id="termynal" data-termynal>
+                    <pre><code class="yml">id: storefiles
+name: Store files
+start: CheckCredit
+states:
+- name: Ask User To Upload
+  type: callback
+  action:
+    functionRef: User files upload
+  eventRef: Uploads Completed CloudEvent
+  transition: Check Uploads
+- name: Check Uploads
+  type: switch
+  dataConditions:
+  - condition: "${ .files | length > 0 }"
+    transition: Store Files
+  defaultCondition:
+    end: true
+- name: Store Files
+  type: foreach
+  inputCollection: "${ .files }"
+  batchSize: 10
+  timeouts:
+    actionExecTimeout: PT10S
+  actions:
+  - subFlowRef: storefiletos3workflow
   end: true
                 </code></pre>
-                </div>
-                <div class="col-md-1"></div>
-                <div class="col-md-5" id="termynal" data-termynal>
-                    <pre><code class="json">
-{
-   "id": "helloworld",
-   "version": "1.0",
-   "specVersion": "0.7",
-   "name": "Hello World Workflow",
-   "description": "Inject Hello World",
-   "start": "Hello State",
-   "states":[
-     {
-        "name":"Hello State",
-        "type":"inject",
-        "data": {
-           "result": "Hello World!"
-        },
-        "end": true
-     }
-   ]
-}
-                </code></pre>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-    <section id="swcontent" style="align-items: center; padding-top: 35px; padding-bottom:30px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="accordion" id="swaccordion">
-                        <div class="card">
-                            <div class="card-header actext" id="headingReleases" data-toggle="collapse"  data-target="#collapseReleases">
-                                <h5>1. Releases</h5>
-                            </div>
-                            <div id="collapseReleases" class="collapse show" aria-labelledby="headingReleases"
-                                 data-parent="#swaccordion">
-                                <div class="card-body">
-                                    <br/>
-                                    <table class="table" width="100%">
-                                        <thead>
-                                        <tr>
-                                            <th scope="col">Component</th>
-                                            <th scope="col">Latest Release</th>
-                                            <th scope="col">Release date</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <th scope="row"><a href="https://github.com/serverlessworkflow/specification" target="_blank">Workflow Specification</a></th>
-                                            <td>
-                                                <a href="https://github.com/serverlessworkflow/specification/releases" target="_blank">v0.7</a>
-                                            </td>
-                                            <td>3/22/2021</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><a href="https://github.com/serverlessworkflow/synapse" target="_blank">Synapse</a></th>
-                                            <td>
-                                                <a href="https://github.com/serverlessworkflow/synapse/releases" target="_blank">0.1.0-alpha1</a>
-                                            </td>
-                                            <td>3/22/2021</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><a href="https://github.com/serverlessworkflow/sdk-java" target="_blank">Java SDK</a></th>
-                                            <td>
-                                                <a href="https://github.com/serverlessworkflow/sdk-java/releases" target="_blank">2.0.0.Final</a>
-                                            </td>
-                                            <td>3/22/2021</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><a href="https://github.com/serverlessworkflow/sdk-net" target="_blank">.NET SDK</a></th>
-                                            <td>
-                                                <a href="https://github.com/serverlessworkflow/sdk-net/releases" target="_blank">v0.7.4.4</a>
-                                            </td>
-                                            <td>7/2/2021</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><a href="https://github.com/serverlessworkflow/sdk-typescript" target="_blank">TypeScript SDK</a></th>
-                                            <td>
-                                                <a href="https://github.com/serverlessworkflow/sdk-typescript/releases" target="_blank">v1.0.0</a>
-                                            </td>
-                                            <td>7/13/2021</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><a href="https://github.com/serverlessworkflow/sdk-go" target="_blank">Go SDK</a></th>
-                                            <td>
-                                                <a href="https://github.com/serverlessworkflow/sdk-go/releases" target="_blank">v2.0.0</a>
-                                            </td>
-                                            <td>5/18/2021</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><a href="https://github.com/serverlessworkflow/vscode-extension" target="_blank">VSCode Extension</a></th>
-                                            <td>
-                                                <a href="https://marketplace.visualstudio.com/items?itemName=serverlessworkflow.serverless-workflow-vscode-extension" target="_blank">1.6.0</a>
-                                            </td>
-                                            <td>3/22/2021</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header actext" id="headingBackground" data-toggle="collapse"  data-target="#collapseBackground">
-                                <h5>2. Background</h5>
-                            </div>
-                            <div id="collapseBackground" class="collapse" aria-labelledby="headingBackground"
-                                 data-parent="#swaccordion">
-                                <div class="card-body">
-                                    <br/>
-                                    <p class="lead">
-                                        Workflows have become key components of Serverless applications, yet
-                                        implementations tend to describe workflows differently.
-                                    </p>
-                                    <br/>
-                                    <div class="card-group">
-                                        <div class="card text-center">
-                                            <div style="font-size: 30px;"><i class="fa fa-code"
-                                                                             style="color: #448cfb;"></i>
-                                                Consistency
-                                            </div>
-                                            <div class="card-body">
-                                                <p class="mt-auto"><h5>
-                                                The lack of a common way of describing serverless workflows means
-                                                developers
-                                                do not have a consistent way of modelling their serverless
-                                                orchestrations.
-                                            </h5>
-                                            </div>
-                                        </div>
-                                        <div class="card text-center">
-                                            <div style="font-size: 30px;"><i class="fa fa-globe"
-                                                                             style="color: #448cfb;"></i>
-                                                Portability
-                                            </div>
-                                            <div class="card-body">
-                                                <p class="mt-auto"><h5>
-                                                The portability and productivity we can achieve from modeling serverless
-                                                workflows is hindered overall.
-                                            </h5>
-                                            </div>
-                                        </div>
-                                        <div class="card text-center">
-                                            <div style="font-size: 30px;"><i class="fa fa-cogs"
-                                                                             style="color: #448cfb;"></i>
-                                                Accessibility
-                                            </div>
-                                            <div class="card-body">
-                                                <p class="mt-auto"><h5>
-                                                No common workflow format means no common libraries, tooling, and
-                                                infrastructure
-                                                for modeling
-                                                serverless workflows across different cloud platforms and/or containers.
-                                            </h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br/>
-                                    <p class="lead">
-                                        Serverless Workflow addresses the need for a <strong style="color: #ff6900">community-driven</strong>,
-                                        <strong style="color: #ff6900">vendor-neutral</strong> and a
-                                        <strong style="color: #ff6900">platform-independent</strong> workflow language specification that targets the serverless computing technology domain.
-                                        <br/><br/>
-                                        Having and using a <strong style="color: #ff6900">specification-based</strong> workflow language allows us to model our workflows once and deploy them onto many different container/cloud platforms, expecting the same execution results.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header actext" id="headingAbout" data-toggle="collapse"  data-target="#collapseAbout">
-                                <h5>3. About</h5>
-                            </div>
-                            <div id="collapseAbout" class="collapse" aria-labelledby="headingAbout"
-                                 data-parent="#swaccordion">
-                                <div class="card-body">
-                                    <br/><br/>
-                                    <p class="lead">
-                                        Serverless Workflow is based on well-established and known standards such as
-                                        <a href="https://cloudevents.io/" target="_blank">CloudEvents</a>,
-                                        <a href="https://www.openapis.org/" target="_blank">OpenApi</a>, and <a href="https://grpc.io/" target="_blank">gRPC</a>.
-                                    </p>
-                                    <p class="lead">
-                                        <center><img src="img/spec-parts.png" width="70%"/></center>
-                                    </p>
-
-                                    <p class="lead">
-                                        The specification includes multiple components:
-                                    </p>
-                                    <div class="list"><ul>
-                                            <li>Workflow DSL described by <a href="https://github.com/serverlessworkflow/specification/tree/main/schema" target="_blank">JSON Schemas</a></li>
-                                            <li>Software Development Kits (SDKs) for both <a href="https://github.com/serverlessworkflow/sdk-go" target="_blank">Go</a> and <a href="https://github.com/serverlessworkflow/sdk-java" target="_blank">Java</a> (more to be added in future)</li>
-                                            <li>Set of <a href="https://github.com/serverlessworkflow/specification/tree/main/extensions" target="_blank">Workflow Extensions</a> allowing you to enhancing your workflows to include things like Tracing, Observability, KPIs, etc.</li>
-                                            <li><a href="https://github.com/serverlessworkflow/vscode-extension" target="_blank">VSCode Extension</a> enhancing development experience</li>
-                                            <li><a href="https://github.com/serverlessworkflow/workflow-diagram-service" target="_blank">SVG Workflow diagram</a> generation</li>
-                                </ul></div>
-
-                                    <p class="lead">
-                                        <br/>
-                                        <center><img src="img/spec-overview.png" width="70%"/></center>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header actext" id="headingMeetings" data-toggle="collapse"  data-target="#collapseMeetings">
-                                <h5>4. Meetings</h5>
-                            </div>
-                            <div id="collapseMeetings" class="collapse" aria-labelledby="headingMeetings"
-                                 data-parent="#swaccordion">
-                                <div class="card-body">
-                                    <br/>
-                                    <p class="lead">
-                                        The Serverless Workflow Team meets weekly, every Monday at 10AM PT (USA Pacific)
-                                        via
-                                        <a
-                                                href="https://zoom.us/my/cncfserverlesswg?pwd=YjNqYzhOdjRRd01YWFkzS1lHbDZqUT09"
-                                                target="_blank">Zoom</a>.
-                                        <br/>
-                                        Anyone is encouraged to join and collaborate. Please read our
-                                        our <a
-                                            href="https://github.com/serverlessworkflow/specification/blob/master/code-of-conduct.md">Code
-                                        of Conduct</a>
-                                        before joining the first time.
-                                        <br/><br/>
-                                        Below is the CNCF Public Events Calendar which includes all of the Serverless
-                                        Workflow
-                                        team meetings:
-                                    </p>
-                                    <p class="lead">
-                                        <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FNew_York&amp;src=bGludXhmb3VuZGF0aW9uLm9yZ19vNWF2amx2dDJjYWU5YnE3YTk1ZW1jNDc0MEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%23D50000&amp;title=CNCF%20Public%20Events%20Calendar"
-                                                style="border:solid 1px #777" width="100%" height="600" frameborder="0"
-                                                scrolling="no"></iframe>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    <div class="card">
-                        <div class="card-header actext" id="headingContrib" data-toggle="collapse"  data-target="#collapseContrib">
-                            <h5>5. Contribute</h5>
-                        </div>
-                        <div id="collapseContrib" class="collapse" aria-labelledby="headingContrib"
-                             data-parent="#swaccordion">
-                            <div class="card-body">
-                                <br/>
-                                <p class="lead">
-                                    Serverless Workflow is organized via the CNCF's <a
-                                        href="https://github.com/serverlessworkflow" target="_blank">Serverless Working
-                                    Group</a>.
-                                    <br/><br/>
-                                    It is hosted by the <a href="https://www.cncf.io/">Cloud Native Computing Foundation
-                                    (CNCF)</a> and was approved as a
-                                    Cloud Native Sandbox level project on July 14, 2020
-                                    <br/><br/>
-                                    Everyone is encouraged to join us! If you're interested in contributing, please
-                                    collaborate with us via:
-                                <ul class="lead">
-                                    <li><a href="https://github.com/serverlessworkflow" target="_blank">Serverless
-                                        Workflow
-                                        Github Org</a></li>
-                                    <li>Weekly call on Mondays. See the "Meetings" tab for more infomation.
-                                    </li>
-                                    <li>Community Slack Channel: <a
-                                            href="https://slack.cncf.io/">https://slack.cncf.io/</a>
-                                        #serverless-workflow
-                                    </li>
-                                    <li>Email: <a href="mailto:cncf-wg-serverless@lists.cncf.io">cncf-wg-serverless</a>
-                                    </li>
-                                    <li>Subscribe to: <a href="https://lists.cncf.io/g/cncf-wg-serverless">https://lists.cncf.io/g/cncf-wg-serverless</a>
-                                    </li>
-                                </ul>
-                                <p class="lead">
-                                    As contributors and maintainers of this project, and in the interest of fostering
-                                    an open and welcoming community, we pledge to respect all people who contribute
-                                    through reporting issues, posting feature requests, updating documentation,
-                                    submitting pull requests or patches, and other activities.
-                                </p>
-                                <p class="lead">
-                                    We are committed to making participation in this project a harassment-free
-                                    experience
-                                    for
-                                    everyone, regardless of level of experience, gender, gender identity and expression,
-                                    sexual orientation, disability, personal appearance, body size, race, ethnicity,
-                                    age,
-                                    religion, or nationality.
-                                </p>
-                                <p class="lead">
-                                    See our full project Code of Conduct information <a
-                                        href="https://github.com/serverlessworkflow/specification/blob/master/code-of-conduct.md">here</a>.
-                                </p>
-                            </div>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-header actext" id="headingResources" data-toggle="collapse"  data-target="#collapseResources">
-                            <h5>6. Resources</h5>
-                        </div>
-                        <div id="collapseResources" class="collapse" aria-labelledby="headingResources"
-                             data-parent="#swaccordion">
-                            <br/>
-                            <div class="card-body">
-                                <h5>If you would like to add your articles, videos or presentations about Serverless Workflow, please open an issue <a href="https://github.com/serverlessworkflow/serverlessworkflow.github.io/issues" target="_blank">here</a>.</h5>
-                                </div>
-                            <div class="card-body">
-                                <br/>
-                                <p class="lead">
-                                <h3>Articles</h3>
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th>Title</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td><a href="https://medium.com/event-driven-utopia/3-specifications-to-consider-when-designing-event-driven-applications-c12685efd7ad" target="_blank">3 Specifications to Consider When Designing Event-Driven Applications</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="https://developers.redhat.com/blog/2020/11/26/event-driven-distributed-service-orchestration-with-serverless-workflow/" target="_blank">Orchestrate event-driven, distributed services with Serverless Workflow and Kubernetes</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="https://blog.kie.org/2021/03/restful-services-orchestration-with-kogito-and-openapi.html" target="_blank">Restful service Orchestration with Kogito and OpenApi</a></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <p class="lead">
-                                <h3>Videos</h3>
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th>Title</th>
-                                        <th>Platform</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td><a href="https://www.youtube.com/watch?v=gkbsax2y1m8" target="_blank">Intro
-                                            to
-                                            Serverless Workflow</a></td>
-                                        <td>YouTube</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="https://www.youtube.com/watch?v=xOk5TsCFB-k" target="_blank">Serverless
-                                            Workflow - VSCode Extension</a></td>
-                                        <td>YouTube</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="https://www.youtube.com/watch?v=dTo1DOI4qH0" target="_blank">Serverless
-                                            Workflow - JAVA SDK</a></td>
-                                        <td>YouTube</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="https://www.youtube.com/watch?v=0gmpuGLP-_o" target="_blank">Hands-on
-                                            demo - REST service invocation</a></td>
-                                        <td>YouTube</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="https://www.youtube.com/watch?v=6A6OYp5nygg" target="_blank">Hands-on
-                                            demo - Error Handling and Retries</a></td>
-                                        <td>YouTube</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="https://youtu.be/Ea8yR-EkrZQ" target="_blank">Hands-on
-                                            demo - Compensation</a></td>
-                                        <td>YouTube</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <p class="lead">
-                                <h3>Conference talks</h3>
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th>Title</th>
-                                        <th>Event</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td><a href="https://www.youtube.com/watch?v=dsuo1VQQZ2E&list=PLj6h78yzYM2MqBm19mRz9SYLsw4kfQBrC&index=163"
-                                               target="_blank">CNCF Serverless WG - Serverless Workflow Project Deep Dive</a></td>
-                                        <td>KubeCon EU 2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="https://www.youtube.com/watch?v=noVf6qzyP1U"
-                                               target="_blank">Serverless Workflow and Kubernetes</a></td>
-                                        <td>KubeCon North America 2020</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="https://www.youtube.com/watch?v=JivHFG1rVE4"
-                                               target="_blank">Serverless WG Updates - CloudEvents and Serverless
-                                            Workflow</a></td>
-                                        <td>KubeCon North America 2020</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="https://www.youtube.com/watch?v=sTgto7c_iNQ&feature=emb_logo"
-                                               target="_blank">Serverless Workflow: New approach to Kubernetes service
-                                            orchestration</a></td>
-                                        <td>DevNation Tech Talk - 2020</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a href="https://drive.google.com/file/d/1LlY_G2XCdvSih4WaLuXHp-imMNnk0XQL/view"
-                                               target="_blank">Low-Latency and Session-Oriented Serverless Workflows</a>
-                                        </td>
-                                        <td>Serverless Practitioners Summit 2020</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a href="https://drive.google.com/file/d/1QJMRxidGUhPcuZ0eRICtgoCRQxPZ9_yQ/view"
-                                               target="_blank">CNCF Serverless WG: CloudEvents & Serverless Workflow
-                                                Updates</a></td>
-                                        <td>KubeCon Europe 2020</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a href="https://github.com/serverlessworkflow/specification/blob/master/specification/community/presentations/2020-4-15-toc-pres.pdf"
-                                               target="_blank">Introduction to Serverless Workflow Specification</a>
-                                        </td>
-                                        <td>CNCF TOC Sandbox Proposal</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="https://www.youtube.com/watch?v=2MPX3CGUsVE" target="_blank">Serverless
-                                            Workflow, a New Approach to Business Automation</a></td>
-                                        <td>YouTube Live Event</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="https://www.youtube.com/watch?v=zx0_DIG6698" target="_blank">
-                                            Event-driven Applications with Kogito Serverless Workflows and Knative
-                                        </a></td>
-                                        <td>OpenShift Commons</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                    <div class="row" style="margin-left: 0px;">
+                        <div class="col-md-11"><br/>
+                            <center><h6 style="color: #448cfb">and much much more ...</h6></center>
                         </div>
                     </div>
                 </div>
+            </section>
+            <br/><br/>
+            <section id="cncfproject" style="align-items: center; padding-top: 10px; padding-bottom:20px;">
+                <div class="col-lg-11 mx-auto">
+                    <div width="100%" style="align-items: start;color: #448cfb;">
+                        <center><p>
+                            <a href="https://www.cncf.io/" target="_blank"><img src="img/cncf-color.png" width="40%"></a>
+                            <p><h5> We are a <a href="https://cncf.io/">Cloud Native Computing Foundation</a> sandbox
+                                project.</h5></p>
+                        </center>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <section id="cncfproject" style="align-items: center; padding-top: 0px; padding-bottom:30px;">
-        <div class="col-lg-12 mx-auto">
-            <div width="100%" style="align-items: start;">
-                <center><p><h2><i class="fa fa-github"></i> Open Source</h2></p>
-                <p><h5>Serverless Workflow is 100% open source and community-driven.<br/>
-                        All components are available under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2 License</a> on <a href="https://github.com/serverlessworkflow">GitHub</a>.</h5></p>
-                <br>
-                    <p><h5> We are a <a href="https://cncf.io/">Cloud Native Computing Foundation</a> sandbox project.</h5></p>
-                    <br>
-                    <p><h5><a href="https://crowdfunding.lfx.linuxfoundation.org/projects/serverless-workflow">Support our project by becoming a Sponsor</a></h5></p>
-                </center></div>
+            <section id="synapse" style="align-items: center; padding-top: 10px; padding-bottom:20px;">
+                <div class="col-lg-11 mx-auto">
+                    <div width="100%" style="align-items: start;color: #448cfb;">
+                        <center><p>
+                            <a href="https://github.com/serverlessworkflow/synapse" target="_blank"><img src="img/synapselogo.png" width="25%"></a>
+                            <p><h5><a href="https://github.com/serverlessworkflow/synapse" target="_blank">
+                                Synapse is a Kubernetes-native workflow
+                                runtime and part of the Serverless Workflow eco-system. </a></h5></p>
+                            <br>
+                            <p><h5><a href="https://crowdfunding.lfx.linuxfoundation.org/projects/serverless-workflow">
+                                <i class="fa fa-star"></i> Support
+                                our project by becoming a Sponsor <i class="fa fa-star"></i></a> </h5></p>
+                        </center>
+                    </div>
+                </div>
+            </section>
         </div>
-    </section>
+    </div>
 </div>
 
-<footer class="page-footer font-small section-blue">
-    <div class="footer-copyright text-center py-3">© Serverless Workflow Specification Authors 2020 | Documentation
-        Distributed under CC-BY-4.0<br/><br/>
-        © 2020 The Linux Foundation. All rights reserved.
-        The Linux Foundation has registered trademarks and uses trademarks.<br/>
-        For a list of trademarks of The Linux Foundation, please see our Trademark Usage page.
-    </div>
-</footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-<script src="https://unpkg.com/bootstrap-table@1.18.1/dist/bootstrap-table.min.js"></script>
-<script language="JavaScript">
-    function getNextDayOfTheWeek(dayName, excludeToday = true, refDate = new Date()) {
-        const dayOfWeek = ["sun","mon","tue","wed","thu","fri","sat"]
-            .indexOf(dayName.slice(0,3).toLowerCase());
-        if (dayOfWeek < 0) return;
-        refDate.setHours(0,0,0,0);
-        refDate.setDate(refDate.getDate() + +!!excludeToday +
-            (dayOfWeek + 7 - refDate.getDay() - +!!excludeToday) % 7);
-        var displayOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        return refDate.toLocaleDateString("en-US", displayOptions);
-    }
+    <footer class="page-footer font-small section-blue" style="width: 100%;">
+        <div class="footer-copyright text-center py-3">© Serverless Workflow Specification Authors 2021 | Documentation
+            Distributed under CC-BY-4.0<br/><br/>
+            © 2021 The Linux Foundation. All rights reserved.
+            The Linux Foundation has registered trademarks and uses trademarks.<br/>
+            For a list of trademarks of The Linux Foundation, please see our Trademark Usage page.
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+            integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.18.1/dist/bootstrap-table.min.js"></script>
+    <script language="JavaScript">
+        function getNextDayOfTheWeek(dayName, excludeToday = true, refDate = new Date()) {
+            const dayOfWeek = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
+                .indexOf(dayName.slice(0, 3).toLowerCase());
+            if (dayOfWeek < 0) return;
+            refDate.setHours(0, 0, 0, 0);
+            refDate.setDate(refDate.getDate() + +!!excludeToday +
+                (dayOfWeek + 7 - refDate.getDay() - +!!excludeToday) % 7);
+            var displayOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+            return refDate.toLocaleDateString("en-US", displayOptions);
+        }
 
-    $(document).ready(function(){
-        $("#joinmeetdiv").html("Join our next community team meeting on " +
-            "<a href=\"https://docs.google.com/document/d/1xwcsWQmMiRN24a7o7oy9MstzMroAup31oOkM5Dru1jQ/edit#heading=h.g2rizfze8av2\"\n" +
-            "target=\"_blank\">" + getNextDayOfTheWeek("Monday", false) + " @ 10-11am Pacific Time</a>");
-    });
-</script>
+        $(document).ready(function () {
+            $("#joinmeetdiv").html("Join our next community team meeting on " +
+                "<a href=\"https://docs.google.com/document/d/1xwcsWQmMiRN24a7o7oy9MstzMroAup31oOkM5Dru1jQ/edit#heading=h.g2rizfze8av2\"\n" +
+                "target=\"_blank\">" + getNextDayOfTheWeek("Monday", false) + " @ 10-11am Pacific Time</a>");
+        });
+    </script>
 </body>
 </html>
