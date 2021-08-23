@@ -3,4 +3,4 @@
 /schemas/previous/* /schemas/0.6/:splat    200
 /schemas/latest/* /schemas/0.7/:splat    200
 /schemas/snapshot/* /schemas/0.8/:splat    200
-/services/diagrams https://diagram-service-secure-serverless-workflow.apps.kogito-cloud.automation.rhmw.io/swdiagram 200
+/services/diagrams https://secure-diagram-service-sw-sw-diagram-service.rhba-cluster-0ad6762cc85bcef5745bb684498c2436-0000.us-south.containers.appdomain.cloud/swdiagram 200
