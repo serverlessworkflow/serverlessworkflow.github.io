@@ -153,7 +153,6 @@
 <script src="js/loader.js"></script>
 <script src="js/editor.main.nls.js"></script>
 <script src="js/editor.main.js"></script>
-<script src="js/workflowschema.js"></script>
 <script src="js/swedtior.js"></script>
 <script>
     var jsonCode = [
@@ -161,18 +160,15 @@
 
         "}"
     ].join('\n');
-    var modelUri = monaco.Uri.parse("a://b/foo.json");
+    var modelUri = monaco.Uri.parse("https://raw.githubusercontent.com/serverlessworkflow/specification/0.7.x/schema/workflow.json");
     var model = monaco.editor.createModel(JSON.stringify(helloWorldExample, null, 2), "json", modelUri);
 
     // configure the JSON language support with schemas and schema associations
-    monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
-        validate: true,
+    monaco.languages.json.jsonDefaults.setDiagnosticsOptions({ validate: true, allowComments: false,
         schemas: [{
-            uri: "http://myserver/foo-schema.json", // id of the first schema
-            fileMatch: [modelUri.toString()], // associate with our model
-            schema: workflowschema
-        }]
-    });
+            uri: "https://raw.githubusercontent.com/serverlessworkflow/specification/0.7.x/schema/workflow.json",
+            fileMatch: [modelUri.toString()]
+        }], enableSchemaRequest: true});
 
     monaco.editor.create(document.getElementById("sweditor"), {
         model: model
