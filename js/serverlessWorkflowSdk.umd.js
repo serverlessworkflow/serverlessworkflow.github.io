@@ -7637,14 +7637,15 @@
   			},
   			type: {
   				type: "string",
-  				description: "Defines the function type. Is either `rest`, `asyncapi, `rpc`, `graphql`, `odata`, or `expression`. Default is `rest`",
+  				description: "Defines the function type. Is either `rest`, `asyncapi, `rpc`, `graphql`, `odata`, `expression`, or `custom`. Default is `rest`",
   				"enum": [
   					"rest",
   					"asyncapi",
   					"rpc",
   					"graphql",
   					"odata",
-  					"expression"
+  					"expression",
+  					"custom"
   				],
   				"default": "rest"
   			},
@@ -8106,8 +8107,6 @@
   		required: [
   			"id",
   			"specVersion",
-  			"name",
-  			"start",
   			"states"
   		]
   	},
@@ -8115,8 +8114,6 @@
   		required: [
   			"key",
   			"specVersion",
-  			"name",
-  			"start",
   			"states"
   		]
   	}
@@ -9551,7 +9548,6 @@
   				"name",
   				"type",
   				"inputCollection",
-  				"iterationParam",
   				"actions"
   			]
   		},
@@ -9562,7 +9558,6 @@
   						"name",
   						"type",
   						"inputCollection",
-  						"iterationParam",
   						"actions",
   						"end"
   					]
@@ -9572,7 +9567,6 @@
   						"name",
   						"type",
   						"inputCollection",
-  						"iterationParam",
   						"actions",
   						"transition"
   					]
@@ -17604,7 +17598,10 @@
           return this.definitions() + '\n' + this.transitions();
       };
       MermaidState.prototype.definitions = function () {
-          return (this.definitionName() + '\n' + this.definitionType() + (this.definitionDetails() !== undefined ? '\n' + this.definitionDetails() : ''));
+          return (this.definitionName() +
+              '\n' +
+              this.definitionType() +
+              (this.definitionDetails() !== undefined ? '\n' + this.definitionDetails() : ''));
       };
       MermaidState.prototype.transitions = function () {
           var transitions = [];
@@ -17620,7 +17617,7 @@
       };
       MermaidState.prototype.stateName = function () {
           var _a;
-          return (_a = this.state.name) === null || _a === void 0 ? void 0 : _a.replace(" ", "_");
+          return (_a = this.state.name) === null || _a === void 0 ? void 0 : _a.replace(' ', '_');
       };
       MermaidState.prototype.startTransition = function () {
           var transitions = [];
@@ -17639,9 +17636,9 @@
               dataBasedSwitchState.dataConditions.forEach(function (dataCondition) {
                   var transitionDataCondition = dataCondition;
                   transitions.push.apply(transitions, _this.naturalTransition(stateName_1, transitionDataCondition.transition, transitionDataCondition.condition));
-                  var endDataCondition = dataCondition; //TODO
+                  var endDataCondition = dataCondition;
                   if (endDataCondition.end) {
-                      transitions.push(_this.transitionDescription(stateName_1, endDataCondition.name, endDataCondition.condition));
+                      transitions.push(_this.transitionDescription(stateName_1, '[*]', transitionDataCondition.condition));
                   }
               });
               transitions.push.apply(transitions, this.defaultConditionTransition(dataBasedSwitchState));
