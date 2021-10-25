@@ -17609,20 +17609,19 @@
           transitions.push.apply(transitions, this.dataConditionsTransitions());
           transitions.push.apply(transitions, this.eventConditionsTransition());
           transitions.push.apply(transitions, this.errorTransitions());
-          transitions.push.apply(transitions, this.naturalTransition(this.stateName(), this.state.transition));
+          transitions.push.apply(transitions, this.naturalTransition(this.stateKeyDiagram(this.state.name), this.state.transition));
           transitions.push.apply(transitions, this.endTransition());
           return transitions.reduce(function (p, c) {
               return p + '\n' + c;
           });
       };
-      MermaidState.prototype.stateName = function () {
-          var _a;
-          return (_a = this.state.name) === null || _a === void 0 ? void 0 : _a.replace(' ', '_');
+      MermaidState.prototype.stateKeyDiagram = function (name) {
+          return name === null || name === void 0 ? void 0 : name.replace(/ /g, '_');
       };
       MermaidState.prototype.startTransition = function () {
           var transitions = [];
           if (this.isFirstState) {
-              var stateName = this.stateName();
+              var stateName = this.stateKeyDiagram(this.state.name);
               transitions.push(this.transitionDescription('[*]', stateName));
           }
           return transitions;
@@ -17632,7 +17631,7 @@
           var transitions = [];
           var dataBasedSwitchState = this.state;
           if (dataBasedSwitchState.dataConditions) {
-              var stateName_1 = this.stateName();
+              var stateName_1 = this.state.name;
               dataBasedSwitchState.dataConditions.forEach(function (dataCondition) {
                   var transitionDataCondition = dataCondition;
                   transitions.push.apply(transitions, _this.naturalTransition(stateName_1, transitionDataCondition.transition, transitionDataCondition.condition));
@@ -17650,10 +17649,10 @@
           var transitions = [];
           var eventBasedSwitchState = this.state;
           if (eventBasedSwitchState.eventConditions) {
-              var stateName_2 = this.stateName();
+              var stateName_2 = this.state.name;
               eventBasedSwitchState.eventConditions.forEach(function (eventCondition) {
                   var transitionEventCondition = eventCondition;
-                  transitions.push.apply(transitions, _this.naturalTransition(stateName_2, transitionEventCondition.transition));
+                  transitions.push.apply(transitions, _this.naturalTransition(stateName_2, transitionEventCondition.transition, transitionEventCondition.eventRef));
                   var endEventCondition = eventCondition;
                   if (endEventCondition.end) {
                       transitions.push(_this.transitionDescription(stateName_2, '[*]'));
@@ -17666,14 +17665,14 @@
       MermaidState.prototype.defaultConditionTransition = function (state) {
           var transitions = [];
           if (state.defaultCondition) {
-              transitions.push.apply(transitions, this.naturalTransition(this.stateName(), state.defaultCondition.transition, 'default'));
+              transitions.push.apply(transitions, this.naturalTransition(this.state.name, state.defaultCondition.transition, 'default'));
           }
           return transitions;
       };
       MermaidState.prototype.endTransition = function () {
           var transitions = [];
           if (this.state.end) {
-              var stateName = this.stateName();
+              var stateName = this.state.name;
               var transitionLabel = undefined;
               if (isObject(this.state.end)) {
                   var end = this.state.end;
@@ -17685,18 +17684,18 @@
           }
           return transitions;
       };
-      MermaidState.prototype.naturalTransition = function (start, end, label) {
+      MermaidState.prototype.naturalTransition = function (source, target, label) {
           if (label === void 0) { label = undefined; }
           var transitions = [];
-          if (end) {
+          if (target) {
               var descTransition = '';
-              if (isObject(end)) {
-                  descTransition = end.nextState;
+              if (isObject(target)) {
+                  descTransition = target.nextState;
               }
-              else if (typeof end === 'string') {
-                  descTransition = end;
+              else if (typeof target === 'string') {
+                  descTransition = target;
               }
-              transitions.push(this.transitionDescription(start, descTransition, label ? label : undefined));
+              transitions.push(this.transitionDescription(source, descTransition, label ? label : undefined));
           }
           return transitions;
       };
@@ -17705,7 +17704,7 @@
           var transitions = [];
           if (this.state.onErrors) {
               this.state.onErrors.forEach(function (error) {
-                  transitions.push.apply(transitions, _this.naturalTransition(_this.stateName(), error.transition, error.errorRef));
+                  transitions.push.apply(transitions, _this.naturalTransition(_this.stateKeyDiagram(_this.state.name), error.transition, error.errorRef));
               });
           }
           return transitions;
@@ -17741,17 +17740,17 @@
       };
       MermaidState.prototype.definitionType = function () {
           var type = this.state.type;
-          return this.stateDescription(this.stateName(), 'type', type.charAt(0).toUpperCase() + type.slice(1) + ' State');
+          return this.stateDescription(this.stateKeyDiagram(this.state.name), 'type', type.charAt(0).toUpperCase() + type.slice(1) + ' State');
       };
       MermaidState.prototype.parallelStateDetails = function () {
           var _a;
           var parallelState = this.state;
           var descriptions = [];
           if (parallelState.completionType) {
-              descriptions.push(this.stateDescription(this.stateName(), 'Completion type', parallelState.completionType));
+              descriptions.push(this.stateDescription(this.stateKeyDiagram(this.state.name), 'Completion type', parallelState.completionType));
           }
           if (parallelState.branches) {
-              descriptions.push(this.stateDescription(this.stateName(), 'Num. of branches', ((_a = parallelState.branches) === null || _a === void 0 ? void 0 : _a.length) + ''));
+              descriptions.push(this.stateDescription(this.stateKeyDiagram(this.state.name), 'Num. of branches', ((_a = parallelState.branches) === null || _a === void 0 ? void 0 : _a.length) + ''));
           }
           return descriptions.length > 0
               ? descriptions.reduce(function (p, c) {
@@ -17760,20 +17759,20 @@
               : undefined;
       };
       MermaidState.prototype.eventBasedSwitchStateDetails = function () {
-          return this.stateDescription(this.stateName(), "Condition type", "event-based");
+          return this.stateDescription(this.stateKeyDiagram(this.state.name), "Condition type", "event-based");
       };
       MermaidState.prototype.dataBasedSwitchStateDetails = function () {
-          return this.stateDescription(this.stateName(), "Condition type", "data-based");
+          return this.stateDescription(this.stateKeyDiagram(this.state.name), "Condition type", "data-based");
       };
       MermaidState.prototype.operationStateDetails = function () {
           var _a;
           var state = this.state;
           var descriptions = [];
           if (state.actionMode) {
-              descriptions.push(this.stateDescription(this.stateName(), 'Action mode', state.actionMode));
+              descriptions.push(this.stateDescription(this.stateKeyDiagram(this.state.name), 'Action mode', state.actionMode));
           }
           if (state.actions) {
-              descriptions.push(this.stateDescription(this.stateName(), 'Num. of actions', ((_a = state.actions) === null || _a === void 0 ? void 0 : _a.length) + ''));
+              descriptions.push(this.stateDescription(this.stateKeyDiagram(this.state.name), 'Num. of actions', ((_a = state.actions) === null || _a === void 0 ? void 0 : _a.length) + ''));
           }
           return descriptions.length > 0
               ? descriptions.reduce(function (p, c) {
@@ -17784,7 +17783,7 @@
       MermaidState.prototype.sleepStateDetails = function () {
           var state = this.state;
           if (state.duration) {
-              return this.stateDescription(this.stateName(), 'Duration', state.duration);
+              return this.stateDescription(this.stateKeyDiagram(this.state.name), 'Duration', state.duration);
           }
           return undefined;
       };
@@ -17793,10 +17792,10 @@
           var state = this.state;
           var descriptions = [];
           if (state.inputCollection) {
-              descriptions.push(this.stateDescription(this.stateName(), 'Input collection', state.inputCollection));
+              descriptions.push(this.stateDescription(this.stateKeyDiagram(this.state.name), 'Input collection', state.inputCollection));
           }
           if (state.actions) {
-              descriptions.push(this.stateDescription(this.stateName(), 'Num. of actions', ((_a = state.actions) === null || _a === void 0 ? void 0 : _a.length) + ''));
+              descriptions.push(this.stateDescription(this.stateKeyDiagram(this.state.name), 'Num. of actions', ((_a = state.actions) === null || _a === void 0 ? void 0 : _a.length) + ''));
           }
           return descriptions.length > 0
               ? descriptions.reduce(function (p, c) {
@@ -17816,10 +17815,10 @@
               else if (typeof functionRef === 'string') {
                   functionRefDescription = functionRef;
               }
-              descriptions.push(this.stateDescription(this.stateName(), 'Callback function', functionRefDescription));
+              descriptions.push(this.stateDescription(this.stateKeyDiagram(this.state.name), 'Callback function', functionRefDescription));
           }
           if (state.eventRef) {
-              descriptions.push(this.stateDescription(this.stateName(), 'Callback event', state.eventRef));
+              descriptions.push(this.stateDescription(this.stateKeyDiagram(this.state.name), 'Callback event', state.eventRef));
           }
           return descriptions.length > 0
               ? descriptions.reduce(function (p, c) {
@@ -17828,11 +17827,11 @@
               : undefined;
       };
       MermaidState.prototype.definitionName = function () {
-          return this.stateName() + ' : ' + this.stateName();
+          return this.stateKeyDiagram(this.state.name) + ' : ' + this.state.name;
       };
-      MermaidState.prototype.transitionDescription = function (start, end, label) {
+      MermaidState.prototype.transitionDescription = function (source, target, label) {
           if (label === void 0) { label = undefined; }
-          return start + ' --> ' + end + (label ? ' : ' + label : '');
+          return this.stateKeyDiagram(source) + ' --> ' + this.stateKeyDiagram(target) + (label ? ' : ' + label : '');
       };
       MermaidState.prototype.stateDescription = function (stateName, description, value) {
           return stateName + (" : " + description + " = " + value);
