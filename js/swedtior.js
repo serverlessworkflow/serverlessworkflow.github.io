@@ -1,7 +1,7 @@
 var helloWorldExample = {
     "id": "helloworld",
     "version": "1.0",
-    "specVersion": "0.7",
+    "specVersion": "0.8",
     "name": "Hello World Workflow",
     "description": "Inject Hello World",
     "start": "Hello State",
@@ -20,7 +20,7 @@ var helloWorldExample = {
 var parallelStateExample = {
     "id": "parallelexec",
     "version": "1.0",
-    "specVersion": "0.7",
+    "specVersion": "0.8",
     "name": "Parallel Execution Workflow",
     "description": "Executes two branches in parallel",
     "start": "ParallelExec",
@@ -51,7 +51,7 @@ var parallelStateExample = {
 var eventBasedSwitchState = {
     "id": "eventbasedswitch",
     "version": "1.0",
-    "specVersion": "0.7",
+    "specVersion": "0.8",
     "name": "Event Based Switch Transitions",
     "description": "Event Based Switch Transitions",
     "start": "CheckVisaStatus",
@@ -122,7 +122,7 @@ var eventBasedSwitchState = {
 var provisionOrdersExample = {
     "id": "provisionorders",
     "version": "1.0",
-    "specVersion": "0.7",
+    "specVersion": "0.8",
     "name": "Provision Orders",
     "description": "Provision Orders and handle errors thrown",
     "start": "ProvisionOrder",
@@ -223,7 +223,7 @@ var provisionOrdersExample = {
 var monitorJobsExample = {
     "id": "jobmonitoring",
     "version": "1.0",
-    "specVersion": "0.7",
+    "specVersion": "0.8",
     "name": "Job Monitoring",
     "description": "Monitor finished execution of a submitted job",
     "start": "SubmitJob",
@@ -353,7 +353,7 @@ var vetAppointmentExample = {
     "name": "Vet Appointment Workflow",
     "description": "Vet service call via events",
     "version": "1.0",
-    "specVersion": "0.7",
+    "specVersion": "0.8",
     "start": "MakeVetAppointmentState",
     "events": [
         {
