@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<!--
+ Copyright 2021 The Serverless Workflow Specification Authors
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="img/sw-logo-header.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/sws.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/github.min.css">
+    <link rel="stylesheet" href="css/termynal.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169200952-1"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+    </script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', 'UA-169200952-1');
+    </script>
+    <title>Serverless Workflow Specification</title>
+</head>
+
+<body id="page-top">
+<nav class="navbar navbar-expand-lg navbar-custom" id="mainNav">
+    <a class="navbar-brand justify-content-left" href="https://github.com/serverlessworkflow" target="_blank"><i
+            class="fa fa-github" style="color: #ffffff;"></i> Github</a>
+    <a class="navbar-brand justify-content-left" href="https://cloud-native.slack.com/archives/CMBAZQSEP"
+       target="_blank"><i class="fa fa-slack" style="color: #ffffff;"></i> Slack</a>
+    <a class="navbar-brand justify-content-left" href="https://twitter.com/CNCFWorkflow" target="_blank"><i
+            class="fa fa-twitter" style="color: #ffffff;"></i> Twitter</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="https://github.com/serverlessworkflow/specification/blob/master/specification.md"
+                   target="_blank"><i class="fa fa-external-link" style="color: #ffffff;"></i> Specification</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="https://github.com/serverlessworkflow/specification/blob/master/examples/README.md"
+                   target="_blank"><i class="fa fa-external-link" style="color: #ffffff;"></i> Examples</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/serverlessworkflow/specification/tree/master/usecases"
+                   target="_blank"><i class="fa fa-external-link" style="color: #ffffff;"></i> Use Cases</a>
+            </li>
+            <li class="nav-item">
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle" type="btn" id="specsdks" data-toggle="dropdown"
+                       aria-haspo
+                       pup="true" aria-expanded="false">
+                        <i class="fa fa-external-link" style="color: #ffffff;"></i> SDKs
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item"
+                           href="https://github.com/serverlessworkflow/sdk-typescript">TypeScript</a>
+                        <a class="dropdown-item" href="https://github.com/serverlessworkflow/sdk-net">.NET</a>
+                        <a class="dropdown-item" href="https://github.com/serverlessworkflow/sdk-go">Go</a>
+                        <a class="dropdown-item" href="https://github.com/serverlessworkflow/sdk-java">Java</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/serverlessworkflow/synapse" target="_blank"><i
+                        class="fa fa-external-link" style="color: #ffffff;"></i>
+                    Synapse</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="editor.html"><i class="fa fa-external-link" style="color: #ffffff;"></i>
+                    Online Editor</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="poster/index.html"><i class="fa fa-external-link" style="color: #ffffff;"></i>
+                    Poster</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 mx-auto">
+            <div class="col-sm-12" style="align-items: start;">
+                <br/>
+                <div class="alert alert-primary alert-dismissible fade show text-center" role="alert">
+                    <div id="joinmeetdiv"></div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+                    <div id="newrelease">Serverless Workflow specification <a href="https://github.com/serverlessworkflow/specification/releases/tag/v0.8" target="_blank">v0.8</a> is released! Check out new features <a href="https://github.com/serverlessworkflow/specification/releases/tag/v0.8" target="_blank">here</a>.</div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <br/>
+                <center><img src="img/logo-frame.png" width="70%"/></center>
+            </div>
+            <br/><br/>
+            <section id="swintro"
+                     style="align-items: center; padding-left: 80px; padding-top: 0px; padding-bottom:50px;">
+                <div class="row" style="align-items: center; display: flex">
+                    <div class="col-md-3" style="align-items: start;">
+                        <center>
+                            <a href="https://github.com/serverlessworkflow/specification/blob/main/specification.md"
+                               target="_blank" class="btn btn-primary btn-lg" style="width: 300px;"><h2><i
+                                    class="fa fa-sitemap" style="color: #ffffff;"></i>&nbsp;&nbsp;Define</h2></a>
+                        </center>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-3" style="align-items: start;">
+                        <center>
+                            <a href="https://github.com/serverlessworkflow/specification#sdks" target="_blank"
+                               class="btn btn-info btn-lg" style="width: 300px;">
+                                <h2><i class="fa fa-terminal" style="color: #ffffff;"></i>&nbsp;&nbsp;Develop</h2>
+                            </a>
+                        </center>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-3" style="align-items: start;">
+                        <center>
+                            <a href="https://github.com/serverlessworkflow/specification#runtimes" target="_blank"
+                               class="btn btn-success btn-lg" style="width: 300px;">
+                                <h2><i class="fa fa-gears" style="color: #ffffff;"></i>&nbsp;&nbsp;Execute</h2>
+                            </a>
+                        </center>
+                    </div>
+                </div>
+            </section>
+
+            <section id="swcodesamples"
+                     style="align-items: center; padding-left: 110px; padding-top: 20px; padding-bottom:20px;">
+                <div class="container">
+                    <div class="row" style="margin-left: 0px;">
+                        <div class="col-md-11"><br/>
+                            <center><h4 style="color: #448cfb"><i class="fa fa-list"></i>
+                                Start learning via <a
+                                        href="https://github.com/serverlessworkflow/specification/tree/main/examples"
+                                        target="_blank"><span style="color: #ff6900">examples</span></a>
+                                and <a href="https://github.com/serverlessworkflow/specification/tree/main/usecases"
+                                       target="_blank"><span style="color: #ff6900">use cases</span></a></h4></a>
+                            </center>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row" style="align-items: center; display: flex">
+                        <div class="col-md-5" style="align-items: start;">
+                            <center>
+                                <h6 style="color: #448cfb">Start workflows via <span
+                                        style="color: #ff6900">events</span>, define <span style="color: #ff6900">service invocations</span>,
+                                    handle <span style="color: #ff6900">errors</span>, automatic <span
+                                            style="color: #ff6900">retries</span>, ...</h6>
+                            </center>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5" style="align-items: start;">
+                            <center>
+                                <h8 style="color: #448cfb">Include <span style="color: #ff6900">human actors</span>,
+                                    define sequental / parallel
+                                    <span style="color: #ff6900">iterations</span>, set specific <span
+                                            style="color: #ff6900">timeouts</span>, invoke <span style="color: #ff6900">sub-workflows</span>,
+                                    ...
+                            </center>
+                        </div>
+                    </div>
+
+                    <div class="row" style="align-items: center; display: -webkit-box">
+                        <div class="col-md-5" id="termynal" data-termynal>
+                    <pre><code class="yml">id: provisionorder
+name: Provision Order
+timeouts:
+  workflowExecTimeout: PT1M
+autoRetries: true
+states:
+- name: Start Provisioning
+  type: event
+  onEvents:
+  - eventRefs:
+    - New Order Cloud Event
+    actions:
+    - functionRef:
+        refName: Provisioning Rest Function
+        arguments:
+          order: "${ .order }"
+      nonRetryableErrors:
+      - Invalid Order Error
+  onErrors:
+  - errorRef: Invalid Order Error
+    end:
+      continueAs: invalidorderworkflow
+  end:
+    produceEvents:
+    - eventRef: Order Provisioned Cloud Event
+                </code></pre>
+                        </div>
+
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5" id="termynal" data-termynal>
+                    <pre><code class="yml">id: storefiles
+name: Store files
+states:
+- name: Ask User To Upload
+  type: callback
+  action:
+    functionRef: User files upload
+  eventRef: Uploads Completed CloudEvent
+  transition: Check Uploads
+- name: Check Uploads
+  type: switch
+  dataConditions:
+  - condition: "${ .files | length > 0 }"
+    transition: Store Files
+  defaultCondition:
+    end: true
+- name: Store Files
+  type: foreach
+  inputCollection: "${ .files }"
+  batchSize: 10
+  timeouts:
+    actionExecTimeout: PT10S
+  actions:
+  - subFlowRef: storefiletos3workflow
+  end: true
+                </code></pre>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-left: 0px;">
+                        <div class="col-md-11"><br/>
+                            <center><h6 style="color: #448cfb">and much much more ...</h6></center>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="officehours"
+                     style="align-items: center; padding-left: 80px; padding-top: 20px; padding-bottom:20px;">
+                <div class="container">
+                    <div class="row" style="margin-left: 0px;">
+                        <div class="col-md-11"><br/>
+                            <br/>
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/aImJRh8CHFQ"  frameborder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="twitter"
+                     style="align-items: center; padding-left: 80px; padding-top: 20px; padding-bottom:20px;">
+                <div class="container">
+                    <div class="row" style="margin-left: 0px;">
+                        <div class="col-md-11"><br/>
+                            <center><a href="https://twitter.com/CNCFWorkflow" target="_blank"><h4
+                                    style="color: #448cfb">Get the latest project <span
+                                    style="color: #ff6900">news</span> and follow us on Twitter</h4></a>
+                            </center>
+                        </div>
+                    </div>
+                    <div class="row " style="align-items: baseline; display: -webkit-box">
+                        <div class="col-md-5" style="padding-left: 50px;">
+                            <center>
+                                <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Great <a
+                                        href="https://twitter.com/InfoQ?ref_src=twsrc%5Etfw">@InfoQ</a> article
+                                    mentioning Serverless Workflow specification and the importance of using standards
+                                    managed by vendor-neutral foundation such as <a
+                                            href="https://twitter.com/CloudNativeFdn?ref_src=twsrc%5Etfw">@CloudNativeFdn</a>
+                                    <a href="https://t.co/YkropN9GNW">https://t.co/YkropN9GNW</a></p>&mdash;
+                                    ServerlessWorkflow (@CNCFWorkflow) <a
+                                            href="https://twitter.com/CNCFWorkflow/status/1428340567180775429?ref_src=twsrc%5Etfw">August
+                                        19, 2021</a></blockquote>
+                                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                            </center>
+                        </div>
+                        <div class="col-md-5" style="padding-left: 80px;">
+                            <center>
+                                <blockquote class="twitter-tweet"><p lang="en" dir="ltr">As someone with BPMN 2.0
+                                    background, I&#39;d say <a
+                                            href="https://twitter.com/CNCFWorkflow?ref_src=twsrc%5Etfw">@CNCFWorkflow</a>
+                                    and the tooling around it with support in <a
+                                            href="https://twitter.com/code?ref_src=twsrc%5Etfw">@Code</a> is coming
+                                    together quite nicely. Like the simplicity and clean language spec, really well done
+                                    IMO. 40 lines of simple YAML for a simple Approval process, sweet.<a
+                                            href="https://twitter.com/hashtag/serverless?src=hash&amp;ref_src=twsrc%5Etfw">#serverless</a>
+                                    <a href="https://t.co/yMMIV2k1Vs">pic.twitter.com/yMMIV2k1Vs</a></p>&mdash; Ralf
+                                    Mueller (@ralf_mueller) <a
+                                            href="https://twitter.com/ralf_mueller/status/1397471502853885959?ref_src=twsrc%5Etfw">May
+                                        26, 2021</a></blockquote>
+                                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="cncfpartnerprojects" style="align-items: center; padding-top: 10px; padding-bottom:20px;">
+                <div class="row" style="margin-left: 0px;">
+                    <div class="col-md-11"><br/>
+                        <center><h4 style="color: #448cfb">Partner Projects</h4></a>
+                        </center>
+                    </div>
+                </div><br/>
+                <div class="col-lg-11 mx-auto">
+                    <div class="card-group">
+                        <div class="card border-dark mb-3" style="padding-top: 20px;"><center>
+                            <a href="https://cloudevents.io/" target="_blank"><img src="img/cloudevents-logo.png" class="card-img-top" style="width: 225px;"></a>
+                        </center></div>
+                        <div class="card border-dark mb-3" style="padding-top: 20px;"><center>
+                            <a href="https://www.tremor.rs/" target="_blank"><img src="img/tremor-logo.png" class="card-img-top" style="width: 225px;"></a>
+                        </center></div>
+                        <div class="card border-dark mb-3" style="padding-top: 20px;"><center>
+                            <a href="https://argoproj.github.io/" target="_blank"><img src="img/argo-logo.png" class="card-img-top" style="width: 225px;"></a>
+                        </center></div>
+                        <div class="card border-dark mb-3" style="padding-top: 20px;"><center>
+                            <a href="https://www.asyncapi.com/" target="_blank"><img src="img/asyncapi-logo.png" class="card-img-top" style="width: 225px;"></a>
+                        </center></div>
+                        </div>
+                </div>
+            </section>
+
+            <section id="collaborations" style="align-items: center; padding-top: 10px; padding-bottom:20px;">
+                <div class="row" style="margin-left: 0px;">
+                    <div class="col-md-11"><br/>
+                        <center><h4 style="color: #448cfb">Collaborations</h4></a>
+                        </center>
+                    </div>
+                </div><br/>
+                <div class="col-lg-11 mx-auto">
+                    <div class="card-group">
+                        <div class="card border-dark mb-3" style="padding-top: 20px;"><center>
+                            <a href="https://www.huaweicloud.com/en-us/" target="_blank"><img src="img/huawei-logo.png" class="card-img-top" style="width: 100px;"></a>
+                        </center></div>
+                        <div class="card border-dark mb-3" style="padding-top: 20px;"><center>
+                            <a href="https://www.redhat.com/" target="_blank"><img src="img/redhatlogo.png" class="card-img-top" style="width: 225px;"></a>
+                        </center></div>
+                        <div class="card border-dark mb-3" style="padding-top: 20px;"><center>
+                            <a href="https://temporal.io/" target="_blank"><img src="img/temporal-logo.png" class="card-img-top" style="width: 225px;"></a>
+                        </center></div>
+                    </div>
+                    <div class="card-group">
+                        <div class="card border-dark mb-3" style="padding-top: 20px;"><center>
+                            <br/>
+                            <a href="https://neuroglia.io/" target="_blank"><img src="img/neuroglia-logo.png" class="card-img-top" style="width: 225px;"></a>
+                        </center></div>
+                        <div class="card border-dark mb-3" style="padding-top: 20px;"><center>
+                            <a href="https://www.bell-labs.com/" target="_blank"><img src="img/nokialogo.png" class="card-img-top" style="width: 225px;"></a>
+                        </center></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="impls" style="align-items: center; padding-top: 10px; padding-bottom:20px;">
+                <div class="row" style="margin-left: 0px;">
+                    <div class="col-md-11"><br/>
+                        <center><h4 style="color: #448cfb">Implementations</h4></a>
+                        </center>
+                    </div>
+                </div><br/>
+                <div class="col-lg-11 mx-auto">
+                    <div class="card-group">
+                        <div class="card border-dark mb-3" style="padding-top: 20px;"><center>
+                            <a href="https://github.com/serverlessworkflow/synapse" target="_blank"><img src="img/synapselogo.png" class="card-img-top" style="width: 115px;"></a>
+                        </center></div>
+                        <div class="card border-dark mb-3" style="padding-top: 20px;"><center>
+                            <a href="https://www.huaweicloud.com/en-us/product/functiongraph.html" target="_blank"><img src="img/functiongraph-logo.png" class="card-img-top" style="width: 150px;"></a>
+                        </center></div>
+                    </div>
+                    <div class="card-group">
+                        <div class="card border-dark mb-3" style="padding-top: 20px;"><center>
+                            <a href="https://kogito.kie.org/" target="_blank"><img src="img/kogitologo.png" class="card-img-top" style="width: 70px;"></a>
+                        </center></div>
+                        <div class="card border-dark mb-3" style="padding-top: 20px;"><center>
+                            <a href="https://automatiko.io/" target="_blank"><img src="img/automatiko-logo.png" class="card-img-top" style="width: 120px;"></a>
+                        </center></div>
+                    </div>
+                </div>
+            </section>
+
+            <br/><br/><br/>
+            <section id="cncfproject" style="align-items: center; padding-top: 10px; padding-bottom:20px;">
+                <div class="col-lg-11 mx-auto">
+                    <div width="100%" style="align-items: start;color: #448cfb;">
+                        <center><p>
+                            <a href="https://www.cncf.io/" target="_blank"><img src="img/cncf-color.png"
+                                                                                width="40%"></a>
+                            <p><h5> We are a <a href="https://cncf.io/">Cloud Native Computing Foundation</a> sandbox
+                                project.</h5></p>
+                        </center>
+                    </div>
+                </div>
+            </section>
+            <section id="synapse" style="align-items: center; padding-top: 10px; padding-bottom:20px;">
+                <div class="col-lg-11 mx-auto">
+                    <div width="100%" style="align-items: start;color: #448cfb;">
+                        <center>
+                            <p><h5><a href="https://crowdfunding.lfx.linuxfoundation.org/projects/serverless-workflow">
+                                <i class="fa fa-star"></i> Support
+                                our project by becoming a Sponsor <i class="fa fa-star"></i></a></h5></p>
+                        </center>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<footer class="page-footer font-small section-blue" style="width: 100%;">
+    <div class="footer-copyright text-center py-3">© Serverless Workflow Specification Authors 2021 | Documentation
+        Distributed under CC-BY-4.0<br/><br/>
+        © 2021 The Linux Foundation. All rights reserved.
+        The Linux Foundation has registered trademarks and uses trademarks.<br/>
+        For a list of trademarks of The Linux Foundation, please see our Trademark Usage page.
+    </div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="https://unpkg.com/bootstrap-table@1.18.1/dist/bootstrap-table.min.js"></script>
+<script language="JavaScript">
+    function getNextDayOfTheWeek(dayName, excludeToday = true, refDate = new Date()) {
+        const dayOfWeek = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
+            .indexOf(dayName.slice(0, 3).toLowerCase());
+        if (dayOfWeek < 0) return;
+        refDate.setHours(0, 0, 0, 0);
+        refDate.setDate(refDate.getDate() + +!!excludeToday +
+            (dayOfWeek + 7 - refDate.getDay() - +!!excludeToday) % 7);
+        var displayOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+        return refDate.toLocaleDateString("en-US", displayOptions);
+    }
+
+    $(document).ready(function () {
+        $("#joinmeetdiv").html("Join our next community team meeting on " +
+            "<a href=\"https://github.com/serverlessworkflow/specification#meetings\"\n" +
+            "target=\"_blank\">" + getNextDayOfTheWeek("Wednesday", false) + " @ 11-12am Eastern Time (ET)</a>");
+    });
+</script>
+</body>
+</html>

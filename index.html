@@ -15,17 +15,20 @@
  limitations under the License.
 -->
 
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US" dir="ltr" prefix="og: http://ogp.me/ns#"
+      class="no-js">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta property="og:type" content="website">
+    <title>Serverless Workflow</title>
     <link rel="icon" type="image/png" href="img/sw-logo-header.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/sws.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/github.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/termynal.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169200952-1"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
@@ -43,402 +46,422 @@
         gtag('js', new Date());
         gtag('config', 'UA-169200952-1');
     </script>
-    <title>Serverless Workflow Specification</title>
 </head>
 
-<body id="page-top">
-<nav class="navbar navbar-expand-lg navbar-custom" id="mainNav">
-    <a class="navbar-brand justify-content-left" href="https://github.com/serverlessworkflow" target="_blank"><i
-            class="fa fa-github" style="color: #ffffff;"></i> Github</a>
-    <a class="navbar-brand justify-content-left" href="https://cloud-native.slack.com/archives/CMBAZQSEP"
-       target="_blank"><i class="fa fa-slack" style="color: #ffffff;"></i> Slack</a>
-    <a class="navbar-brand justify-content-left" href="https://twitter.com/CNCFWorkflow" target="_blank"><i
-            class="fa fa-twitter" style="color: #ffffff;"></i> Twitter</a>
-    <div class="collapse navbar-collapse">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link"
-                   href="https://github.com/serverlessworkflow/specification/blob/master/specification.md"
-                   target="_blank"><i class="fa fa-external-link" style="color: #ffffff;"></i> Specification</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link"
-                   href="https://github.com/serverlessworkflow/specification/blob/master/examples/README.md"
-                   target="_blank"><i class="fa fa-external-link" style="color: #ffffff;"></i> Examples</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="https://github.com/serverlessworkflow/specification/tree/master/usecases"
-                   target="_blank"><i class="fa fa-external-link" style="color: #ffffff;"></i> Use Cases</a>
-            </li>
-            <li class="nav-item">
-                <div class="dropdown">
-                    <a class="nav-link dropdown-toggle" type="btn" id="specsdks" data-toggle="dropdown"
-                       aria-haspo
-                       pup="true" aria-expanded="false">
-                        <i class="fa fa-external-link" style="color: #ffffff;"></i> SDKs
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item"
-                           href="https://github.com/serverlessworkflow/sdk-typescript">TypeScript</a>
-                        <a class="dropdown-item" href="https://github.com/serverlessworkflow/sdk-net">.NET</a>
-                        <a class="dropdown-item" href="https://github.com/serverlessworkflow/sdk-go">Go</a>
-                        <a class="dropdown-item" href="https://github.com/serverlessworkflow/sdk-java">Java</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="https://github.com/serverlessworkflow/synapse" target="_blank"><i
-                        class="fa fa-external-link" style="color: #ffffff;"></i>
-                    Synapse</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="editor.html"><i class="fa fa-external-link" style="color: #ffffff;"></i>
-                    Online Editor</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="poster/index.html"><i class="fa fa-external-link" style="color: #ffffff;"></i>
-                    Poster</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12 mx-auto">
-            <div class="col-sm-12" style="align-items: start;">
-                <br/>
-                <div class="alert alert-primary alert-dismissible fade show text-center" role="alert">
-                    <div id="joinmeetdiv"></div>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
-                    <div id="newrelease">Serverless Workflow specification <a href="https://github.com/serverlessworkflow/specification/releases/tag/v0.8" target="_blank">v0.8</a> is released! Check out new features <a href="https://github.com/serverlessworkflow/specification/releases/tag/v0.8" target="_blank">here</a>.</div>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <br/>
-                <center><img src="img/logo-frame.png" width="70%"/></center>
+<body>
+<nav
+        id="localnav"
+        class="localnav theme-dark localnav-scrim"
+        data-sticky
+        aria-label="Global"
+        role="navigation">
+    <div class="localnav-wrapper">
+        <div class="localnav-background"></div>
+        <div class="localnav-content">
+            <div class="localnav-title">
+                <a href="https://github.com/serverlessworkflow" target="_blank" class="icon-wrapper">
+                    <span class="fa fa-github" style="color: #ffffff;"></span>
+                    <span>GitHub</span>
+                </a>
             </div>
-            <br/><br/>
-            <section id="swintro"
-                     style="align-items: center; padding-left: 80px; padding-top: 0px; padding-bottom:50px;">
-                <div class="row" style="align-items: center; display: flex">
-                    <div class="col-md-3" style="align-items: start;">
-                        <center>
-                            <a href="https://github.com/serverlessworkflow/specification/blob/main/specification.md"
-                               target="_blank" class="btn btn-primary btn-lg" style="width: 300px;"><h2><i
-                                    class="fa fa-sitemap" style="color: #ffffff;"></i>&nbsp;&nbsp;Define</h2></a>
-                        </center>
+            <ul class="localnav-menu">
+                <li class="localnav-menu-tray">
+                    <ul class="localnav-menu-items">
+                        <li class="localnav-menu-item">
+                            <a class="localnav-menu-link" href="https://cloud-native.slack.com/archives/CMBAZQSEP"
+                               target="_blank">Slack</a>
+                        </li>
+                        <li class="localnav-menu-item">
+                            <a class="localnav-menu-link" href='https://twitter.com/cncfworkflow' target="_blank">Twitter</a>
+                        </li>
+                        <li class="localnav-menu-item">
+                            <a class="localnav-menu-link"
+                               href='https://www.youtube.com/channel/UCQ080N6AqM_k-7itU6rSqZQ'
+                               target="_blank">YouTube</a>
+                        </li>
+                        <li class="localnav-menu-item">
+                            <a class="localnav-menu-link" href='restream.io' target="_blank">Restream</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="localnav-actions localnav-actions-center">
+                    <div class="localnav-action localnav-action-menucta" aria-hidden="true">
+                        <label for="localnav-menustate" class="localnav-menucta">
+							<span class="localnav-menuicon-bread localnav-menuicon-bread-top">
+								<span class="localnav-menuicon-bread-crust localnav-menuicon-bread-crust-top"></span>
+							</span>
+                            <span class="localnav-menuicon-bread localnav-menuicon-bread-bottom">
+								<span class="localnav-menuicon-bread-crust localnav-menuicon-bread-crust-bottom"></span>
+							</span>
+                        </label>
                     </div>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-3" style="align-items: start;">
-                        <center>
-                            <a href="https://github.com/serverlessworkflow/specification#sdks" target="_blank"
-                               class="btn btn-info btn-lg" style="width: 300px;">
-                                <h2><i class="fa fa-terminal" style="color: #ffffff;"></i>&nbsp;&nbsp;Develop</h2>
-                            </a>
-                        </center>
-                    </div>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-3" style="align-items: start;">
-                        <center>
-                            <a href="https://github.com/serverlessworkflow/specification#runtimes" target="_blank"
-                               class="btn btn-success btn-lg" style="width: 300px;">
-                                <h2><i class="fa fa-gears" style="color: #ffffff;"></i>&nbsp;&nbsp;Execute</h2>
-                            </a>
-                        </center>
-                    </div>
-                </div>
-            </section>
-
-            <section id="swcodesamples"
-                     style="align-items: center; padding-left: 110px; padding-top: 20px; padding-bottom:20px;">
-                <div class="container">
-                    <div class="row" style="margin-left: 0px;">
-                        <div class="col-md-11"><br/>
-                            <center><h4 style="color: #448cfb"><i class="fa fa-list"></i>
-                                Start learning via <a
-                                        href="https://github.com/serverlessworkflow/specification/tree/main/examples"
-                                        target="_blank"><span style="color: #ff6900">examples</span></a>
-                                and <a href="https://github.com/serverlessworkflow/specification/tree/main/usecases"
-                                       target="_blank"><span style="color: #ff6900">use cases</span></a></h4></a>
-                            </center>
-                        </div>
-                    </div>
-                    <br/>
-                    <div class="row" style="align-items: center; display: flex">
-                        <div class="col-md-5" style="align-items: start;">
-                            <center>
-                                <h6 style="color: #448cfb">Start workflows via <span
-                                        style="color: #ff6900">events</span>, define <span style="color: #ff6900">service invocations</span>,
-                                    handle <span style="color: #ff6900">errors</span>, automatic <span
-                                            style="color: #ff6900">retries</span>, ...</h6>
-                            </center>
-                        </div>
-                        <div class="col-md-1"></div>
-                        <div class="col-md-5" style="align-items: start;">
-                            <center>
-                                <h8 style="color: #448cfb">Include <span style="color: #ff6900">human actors</span>,
-                                    define sequental / parallel
-                                    <span style="color: #ff6900">iterations</span>, set specific <span
-                                            style="color: #ff6900">timeouts</span>, invoke <span style="color: #ff6900">sub-workflows</span>,
-                                    ...
-                            </center>
-                        </div>
-                    </div>
-
-                    <div class="row" style="align-items: center; display: -webkit-box">
-                        <div class="col-md-5" id="termynal" data-termynal>
-                    <pre><code class="yml">id: provisionorder
-name: Provision Order
-timeouts:
-  workflowExecTimeout: PT1M
-autoRetries: true
-states:
-- name: Start Provisioning
-  type: event
-  onEvents:
-  - eventRefs:
-    - New Order Cloud Event
-    actions:
-    - functionRef:
-        refName: Provisioning Rest Function
-        arguments:
-          order: "${ .order }"
-      nonRetryableErrors:
-      - Invalid Order Error
-  onErrors:
-  - errorRef: Invalid Order Error
-    end:
-      continueAs: invalidorderworkflow
-  end:
-    produceEvents:
-    - eventRef: Order Provisioned Cloud Event
-                </code></pre>
-                        </div>
-
-                        <div class="col-md-1"></div>
-                        <div class="col-md-5" id="termynal" data-termynal>
-                    <pre><code class="yml">id: storefiles
-name: Store files
-states:
-- name: Ask User To Upload
-  type: callback
-  action:
-    functionRef: User files upload
-  eventRef: Uploads Completed CloudEvent
-  transition: Check Uploads
-- name: Check Uploads
-  type: switch
-  dataConditions:
-  - condition: "${ .files | length > 0 }"
-    transition: Store Files
-  defaultCondition:
-    end: true
-- name: Store Files
-  type: foreach
-  inputCollection: "${ .files }"
-  batchSize: 10
-  timeouts:
-    actionExecTimeout: PT10S
-  actions:
-  - subFlowRef: storefiletos3workflow
-  end: true
-                </code></pre>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-left: 0px;">
-                        <div class="col-md-11"><br/>
-                            <center><h6 style="color: #448cfb">and much much more ...</h6></center>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section id="officehours"
-                     style="align-items: center; padding-left: 80px; padding-top: 20px; padding-bottom:20px;">
-                <div class="container">
-                    <div class="row" style="margin-left: 0px;">
-                        <div class="col-md-11"><br/>
-                            <br/>
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/aImJRh8CHFQ"  frameborder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="twitter"
-                     style="align-items: center; padding-left: 80px; padding-top: 20px; padding-bottom:20px;">
-                <div class="container">
-                    <div class="row" style="margin-left: 0px;">
-                        <div class="col-md-11"><br/>
-                            <center><a href="https://twitter.com/CNCFWorkflow" target="_blank"><h4
-                                    style="color: #448cfb">Get the latest project <span
-                                    style="color: #ff6900">news</span> and follow us on Twitter</h4></a>
-                            </center>
-                        </div>
-                    </div>
-                    <div class="row " style="align-items: baseline; display: -webkit-box">
-                        <div class="col-md-5" style="padding-left: 50px;">
-                            <center>
-                                <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Great <a
-                                        href="https://twitter.com/InfoQ?ref_src=twsrc%5Etfw">@InfoQ</a> article
-                                    mentioning Serverless Workflow specification and the importance of using standards
-                                    managed by vendor-neutral foundation such as <a
-                                            href="https://twitter.com/CloudNativeFdn?ref_src=twsrc%5Etfw">@CloudNativeFdn</a>
-                                    <a href="https://t.co/YkropN9GNW">https://t.co/YkropN9GNW</a></p>&mdash;
-                                    ServerlessWorkflow (@CNCFWorkflow) <a
-                                            href="https://twitter.com/CNCFWorkflow/status/1428340567180775429?ref_src=twsrc%5Etfw">August
-                                        19, 2021</a></blockquote>
-                                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                            </center>
-                        </div>
-                        <div class="col-md-5" style="padding-left: 80px;">
-                            <center>
-                                <blockquote class="twitter-tweet"><p lang="en" dir="ltr">As someone with BPMN 2.0
-                                    background, I&#39;d say <a
-                                            href="https://twitter.com/CNCFWorkflow?ref_src=twsrc%5Etfw">@CNCFWorkflow</a>
-                                    and the tooling around it with support in <a
-                                            href="https://twitter.com/code?ref_src=twsrc%5Etfw">@Code</a> is coming
-                                    together quite nicely. Like the simplicity and clean language spec, really well done
-                                    IMO. 40 lines of simple YAML for a simple Approval process, sweet.<a
-                                            href="https://twitter.com/hashtag/serverless?src=hash&amp;ref_src=twsrc%5Etfw">#serverless</a>
-                                    <a href="https://t.co/yMMIV2k1Vs">pic.twitter.com/yMMIV2k1Vs</a></p>&mdash; Ralf
-                                    Mueller (@ralf_mueller) <a
-                                            href="https://twitter.com/ralf_mueller/status/1397471502853885959?ref_src=twsrc%5Etfw">May
-                                        26, 2021</a></blockquote>
-                                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                            </center>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
-            <section id="cncfpartnerprojects" style="align-items: center; padding-top: 10px; padding-bottom:20px;">
-                <div class="row" style="margin-left: 0px;">
-                    <div class="col-md-11"><br/>
-                        <center><h4 style="color: #448cfb">Partner Projects</h4></a>
-                        </center>
-                    </div>
-                </div><br/>
-                <div class="col-lg-11 mx-auto">
-                    <div class="card-group">
-                        <div class="card border-dark mb-3" style="padding-top: 20px;"><center>
-                            <a href="https://cloudevents.io/" target="_blank"><img src="img/cloudevents-logo.png" class="card-img-top" style="width: 225px;"></a>
-                        </center></div>
-                        <div class="card border-dark mb-3" style="padding-top: 20px;"><center>
-                            <a href="https://www.tremor.rs/" target="_blank"><img src="img/tremor-logo.png" class="card-img-top" style="width: 225px;"></a>
-                        </center></div>
-                        <div class="card border-dark mb-3" style="padding-top: 20px;"><center>
-                            <a href="https://argoproj.github.io/" target="_blank"><img src="img/argo-logo.png" class="card-img-top" style="width: 225px;"></a>
-                        </center></div>
-                        <div class="card border-dark mb-3" style="padding-top: 20px;"><center>
-                            <a href="https://www.asyncapi.com/" target="_blank"><img src="img/asyncapi-logo.png" class="card-img-top" style="width: 225px;"></a>
-                        </center></div>
-                        </div>
-                </div>
-            </section>
-
-            <section id="collaborations" style="align-items: center; padding-top: 10px; padding-bottom:20px;">
-                <div class="row" style="margin-left: 0px;">
-                    <div class="col-md-11"><br/>
-                        <center><h4 style="color: #448cfb">Collaborations</h4></a>
-                        </center>
-                    </div>
-                </div><br/>
-                <div class="col-lg-11 mx-auto">
-                    <div class="card-group">
-                        <div class="card border-dark mb-3" style="padding-top: 20px;"><center>
-                            <a href="https://www.huaweicloud.com/en-us/" target="_blank"><img src="img/huawei-logo.png" class="card-img-top" style="width: 100px;"></a>
-                        </center></div>
-                        <div class="card border-dark mb-3" style="padding-top: 20px;"><center>
-                            <a href="https://www.redhat.com/" target="_blank"><img src="img/redhatlogo.png" class="card-img-top" style="width: 225px;"></a>
-                        </center></div>
-                        <div class="card border-dark mb-3" style="padding-top: 20px;"><center>
-                            <a href="https://temporal.io/" target="_blank"><img src="img/temporal-logo.png" class="card-img-top" style="width: 225px;"></a>
-                        </center></div>
-                    </div>
-                    <div class="card-group">
-                        <div class="card border-dark mb-3" style="padding-top: 20px;"><center>
-                            <br/>
-                            <a href="https://neuroglia.io/" target="_blank"><img src="img/neuroglia-logo.png" class="card-img-top" style="width: 225px;"></a>
-                        </center></div>
-                        <div class="card border-dark mb-3" style="padding-top: 20px;"><center>
-                            <a href="https://www.bell-labs.com/" target="_blank"><img src="img/nokialogo.png" class="card-img-top" style="width: 225px;"></a>
-                        </center></div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="impls" style="align-items: center; padding-top: 10px; padding-bottom:20px;">
-                <div class="row" style="margin-left: 0px;">
-                    <div class="col-md-11"><br/>
-                        <center><h4 style="color: #448cfb">Implementations</h4></a>
-                        </center>
-                    </div>
-                </div><br/>
-                <div class="col-lg-11 mx-auto">
-                    <div class="card-group">
-                        <div class="card border-dark mb-3" style="padding-top: 20px;"><center>
-                            <a href="https://github.com/serverlessworkflow/synapse" target="_blank"><img src="img/synapselogo.png" class="card-img-top" style="width: 115px;"></a>
-                        </center></div>
-                        <div class="card border-dark mb-3" style="padding-top: 20px;"><center>
-                            <a href="https://www.huaweicloud.com/en-us/product/functiongraph.html" target="_blank"><img src="img/functiongraph-logo.png" class="card-img-top" style="width: 150px;"></a>
-                        </center></div>
-                    </div>
-                    <div class="card-group">
-                        <div class="card border-dark mb-3" style="padding-top: 20px;"><center>
-                            <a href="https://kogito.kie.org/" target="_blank"><img src="img/kogitologo.png" class="card-img-top" style="width: 70px;"></a>
-                        </center></div>
-                        <div class="card border-dark mb-3" style="padding-top: 20px;"><center>
-                            <a href="https://automatiko.io/" target="_blank"><img src="img/automatiko-logo.png" class="card-img-top" style="width: 120px;"></a>
-                        </center></div>
-                    </div>
-                </div>
-            </section>
-
-            <br/><br/><br/>
-            <section id="cncfproject" style="align-items: center; padding-top: 10px; padding-bottom:20px;">
-                <div class="col-lg-11 mx-auto">
-                    <div width="100%" style="align-items: start;color: #448cfb;">
-                        <center><p>
-                            <a href="https://www.cncf.io/" target="_blank"><img src="img/cncf-color.png"
-                                                                                width="40%"></a>
-                            <p><h5> We are a <a href="https://cncf.io/">Cloud Native Computing Foundation</a> sandbox
-                                project.</h5></p>
-                        </center>
-                    </div>
-                </div>
-            </section>
-            <section id="synapse" style="align-items: center; padding-top: 10px; padding-bottom:20px;">
-                <div class="col-lg-11 mx-auto">
-                    <div width="100%" style="align-items: start;color: #448cfb;">
-                        <center>
-                            <p><h5><a href="https://crowdfunding.lfx.linuxfoundation.org/projects/serverless-workflow">
-                                <i class="fa fa-star"></i> Support
-                                our project by becoming a Sponsor <i class="fa fa-star"></i></a></h5></p>
-                        </center>
-                    </div>
-                </div>
-            </section>
+                </li>
+            </ul>
         </div>
     </div>
-</div>
+</nav>
+<main class="main main--en home">
+    <header class="section section-hero theme-dark">
+        <div class="section-content">
+            <div class="row">
+                <div class="column">
+                    <h1 class="headline">Serverless Workflow</h1>
+                    <p class="overview">Standards-based DSL and open-source dev tools and runtimes are at the heart of
+                        the Serverless Workflow project. We connect developers around the world to foster innovation and
+                        provide a community-driven workflow ecosystem.</p>
+                    <p class="overview"><br/><b>Get started:</b><br/><br/>
+                        <a href="https://github.com/serverlessworkflow/specification/blob/main/specification.md"
+                           target="_blank"
+                           class="button button-elevated column large-last medium-notlast">Specification</a>
+                        <a href="editor.html" class="button button-elevated column large-last medium-notlast">Web
+                            Editor</a>
+                        <a href="https://github.com/serverlessworkflow/sdk-java" target="_blank"
+                           class="button button-elevated column large-last medium-notlast">Java</a>
+                        <a href="https://github.com/serverlessworkflow/sdk-go" target="_blank"
+                           class="button button-elevated column large-last medium-notlast">Go</a>
+                        <a href="https://github.com/serverlessworkflow/sdk-typescript" target="_blank"
+                           class="button button-elevated column large-last medium-notlast">TypeScript</a>
+                        <a href="https://github.com/serverlessworkflow/sdk-net" target="_blank"
+                           class="button button-elevated column large-last medium-notlast">.NET</a>
+                    </p>
 
-<footer class="page-footer font-small section-blue" style="width: 100%;">
-    <div class="footer-copyright text-center py-3">© Serverless Workflow Specification Authors 2021 | Documentation
-        Distributed under CC-BY-4.0<br/><br/>
-        © 2021 The Linux Foundation. All rights reserved.
-        The Linux Foundation has registered trademarks and uses trademarks.<br/>
-        For a list of trademarks of The Linux Foundation, please see our Trademark Usage page.
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="section section-projects bg-gray">
+        <header class="section-content section-header row align-items-start">
+            <div class="column large-9 medium-12">
+                <h2 class="sub-headline">Specify low-code, event-driven workflow orchestrations</h2>
+                <p class="overview">using the most powerful open-source, vendor-neutral workflow DSL.
+                    Our DSL provides integrations with widely used standards for events and services
+                    such as <a href="https://cloudevents.io/" target="_blank">CloudEvents</a>,
+                    <a href="https://swagger.io/specification/" target="_blank">OpenAPI</a>,
+                    <a href="https://www.asyncapi.com/" target="_blank">AsyncAPI</a>,
+                    <a href="https://graphql.org/" target="_blank">GraphQL</a>,
+                    <a href="https://grpc.io/" target="_blank">gRPC</a>, and more.</p>
+            </div>
+
+            <!--            <a href="https://github.com/serverlessworkflow/specification/blob/main/specification.md" target="_blank" class="button button-elevated column large-last medium-notlast">Read the Specification</a>-->
+
+        </header>
+        <div class="section-content">
+            <ul class="project-grid list-reset">
+
+                <li class="grid-item large-span-4 medium-span-6">
+                    <article class="bg-white project-summary">
+                        <div>
+                            <img class="summary-icon" alt="" role="presentation" src="img/define-icon.png"
+                                 data-progressive-image/>
+                            <h1 class="summary-title">Define</h1>
+                            <p class="summary-language">JSON, YAML</p>
+                            <p class="summary-about">Define you orchestration logic that is triggered via events and
+                                invokes services sync or async.
+                                Write logic that includes human decisions, set timeouts and retries, handle errors, and
+                                much more... </p>
+                        </div>
+                        <div class="summary-links">
+                            <a href="https://github.com/serverlessworkflow/specification/tree/main/examples"
+                               target="_blank" class="button button-neutral button-reduced" aria-label="Examples">Examples</a>
+                            <a href="https://github.com/serverlessworkflow/specification/tree/main/usecases"
+                               class="button button-neutral button-reduced" target="_blank" aria-label="Use Cases">Use
+                                Cases</a>
+                        </div>
+                    </article>
+
+                </li>
+
+                <li class="grid-item large-span-4 medium-span-6">
+                    <article class="bg-white project-summary">
+                        <div>
+                            <img class="summary-icon" alt="" role="presentation" src="img/develop-icon.png"
+                                 data-progressive-image/>
+                            <h1 class="summary-title">Develop</h1>
+                            <p class="summary-language">Java, Go, TypeScript, .NET, ...</p>
+                            <p class="summary-about">Start developing your workflow orchestrations with help of our
+                                project SDKs. Get help creating out-of-box user experience using our open-source
+                                editor/web tooling and visualization support</p></div>
+                        <div class="summary-links">
+                            <a href="https://github.com/serverlessworkflow/specification#SDKs" target="_blank"
+                               class="button button-neutral button-reduced" aria-label="SDKs">SDKs</a>
+                            <a href="https://github.com/serverlessworkflow/specification#Tooling"
+                               class="button button-neutral button-reduced" target="_blank" aria-label="IDE plugins">Tooling</a>
+                        </div>
+                    </article>
+
+                </li>
+
+                <li class="grid-item large-span-4 medium-span-6">
+                    <article class="bg-white project-summary">
+                        <div>
+                            <img class="summary-icon" alt="" role="presentation" src="img/execute-icon.png"
+                                 data-progressive-image/>
+                            <h1 class="summary-title">Execute</h1>
+                            <p class="summary-language">Serverless, Cloud-Native, Distributed runtimes</p>
+                            <p class="summary-about">Execute and scale your workflow-based orchestrations to build
+                                high-end applications.</p>
+                        </div>
+                        <div class="summary-links">
+                            <a href="https://github.com/serverlessworkflow/specification#Runtimes"
+                               class="button button-neutral button-reduced" target="_blank"
+                               aria-label="Website for Runtimes">Get started</a>
+                        </div>
+                    </article>
+
+                </li>
+
+            </ul>
+        </div>
+    </section>
+
+    <section class="section section-releases-spotlight bg-gray">
+        <header class="section-content section-header row align-items-start">
+            <div class="column large-9 medium-12">
+                <h2 class="sub-headline">Join our workflow community</h2>
+            </div>
+        </header>
+        <div class="section-content">
+
+            <article class="bg-white releases-summary">
+                <div>
+                    <img class="summary-icon" alt="" role="presentation" src="img/community-icon.png"
+                         data-progressive-image/>
+                    <p class="overview"><a href="https://github.com/serverlessworkflow" target="_blank">Become part</a>
+                        of the highly innovative group of workflow enthusiasts and help us grow
+                        our project under the <a href="https://www.cncf.io/" target="_blank">CNCF</a> umbrella.
+                    </p>
+                    <p class="overview"><a
+                            href="https://crowdfunding.lfx.linuxfoundation.org/projects/serverless-workflow"
+                            target="_blank">Support</a> our project and it's growth by becoming a Sponsor.</p>
+                    <p class="overview"><a href="https://lu.ma/9y2a60aw" target="_blank">Join</a> our meetups and learn
+                        from the project creators and ask questions. </p>
+                    <p class="overview">Check out our latest <a href="https://www.youtube.com/watch?v=aImJRh8CHFQ"
+                                                                target="_blank">project office hours recording</a></p>
+                </div>
+                <div class="summary-links">
+                    <a href="https://github.com/serverlessworkflow/specification#releases" target="_blank"
+                       class="button button-neutral button-reduced" aria-label="Go to Releases">Releases</a>
+                    <a href="https://github.com/serverlessworkflow/specification/discussions" target="_blank"
+                       class="button button-neutral button-reduced" aria-label="Go to Releases">Discussions</a>
+                    <a href="https://github.com/serverlessworkflow/specification#Meetings" target="_blank"
+                       class="button button-neutral button-reduced" aria-label="Go to Releases">Weekly Meetings</a>
+                    <a href="https://lu.ma/9y2a60aw" target="_blank" class="button button-neutral button-reduced"
+                       aria-label="Go to Releases">Meetups</a>
+                    <a href="https://github.com/serverlessworkflow/specification/tree/main/roadmap" target="_blank"
+                       class="button button-neutral button-reduced" aria-label="Go to Releases">Roadmap</a>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <section class="section section-releases-spotlight bg-gray">
+        <header class="section-content section-header row align-items-start">
+            <div class="column large-9 medium-12">
+                <h2 class="sub-headline">Upcoming and recent community events</h2>
+            </div>
+        </header>
+        <div class="section-content">
+
+            <article class="bg-white releases-summary">
+                <div>
+                    <img class="summary-icon" alt="" role="presentation" src="img/youtube-icon.png"
+                         data-progressive-image/>
+                    <p class="overview">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">Event</th>
+                            <th scope="col">Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><a href="https://lu.ma/9y2a60aw" target="_blank">Serverless Workflow Intro -
+                                Workshop</a></td>
+                            <td>Tue, Jan 11, 11:00 AM - 12:00 PM EST</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.youtube.com/watch?v=aImJRh8CHFQ" target="_blank">Serverless
+                                Workflow and AsyncAPI - AsyncAPI Conf</a></td>
+                            <td>November 2021</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.youtube.com/watch?v=aImJRh8CHFQ" target="_blank">KubeCon NA Project
+                                Office Hours</a></td>
+                            <td>October 2021</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    </p>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <section class="section section-projects bg-gray">
+        <header class="section-content section-header row align-items-start">
+            <div class="column large-9 medium-12">
+                <h2 class="sub-headline">Adopted by leading brands in workflow technologies</h2>
+                <p class="overview">These brands are already using Serverless Workflow.
+                    Is your company using Serverless Workflow and wants to be included in this list?
+                    <a href=https://github.com/serverlessworkflow/serverlessworkflow.github.io/issues/new?assignees=&labels=kind%2Ffeature&template=website.md"
+                       target="_blank">Let us know here!</a></p>
+            </div>
+
+            <!--            <a href="https://github.com/serverlessworkflow/specification/blob/main/specification.md" target="_blank" class="button button-elevated column large-last medium-notlast">Read the Specification</a>-->
+
+        </header>
+        <div class="section-content">
+            <ul class="project-grid list-reset">
+
+                <li class="grid-item large-span-4 medium-span-6">
+                    <article class="bg-white project-summary">
+                        <div>
+                            <img class="summary-icon" alt="" role="presentation" src="img/huawei-logo.png"
+                                 data-progressive-image/>
+                            <h1 class="summary-title">Huawei</h1>
+                            <p class="summary-about">Huawei FunctionGraph hosts event-driven functions in a serverless
+                                context while ensuring high availability, high scalability, and zero maintenance.</p>
+                        </div>
+                        <div class="summary-links">
+                            <a href="https://www.huaweicloud.com/en-us/product/functiongraph.html"
+                               class="button button-neutral button-reduced" target="_blank"
+                               aria-label="Website for Huawei FunctionGraph">Website</a>
+                        </div>
+                    </article>
+
+                </li>
+
+                <li class="grid-item large-span-4 medium-span-6">
+                    <article class="bg-white project-summary">
+                        <div>
+                            <img class="summary-icon" alt="" role="presentation" src="img/temporal-logo.png"
+                                 data-progressive-image/>
+                            <h1 class="summary-title">Temporal</h1>
+                            <p class="summary-about">Temporal is the open source microservice orchestration platform for
+                                writing durable workflows as code.</p>
+                        </div>
+                        <div class="summary-links">
+                            <a href="https://temporal.io/" class="button button-neutral button-reduced" target="_blank"
+                               aria-label="Website for Temporal">Website</a>
+                        </div>
+                    </article>
+
+                </li>
+
+                <li class="grid-item large-span-4 medium-span-6">
+                    <article class="bg-white project-summary">
+                        <div>
+                            <img class="summary-icon" alt="" role="presentation" src="img/redhat-logo.png"
+                                 data-progressive-image/>
+                            <h1 class="summary-title">Red Hat</h1>
+                            <p class="summary-about">Red Hat Kogito is a cloud-native business automation framework for
+                                building intelligent business applications.</p>
+                        </div>
+                        <div class="summary-links">
+                            <a href="https://kogito.kie.org/" class="button button-neutral button-reduced"
+                               target="_blank" aria-label="Website for Red Hat Kogito">Website</a>
+                        </div>
+                    </article>
+
+                </li>
+
+            </ul>
+        </div>
+        <br/><br/>
+        <div class="section-content">
+            <ul class="project-grid list-reset">
+
+                <li class="grid-item large-span-4 medium-span-6">
+                    <article class="bg-white project-summary">
+                        <div>
+                            <img class="summary-icon" alt="" role="presentation" src="img/neuroglia-logo.png"
+                                 data-progressive-image/>
+                            <h1 class="summary-title">Neuroglia</h1>
+                            <p class="summary-about">Neuroglia is a consultancy and solution design company for the
+                                digital transformation of companies and their services..</p>
+                        </div>
+                        <div class="summary-links">
+                            <a href="https://neuroglia.io/" class="button button-neutral button-reduced" target="_blank"
+                               aria-label="Website for Neuroglia">Website</a>
+                        </div>
+                    </article>
+
+                </li>
+
+                <li class="grid-item large-span-4 medium-span-6">
+                    <article class="bg-white project-summary">
+                        <div>
+                            <img class="summary-icon" alt="" role="presentation" src="img/nokia-logo.png"
+                                 data-progressive-image/>
+                            <h1 class="summary-title">Nokia</h1>
+                            <p class="summary-about">Nokia is a trusted partner for critical networks, committed to
+                                innovation and technology leadership across mobile, fixed and cloud networks.</p>
+                        </div>
+                        <div class="summary-links">
+                            <a href="https://www.nokia.com/" class="button button-neutral button-reduced"
+                               target="_blank" aria-label="Website for Nokia">Website</a>
+                        </div>
+                    </article>
+                </li>
+                <li class="grid-item large-span-4 medium-span-6">
+                    <article class="bg-white project-summary">
+                        <div>
+                            <img class="summary-icon" alt="" role="presentation" src="img/openenterprise-logo.png"
+                                 data-progressive-image/>
+                            <h1 class="summary-title">OpenEnterprise</h1>
+                            <p class="summary-about">OpenEnterprise Automatiko helps you build better services and
+                                functions based on workflows expressed with well known standards.</p>
+                        </div>
+                        <div class="summary-links">
+                            <a href="https://automatiko.io/" class="button button-neutral button-reduced"
+                               target="_blank" aria-label="Website for OpenEnterprise">Website</a>
+                        </div>
+                    </article>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+</main>
+
+<footer id="footer" class="footer" role="contentinfo" aria-labelledby="footer-label">
+    <div class="footer-content">
+        <nav class="footer-breadcrumbs" aria-label="breadcrumb" role="navigation">
+            <div class="footer-breadcrumbs-path">
+                <ol class="footer-breadcrumbs-list">
+                    <li class="footer-breadcrumbs-item">Serverless Workflow is a <a href="https://www.cncf.io/"
+                                                                                    target="_blank">CNCF</a> sandbox
+                        project
+                    </li>
+                </ol>
+            </div>
+        </nav>
+
+        <section class="footer-mini" vocab="http://schema.org/" typeof="Organization">
+            <div class="footer-mini-legal">
+                <div class="footer-mini-legal-copyright">Copyright © 2022 Serverless Workflow Specification Authors
+                    <br/>Documentation Distributed under CC-BY-4.0
+                </div>
+                <ul class="footer-mini-legal-links">
+                    <li><a class="footer-mini-legal-link"
+                           href="https://github.com/serverlessworkflow/specification/blob/main/LICENSE" target="_blank">License</a>
+                    </li>
+                    <li><a class="footer-mini-legal-link"
+                           href="https://github.com/serverlessworkflow/specification/blob/main/code-of-conduct.md"
+                           target="_blank">Code Of Conduct</a></li>
+                    <li><a class="footer-mini-legal-link"
+                           href="https://github.com/serverlessworkflow/specification/blob/main/contributing.md"
+                           target="_blank">Contributing</a></li>
+                    <li><a class="footer-mini-legal-link" href="mailto:serverlessworkflow@gmail.com">Contact</a></li>
+                </ul>
+            </div>
+        </section>
     </div>
 </footer>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
         integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
         crossorigin="anonymous"></script>
@@ -449,23 +472,5 @@ states:
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 <script src="https://unpkg.com/bootstrap-table@1.18.1/dist/bootstrap-table.min.js"></script>
-<script language="JavaScript">
-    function getNextDayOfTheWeek(dayName, excludeToday = true, refDate = new Date()) {
-        const dayOfWeek = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
-            .indexOf(dayName.slice(0, 3).toLowerCase());
-        if (dayOfWeek < 0) return;
-        refDate.setHours(0, 0, 0, 0);
-        refDate.setDate(refDate.getDate() + +!!excludeToday +
-            (dayOfWeek + 7 - refDate.getDay() - +!!excludeToday) % 7);
-        var displayOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
-        return refDate.toLocaleDateString("en-US", displayOptions);
-    }
-
-    $(document).ready(function () {
-        $("#joinmeetdiv").html("Join our next community team meeting on " +
-            "<a href=\"https://github.com/serverlessworkflow/specification#meetings\"\n" +
-            "target=\"_blank\">" + getNextDayOfTheWeek("Wednesday", false) + " @ 11-12am Eastern Time (ET)</a>");
-    });
-</script>
 </body>
 </html>

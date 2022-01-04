@@ -21,7 +21,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/png" href="img/sw-logo-header.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/sws.css">
+    <!--    <link rel="stylesheet" href="css/sws.css">-->
+    <link rel="stylesheet" href="css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" data-name="vs/editor/editor.main" href="css/editor/editor.main.css"/>
@@ -44,7 +45,7 @@
     <script>
 
         mermaid.mermaidAPI.initialize({
-            startOnLoad:false
+            startOnLoad: false
         });
 
     </script>
@@ -54,45 +55,59 @@
 </head>
 
 <body id="page-top">
-<nav class="navbar navbar-expand-lg navbar-custom" id="mainNav">
-    <div class="container">
-        <a class="navbar-brand justify-content-left" href="https://github.com/serverlessworkflow" target="_blank"><i class="fa fa-github" style="color: #ffffff;"></i> Github</a>
-        <a class="navbar-brand justify-content-left" href="https://twitter.com/CNCFWorkflow" target="_blank"><i class="fa fa-twitter" style="color: #ffffff;"></i> Twitter</a>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/"><i class="fa fa-external-link" style="color: #ffffff;"></i>
-                    Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link"
-                   href="https://github.com/serverlessworkflow/specification/blob/master/specification.md"
-                   target="_blank"><i class="fa fa-external-link" style="color: #ffffff;"></i> Specification</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link"
-                   href="https://github.com/serverlessworkflow/specification/blob/master/examples/README.md"
-                   target="_blank"><i class="fa fa-external-link" style="color: #ffffff;"></i> Examples</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="https://github.com/serverlessworkflow/specification/tree/master/usecases"
-                   target="_blank"><i class="fa fa-external-link" style="color: #ffffff;"></i> Use Cases</a>
-            </li>
-            <li class="nav-item">
-                <div class="dropdown">
-                    <a class="nav-link dropdown-toggle" type="btn" id="specsdks" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-external-link" style="color: #ffffff;"></i> SDKs
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="https://github.com/serverlessworkflow/sdk-go">Go</a>
-                        <a class="dropdown-item" href="https://github.com/serverlessworkflow/sdk-java">Java</a>
+<nav
+        id="localnav"
+        class="localnav theme-dark localnav-scrim"
+        data-sticky
+        aria-label="Global"
+        role="navigation">
+    <div class="localnav-wrapper">
+        <div class="localnav-background"></div>
+        <div class="localnav-content">
+            <div class="localnav-title">
+                <a href="https://github.com/serverlessworkflow" target="_blank" class="icon-wrapper">
+                    <span class="fa fa-github" style="color: #ffffff;"></span>
+                    <span>GitHub</span>
+                </a>
+            </div>
+            <ul class="localnav-menu">
+
+                <li class="localnav-menu-tray">
+                    <ul class="localnav-menu-items">
+                        <li class="localnav-menu-item">
+                            <a class="localnav-menu-link" href='/' target="_blank">Home</a>
+                        </li>
+                        <li class="localnav-menu-item">
+                            <a class="localnav-menu-link" href="https://cloud-native.slack.com/archives/CMBAZQSEP"
+                               target="_blank">Slack</a>
+                        </li>
+                        <li class="localnav-menu-item">
+                            <a class="localnav-menu-link" href='https://twitter.com/cncfworkflow' target="_blank">Twitter</a>
+                        </li>
+                        <li class="localnav-menu-item">
+                            <a class="localnav-menu-link"
+                               href='https://www.youtube.com/channel/UCQ080N6AqM_k-7itU6rSqZQ'
+                               target="_blank">YouTube</a>
+                        </li>
+                        <li class="localnav-menu-item">
+                            <a class="localnav-menu-link" href='restream.io' target="_blank">Restream</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="localnav-actions localnav-actions-center">
+                    <div class="localnav-action localnav-action-menucta" aria-hidden="true">
+                        <label for="localnav-menustate" class="localnav-menucta">
+							<span class="localnav-menuicon-bread localnav-menuicon-bread-top">
+								<span class="localnav-menuicon-bread-crust localnav-menuicon-bread-crust-top"></span>
+							</span>
+                            <span class="localnav-menuicon-bread localnav-menuicon-bread-bottom">
+								<span class="localnav-menuicon-bread-crust localnav-menuicon-bread-crust-bottom"></span>
+							</span>
+                        </label>
                     </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="poster/index.html"><i class="fa fa-external-link" style="color: #ffffff;"></i> Poster</a>
-            </li>
-        </ul>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
 
@@ -104,48 +119,85 @@
         <br/>You can also select one of the existing workflow examples from the dropdown.
         <br/><br/>
         <p class="lead">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="card">
-                        <div class="card-body">
-        <p class="card-title">
-            <select id="examples" name="examples" onchange="selectExample(this.value);">
-                <option value='' selected>Select an existing workflow example</option>
-                <option value='helloworld'>Hello World Example</option>
-                <option value='parallelexecution'>Parallel execution example</option>
-                <option value='eventbaseddecisions'>Event-based decisions example</option>
-                <option value='provisionorders'>Provision orders Example</option>
-                <option value='monitorjobs'>Monitor jobs example</option>
-                <option value='vetappointment'>Vet appointment example</option>
-            </select>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-title">
+                            <select id="examples" name="examples" onchange="selectExample(this.value);">
+                                <option value='' selected>Select an existing workflow example</option>
+                                <option value='helloworld'>Hello World Example</option>
+                                <option value='parallelexecution'>Parallel execution example</option>
+                                <option value='eventbaseddecisions'>Event-based decisions example</option>
+                                <option value='provisionorders'>Provision orders Example</option>
+                                <option value='monitorjobs'>Monitor jobs example</option>
+                                <option value='vetappointment'>Vet appointment example</option>
+                            </select>
 
-            <select id="theme" name="theme" onchange="changeTheme(this.value);">
-                <option value='' selected>Change editor color theme</option>
-                <option value='vs'>Default</option>
-                <option value='vs-dark'>Dark</option>
-                <option value='hc-black'>High Contrast Dark</option>
-            </select>
-        </p>
-        <div id="sweditor" style="width: 100%; height: 600px; border: 1px solid grey"></div>
-        <br/>
-    </div>
-    </div>
-    </div>
-        <div class="col-sm-6" style="border: 0px solid">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">
-                    <a href="#" class="btn btn-primary btn-sm" onclick="generateDiagram(this.value);return false;">Generate
-                        workflow diagram</a></h5>
-                <br/><br/>
-                <div class="workflowdiagram">
-                    <br/>
+                            <select id="theme" name="theme" onchange="changeTheme(this.value);">
+                                <option value='' selected>Change editor color theme</option>
+                                <option value='vs'>Default</option>
+                                <option value='vs-dark'>Dark</option>
+                                <option value='hc-black'>High Contrast Dark</option>
+                            </select>
+                        </p>
+                        <div id="sweditor" style="width: 100%; height: 600px; border: 1px solid grey"></div>
+                        <br/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6" style="border: 0px solid">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="#" class="btn btn-primary btn-sm"
+                               onclick="generateDiagram(this.value);return false;">Generate
+                                workflow diagram</a></h5>
+                        <br/><br/>
+                        <div class="workflowdiagram">
+                            <br/>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
 </section>
+<footer id="footer" class="footer" role="contentinfo" aria-labelledby="footer-label">
+    <div class="footer-content">
+        <nav class="footer-breadcrumbs" aria-label="breadcrumb" role="navigation">
+            <div class="footer-breadcrumbs-path">
+                <ol class="footer-breadcrumbs-list">
+                    <li class="footer-breadcrumbs-item">Serverless Workflow is a <a href="https://www.cncf.io/"
+                                                                                    target="_blank">CNCF</a> sandbox
+                        project
+                    </li>
+                </ol>
+            </div>
+        </nav>
+
+        <section class="footer-mini" vocab="http://schema.org/" typeof="Organization">
+            <div class="footer-mini-legal">
+                <div class="footer-mini-legal-copyright">Copyright © 2022 Serverless Workflow Specification Authors
+                    <br/>Documentation Distributed under CC-BY-4.0
+                </div>
+                <ul class="footer-mini-legal-links">
+                    <li><a class="footer-mini-legal-link"
+                           href="https://github.com/serverlessworkflow/specification/blob/main/LICENSE" target="_blank">License</a>
+                    </li>
+                    <li><a class="footer-mini-legal-link"
+                           href="https://github.com/serverlessworkflow/specification/blob/main/code-of-conduct.md"
+                           target="_blank">Code Of Conduct</a></li>
+                    <li><a class="footer-mini-legal-link"
+                           href="https://github.com/serverlessworkflow/specification/blob/main/contributing.md"
+                           target="_blank">Contributing</a></li>
+                    <li><a class="footer-mini-legal-link" href="mailto:serverlessworkflow@gmail.com">Contact</a></li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+</footer>
 
 <script>
     var require = {paths: {vs: 'min/vs'}};
@@ -164,11 +216,13 @@
     var model = monaco.editor.createModel(JSON.stringify(helloWorldExample, null, 2), "json", modelUri);
 
     // configure the JSON language support with schemas and schema associations
-    monaco.languages.json.jsonDefaults.setDiagnosticsOptions({ validate: true, allowComments: false,
+    monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
+        validate: true, allowComments: false,
         schemas: [{
             uri: "https://raw.githubusercontent.com/serverlessworkflow/specification/0.8.x/schema/workflow.json",
             fileMatch: [modelUri.toString()]
-        }], enableSchemaRequest: true});
+        }], enableSchemaRequest: true
+    });
 
     monaco.editor.create(document.getElementById("sweditor"), {
         model: model
@@ -178,14 +232,5 @@
 
 </script>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-
-<footer class="page-footer font-small section-blue">
-    <div class="footer-copyright text-center py-3">© Serverless Workflow Specification Authors 2020 | Documentation
-        Distributed under CC-BY-4.0<br/><br/>
-        © 2020 The Linux Foundation. All rights reserved.
-        The Linux Foundation has registered trademarks and uses trademarks.<br/>
-        For a list of trademarks of The Linux Foundation, please see our Trademark Usage page.
-    </div>
-</footer>
 </body>
 </html>
