@@ -30,9 +30,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/termynal.css">
+    <link rel="stylesheet" href="css/prism.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169200952-1"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+    <script src="js/prism.js"/>
     <script>hljs.initHighlightingOnLoad();
     hljs.initLineNumbersOnLoad();
     </script>
@@ -214,6 +216,170 @@
         </div>
     </section>
 
+
+    <section class="section section-releases-spotlight bg-gray">
+        <header class="section-content section-header row align-items-start">
+            <div class="column large-9 medium-12">
+                <h2 class="sub-headline">Describe your business logic with the most powerful open-source DSL</h2>
+            </div>
+        </header>
+        <div class="section-content">
+            <article class="bg-white releases-summary">
+                <p>
+                    <img class="summary-icon" alt="" role="presentation" src="img/code-icon.png"
+                         data-progressive-image/>
+                    <div class="bg-white rounded shadow">
+                        <!-- Rounded tabs -->
+                        <ul id="dslTab" role="tablist" class="nav nav-tabs nav-pills flex-column flex-sm-row text-center bg-light border-0 rounded-nav">
+                            <li class="nav-item flex-sm-fill">
+                                <a id="events-tab" data-toggle="tab" href="#events" role="tab" aria-controls="events" aria-selected="true" class="nav-link border-0 text-uppercase font-weight-bold active">React to Events</a>
+                            </li>
+                            <li class="nav-item flex-sm-fill">
+                                <a id="async-tab" data-toggle="tab" href="#async" role="tab" aria-controls="async" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Invoke Services Async</a>
+                            </li>
+                            <li class="nav-item flex-sm-fill">
+                                <a id="failures-tab" data-toggle="tab" href="#failures" role="tab" aria-controls="failures" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Handler Failures</a>
+                            </li>
+                            <li class="nav-item flex-sm-fill">
+                                <a id="compensation-tab" data-toggle="tab" href="#compensation" role="tab" aria-controls="compensation" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Define Compensation</a>
+                            </li>
+                        </ul>
+                        <div id="dslTabContent" class="tab-content">
+                            <div id="events" role="tabpanel" aria-labelledby="events-tab" class="tab-pane fade px-4 show active">
+                                <pre><code class="language-yaml">
+id: monitorPatientVitalsWorkflow
+version: '1.0'
+name: Monitor Patient Vitals Workflow
+states:
+- name: Monitor Vitals
+  type: event
+  onEvents:
+  - eventRefs:
+    - HighBodyTempEvent
+    - HighBloodPressureEvent
+    actions:
+    - functionRef: Invoke Dispatch Nurse Function
+  - eventRefs:
+    - HighRespirationRateEvent
+    actions:
+    - functionRef: Invoke Dispatch Pulmonologist Function
+  end: true
+functions: file://my/services/asyncapipatientservicedefs.json
+events: file://my/events/patientcloudeventsdefs.yml
+
+                               </code></pre>
+                            </div>
+                            <div id="async" role="tabpanel" aria-labelledby="async-tab" class="tab-pane fade px-4">
+                            <pre><code class="language-yaml">
+id: customerEmailWorkflow
+version: '1.0'
+name: Send Customer Email Workflow
+states:
+- name: Send Email
+  type: operation
+  actions:
+  - functionRef:
+      invoke: async
+      refName: Invoke Send Email Function
+      arguments:
+        customer: "${ .customer }"
+  end: true
+functions:
+- name: Invoke Send Email Function
+  operation: openapiservicedef.json#sendEmail
+  type: rest
+                            </code>
+                            </pre>
+                            </div>
+                            <div id="failures" role="tabpanel" aria-labelledby="failures-tab" class="tab-pane fade px-4">
+                            <pre><code class="language-yaml">
+id: provisionOrderWorkflow
+version: '1.0'
+name: Provision Order Workflow
+states:
+- name: Provision Order
+  type: operation
+  actions:
+  - functionRef:
+      refName: Invoke Provision Order Function
+      arguments:
+        order: "${ .order }"
+  transition: Fulfill Order
+  onErrors:
+  - errorRef: Missing Order ID Error
+    transition: Missing ID State
+  - errorRef: Missing Order Item Error
+    transition: Missing Item State
+  - errorRef: Insufficient Order Quantity Error
+    transition: Insufficient Quantity State
+functions:
+- name: Invoke Provision Order Function
+  operation: https://myservices.io/orders/graphql#provisionOrder
+  type: graphql
+errors: file://mydefs/errordefs.json
+                            </code>
+                            </pre>
+                            </div>
+                            <div id="compensation" role="tabpanel" aria-labelledby="compensation-tab" class="tab-pane fade px-4">
+                            <pre><code class="language-yaml">
+id: newItemPurchaseWorkflow
+version: '1.0'
+name: New Item Purchase Workflow
+states:
+- name: Item Purchase
+  type: event
+  onEvents:
+  - eventRefs:
+    - New Purchase Event
+    actions:
+    - functionRef:
+        refName: Invoke Debit Customer Function
+        arguments:
+          customerid: "${ .purchase.customerid }"
+          amount: "${ .purchase.amount }"
+  compensatedBy: Cancel Purchase
+  end: true
+  onErrors:
+  - errorRef: Debit Error
+    end:
+      compensate: true
+- name: Cancel Purchase
+  type: operation
+  usedForCompensation: true
+  actions:
+  - functionRef:
+      refName: Invoke Credit Customer Function
+      arguments:
+        customerid: "${ .purchase.customerid }"
+        amount: "${ .purchase.amount }"
+functions: http://myservicedefs.io/graphqldef.json
+events: http://myeventdefs.io/eventdefs.json
+errors: file://mydefs/errordefs.json
+                            </code>
+                            </pre>
+                            </div>
+                        </div>
+                        <!-- End rounded tabs -->
+                <br/><p class="overview">Model <b>human decisions</b>, define <b>timeouts and retries</b>, define <b>parallel exec logic and looping</b>, make <b>data and event-based decisions</b>,
+                define <b>callbacks</b>, write powerful <b>expressions</b>, set <b>secrets</b> and <b>constants</b> and much more.
+                </p>
+                <p class="overview">Read the <a href="https://github.com/serverlessworkflow/specification/blob/main/specification.md"
+                                                target="_blank">specification</a> document for the list of all DSL features.
+                </p>
+                </div>
+                <div class="summary-links">
+                    <a href="https://github.com/serverlessworkflow/specification/tree/main/examples"
+                       target="_blank" class="button button-neutral button-reduced" aria-label="Examples">Examples</a>
+                    <a href="https://github.com/serverlessworkflow/specification/tree/main/comparisons"
+                       class="button button-neutral button-reduced" target="_blank" aria-label="Use Cases">Comparisons</a>
+                    <a href="editor.html"
+                       class="button button-neutral button-reduced" target="_blank" aria-label="Use Cases">Web Editor</a>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
     <section class="section section-releases-spotlight bg-gray">
         <header class="section-content section-header row align-items-start">
             <div class="column large-9 medium-12">
@@ -258,14 +424,14 @@
     <section class="section section-releases-spotlight bg-gray">
         <header class="section-content section-header row align-items-start">
             <div class="column large-9 medium-12">
-                <h2 class="sub-headline">Upcoming and recent community events</h2>
+                <h2 class="sub-headline">Join upcoming and view recent community events</h2>
             </div>
         </header>
         <div class="section-content">
 
             <article class="bg-white releases-summary">
                 <div>
-                    <img class="summary-icon" alt="" role="presentation" src="img/youtube-icon.png"
+                    <img class="summary-icon" alt="" role="presentation" src="img/events-icon.png"
                          data-progressive-image/>
                     <p class="overview">
                     <table class="table table-hover">
