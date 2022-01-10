@@ -392,6 +392,136 @@ var vetAppointmentExample = {
     ]
 };
 
+var monitorVitalsExample = {
+    "id": "monitorPatientVitalsWorkflow",
+    "version": "1.0",
+    "name": "Monitor Patient Vitals Workflow",
+    "states": [
+        {
+            "name": "Monitor Vitals",
+            "type": "event",
+            "onEvents": [
+                {
+                    "eventRefs": [
+                        "High Body Temp Event",
+                        "High Blood Pressure Event"
+                    ],
+                    "actions": [
+                        {
+                            "functionRef": "Invoke Dispatch Nurse Function"
+                        }
+                    ]
+                },
+                {
+                    "eventRefs": [
+                        "High Respiration Rate Event"
+                    ],
+                    "actions": [
+                        {
+                            "functionRef": "Invoke Dispatch Pulmonologist Function"
+                        }
+                    ]
+                }
+            ],
+            "end": true
+        }
+    ],
+    "functions": "file://my/services/asyncapipatientservicedefs.json",
+    "events": "file://my/events/patientcloudeventsdefs.yml"
+};
+
+var customerEmailExample = {
+    "id": "customerEmailWorkflow",
+    "version": "1.0",
+    "specVersion": "0.8",
+    "name": "Send Customer Email Workflow",
+    "states": [
+        {
+            "name": "Send Email",
+            "type": "operation",
+            "actions": [
+                {
+                    "functionRef": {
+                        "invoke": "async",
+                        "refName": "Invoke Send Email Function",
+                        "arguments": {
+                            "customer": "${ .customer }"
+                        }
+                    }
+                }
+            ],
+            "end": true
+        }
+    ],
+    "functions": [
+        {
+            "name": "Invoke Send Email Function",
+            "operation": "openapiservicedef.json#sendEmail",
+            "type": "rest"
+        }
+    ]
+};
+
+var newItemPurchaseExample = {
+    "id": "newItemPurchaseWorkflow",
+    "version": "1.0",
+    "specVersion": "0.8",
+    "name": "New Item Purchase Workflow",
+    "states": [
+        {
+            "name": "Item Purchase",
+            "type": "event",
+            "onEvents": [
+                {
+                    "eventRefs": [
+                        "New Purchase Event"
+                    ],
+                    "actions": [
+                        {
+                            "functionRef": {
+                                "refName": "Invoke Debit Customer Function",
+                                "arguments": {
+                                    "customerid": "${ .purchase.customerid }",
+                                    "amount": "${ .purchase.amount }"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ],
+            "compensatedBy": "Cancel Purchase",
+            "end": true,
+            "onErrors": [
+                {
+                    "errorRef": "Debit Error",
+                    "end": {
+                        "compensate": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Cancel Purchase",
+            "type": "operation",
+            "usedForCompensation": true,
+            "actions": [
+                {
+                    "functionRef": {
+                        "refName": "Invoke Credit Customer Function",
+                        "arguments": {
+                            "customerid": "${ .purchase.customerid }",
+                            "amount": "${ .purchase.amount }"
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "functions": "http://myservicedefs.io/graphqldef.json",
+    "events": "http://myeventdefs.io/eventdefs.json",
+    "errors": "file://mydefs/errordefs.json"
+};
+
 var examplesMap = {};
 examplesMap['helloworld'] = helloWorldExample;
 examplesMap['parallelexecution'] = parallelStateExample;
@@ -399,6 +529,9 @@ examplesMap['eventbaseddecisions'] = eventBasedSwitchState;
 examplesMap['provisionorders'] = provisionOrdersExample;
 examplesMap['monitorjobs'] = monitorJobsExample;
 examplesMap['vetappointment'] = vetAppointmentExample;
+examplesMap['monitorvitals'] = monitorVitalsExample;
+examplesMap['customeremail'] = customerEmailExample;
+examplesMap['newitempurchase'] = newItemPurchaseExample;
 
 function selectExample(value) {
     if(value.length > 0) {

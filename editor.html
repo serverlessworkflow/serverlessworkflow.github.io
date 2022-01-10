@@ -21,7 +21,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/png" href="img/sw-logo-header.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <!--    <link rel="stylesheet" href="css/sws.css">-->
     <link rel="stylesheet" href="css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -110,10 +109,9 @@
         </div>
     </div>
 </nav>
-
-<section id="swonlineeditor" style="padding: 100px;">
+<section id="swonlineeditor" style="padding: 20px;">
     <div class="container">
-        <h2>Serverless Workflow Online Editor</h2>
+        <h2>Serverless Workflow Web Editor</h2>
         <hr class="hr-short"/>
         Edit your workflow and select the "Generate workflow diagram" button to update the image.
         <br/>You can also select one of the existing workflow examples from the dropdown.
@@ -132,6 +130,9 @@
                                 <option value='provisionorders'>Provision orders Example</option>
                                 <option value='monitorjobs'>Monitor jobs example</option>
                                 <option value='vetappointment'>Vet appointment example</option>
+                                <option value='monitorvitals'>Monitor patient vitals example</option>
+                                <option value="customeremail">Customer email example (async)</option>
+                                <option value="newitempurchase">New item purchase example (compensation)</option>
                             </select>
 
                             <select id="theme" name="theme" onchange="changeTheme(this.value);">
@@ -205,7 +206,7 @@
 <script src="js/loader.js"></script>
 <script src="js/editor.main.nls.js"></script>
 <script src="js/editor.main.js"></script>
-<script src="js/swedtior.js"></script>
+<script src="js/sweditor.js"></script>
 <script>
     var jsonCode = [
         '{',
@@ -232,5 +233,33 @@
 
 </script>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script>
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+        return false;
+    };
+
+    function selectElement(id, valueToSelect) {
+        let element = document.getElementById(id);
+        element.value = valueToSelect;
+    }
+
+    var exampleId = getUrlParameter('exampleid');
+    if(exampleId) {
+        selectElement('examples', exampleId)
+        selectExample(exampleId);
+    }
+</script>
 </body>
 </html>
