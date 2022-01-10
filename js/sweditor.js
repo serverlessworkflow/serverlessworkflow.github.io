@@ -522,6 +522,60 @@ var newItemPurchaseExample = {
     "errors": "file://mydefs/errordefs.json"
 };
 
+var checkInboxExample = {
+    "id": "checkInbox",
+    "name": "Check Inbox Workflow",
+    "version": "1.0",
+    "specVersion": "0.8",
+    "description": "Periodically Check Inbox",
+    "start": {
+        "stateName": "CheckInbox",
+        "schedule": {
+            "cron": "0 0/15 * * * ?"
+        }
+    },
+    "states": [
+        {
+            "name": "CheckInbox",
+            "type": "operation",
+            "actionMode": "sequential",
+            "actions": [
+                {
+                    "functionRef": "checkInboxFunction"
+                }
+            ],
+            "transition": "SendTextForHighPriority"
+        },
+        {
+            "name": "SendTextForHighPriority",
+            "type": "foreach",
+            "inputCollection": "${ .messages }",
+            "iterationParam": "singlemessage",
+            "actions": [
+                {
+                    "functionRef": {
+                        "refName": "sendTextFunction",
+                        "arguments": {
+                            "message": "${ .singlemessage }"
+                        }
+                    }
+                }
+            ],
+            "end": true
+        }
+    ],
+    "functions": [
+      {
+        "name": "checkInboxFunction",
+        "operation": "http://myapis.org/inboxapi.json#checkNewMessages"
+      },
+      {
+        "name": "sendTextFunction",
+        "operation": "http://myapis.org/inboxapi.json#sendText"
+      }
+    ],
+};
+
 var examplesMap = {};
 examplesMap['helloworld'] = helloWorldExample;
 examplesMap['parallelexecution'] = parallelStateExample;
@@ -532,6 +586,7 @@ examplesMap['vetappointment'] = vetAppointmentExample;
 examplesMap['monitorvitals'] = monitorVitalsExample;
 examplesMap['customeremail'] = customerEmailExample;
 examplesMap['newitempurchase'] = newItemPurchaseExample;
+examplesMap['checkinbox'] = checkInboxExample;
 
 function selectExample(value) {
     if(value.length > 0) {

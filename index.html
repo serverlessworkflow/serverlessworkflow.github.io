@@ -226,21 +226,24 @@
                     <div class="bg-white rounded shadow">
                         <!-- Rounded tabs -->
                         <ul id="dslTab" role="tablist" class="nav nav-tabs nav-pills flex-column flex-sm-row text-center bg-light border-0 rounded-nav">
-                            <li class="nav-item flex-sm-fill">
+                            <li class="nav-item flex-sm-fill" style="font-size: 14px">
                                 <a id="events-tab" data-toggle="tab" href="#events" role="tab" aria-controls="events" aria-selected="true" class="nav-link border-0 text-uppercase font-weight-bold active">React to Events</a>
                             </li>
-                            <li class="nav-item flex-sm-fill">
+                            <li class="nav-item flex-sm-fill" style="font-size: 14px">
                                 <a id="async-tab" data-toggle="tab" href="#async" role="tab" aria-controls="async" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Invoke Services Async</a>
                             </li>
-                            <li class="nav-item flex-sm-fill">
+                            <li class="nav-item flex-sm-fill" style="font-size: 14px">
                                 <a id="failures-tab" data-toggle="tab" href="#failures" role="tab" aria-controls="failures" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Handle Failures</a>
                             </li>
-                            <li class="nav-item flex-sm-fill">
+                            <li class="nav-item flex-sm-fill" style="font-size: 14px">
                                 <a id="compensation-tab" data-toggle="tab" href="#compensation" role="tab" aria-controls="compensation" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Define Compensation</a>
+                            </li>
+                            <li class="nav-item flex-sm-fill" style="font-size: 14px">
+                                <a id="cron-tab" data-toggle="tab" href="#cron" role="tab" aria-controls="compensation" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Cron execution</a>
                             </li>
                         </ul>
                         <div id="dslTabContent" class="tab-content">
-                            <div id="events" role="tabpanel" aria-labelledby="events-tab" class="tab-pane fade px-4 show active">
+                            <div id="events" role="tabpanel" aria-labelledby="events-tab" class="tab-pane fade px-4 show active" style="font-size: 14px">
                                 <a href="editor.html?exampleid=monitorvitals">View full example in web editor</a>
                                 <pre data-line="8-11,19-21" class="language-json match-braces line-numbers"><code>{
   "states": [
@@ -273,7 +276,7 @@
     }
   ]
 }</code></pre></div>
-                            <div id="async" role="tabpanel" aria-labelledby="async-tab" class="tab-pane fade px-4">
+                            <div id="async" role="tabpanel" aria-labelledby="async-tab" class="tab-pane fade px-4" style="font-size: 14px">
                             <a href="editor.html?exampleid=customeremail">View full example in web editor</a>
                             <pre data-line="8-14" class="language-json match-braces line-numbers"><code>{
   "states": [
@@ -294,7 +297,7 @@
     }
   ]
 }</code></pre></div>
-                            <div id="failures" role="tabpanel" aria-labelledby="failures-tab" class="tab-pane fade px-4">
+                            <div id="failures" role="tabpanel" aria-labelledby="failures-tab" class="tab-pane fade px-4" style="font-size: 14px">
                             <a href="editor.html?exampleid=provisionorders">View full example in web editor</a>
                             <pre data-line="13-26" class="language-json match-braces line-numbers"><code>{
   "states": [
@@ -324,8 +327,8 @@
       ]
     }
  ]</code></pre></div>
-                            <div id="compensation" role="tabpanel" aria-labelledby="compensation-tab" class="tab-pane fade px-4">
-<!--                            <a href="editor.html?exampleid=newitempurchase">View full example in web editor</a>-->
+                            <div id="compensation" role="tabpanel" aria-labelledby="compensation-tab" class="tab-pane fade px-4" style="font-size: 14px">
+                            <a href="editor.html?exampleid=newitempurchase">View full example in web editor</a>
                             <pre data-line="18,22-24,31" class="language-json match-braces line-numbers"><code>{
    "states": [
         {
@@ -364,8 +367,22 @@
             ]
         }
     ]
-}</code></pre>
-                            </div>
+}</code></pre></div>
+                            <div id="cron" role="tabpanel" aria-labelledby="async-tab" class="tab-pane fade px-4" style="font-size: 14px">
+                                <a href="editor.html?exampleid=checkinbox">View full example in web editor</a>
+                                <pre data-line="8-10" class="language-json match-braces line-numbers"><code>{
+    "id": "periodicInboxCheck",
+    "name": "Periodic Check Inbox Workflow",
+    "version": "1.0",
+    "description": "Periodically Check Inbox",
+    "start": {
+        "stateName": "CheckInbox",
+        "schedule": {
+            "cron": "0 0/15 * * * ?"
+        }
+    },
+    "states": [...]
+}</code></pre></div>
                         </div>
                         <!-- End rounded tabs -->
                 <br/><p class="overview">Model <b>human decisions</b>, define <b>timeouts and retries</b>, define <b>parallel exec logic and looping</b>, make <b>data and event-based decisions</b>,
