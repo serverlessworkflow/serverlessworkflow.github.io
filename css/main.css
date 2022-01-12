@@ -8685,3 +8685,10 @@ html .theme-dark .localnav.localnav-scrim .localnav-background, html .localnav-s
 .footer-mini .footer-mini-legal .footer-mini-legal-link {
     color: #424245
 }
+
+.btn-circle {
+    background-color: #ffffff;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+}
