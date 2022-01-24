@@ -211,14 +211,14 @@
 
         "}"
     ].join('\n');
-    var modelUri = monaco.Uri.parse("https://raw.githubusercontent.com/serverlessworkflow/specification/0.8.x/schema/workflow.json");
+    var modelUri = monaco.Uri.parse("https://serverlessworkflow.io/schemas/0.8/workflow.json");
     var model = monaco.editor.createModel(JSON.stringify(helloWorldExample, null, 2), "json", modelUri);
 
     // configure the JSON language support with schemas and schema associations
     monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
         validate: true, allowComments: false,
         schemas: [{
-            uri: "https://raw.githubusercontent.com/serverlessworkflow/specification/0.8.x/schema/workflow.json",
+            uri: "https://serverlessworkflow.io/schemas/0.8/workflow.json",
             fileMatch: [modelUri.toString()]
         }], enableSchemaRequest: true
     });
