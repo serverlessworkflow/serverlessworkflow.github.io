@@ -109,25 +109,53 @@
                     <p class="overview">Standards-based DSL and open-source dev tools and runtimes are at the heart of
                         the Serverless Workflow project. We connect developers around the world to foster innovation and
                         provide a community-driven workflow ecosystem.</p>
-                    <p class="overview"><br/><b>Get started:</b><br/><br/>
-                        <a href="https://github.com/serverlessworkflow/specification/blob/main/specification.md"
-                           class="button button-elevated column large-last medium-notlast">Specification</a>
-                        <a href="community.html"
-                           class="button button-elevated column large-last medium-notlast">Community</a>
-                        <a href="editor.html" class="button button-elevated column large-last medium-notlast">Web
-                            Editor</a>
-                        <a href="https://github.com/serverlessworkflow/sdk-java" target="_blank"
-                           class="button button-elevated column large-last medium-notlast">Java</a>
-                        <a href="https://github.com/serverlessworkflow/sdk-go" target="_blank"
-                           class="button button-elevated column large-last medium-notlast">Go</a>
-                        <a href="https://github.com/serverlessworkflow/sdk-typescript" target="_blank"
-                           class="button button-elevated column large-last medium-notlast">TypeScript</a>
-                        <a href="https://github.com/serverlessworkflow/sdk-net" target="_blank"
-                           class="button button-elevated column large-last medium-notlast">.NET</a>
-                        <a href="https://github.com/serverlessworkflow/sdk-python" target="_blank"
-                           class="button button-elevated column large-last medium-notlast">Python</a>
+                    <p><br/>
+                    <div class="col-md-12 mb-2">
+                        <div class="dropdown d-inline-block">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Specification
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="https://github.com/serverlessworkflow/specification" target="_blank">GitHub</a>
+                                <a class="dropdown-item" href="https://github.com/serverlessworkflow/specification/blob/main/specification.md" target="_blank">Documentation</a>
+                                <a class="dropdown-item" href="https://github.com/serverlessworkflow/specification/tree/main/examples" target="_blank">Examples</a>
+                                <a class="dropdown-item" href="https://github.com/serverlessworkflow/specification/tree/main/comparisons" target="_blank">Comparisons</a>
+                            </div>
+                        </div>
+                        <div class="dropdown d-inline-block">
+                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Community
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="community.html">About</a>
+                                <a class="dropdown-item" href="https://github.com/serverlessworkflow/specification/discussions" target="_blank">Discussions</a>
+                                <a class="dropdown-item" href="https://cloud-native.slack.com/archives/CMBAZQSEP" target="_blank">Slack</a>
+                            </div>
+                        </div>
+                        <div class="dropdown d-inline-block">
+                            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                SDKs/Tools
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="https://github.com/serverlessworkflow/sdk-java" target="_blank">Java</a>
+                                <a class="dropdown-item" href="https://github.com/serverlessworkflow/sdk-go" target="_blank">Go</a>
+                                <a class="dropdown-item" href="https://github.com/serverlessworkflow/sdk-typescript" target="_blank">TypeScript</a>
+                                <a class="dropdown-item" href="https://github.com/serverlessworkflow/sdk-net" target="_blank">.NET</a>
+                                <a class="dropdown-item" href="https://github.com/serverlessworkflow/sdk-python" target="_blank">Python</a>
+                                <a class="dropdown-item" href="editor.html">Web Editor</a>
+                                <a class="dropdown-item" href="https://marketplace.visualstudio.com/items?itemName=serverlessworkflow.serverless-workflow-vscode-extension" target="_blank">VSCode Extension</a>
+                            </div>
+                        </div>
+                        <div class="dropdown d-inline-block">
+                            <button class="btn btn-warning dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Hosted Runtimes
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="https://github.com/serverlessworkflow/synapse" target="_blank">Synapse</a>
+                            </div>
+                        </div>
+                    </div>
                     </p>
-
                 </div>
             </div>
         </div>
@@ -406,6 +434,45 @@
                 </div>
             </article>
 
+        </div>
+    </section>
+
+    <section class="section section-projects bg-gray">
+        <header class="section-content section-header row align-items-start">
+            <div class="column large-9 medium-12">
+                <h2 class="sub-headline">Execute your production workflows</h2>
+                <p class="overview">Serverless Workflow welcomes all open-source runtimes to become part of our project
+                    community. <a href="mailto:serverlessworkflow@gmail.com">Contact us</a> to find out how you can make your runtime part of our
+                project and CNCF.</p>
+            </div>
+            <!--            <a href="https://github.com/serverlessworkflow/specification/blob/main/specification.md" target="_blank" class="button button-elevated column large-last medium-notlast">Read the Specification</a>-->
+        </header>
+        <div class="section-content">
+            <ul class="project-grid list-reset">
+
+                <li class="grid-item large-span-4 medium-span-6">
+                    <article class="bg-white project-summary">
+                        <div>
+                            <img class="summary-icon" alt="" role="presentation" src="img/synapse-logo.png"
+                                 data-progressive-image/>
+                            <h1 class="summary-title">Synapse</h1>
+                            <p class="summary-about">Synapse is a vendor-neutral, free, open-source, and community-driven
+                                Workflow Management System (WFMS) implementing the Serverless Workflow specification.
+                                You can deploy Synapse on Docker, Kubernetes, or natively on Wondows, Mac, and Linux.
+                            </p>
+                        </div>
+                        <div class="summary-links">
+                            <a href="https://github.com/serverlessworkflow/synapse"
+                               target="_blank" class="button button-neutral button-reduced" aria-label="Project">Get Started</a>
+                            <a href="https://github.com/serverlessworkflow/synapse/releases"
+                               class="button button-neutral button-reduced" target="_blank" aria-label="Releases">Releases</a>
+                        </div>
+                    </article>
+
+                </li>
+                </li>
+
+            </ul>
         </div>
     </section>
 
