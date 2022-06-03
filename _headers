@@ -1,0 +1,5 @@
+# See:  https://docs.netlify.com/routing/headers/
+#       https://answers.netlify.com/t/access-control-allow-origin-policy/1813
+/*
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: OPTIONS, GET
