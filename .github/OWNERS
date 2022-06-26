@@ -1,12 +1,6 @@
 reviewers:
   - tsurdilo
-  - manuelstein
-  - falko
-  - duglin
 approvers:
   - tsurdilo
-  - manuelstein
-  - falko
-  - duglin
 labels:
   - sig/contributor-experience
