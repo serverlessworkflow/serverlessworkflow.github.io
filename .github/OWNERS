@@ -1,6 +1,7 @@
 reviewers:
-  - tsurdilo
+  - ricardozanini
+  - cdavernas
 approvers:
-  - tsurdilo
+  - ricardozanini
 labels:
   - sig/contributor-experience
