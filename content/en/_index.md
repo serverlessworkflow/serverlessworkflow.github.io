@@ -1,5 +1,12 @@
 ---
 title: Serverless Workflow
+description: Serverless Workflow presents a vendor-neutral, open-source, and entirely community-driven ecosystem tailored for defining and executing DSL-based workflows in the realm of Serverless technology.
+summary: Serverless Workflow presents a vendor-neutral, open-source, and entirely community-driven ecosystem tailored for defining and executing DSL-based workflows in the realm of Serverless technology.
+keywords:
+- workflows
+- serverless
+- cloudevent
+- services
 images:
 - img/logos/sw-logo.png
 ---
