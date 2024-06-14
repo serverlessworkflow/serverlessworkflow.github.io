@@ -1,5 +1,7 @@
 ---
 title: Serverless Workflow
+images:
+- img/logos/sw-logo.png
 ---
 
 {{% blocks/cover title="Serverless Workflow" image_anchor="top" height="auto" %}}
@@ -75,7 +77,7 @@ Open Source projects supporting our DSL
     <img src="img/logos/synapselogo.png" class="img-logo"/>
   </div>
   <h4 class="h3">
-    Sinapse
+    Synapse
   </h4>
   <div class="mb-0">
     Synapse is a vendor-neutral, free, open-source, and community-driven Workflow Management System (WFMS) implementing the Serverless Workflow specification. You can deploy Synapse on Docker, Kubernetes, or natively on Windows, Mac, and Linux.
