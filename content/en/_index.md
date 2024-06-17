@@ -81,15 +81,15 @@ Open Source projects supporting our DSL
 
 <div class="col-lg-4 mb-5 mb-lg-0 text-center">
   <div class="mb-4 h1">
-    <img src="img/logos/synapselogo.png" class="img-logo"/>
+    <img src="img/logos/eventmesh.png" class="img-logo"/>
   </div>
   <h4 class="h3">
-    Synapse
+    Apache EventMesh Workflow
   </h4>
   <div class="mb-0">
-    Synapse is a vendor-neutral, free, open-source, and community-driven Workflow Management System (WFMS) implementing the Serverless Workflow specification. You can deploy Synapse on Docker, Kubernetes, or natively on Windows, Mac, and Linux.
+    Apache EventMesh Workflow is a cloud vendor-independent, cloud-native-oriented Serverless Workflow Runtime based on Serverless Workflow specification, and provides durability, reliability, scalability, and observability capabilities.
   </div>
-  <p><a class="me-3 mb-4" href="https://github.com/serverlessworkflow/synapse">Get Started</a></p>
+  <p><a class="me-3 mb-4" href="https://github.com/apache/eventmesh-workflow">Get Started</a></p>
 </div>
 
 <div class="col-lg-4 mb-5 mb-lg-0 text-center">
@@ -107,15 +107,15 @@ Open Source projects supporting our DSL
 
 <div class="col-lg-4 mb-5 mb-lg-0 text-center">
   <div class="mb-4 h1">
-    <img src="img/logos/eventmesh.png" class="img-logo"/>
+    <img src="img/logos/synapselogo.png" class="img-logo"/>
   </div>
   <h4 class="h3">
-    Apache EventMesh Workflow
+    Synapse
   </h4>
   <div class="mb-0">
-    Apache EventMesh Workflow is a cloud vendor-independent, cloud-native-oriented Serverless Workflow Runtime based on Serverless Workflow specification, and provides durability, reliability, scalability, and observability capabilities.
+    Synapse is a vendor-neutral, free, open-source, and community-driven Workflow Management System (WFMS) implementing the Serverless Workflow specification. You can deploy Synapse on Docker, Kubernetes, or natively on Windows, Mac, and Linux.
   </div>
-  <p><a class="me-3 mb-4" href="https://github.com/apache/eventmesh-workflow">Get Started</a></p>
+  <p><a class="me-3 mb-4" href="https://github.com/serverlessworkflow/synapse">Get Started</a></p>
 </div>
 
 {{% /blocks/section %}}
@@ -129,6 +129,45 @@ Already using Serverless Workflow? Join our list of top brands by letting us kno
 {{% /blocks/lead %}}
 
 {{% blocks/section type="row" color="light-gray" %}}
+
+<div class="col-lg-4 mb-5 mb-lg-0 text-center">
+  <div class="mb-4 h1">
+    <img src="img/logos/eventmesh2.png" class="img-logo-company"/>
+  </div>
+  <h4 class="h3">
+    Apache EventMesh
+  </h4>
+  <div class="mb-0">
+    A new generation serverless event middleware for building distributed event-driven applications.
+  </div>
+  <p><a class="me-3 mb-4" href="https://github.com/apache/eventmesh">Learn More</a></p>
+</div>
+
+<div class="col-lg-4 mb-5 mb-lg-0 text-center">
+  <div class="mb-4 h1">
+    <img src="img/logos/caf.png" class="img-logo-company"/>
+  </div>
+  <h4 class="h3">
+    Caf
+  </h4>
+  <div class="mb-0">
+    Serverless Workflow is the core technology behind every KYC/KYB solution allowing them to customize it for their clients seamlessly.
+  </div>
+  <p><a class="me-3 mb-4" href="https://caf.io/">Learn More</a></p>
+</div>
+
+<div class="col-lg-4 mb-5 mb-lg-0 text-center">
+  <div class="mb-4 h1">
+    <img src="img/logos/faasnet.png" class="img-logo-company"/>
+  </div>
+  <h4 class="h3">
+    FaasNet
+  </h4>
+  <div class="mb-0">
+    FaasNet makes it easy to deploy functions and API to Kubernetes without repetitive, boiler-plate coding.
+  </div>
+  <p><a class="me-3 mb-4" href="https://github.com/simpleidserver/FaasNet">Learn More</a></p>
+</div>
 
 <div class="col-lg-4 mb-5 mb-lg-0 text-center">
   <div class="mb-4 h1">
@@ -197,44 +236,23 @@ Red Hat sponsors Apache KIE SonataFlow, a tool for creating cloud-native workflo
 </div>
 -->
 
+{{% /blocks/section %}}
+
+{{% blocks/section %}}
+Support our Project
+{.h1 .text-center}
+Our sponsors, along with our community, help our project grow and stay vendor-neutral through their donations. <a class="me-3 mb-4" href="https://crowdfunding.lfx.linuxfoundation.org/projects/beb979ae-75b5-4589-a2d0-f82949253bb7">Buy us a coffee!</a>
+{.h4 .text-center}
+
+{{% /blocks/section %}}
+{{% blocks/section type="row" color="white" %}}
 <div class="col-lg-4 mb-5 mb-lg-0 text-center">
   <div class="mb-4 h1">
-    <img src="img/logos/eventmesh2.png" class="img-logo-company"/>
+    <img src="img/logos/neuroglia.png" class="img-logo-company"/>
   </div>
-  <h4 class="h3">
-    Apache EventMesh
-  </h4>
   <div class="mb-0">
-    A new generation serverless event middleware for building distributed event-driven applications.
+    Neuroglia is a consultancy and solution design company for the digital transformation of companies and their services.
   </div>
-  <p><a class="me-3 mb-4" href="https://github.com/apache/eventmesh">Learn More</a></p>
+  <p><a class="me-3 mb-4" href="https://neuroglia.io/">Website</a></p>
 </div>
-
-<div class="col-lg-4 mb-5 mb-lg-0 text-center">
-  <div class="mb-4 h1">
-    <img src="img/logos/faasnet.png" class="img-logo-company"/>
-  </div>
-  <h4 class="h3">
-    FaasNet
-  </h4>
-  <div class="mb-0">
-    FaasNet makes it easy to deploy functions and API to Kubernetes without repetitive, boiler-plate coding.
-  </div>
-  <p><a class="me-3 mb-4" href="https://github.com/simpleidserver/FaasNet">Learn More</a></p>
-</div>
-
-<div class="col-lg-4 mb-5 mb-lg-0 text-center">
-  <div class="mb-4 h1">
-    <img src="img/logos/caf.png" class="img-logo-company"/>
-  </div>
-  <h4 class="h3">
-    Caf
-  </h4>
-  <div class="mb-0">
-    Serverless Workflow is the core technology behind every KYC/KYB solution allowing them to customize it for their clients seamlessly.
-  </div>
-  <p><a class="me-3 mb-4" href="https://caf.io/">Learn More</a></p>
-</div>
-
-
 {{% /blocks/section %}}
