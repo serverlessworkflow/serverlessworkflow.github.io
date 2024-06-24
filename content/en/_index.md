@@ -42,6 +42,20 @@ Integrate events seamlessly into workflows with support for formats like CloudEv
 The Serverless Workflow DSL allows developers to integrate with service-oriented architectures, defining workflows that interact with services using protocols like HTTP, GRPC, OpenAPI, and AsyncAPI.
 {{% /blocks/feature %}}
 
+{{% blocks/feature icon="fa-server" title="FaaS Centric" %}}
+Invoke functions across platforms seamlessly within workflows, supporting FaaS and microservices architectures.
+{{% /blocks/feature %}}
+
+
+{{% blocks/feature icon="fa-clock" title="Timely" %}}
+Set timeouts for workflows and tasks to manage execution duration.
+{{% /blocks/feature %}}
+
+
+{{% blocks/feature icon="fa-shield-alt" title="Fault Tolerant" %}}
+Define error handling strategies to manage and recover from workflow execution errors, ensuring robustness and reliability.
+{{% /blocks/feature %}}
+
 {{% /blocks/section %}}
 
 {{% blocks/section %}}
