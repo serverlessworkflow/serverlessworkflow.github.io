@@ -1,33 +1,22 @@
-HELP.md
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**
-!**/src/test/**
+node_modules/
+package-lock.json
+/tmp
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
+# Hugo
+.hugo_build.lock
+/public
+resources/
 
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
+# vim temporary files
+*~
+*.sw?
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-
-### VS Code ###
-.vscode/
-
+# system files
 .DS_Store
+
+# IDE files
+.idea
+
+# VS Code
+/.vscode/**
+!/.vscode/cspell.json
