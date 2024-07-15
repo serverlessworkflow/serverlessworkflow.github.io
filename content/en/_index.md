@@ -58,6 +58,59 @@ Define error handling strategies to manage and recover from workflow execution e
 
 {{% /blocks/section %}}
 
+
+
+<section class="row td-box td-box--5 td-box--height-auto">
+  <div class="col">
+    <div class="row">
+      <div class="col">
+{{< tabpane text=true right=true >}}
+  {{% tab header="**Examples**:" disabled=true /%}}
+  {{% tab header="Minimal" lang="minimal" %}}
+  ```yaml
+  document:
+    dsl: 1.0.0-alpha1
+    namespace: examples
+    name: call-http-shorthand-endpoint
+    version: 1.0.0-alpha1
+  do:
+    - getPet:
+        call: http
+        with:
+          method: get
+          endpoint: https://petstore.swagger.io/v2/pet/{petId}
+  ```
+  {{% /tab %}}
+  {{% tab header="Async API" lang="asyncapi" %}}
+  ```yaml
+  document:
+    dsl: 1.0.0-alpha1
+    namespace: examples
+    name: bearer-auth
+    version: 1.0.0-alpha1
+  do:
+    - findPet:
+        call: asyncapi
+        with:
+          document:
+            uri: https://fake.com/docs/asyncapi.json
+          operationRef: findPetsByStatus
+          server: staging
+          message: getPetByStatusQuery
+          binding: http
+          payload:
+            petId: ${ .pet.id }
+          authentication:
+            bearer:
+              token: ${ .token }
+  ```
+  {{% /tab %}}
+{{< /tabpane >}}
+      </div>
+    </div>
+  </div>
+</section>
+
 {{% blocks/section %}}
 Reach out to us!
 {.h1 .text-center}
