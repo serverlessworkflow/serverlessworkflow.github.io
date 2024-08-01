@@ -224,19 +224,6 @@ Red Hat sponsors Apache KIE SonataFlow, a tool for creating cloud-native workflo
 
 <div class="col-lg-4 mb-5 mb-lg-0 text-center">
   <div class="logo-container my-4 d-flex justify-content-center align-items-center">
-    <img src="img/logos/temporal.png" class="img-logo-company"/>
-  </div>
-  <h4 class="h3">
-    Temporal
-  </h4>
-  <div class="mb-0">
-    Temporal is the open source microservice orchestration platform for writing durable workflows as code.
-  </div>
-  <p><a class="me-3 mb-4" href="https://temporal.io/">Learn More</a></p>
-</div>
-
-<div class="col-lg-4 mb-5 mb-lg-0 text-center">
-  <div class="logo-container my-4 d-flex justify-content-center align-items-center">
     <img src="img/logos/warrify.png" class="img-logo-company"/>
   </div>
   <h4 class="h3">
