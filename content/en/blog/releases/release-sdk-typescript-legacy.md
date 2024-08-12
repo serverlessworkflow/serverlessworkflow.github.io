@@ -34,17 +34,16 @@ This package will retain the older naming and organizational structure to mainta
 
 Moving forward, all new packages will be released under the correct (organization) name `@serverlessworkflow/sdk`. This change not only corrects a previous error but also aligns with the updated versioning of the spec. 
 
-The version 1.0.0-alpha of the package is still a [work in progress](https://github.com/serverlessworkflow/sdk-typescript/pull/188) and will be released once it is ready, featuring all the enhancements and updates introduced with the rewritten specification.
-
+The version 1.0.0-alpha is still a [work in progress](https://github.com/serverlessworkflow/sdk-typescript/pull/188). It will be released once it is ready and will feature all the enhancements and updates introduced with the rewritten specification.
 
 ## Why This Matters
 
-These changes ensure that we are consistent and aligned with our community's expectations and standards. By maintaining a legacy branch, we are providing a bridge for developers who may need more time to transition to the new specification. At the same time, the correct naming and versioning for new packages help streamline our offerings and reduce confusion.
+These changes ensure consistency and alignment with our community's expectations and standards. Maintaining a legacy branch provides a bridge for developers needing more time to transition to the new specification. At the same time, the correct naming and versioning for new packages help streamline our offerings and reduce confusion.
 
 ## Moving Forward
 
-I encourage all developers to explore the new features and improvements of the upcoming SDK version once it is released. For those who need to stick with the older version for now, the legacy branch is there for your convenience.
+We encourage all developers to explore the new features and improvements of the upcoming SDK version once it is released. For those who need to stick with the older version for now, the legacy branch is there for your convenience.
 
-Thank you for your continued support and contributions to the Serverless Workflow community. As always, your feedback is invaluable, and I look forward to hearing your thoughts on these changes.
+Thank you for your continued support and contributions to the Serverless Workflow community. As always, your feedback is invaluable, and we look forward to hearing your thoughts on these changes.
 
 Happy coding!
