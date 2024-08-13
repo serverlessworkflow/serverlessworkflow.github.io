@@ -74,10 +74,10 @@ Define error handling strategies to manage and recover from workflow execution e
   {{% tab header="Minimal" lang="minimal" %}}
   ```yaml
   document:
-    dsl: 1.0.0-alpha1
+    dsl: '1.0.0-alpha1'
     namespace: examples
     name: call-http-shorthand-endpoint
-    version: 1.0.0-alpha1
+    version: '1.0.0'
   do:
     - getPet:
         call: http
@@ -89,10 +89,10 @@ Define error handling strategies to manage and recover from workflow execution e
   {{% tab header="Async API" lang="asyncapi" %}}
   ```yaml
   document:
-    dsl: 1.0.0-alpha1
+    dsl: '1.0.0-alpha1'
     namespace: examples
     name: bearer-auth
-    version: 1.0.0-alpha1
+    version: '1.0.0'
   do:
     - findPet:
         call: asyncapi
@@ -297,13 +297,13 @@ Already using Serverless Workflow? Join our list of top brands by letting us kno
 <!-- END OF Adopters -->
 
 <!-- Sponsors -->
-{{% blocks/section %}}
+{{% blocks/lead color="primary" %}}
 Support our Project
 {.h1 .text-center .mb-5}
 Our sponsors, along with our community, help our project grow and stay vendor-neutral through their donations. <a class="me-3 mb-4" href="https://crowdfunding.lfx.linuxfoundation.org/projects/beb979ae-75b5-4589-a2d0-f82949253bb7">Buy us a coffee!</a>
 {.h4 .text-center}
 
-{{% /blocks/section %}}
+{{% /blocks/lead %}}
 {{% blocks/section type="container" color="white" %}}
 <div class="row">
   <div class="col-lg-4 mb-5 mb-lg-0 text-center">
