@@ -147,7 +147,7 @@ Open Source projects supporting our DSL
 {{% blocks/section type="row" color="white" %}}
 
 <div class="col-lg-4 mb-5 mb-lg-0 text-center">
-  <div class="mb-4 h1">
+  <div class="logo-container my-4 d-flex justify-content-center align-items-center">
     <img src="img/logos/eventmesh.png" class="img-logo"/>
   </div>
   <h4 class="h3">
@@ -160,7 +160,7 @@ Open Source projects supporting our DSL
 </div>
 
 <div class="col-lg-4 mb-5 mb-lg-0 text-center">
-  <div class="mb-4 h1">
+  <div class="logo-container my-4 d-flex justify-content-center align-items-center">
     <img src="img/logos/kogito.png" class="img-logo"/>
   </div>
   <h4 class="h3">
@@ -173,7 +173,7 @@ Open Source projects supporting our DSL
 </div>
 
 <div class="col-lg-4 mb-5 mb-lg-0 text-center">
-  <div class="mb-4 h1">
+  <div class="logo-container my-4 d-flex justify-content-center align-items-center">
     <img src="img/logos/synapselogo.png" class="img-logo"/>
   </div>
   <h4 class="h3">
@@ -198,7 +198,7 @@ Already using Serverless Workflow? Join our list of top brands by letting us kno
 {{% blocks/section type="row" color="light-gray" %}}
 
 <div class="col-lg-4 mb-5 mb-lg-0 text-center">
-  <div class="mb-4 h1">
+  <div class="logo-container my-4 d-flex justify-content-center align-items-center">
     <img src="img/logos/eventmesh2.png" class="img-logo-company"/>
   </div>
   <h4 class="h3">
@@ -211,7 +211,7 @@ Already using Serverless Workflow? Join our list of top brands by letting us kno
 </div>
 
 <div class="col-lg-4 mb-5 mb-lg-0 text-center">
-  <div class="mb-4 h1">
+  <div class="logo-container my-4 d-flex justify-content-center align-items-center">
     <img src="img/logos/caf.png" class="img-logo-company"/>
   </div>
   <h4 class="h3">
@@ -224,7 +224,7 @@ Already using Serverless Workflow? Join our list of top brands by letting us kno
 </div>
 
 <div class="col-lg-4 mb-5 mb-lg-0 text-center">
-  <div class="mb-4 h1">
+  <div class="logo-container my-4 d-flex justify-content-center align-items-center">
     <img src="img/logos/faasnet.png" class="img-logo-company"/>
   </div>
   <h4 class="h3">
@@ -237,7 +237,7 @@ Already using Serverless Workflow? Join our list of top brands by letting us kno
 </div>
 
 <div class="col-lg-4 mb-5 mb-lg-0 text-center">
-  <div class="mb-4 h1">
+  <div class="logo-container my-4 d-flex justify-content-center align-items-center">
     <img src="img/logos/huawei.png" class="img-logo-company"/>
   </div>
   <h4 class="h3">
@@ -250,7 +250,7 @@ Already using Serverless Workflow? Join our list of top brands by letting us kno
 </div>
 
 <div class="col-lg-4 mb-5 mb-lg-0 text-center">
-  <div class="mb-4 h1">
+  <div class="logo-container my-4 d-flex justify-content-center align-items-center">
     <img src="img/logos/neuroglia.png" class="img-logo-company"/>
   </div>
   <h4 class="h3">
@@ -263,7 +263,7 @@ Already using Serverless Workflow? Join our list of top brands by letting us kno
 </div>
 
 <div class="col-lg-4 mb-5 mb-lg-0 text-center">
-  <div class="mb-4 h1">
+  <div class="logo-container my-4 d-flex justify-content-center align-items-center">
     <img src="img/logos/redhat.png" class="img-logo-company"/>
   </div>
   <h4 class="h3">
@@ -276,21 +276,21 @@ Red Hat sponsors Apache KIE SonataFlow, a tool for creating cloud-native workflo
 </div>
 
 <div class="col-lg-4 mb-5 mb-lg-0 text-center">
-  <div class="mb-4 h1">
-    <img src="img/logos/temporal.png" class="img-logo-company"/>
+  <div class="logo-container my-4 d-flex justify-content-center align-items-center">
+    <img src="img/logos/warrify.png" class="img-logo-company"/>
   </div>
   <h4 class="h3">
-    Temporal
+    Warrify
   </h4>
   <div class="mb-0">
-    Temporal is the open source microservice orchestration platform for writing durable workflows as code.
+    warrify offers a leading data platform for the retail industry. With "warrify Journeys" (powered by Serverless Workflows) retailers are discovering new ways how to engage their customers in real time.
   </div>
-  <p><a class="me-3 mb-4" href="https://temporal.io/">Learn More</a></p>
+  <p><a class="me-3 mb-4" href="https://www.warrify.com">Learn More</a></p>
 </div>
 
 <!--
 <div class="col-lg-4 mb-5 mb-lg-0 text-center">
-  <div class="mb-4 h1">
+  <div class="logo-container my-4 d-flex justify-content-center align-items-center">
     <img src="img/logos/kogito.png" class="img-logo"/>
   </div>
   <h4 class="h3">
@@ -314,7 +314,7 @@ Our sponsors, along with our community, help our project grow and stay vendor-ne
 {{% /blocks/section %}}
 {{% blocks/section type="row" color="white" %}}
 <div class="col-lg-4 mb-5 mb-lg-0 text-center">
-  <div class="mb-4 h1">
+  <div class="logo-container my-4 d-flex justify-content-center align-items-center">
     <img src="img/logos/neuroglia.png" class="img-logo-company"/>
   </div>
   <div class="mb-0">
