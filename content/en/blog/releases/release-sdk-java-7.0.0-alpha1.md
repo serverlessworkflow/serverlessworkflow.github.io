@@ -6,7 +6,7 @@ description: >
    Heads up, community! We have released a new Java SDK version compatible with Specification 1.0.0.
 ---
 
-# Announcing the Release of Serverless Workflow Java SDK 7.0.0-alpha1
+## Announcing the Release of Serverless Workflow Java SDK 7.0.0-alpha1
 
 Hello, Serverless Workflow community!
 
@@ -22,7 +22,7 @@ try (InputStream in = new FileInputStream("simple.yaml")) {
 
 To install the SDK, simply add it as a dependency to your Maven project:
 
-{{< card code=true header="**Java SDK Example**" lang="Java" >}}
+{{< card code=true header="**Maven Dependency**" lang="Java" >}}
 <dependency>
     <groupId>io.serverlessworkflow</groupId>
     <artifactId>serverlessworkflow-api</artifactId>
@@ -34,7 +34,7 @@ With this release, the Java SDK fully supports serializing and deserializing wor
 
 We're also thrilled to share that new features are in the pipeline, and we'll be releasing another alpha version soon. You can track our progress towards the 7.0.0.Final version [here](https://github.com/serverlessworkflow/sdk-java/milestone/1).
 
-## Previous Versions and Support for the Specification 0.8
+### Previous Versions and Support for the Specification 0.8
 
 As we move forward, if you encounter any issues with the 5.x series, which supports Specification 0.8, please [open an issue in our repository](https://github.com/serverlessworkflow/sdk-java/issues) so we can track it. While we may release patch versions to address critical issues, please note that no new features will be added, and our resources for maintaining this branch are limited.
 
