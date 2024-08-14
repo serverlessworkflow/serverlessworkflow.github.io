@@ -1,7 +1,7 @@
 ---
 title: Serverless Workflow Java SDK 7.0.0-alpha1
 author: Ricardo Zanini
-date: 2024-06-07
+date: 2024-08-14
 description: >
    Heads up, community! We have released a new Java SDK version compatible with Specification 1.0.0.
 ---
