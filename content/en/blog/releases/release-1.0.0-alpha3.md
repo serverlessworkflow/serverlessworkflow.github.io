@@ -1,7 +1,7 @@
 ---
 title: Serverless Workflow 1.0.0-alpha3
 author: Ricardo Zanini
-date: 2024-06-07
+date: 2024-10-07
 description: >
    A Closer Look at Serverless Workflow v1.0.0-alpha3: Major Fixes and Performance Boosts
 ---
