@@ -17,6 +17,7 @@ images:
   Learn More <i class="fas fa-arrow-alt-circle-right ms-2"></i>
 </a>
 <p class="lead mt-5">Serverless Workflow presents a vendor-neutral, open-source, and entirely community-driven ecosystem tailored for defining and executing DSL-based workflows in the realm of Serverless technology.</p>
+<p>The current version is 1.0.0-alpha3, get the JSON Schema here: <a href="https://serverlessworkflow.io/schemas/1.0.0-alpha3/workflow.yaml" target="_blank">YAML</a> or <a href="https://serverlessworkflow.io/schemas/1.0.0-alpha3/workflow.json" target="_blank">JSON</a></p>
 {{< blocks/link-down color="info" >}}
 {{% /blocks/cover %}}
 <!-- END OF Cover -->
@@ -74,7 +75,7 @@ Define error handling strategies to manage and recover from workflow execution e
   {{% tab header="Minimal" lang="minimal" %}}
   ```yaml
   document:
-    dsl: '1.0.0-alpha1'
+    dsl: '1.0.0-alpha3'
     namespace: examples
     name: call-http-shorthand-endpoint
     version: '1.0.0'
@@ -89,7 +90,7 @@ Define error handling strategies to manage and recover from workflow execution e
   {{% tab header="Async API" lang="asyncapi" %}}
   ```yaml
   document:
-    dsl: '1.0.0-alpha1'
+    dsl: '1.0.0-alpha3'
     namespace: examples
     name: bearer-auth
     version: '1.0.0'
