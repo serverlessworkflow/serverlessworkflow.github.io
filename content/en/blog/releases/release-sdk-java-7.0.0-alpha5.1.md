@@ -1,16 +1,16 @@
 ---
-title: Serverless Workflow Java SDK 7.0.0-alpha5-1
+title: Serverless Workflow Java SDK 7.0.0-alpha1
 author: Francisco Javier Tirado Sarti
-date: 2024-12-4
+date: 2024-11-7
 description: >
    Heads up, community! We have released a new Java SDK version compatible with Specification 1.0.0.
 ---
 
-## Announcing the Release of Serverless Workflow Java SDK 7.0.0-alpha5.1
+## Announcing the Release of Serverless Workflow Java SDK 7.0.0-alpha1
 
 Hello, Serverless Workflow community!
 
-We're excited to announce the release of the latest Java SDK, version 7.0.0-alpha5.1, now compatible with the upcoming Serverless Workflow Specification 1.0.0. You can dive right in by using [one of the examples](https://github.com/serverlessworkflow/specification/tree/main/examples) available in the specification repository. Here's a quick example to get you started:
+We're excited to announce the release of the latest Java SDK, version 7.0.0-alpha5, now compatible with the upcoming Serverless Workflow Specification 1.0.0. You can dive right in by using [one of the examples](https://github.com/serverlessworkflow/specification/tree/main/examples) available in the specification repository. Here's a quick example to get you started:
 
 {{< card code=true header="**Java SDK Example**" lang="Java" >}}
 // Make sure simple.yaml is in your src/main/resources folder
@@ -26,17 +26,17 @@ To install the SDK, simply add it as a dependency to your Maven project:
 <dependency>
     <groupId>io.serverlessworkflow</groupId>
     <artifactId>serverlessworkflow-api</artifactId>
-    <version>7.0.0-alpha5.1</version>
+    <version>7.0.0-alpha5</version>
 </dependency>
 {{< /card >}}
 
 With this release, 
 
-- We update to the latest schema revision. 
-      - Add ErrorFilter schema
+- We update to the latest schema. 
 - We improve POJO generation from specification schema by:
-     - Fix problem generating union classes related with Input/Output schema
-- We substantially advance in the development of a [reference implementation](https://github.com/serverlessworkflow/sdk-java/issues/459), that will be properly documented when it reaches a more stable state.
+     - creating proper union classes when the one of the union members is a string
+     - assigning meaningful names by using schema titles. 
+- We start the development of a reference implementation, that will be properly documented when it reaches a more stable state.
 
 We're also thrilled to share that new features are in the pipeline, and we'll be releasing another alpha version soon. You can track our progress towards the 7.0.0.Final version [here](https://github.com/serverlessworkflow/sdk-java/milestone/1).
 
