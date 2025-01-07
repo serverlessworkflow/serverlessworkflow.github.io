@@ -1,0 +1,41 @@
+---
+import { type CollectionEntry, render } from 'astro:content';
+import FormattedDate from '../../components/FormattedDate.astro';
+import SidebarLayout from '../../layouts/SidebarLayout.astro';
+import { getSortedBlogPosts } from '../../utils/collections';
+
+type Props = {
+	post: CollectionEntry<'blog'>,
+	entries: CollectionEntry<'blog'>[]
+};
+
+export async function getStaticPaths() {
+	const entries = await getSortedBlogPosts();
+	return entries.map((post) => ({
+		params: { slug: post.id },
+		props: {
+			post,
+			entries
+		}
+	}));
+};
+
+const { post } = Astro.props;
+const { title, date } = post.data;
+const { Content } = await render(post);
+---
+
+<SidebarLayout {title} {...Astro.props}>
+	<article>
+		<div class="prose max-w-none">
+			<div class="title">
+				<div class="date">
+					<FormattedDate date={date} />
+				</div>
+				<h1>{title}</h1>
+				<hr />
+			</div>
+			<Content />
+		</div>
+	</article>
+</SidebarLayout>

@@ -1,22 +1,24 @@
+# build output
+dist/
+
+# generated types
+.astro/
+
+# dependencies
 node_modules/
-package-lock.json
-/tmp
 
-# Hugo
-.hugo_build.lock
-/public
-resources/
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# vim temporary files
-*~
-*.sw?
+# environment variables
+.env
+.env.production
 
-# system files
+# macOS-specific files
 .DS_Store
 
-# IDE files
-.idea
-
-# VS Code
-/.vscode/**
-!/.vscode/cspell.json
+# jetbrains setting folder
+.idea/

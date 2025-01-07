@@ -1,0 +1,40 @@
+---
+import type { CollectionContent } from '../content.config';
+import { humanCase } from '../utils/formatter';
+
+interface Props {
+	entries: CollectionContent[]
+}
+const { entries } = Astro.props;
+
+const groupedEntries = entries
+  .reduce((groups, entry) => {
+    const id = entry.id;
+    const groupId = id.split('/')[0];
+    groups[groupId] = groups[groupId] || [];
+    groups[groupId].push(entry);
+    return groups;
+  }, {} as Record<string, CollectionContent[]>);
+
+---
+<div class="bg-base-100 text-base-content min-h-full w-80 p-4 border-r">
+  <a href="/blog">Blog</a>
+  <ul class="menu">
+    {
+      Object.entries(groupedEntries).map(([group, entries]) => 
+        <li>
+          <a href={`/blog/${group}/`}>{humanCase(group)}</a>
+          <ul>
+            {
+              entries.map(post => (
+                <li>
+                  <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+                </li>
+              ))
+            }
+          </ul>
+        </li>
+      )
+    }
+  </ul>
+</div>

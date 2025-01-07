@@ -1,0 +1,45 @@
+---
+type colorBase = 'primary' | 'secondary' | 'accent' | 'neutral';
+type textColor = colorBase | 'base';
+type bgColor = colorBase | 'base-100' | 'base-200' | 'base-300';
+interface Props {
+  paddingY?: '4' | '8' | '16',
+  paddingX?: '4' | '8 '| '16',
+  bg?: bgColor;
+  color?: textColor;
+  isGrid?: boolean;
+  width?: '3' | '5' | '7' | 'full',
+  title?: string;
+  subTitle?:string;
+}
+
+const {
+  paddingY = '16',
+  paddingX = '4',
+  isGrid = false,
+  bg,
+  color,
+  width = '7',
+  title,
+  subTitle,
+} = Astro.props;
+---
+
+<div class:list={[
+    `py-${paddingY}`, 
+    `px-${paddingX}`, 
+    bg ? `bg-${bg}` : '',
+    color ? `text-${color}-content` : ''
+  ]}
+>
+  <div class:list={['mx-auto', `max-w-${width}xl` ]}>
+    { title && <h2 class:list={['text-3xl', 'font-bold', 'text-center', !subTitle ? 'mb-12' : '']}>{ title }</h2> }
+    { subTitle && <p class="text-1xl text-center mb-4">{ subTitle }</p> }
+    { isGrid ?
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <slot />
+      </div> :
+      <slot />
+    }
+  </div>
+</div>

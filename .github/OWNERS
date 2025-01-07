@@ -1,8 +1,0 @@
-reviewers:
-  - ricardozanini
-  - cdavernas
-approvers:
-  - ricardozanini
-  - cdavernas
-labels:
-  - sig/contributor-experience

@@ -1,0 +1,42 @@
+---
+interface Props {
+  title: string;
+  alignment?: 'center' | 'start' | 'end';
+  icon?: string;
+  image?: string;
+  imageSize?: 'small' | 'medium';
+}
+
+const {
+  title,
+  alignment = 'center',
+  icon,
+  image,
+  imageSize = 'small',
+} = Astro.props;
+---
+
+<div class:list={['card', `text-${alignment}`]}>
+  <div class="card-body">
+    { image && 
+      <div class:list={['my-4', 'flex', `justify-${alignment}`]}>
+        <img src={image} class={`img-logo-${imageSize}`} />
+      </div>
+    }
+    { icon && <i class={icon}></i> }
+    <h3 class:list={['card-title', `justify-${alignment}`]}>{ title }</h3>
+    <slot />
+  </div>
+</div>
+
+<style>
+  .img-logo-small {
+    height: 50px;
+    max-width: none;
+  }
+
+  .img-logo-medium {
+    height: 75px;
+    max-width: none;
+  }
+</style>

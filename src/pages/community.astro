@@ -1,0 +1,50 @@
+---
+import { DEV_MAILING_LIST_LINK, GITHUB_LINK, LINKEDIN_LINK, SLACK_LINK, X_TWITTER_LINK } from '../consts';
+import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+---
+
+<Layout title="Community">
+  <Section title="Join the Serverless Workflow community" subTitle="Serverless Workflow is an open source project that anyone in the community can use, improve, and enjoy. We'd love you to join us! Here's a few ways to find out what's happening and get involved." bg="primary" color="primary" />
+  <Section>
+    <div class="grid grid-cols-2 gap-8">
+      <div class="prose">
+        <h3>Learn and Connect</h3>
+        <p>Using or want to use Serverless Workflow? Find out more here:</p>
+        <ul>
+          <li title="User help">
+            <a target="_blank" rel="noopener" href={GITHUB_LINK + 'discussions'}><i class="fa fa-envelope"></i> User help</a>:
+            Discussion and help from your fellow users
+          </li>
+          <li title="LinkedIn">
+            <a target="_blank" rel="noopener" href={LINKEDIN_LINK}><i class="fab fa-linkedin"></i> LinkedIn</a>:
+            Latest news on LinkedIn
+          </li>
+          <li title="LinkedIn">
+            <a target="_blank" rel="noopener" href={X_TWITTER_LINK}><i class="fab fa-x-twitter"></i> X</a>:
+            Latest news on X
+          </li>
+        </ul>
+      </div>
+      <div class="prose">
+        <h3>Develop and Contribute</h3>
+        <p>If you want to get more involved by contributing to Serverless Workflow, join us here:</p>
+        <ul>
+          <li title="GitHub">
+            <a target="_blank" rel="noopener" href={GITHUB_LINK}><i class="fab fa-github"></i> GitHub</a>:
+            Development takes place here!
+          </li>
+          <li title="Slack">
+            <a target="_blank" rel="noopener" href={SLACK_LINK}><i class="fab fa-slack"></i> Slack</a>:
+            Chat with other project developers at #serverless-workflow channel
+          </li>
+          <li title="Developer mailing list">
+            <a target="_blank" rel="noopener" href={DEV_MAILING_LIST_LINK}><i class="fa fa-envelope"></i> Developer mailing list</a>:
+            Discuss development issues around the project
+          </li>
+        </ul>
+        <p>You can find out how to contribute to Serverless Workflow in our <a href={GITHUB_LINK + 'blob/main/contributing.md' }>Contribution Guidelines</a>.</p>
+      </div>
+    </div>
+  </Section>
+</Layout>

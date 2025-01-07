@@ -1,0 +1,41 @@
+---
+import HtmlHead from "../components/HtmlHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+	title?: string;
+	description?: string;
+	image?: string;
+}
+
+export interface LayoutProps extends Props {}
+
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+	<head>
+		<HtmlHead {...Astro.props} />
+	</head>
+	<body class="min-h-screen bg-base-100">
+		<div class="full-h">
+			<Header />
+			<main>
+				<slot />
+			</main>
+			<Footer />
+		</div>
+	</body>
+</html>
+
+<style>
+	.full-h {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+	}
+	.full-h main {
+		flex: 1;
+	}
+</style>
