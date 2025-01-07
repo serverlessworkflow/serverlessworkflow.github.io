@@ -24,7 +24,7 @@ import { Code } from 'astro:components';
     </div>
   </div>
   <!-- Sub Hero -->
-  <Section width="3" bg="primary" color="primary">
+  <Section width="small" class="bg-primary text-primary-content">
     <p class="text-2xl text-center font-bold">The Serverless Workflow DSL is a high-level language that reshapes the terrain of workflow creation, boasting a design that is ubiquitous, intuitive, imperative, and fluent.</p>
   </Section>
 
@@ -51,7 +51,7 @@ import { Code } from 'astro:components';
   </Section>
 
   <!-- Samples -->
-  <Section title="User-Friendly DSL: Workflows Made Simple" bg="base-200">
+  <Section title="User-Friendly DSL: Workflows Made Simple" class="bg-base-200">
       <div role="tablist" class="tabs tabs-lifted">
         <input type="radio" name="code_tabs" role="tab" class="tab" aria-label="Minimal" checked />
         <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
@@ -112,7 +112,7 @@ do:
   </Section>
   
   <!-- Projects -->
-  <Section title="Open Source projects supporting our DSL" bg="base-200" isGrid={true}>
+  <Section title="Open Source projects supporting our DSL" class="bg-base-200" isGrid={true}>
     <Card title="Apache EventMesh Workflow" image="img/logos/eventmesh.png">
       <p>Apache EventMesh Workflow is a cloud vendor-independent, cloud-native-oriented Serverless Workflow Runtime based on Serverless Workflow specification, and provides durability, reliability, scalability, and observability capabilities.</p>
       <a class="link link-primary" href="https://github.com/apache/eventmesh-workflow" target="_blank" rel="noopener">Get Started</a>
@@ -160,7 +160,7 @@ do:
   </Section>
 
   <!-- Sponsors -->
-  <Section title="Support our Project" subTitle="Our sponsors, along with our community, help our project grow and stay vendor-neutral through their donations." bg="base-200">
+  <Section title="Support our Project" subTitle="Our sponsors, along with our community, help our project grow and stay vendor-neutral through their donations." class="bg-base-200">
     <div class="mx-auto w-full md:w-1/2 lg:w-1/3 card text-center">
       <Card title="Neuroglia" image="img/logos/neuroglia.png" imageSize="medium">
         <p>Neuroglia is a consultancy and solution design company for the digital transformation of companies and their services.</p>

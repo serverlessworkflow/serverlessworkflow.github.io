@@ -1,38 +1,50 @@
 ---
 type colorBase = 'primary' | 'secondary' | 'accent' | 'neutral';
-type textColor = colorBase | 'base';
-type bgColor = colorBase | 'base-100' | 'base-200' | 'base-300';
+type size = 'small' | 'medium' | 'large';
 interface Props {
-  paddingY?: '4' | '8' | '16',
-  paddingX?: '4' | '8 '| '16',
-  bg?: bgColor;
-  color?: textColor;
+  paddingY?: size;
+  paddingX?: size;
   isGrid?: boolean;
-  width?: '3' | '5' | '7' | 'full',
+  width?: size | 'full';
   title?: string;
   subTitle?:string;
+  class?: string;
 }
 
 const {
-  paddingY = '16',
-  paddingX = '4',
+  paddingY,
+  paddingX,
   isGrid = false,
-  bg,
-  color,
   width = '7',
   title,
   subTitle,
+  class: className
 } = Astro.props;
 ---
 
 <div class:list={[
-    `py-${paddingY}`, 
-    `px-${paddingX}`, 
-    bg ? `bg-${bg}` : '',
-    color ? `text-${color}-content` : ''
+    className,
+    (
+      paddingY === 'small' ? `py-4` :
+      paddingY === 'medium' ? `py-8` : 
+      `py-16`
+    ),
+    (
+      paddingX === 'large' ? `px-16` :
+      paddingX === 'medium' ? `px-8` : 
+      `px-4`
+    ),
   ]}
 >
-  <div class:list={['mx-auto', `max-w-${width}xl` ]}>
+  <div class:list={[
+    'mx-auto', 
+    (
+      width === 'full' ? `max-w-full` :
+      width === 'small' ? `max-w-3xl` :
+      width === 'medium' ? `max-w-5xl` :
+      `max-w-7xl`
+    ),
+    ]}>
     { title && <h2 class:list={['text-3xl', 'font-bold', 'text-center', !subTitle ? 'mb-12' : '']}>{ title }</h2> }
     { subTitle && <p class="text-1xl text-center mb-4">{ subTitle }</p> }
     { isGrid ?

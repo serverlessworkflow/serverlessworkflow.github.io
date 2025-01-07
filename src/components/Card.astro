@@ -16,26 +16,50 @@ const {
 } = Astro.props;
 ---
 
-<div class:list={['card', `text-${alignment}`]}>
+<div class:list={[
+  'card', 
+  (
+    alignment === 'start' ? `text-start` :
+    alignment === 'end' ? `text-end` :
+    `text-center`
+  ),
+]}>
   <div class="card-body">
     { image && 
-      <div class:list={['my-4', 'flex', `justify-${alignment}`]}>
-        <img src={image} class={`img-logo-${imageSize}`} />
+      <div class:list={[
+        'my-4', 
+        'flex', 
+        (
+          alignment === 'start' ? `justify-start` :
+          alignment === 'end' ? `justify-end` :
+          `justify-center`
+        ),
+      ]}>
+        <img src={image} class={`img--${imageSize}`} />
       </div>
     }
     { icon && <i class={icon}></i> }
-    <h3 class:list={['card-title', `justify-${alignment}`]}>{ title }</h3>
+    <h3 class:list={[
+      'card-title',
+      (
+          alignment === 'start' ? `justify-start` :
+          alignment === 'end' ? `justify-end` :
+          `justify-center`
+        ),
+    ]}>
+      { title }
+    </h3>
     <slot />
   </div>
 </div>
 
 <style>
-  .img-logo-small {
+  .img--small {
     height: 50px;
     max-width: none;
   }
 
-  .img-logo-medium {
+  .img--medium {
     height: 75px;
     max-width: none;
   }
