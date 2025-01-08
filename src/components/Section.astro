@@ -30,9 +30,9 @@ const {
       `py-16`
     ),
     (
-      paddingX === 'large' ? `px-16` :
+      paddingX === 'small' ? `px-4` :
       paddingX === 'medium' ? `px-8` : 
-      `px-4`
+      `px-16`
     ),
   ]}
 >
@@ -45,8 +45,8 @@ const {
       `max-w-7xl`
     ),
     ]}>
-    { title && <h2 class:list={['text-3xl', 'font-bold', 'text-center', !subTitle ? 'mb-12' : '']}>{ title }</h2> }
-    { subTitle && <p class="text-1xl text-center mb-4">{ subTitle }</p> }
+    { title && <h2 class:list={['text-primary', 'text-3xl', 'font-bold', 'text-center', !subTitle ? 'mb-12' : '']}>{ title }</h2> }
+    { subTitle && <p class="text-xl text-center mb-12">{ subTitle }</p> }
     { isGrid ?
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <slot />
