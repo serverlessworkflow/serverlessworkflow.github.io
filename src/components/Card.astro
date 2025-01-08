@@ -4,6 +4,7 @@ interface Props {
   alignment?: 'center' | 'start' | 'end';
   icon?: string;
   image?: string;
+  imageDark?: string;
   imageSize?: 'small' | 'medium';
 }
 
@@ -12,6 +13,7 @@ const {
   alignment = 'center',
   icon,
   image,
+  imageDark,
   imageSize = 'small',
 } = Astro.props;
 ---
@@ -25,7 +27,7 @@ const {
   ),
 ]}>
   <div class="card-body">
-    { image && 
+    { (image || imageDark) && 
       <div class:list={[
         'my-4', 
         'flex', 
@@ -35,7 +37,8 @@ const {
           `justify-center`
         ),
       ]}>
-        <img src={image} class={`img--${imageSize}`} />
+        { image && <img src={image} class:list={[`img--${imageSize}`, image && imageDark ? 'image-light' : '']} /> }
+        { imageDark && <img src={imageDark} class:list={[`img--${imageSize}`, image && imageDark ? 'image-dark' : '']} /> }
       </div>
     }
     { icon && <i class={icon}></i> }
@@ -62,5 +65,13 @@ const {
   .img--medium {
     height: 75px;
     max-width: none;
+  }
+
+  html[data-theme="dark"] .image-light {
+    display: none;
+  }
+
+  html[data-theme="light"] .image-dark {
+    display: none;
   }
 </style>
