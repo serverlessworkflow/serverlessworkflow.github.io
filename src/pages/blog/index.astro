@@ -1,0 +1,14 @@
+---
+import BlogPostsList from '../../components/BlogPostsList.astro';
+import SidebarLayout from '../../layouts/SidebarLayout.astro';
+import { getSortedBlogPosts } from '../../utils/collections';
+
+const posts = await getSortedBlogPosts();
+---
+
+<SidebarLayout title="Blog" entries={posts}>
+  <div class="prose">
+    <h1>Blog Posts</h1>
+    <BlogPostsList {posts}>
+  </div>
+</SidebarLayout>

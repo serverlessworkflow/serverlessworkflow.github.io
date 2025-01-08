@@ -1,0 +1,37 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BlogPostsList from '../../components/BlogPostsList.astro';
+import SidebarLayout from '../../layouts/SidebarLayout.astro';
+import { getSortedBlogPosts } from '../../utils/collections';
+import { humanCase } from '../../utils/formatter';
+
+type Props = {
+	posts: CollectionEntry<'blog'>[],
+	entries: CollectionEntry<'blog'>[]
+};
+
+export async function getStaticPaths() {
+  const allPosts = await getSortedBlogPosts();
+  const groups = [...new Set(allPosts.map((post) => post.id.split('/')[0]))];
+  return groups.map(group => {
+    const filteredPosts = allPosts.filter(post => post.id.startsWith(group + '/'))
+      .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+    return {
+      params: { group },
+      props: { 
+        entries: allPosts,
+        posts: filteredPosts 
+      }
+    };
+  });
+};
+
+const { group } = Astro.params;
+---
+
+<SidebarLayout title={`Blog: ${group}`} {...Astro.props}>
+  <div class="prose">
+    <h1>Blog Posts - { humanCase(group) }</h1>
+    <BlogPostsList {...Astro.props} />
+  </div>
+</SidebarLayout>

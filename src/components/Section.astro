@@ -1,0 +1,57 @@
+---
+type colorBase = 'primary' | 'secondary' | 'accent' | 'neutral';
+type size = 'small' | 'medium' | 'large';
+interface Props {
+  paddingY?: size;
+  paddingX?: size;
+  isGrid?: boolean;
+  width?: size | 'full';
+  title?: string;
+  subTitle?:string;
+  class?: string;
+}
+
+const {
+  paddingY,
+  paddingX,
+  isGrid = false,
+  width = '7',
+  title,
+  subTitle,
+  class: className
+} = Astro.props;
+---
+
+<div class:list={[
+    className,
+    (
+      paddingY === 'small' ? `py-4` :
+      paddingY === 'medium' ? `py-8` : 
+      `py-16`
+    ),
+    (
+      paddingX === 'small' ? `px-4` :
+      paddingX === 'medium' ? `px-8` : 
+      `px-16`
+    ),
+  ]}
+>
+  <div class:list={[
+    'mx-auto', 
+    (
+      width === 'full' ? `max-w-full` :
+      width === 'small' ? `max-w-3xl` :
+      width === 'medium' ? `max-w-5xl` :
+      `max-w-7xl`
+    ),
+    ]}>
+    { title && <h2 class:list={['text-primary', 'text-3xl', 'font-bold', 'text-center', !subTitle ? 'mb-12' : '']}>{ title }</h2> }
+    { subTitle && <p class="text-xl text-center mb-12">{ subTitle }</p> }
+    { isGrid ?
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <slot />
+      </div> :
+      <slot />
+    }
+  </div>
+</div>

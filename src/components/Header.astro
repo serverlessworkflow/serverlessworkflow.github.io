@@ -1,0 +1,28 @@
+---
+import ThemeIcon from './ThemeIcon.astro';
+---
+<div class="bg-base-100 sticky top-0 z-10">
+  <div class="navbar max-w-7xl mx-auto px-4">
+      <div class="navbar-start">
+        <div class="flex gap-2">
+          <div class="logo-header"></div>
+          <a class="text-xl font-bold" href="/">Serverless Workflow</a>
+        </div>
+      </div>
+      <div class="navbar-end">
+          <ul class="menu menu-horizontal px-1">
+              <li><a href="/blog">Blog</a></li>
+              <li><a href="/community">Community</a></li>
+          </ul>
+      </div>
+      <ThemeIcon />
+  </div>
+</div>
+
+<style>
+  .logo-header {
+    width: 24px;
+    background-color: var(--fallback-bc,oklch(var(--bc)/1));
+    mask: url(/icons/logo.svg) no-repeat center / contain;
+  }
+</style>

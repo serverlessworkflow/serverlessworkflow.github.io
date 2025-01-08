@@ -1,0 +1,77 @@
+---
+interface Props {
+  title: string;
+  alignment?: 'center' | 'start' | 'end';
+  icon?: string;
+  image?: string;
+  imageDark?: string;
+  imageSize?: 'small' | 'medium';
+}
+
+const {
+  title,
+  alignment = 'center',
+  icon,
+  image,
+  imageDark,
+  imageSize = 'small',
+} = Astro.props;
+---
+
+<div class:list={[
+  'card', 
+  (
+    alignment === 'start' ? `text-start` :
+    alignment === 'end' ? `text-end` :
+    `text-center`
+  ),
+]}>
+  <div class="card-body">
+    { (image || imageDark) && 
+      <div class:list={[
+        'my-4', 
+        'flex', 
+        (
+          alignment === 'start' ? `justify-start` :
+          alignment === 'end' ? `justify-end` :
+          `justify-center`
+        ),
+      ]}>
+        { image && <img src={image} class:list={[`img--${imageSize}`, image && imageDark ? 'image-light' : '']} /> }
+        { imageDark && <img src={imageDark} class:list={[`img--${imageSize}`, image && imageDark ? 'image-dark' : '']} /> }
+      </div>
+    }
+    { icon && <i class={icon}></i> }
+    <h3 class:list={[
+      'card-title',
+      (
+          alignment === 'start' ? `justify-start` :
+          alignment === 'end' ? `justify-end` :
+          `justify-center`
+        ),
+    ]}>
+      { title }
+    </h3>
+    <slot />
+  </div>
+</div>
+
+<style>
+  .img--small {
+    height: 50px;
+    max-width: none;
+  }
+
+  .img--medium {
+    height: 75px;
+    max-width: none;
+  }
+
+  html[data-theme="dark"] .image-light {
+    display: none;
+  }
+
+  html[data-theme="light"] .image-dark {
+    display: none;
+  }
+</style>

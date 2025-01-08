@@ -1,13 +1,3 @@
-# Hugo build configuration for Netlify
-# (https://gohugo.io/hosting-and-deployment/hosting-on-netlify/#configure-hugo-version-in-netlify)
-
 [build]
-command = "npm run build:preview"
-publish = "public"
-
-[build.environment]
-GO_VERSION = "1.22.2"
-HUGO_VERSION = "0.126.2"
-
-[context.production]
-command = "npm run build:production"
+command = "npm run build"
+publish = "dist"
