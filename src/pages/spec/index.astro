@@ -1,0 +1,12 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { Debug } from 'astro/components';
+
+
+const entries = (await getCollection('specErrorV1'));
+---
+
+<Layout>
+  <Debug {entries} />
+</Layout>

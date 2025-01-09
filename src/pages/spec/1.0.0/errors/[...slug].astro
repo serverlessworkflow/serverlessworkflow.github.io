@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import { type CollectionEntry } from 'astro:content';
+import Layout from '../../../../layouts/Layout.astro';
+
+type Props = {
+	entry: CollectionEntry<'specErrorV1'>,
+};
+
+export async function getStaticPaths() {
+	const entries = (await getCollection('specErrorV1'));
+	return entries.map((entry) => ({
+		params: { slug: entry.id },
+		props: {
+			entry,
+		}
+	}));
+};
+
+const { entry } = Astro.props;
+const { type, description, status } = entry.data;
+---
+
+<Layout>
+	<p>{type} - {status}</p>
+	<p>{description}</p>
+</Layout>
