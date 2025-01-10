@@ -2,9 +2,9 @@ import { glob } from 'astro/loaders';
 import { defineCollection, z } from 'astro:content';
 
 const mdExtensions = ['markdown', 'mdown', 'mkdn', 'mkd', 'mdwn', 'md', 'mdx'];
-const getLoader = (contentType: string) => glob({
+const getGlobLoader = (contentType: string, extensions: string) => glob({
   base: `./src/content/${contentType}`,
-  pattern: `**/[^_]*.{${mdExtensions.join(',')}}`
+  pattern: `**/[^_]*.${extensions}`
 });
 
 const BlogPostSchema = z.object({
@@ -15,9 +15,20 @@ const BlogPostSchema = z.object({
 });
 export type BlogPost = z.infer<typeof BlogPostSchema>;
 
+const SpecErrorV1Schema = z.object({
+  type: z.string(),
+  description: z.string(),
+  status: z.number(),
+});
+export type SpecErrorV1Schema = z.infer<typeof SpecErrorV1Schema>;
+
 const blog = defineCollection({
-  loader: getLoader('blog'),
+  loader: getGlobLoader('blog', `{${mdExtensions.join(',')}}`),
   schema: BlogPostSchema
+});
+const specErrorV1 = defineCollection({
+  loader: getGlobLoader('spec/1.0.0/errors', 'json'),
+  schema: SpecErrorV1Schema
 });
 /*
 const docs = defineCollection({
@@ -30,6 +41,7 @@ const docs = defineCollection({
 */
 export const collections = {
   blog,
+  specErrorV1,
   //docs,
 };
 

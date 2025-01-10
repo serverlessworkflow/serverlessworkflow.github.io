@@ -1,0 +1,5 @@
+{
+  "type": "https://serverlessworkflow.io/spec/1.0.0/errors/authentication",
+  "description": "Errors related to authentication failures.",
+  "status": 401
+}

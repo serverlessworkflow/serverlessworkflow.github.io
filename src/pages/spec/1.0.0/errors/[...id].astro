@@ -1,0 +1,35 @@
+---
+
+import { getEntry } from 'astro:content';
+import Layout from '../../../../layouts/Layout.astro';
+import Section from '../../../../components/Section.astro';
+
+export const prerender = false; // Enables SSR for this page only
+
+const { id } = Astro.params;
+if (!id) {
+  return Astro.redirect("/404");
+}
+const entry = await getEntry("specErrorV1", id);
+if (!entry) {
+  return Astro.redirect("/404");
+}
+
+const accept = Astro.request.headers.get('accept');
+
+if (accept === 'application/json') return new Response(JSON.stringify(entry.data));
+if (accept === 'text/plain') return new Response(entry.data.description, { headers: { 'Content-Type': 'text/plain' }});
+
+const { type, description, status } = entry.data;
+---
+
+<Layout>
+	<Section >
+		<h2 class="text-primary text-3xl font-bold mb-12">Standard Error</h2>
+		<div class="mx-auto w-full w-1/2">
+      <h3 class="text-xl font-bold">{type}</h3> 
+			<p class="text-accent font-medium">Code: {status}</p>
+			<p>{description}</p>
+    </div>
+	</Section>
+</Layout>
