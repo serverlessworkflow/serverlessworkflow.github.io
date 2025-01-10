@@ -1,0 +1,5 @@
+{
+  "type": "https://serverlessworkflow.io/spec/1.0.0/errors/expression",
+  "description": "Errors occurring during the evaluation of runtime expressions, such as invalid syntax or unsupported operations.",
+  "status": 400
+}
