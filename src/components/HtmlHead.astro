@@ -70,3 +70,6 @@ const pageTitle = `${DEFAULT_TITLE}${title ? ' - ' + title : ''}`;
 <meta property="twitter:title" content={pageTitle} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<!-- Sitemap -->
+<link rel="sitemap" href="/sitemap-index.xml" />
