@@ -24,10 +24,11 @@ const { type, description, status } = entry.data;
 ---
 
 <Layout>
-	<Section title="Standard Error">
+	<Section >
+		<h2 class="text-primary text-3xl font-bold mb-12">Standard Error</h2>
 		<div class="mx-auto w-full w-1/2">
-      <h3 class="text-xl font-bold mb-4">{type}</h3> 
-			<p class="italic ">Code: {status}</p>
+      <h3 class="text-xl font-bold">{type}</h3> 
+			<p class="text-accent font-medium">Code: {status}</p>
 			<p>{description}</p>
     </div>
 	</Section>
