@@ -22,6 +22,11 @@ const SpecErrorV1Schema = z.object({
 });
 export type SpecErrorV1Schema = z.infer<typeof SpecErrorV1Schema>;
 
+const exampleSchema = z.object({
+  title: z.string()
+});
+export type Example = z.infer<typeof SpecErrorV1Schema>;
+
 const blog = defineCollection({
   loader: getGlobLoader('blog', `{${mdExtensions.join(',')}}`),
   schema: BlogPostSchema
@@ -29,6 +34,10 @@ const blog = defineCollection({
 const specErrorV1 = defineCollection({
   loader: getGlobLoader('spec/1.0.0/errors', 'json'),
   schema: SpecErrorV1Schema
+});
+const example = defineCollection({
+  loader: getGlobLoader('examples', `{${mdExtensions.join(',')}}`),
+  schema: exampleSchema
 });
 /*
 const docs = defineCollection({
@@ -42,6 +51,7 @@ const docs = defineCollection({
 export const collections = {
   blog,
   specErrorV1,
+  example,
   //docs,
 };
 

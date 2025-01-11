@@ -4,6 +4,9 @@ import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import Section from '../components/Section.astro';
 import { Code } from 'astro:components';
+import { getCollection } from 'astro:content';
+
+const examples = (await getCollection('example'));
 ---
 
 <Layout>
@@ -63,99 +66,19 @@ import { Code } from 'astro:components';
 
   <!-- Samples -->
   <Section title="User-Friendly DSL: Workflows Made Simple" class="bg-base-200">
-      <div role="tablist" class="tabs tabs-lifted">
-        <input type="radio" name="code_tabs" role="tab" class="tab" aria-label="Minimal" checked />
-        <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-          <h3 class="text-xl font-bold mb-4">Minimal Example</h3>
-          <Code themes={{'light': 'github-light', 'dark': 'github-dark'}} lang="yaml" code={`document:
-  dsl: '1.0.0-alpha5'
-  namespace: examples
-  name: call-http
-  version: '1.0.0'
-do:
-- getPet:
-    call: http
-    with:
-      method: get
-      endpoint: https://petstore.swagger.io/v2/pet/{petId}`} />
-        </div>
-        <input type="radio" name="code_tabs" role="tab" class="tab" aria-label="AsyncAPI" />
-        <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-          <h3 class="text-xl font-bold mb-4">AsyncAPI Example</h3>
-          <Code themes={{'light': 'github-light', 'dark': 'github-dark'}} lang="yaml" code={`document:
-  dsl: '1.0.0-alpha5'
-  namespace: examples
-  name: call-asyncapi
-  version: '1.0.0'
-do:
-- findPet:
-    call: asyncapi
-    with:
-      document:
-        uri: https://fake.com/docs/asyncapi.json
-      operationRef: findPetsByStatus
-      server: staging
-      message:
-        payload:
-          petId: $\{ .pet.id }
-      authentication:
-        bearer:
-          token: $\{ .token }`} />
-        </div>
-        <input type="radio" name="code_tabs" role="tab" class="tab" aria-label="OpenAPI" />
-        <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-          <h3 class="text-xl font-bold mb-4">OpenAPI Example</h3>
-          <Code themes={{'light': 'github-light', 'dark': 'github-dark'}} lang="yaml" code={`document:
-  dsl: '1.0.0-alpha5'
-  namespace: examples
-  name: call-openapi
-  version: '1.0.0'
-do:
-  - findPet:
-      call: openapi
-      with:
-        document: 
-          endpoint: https://petstore.swagger.io/v2/swagger.json
-        operationId: findPetsByStatus
-        parameters:
-          status: available`} />
-        </div>
-        <input type="radio" name="code_tabs" role="tab" class="tab" aria-label="gRPC" />
-        <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-          <h3 class="text-xl font-bold mb-4">gRPC Example</h3>
-          <Code themes={{'light': 'github-light', 'dark': 'github-dark'}} lang="yaml" code={`document:
-  dsl: '1.0.0-alpha5'
-  namespace: examples
-  name: call-grpc
-  version: '1.0.0'
-do:
-  - greet:
-      call: grpc
-      with:
-        proto: 
-          endpoint: file://app/greet.proto
-        service:
-          name: GreeterApi.Greeter
-          host: localhost
-          port: 5011
-        method: SayHello
-        arguments:
-          name: '$\{ .user.preferredDisplayName }'`} />
-        </div>
-        <input type="radio" name="code_tabs" role="tab" class="tab" aria-label="Container" />
-        <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-          <h3 class="text-xl font-bold mb-4">Container Example</h3>
-          <Code themes={{'light': 'github-light', 'dark': 'github-dark'}} lang="yaml" code={`document:
-  dsl: '1.0.0-alpha5'
-  namespace: examples
-  name: run-container
-  version: '1.0.0'
-do:
-  - runContainer:
-      run:
-        container:
-          image: fake-image`} />
-        </div>
+      <div role="tablist" class="tabs tabs-lifted tabs-sm overflow-auto">
+        {
+          examples.map((entry, idx) => (
+            <input type="radio" name="code_tabs" role="tab" class="tab h-12" aria-label={entry.data.title} checked={idx===0} />
+            <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+              <h3 class="text-xl font-bold mb-4">{entry.data.title} Example</h3>
+              <Code themes={{'light': 'github-light', 'dark': 'github-dark'}} lang="yaml" code={entry.body||''} />
+            </div>
+          ))
+        }
+      </div>
+      <div class="text-center">
+        <a class="mt-4 btn btn-accent border-accent bg-base-100 text-accent" href={GITHUB_LINK + 'tree/main/examples'} target="_blank" rel="noopener">More Examples</a>
       </div>
   </Section>
 
