@@ -1,6 +1,6 @@
 ---
 interface Props {
-  title: string;
+  title?: string;
   alignment?: 'center' | 'start' | 'end';
   icon?: string;
   image?: string;
@@ -50,7 +50,7 @@ const {
           `justify-center`
         ),
     ]}>
-      { title }
+      { title && title }
     </h3>
     <slot />
   </div>
