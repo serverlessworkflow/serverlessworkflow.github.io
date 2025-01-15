@@ -6,8 +6,6 @@ description: >
   Introducing the first alpha release of the Serverless Workflow Rust SDK, version v1.0.0-alpha1.
 ---
 
-# Announcing the Serverless Workflow Rust SDK v1.0.0-alpha1
-
 Hello, Serverless Workflow community!
 
 We are thrilled to announce the release of the very first alpha version of the **Serverless Workflow Rust SDK**! Version `v1.0.0-alpha6` marks an exciting milestone as we bring the power of the Serverless Workflow specification to the Rust ecosystem.
