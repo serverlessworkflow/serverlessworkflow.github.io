@@ -6,8 +6,6 @@ description: >
    Legacy Branch & Release for the TypeScript SDK 
 ---
 
-# Announcing the Legacy Branch & release for Serverless Workflow TypeScript SDK
-
 Hello, Serverless Workflow community!
 
 I'm excited to share some important updates regarding the TypeScript SDK for the Serverless Workflow specification. As many of you know, our specification underwent a significant rewrite after version 0.9, culminating in the anticipated release of version 1.0.0-alpha. This update will bring many improvements and changes, aligning the spec with the latest needs and trends in serverless architectures.
