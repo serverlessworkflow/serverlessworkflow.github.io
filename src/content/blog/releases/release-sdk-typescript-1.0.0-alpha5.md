@@ -6,8 +6,6 @@ description: >
   Announcing the availability of the v1.0.0-alpha5.0 package for the Serverless Workflow TypeScript SDK.
 ---
 
-# Announcing the Serverless Workflow TypeScript SDK v1.0.0-alpha5.0
-
 Hello, Serverless Workflow community!
 
 We are excited to announce the release of version `1.0.0-alpha5.0` of the TypeScript SDK for the Serverless Workflow specification. This release brings us one step closer to a stable and production-ready v1.0.0.
