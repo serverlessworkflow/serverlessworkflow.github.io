@@ -46,23 +46,23 @@ const examples = (await getCollection('example'));
 
   <!-- Selling points -->
   <Section isGrid={true}>
-    <Card title="Easy to Use!" icon="fa-solid fa-wand-magic-sparkles text-primary text-5xl">
-      <p>Serverless Workflow DSL simplifies workflow concepts, allowing users to easily create complex workflows.</p>
+    <Card title="Usability" icon="fa-solid fa-wand-magic-sparkles text-primary text-5xl">
+      <p>Designed with linguistic fluency, implicit default behaviors, and minimal technical jargon, making workflows accessible to developers with diverse skill levels and enhancing collaboration.</p>
     </Card>
     <Card title="Event driven" icon="fa-solid fa-bolt text-primary text-5xl">
-      <p>Integrate events seamlessly into workflows with support for formats like CloudEvents, enabling event-driven architectures.</p>
+      <p>Supports event-driven execution and various scheduling options, including CRON expressions and time-based triggers, to respond efficiently to dynamic conditions.</p>
     </Card>
-    <Card title="Service Oriented" icon="fa-solid fa-network-wired text-primary text-5xl">
-      <p>The Serverless Workflow DSL allows developers to integrate with service-oriented architectures, defining workflows that interact with services using protocols like HTTP, GRPC, OpenAPI, and AsyncAPI.</p>
+    <Card title="Interoperability" icon="fa-solid fa-network-wired text-primary text-5xl">
+      <p>Seamlessly integrates with multiple protocols (HTTP, gRPC, OpenAPI, AsyncAPI), ensuring easy communication with external systems and services, along with support for custom interactions via scripts, containers, or shell commands.</p>
     </Card>
-    <Card title="FaaS Centric" icon="fa-solid fa-cloud text-primary text-5xl">
-      <p>Invoke functions across platforms seamlessly within workflows, supporting FaaS and microservices architectures.</p>
+    <Card title="Platform-Agnostic" icon="fa-solid fa-cloud text-primary text-5xl">
+      <p>Serverless Workflow enables developers to build workflows that can operate across diverse platforms and environments, eliminating the need for platform-specific adaptations.</p>
     </Card>
-    <Card title="Timely" icon="fa-solid fa-clock text-primary text-5xl">
-      <p>Set timeouts for workflows and tasks to manage execution duration.</p>
+    <Card title="Extensibility" icon="fa-solid fa-maximize text-primary text-5xl">
+      <p>Provides extensible components and supports defining custom functions and extensions, allowing developers to tailor workflows to unique business requirements without compromising compatibility.</p>
     </Card>
     <Card title="Fault tolerant" icon="fa-solid fa-shield-halved text-primary text-5xl">
-      <p>Define error handling strategies to manage and recover from workflow execution errors, ensuring robustness and reliability.</p>
+      <p>Offers comprehensive data transformation, validation, and fault tolerance mechanisms, ensuring workflows are robust, reliable, and capable of handling complex processes and failures gracefully.</p>
     </Card>
   </Section>
 
@@ -79,9 +79,9 @@ const examples = (await getCollection('example'));
           ))
         }
       </div>
-      <div class="text-center">
-        <a class="mt-4 btn btn-accent border-accent bg-base-100 text-accent" href={GITHUB_LINK + 'tree/main/examples'} target="_blank" rel="noopener">More Examples</a>
-      </div>
+      <p class="text-center mt-4">
+        Visit our GitHub repository for <a class="btn btn-accent btn-sm border-accent bg-base-100 text-accent" href={GITHUB_LINK + 'tree/main/examples'} target="_blank" rel="noopener">more examples</a> or complete <a class="btn btn-accent btn-sm border-accent bg-base-100 text-accent" href={GITHUB_LINK + 'tree/main/use-cases'} target="_blank" rel="noopener">use cases</a>.</p>
+      </p>
   </Section>
 
   <!-- Reach out -->
