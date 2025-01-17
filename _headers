@@ -1,5 +1,8 @@
 # See:  https://docs.netlify.com/routing/headers/
 #       https://answers.netlify.com/t/access-control-allow-origin-policy/1813
+
+# Note: since migration to Astro, this config seems to be ignored. Using edge-function middleware instead (see .netlify/v1/edge-functions/middleware/headers.js as configured in netlify.toml)
+
 /*
   Access-Control-Allow-Origin: *
   Access-Control-Allow-Methods: OPTIONS, GET
