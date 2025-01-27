@@ -5,8 +5,6 @@ description: "Discover the new features and improvements in Serverless Workflow 
 author: "Serverless Workflow Team"
 ---
 
-# Announcing Serverless Workflow SDK Go 3.0.0
-
 We are thrilled to announce the release of **Serverless Workflow SDK Go 3.0.0**, a milestone that aligns with the latest Serverless Workflow specification (v1.0.0).
 
 ## **What’s New in 3.0.0?**
