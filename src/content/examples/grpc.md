@@ -2,8 +2,8 @@
 title: gRPC
 ---
 document:
-  dsl: '1.0.0-alpha5'
-  namespace: examples
+  dsl: '1.0.0'
+  namespace: default
   name: call-grpc
   version: '1.0.0'
 do:

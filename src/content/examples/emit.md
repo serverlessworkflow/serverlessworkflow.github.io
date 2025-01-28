@@ -2,8 +2,8 @@
 title: Emit Event
 ---
 document:
-  dsl: '1.0.0-alpha5'
-  namespace: test
+  dsl: '1.0.0'
+  namespace: default
   name: emit
   version: '0.1.0'
 do:

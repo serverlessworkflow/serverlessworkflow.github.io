@@ -2,15 +2,15 @@
 title: Subflow
 ---
 document:
-  dsl: '1.0.0-alpha5'
-  namespace: test
+  dsl: '1.0.0'
+  namespace: default
   name: run-subflow
   version: '0.1.0'
 do:
   - registerCustomer:
       run:
         workflow:
-          namespace: test
+          namespace: default
           name: register-customer
           version: '0.1.0'
           input:
