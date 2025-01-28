@@ -2,7 +2,7 @@
 title: Try-Catch
 ---
 document:
-  dsl: '1.0.0-alpha5'
+  dsl: '1.0.0'
   namespace: default
   name: try-catch
   version: '0.1.0'

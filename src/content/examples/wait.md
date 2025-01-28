@@ -2,8 +2,8 @@
 title: Wait
 ---
 document:
-  dsl: '1.0.0-alpha5'
-  namespace: test
+  dsl: '1.0.0'
+  namespace: default
   name: wait-duration-inline
   version: '0.1.0'
 do: 

@@ -1,5 +1,5 @@
 ---
-import { GITHUB_LINK, GITHUB_ORG } from '../consts';
+import { CURRENT_VERSION, GITHUB_LINK, GITHUB_ORG } from '../consts';
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import Section from '../components/Section.astro';
@@ -21,7 +21,7 @@ const examples = (await getCollection('example'));
         <img src="/img/logos/sw-logo.png" width="150px" class="mb-4 mx-auto" />
         <h1 class="text-5xl font-bold">Serverless Workflow</h1>
         <p class="pt-6">Serverless Workflow presents a vendor-neutral, open-source, and entirely community-driven ecosystem tailored for defining and executing DSL-based workflows in the realm of Serverless technology.</p>
-        <p class="py-6">The current version is <span class="font-bold">1.0.0-alpha5</span>, get the JSON Schema here: <a class="link link-accent" href="/schemas/1.0.0-alpha5/workflow.yaml" target="_blank" rel="noopener">YAML</a> or <a class="link link-accent" href="/schemas/1.0.0-alpha5/workflow.json" target="_blank" rel="noopener">JSON</a></p>
+        <p class="py-6">The current version is <span class="font-bold">{CURRENT_VERSION}</span>, get the JSON Schema here: <a class="link link-accent" href=`/schemas/${CURRENT_VERSION}/workflow.yaml` target="_blank" rel="noopener">YAML</a> or <a class="link link-accent" href=`/schemas/${CURRENT_VERSION}/workflow.json` target="_blank" rel="noopener">JSON</a></p>
         <a class="btn btn-accent border-accent bg-base-100 text-accent" href={GITHUB_LINK + 'blob/main/README.md'} target="_blank" rel="noopener">Learn More</a>
         <div class="dropdown dropdown-hover">
           <div tabindex="0" role="button" class="btn btn-primary border-primary bg-base-100 text-primary">SDK</div>
