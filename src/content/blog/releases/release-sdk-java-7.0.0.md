@@ -10,14 +10,14 @@ description: >
 
 Hello, Serverless Workflow community!
 
-We're excited to announce the release of the latest Java SDK, version 7.0.0, now compatible with the upcoming Serverless Workflow Specification 1.0.0 and including a reference implementation. The reference implementation provides a ready-to-use runtime that supports the Serverless Workflow Specification. It includes a workflow execution engine, validation utilities, and illustrative examples to help you quickly test and deploy your workflows. 
+We're excited to announce the release of the latest Java SDK, version 7.0.0, which is now compatible with the upcoming Serverless Workflow Specification 1.0.0 and includes a reference implementation. The reference implementation provides a ready-to-use runtime that supports the Serverless Workflow Specification. It includes a workflow execution engine, validation utilities, and illustrative examples to help you quickly test and deploy your workflows. 
 
 
 ## Java SDK example
 
-You can dive right in by using [one of the examples](https://github.com/serverlessworkflow/specification/tree/main/examples) available in the specification repository. Here's a quick example to get you started:
+You can dive right in using [one of the examples](https://github.com/serverlessworkflow/specification/tree/main/examples) available in the specification repository. Here's a quick example to get you started:
 
-To use SDK, simply add it as a dependency to your Maven project:
+To use the SDK, simply add it as a dependency to your Maven project:
 
 
 ```xml
@@ -40,7 +40,7 @@ try (InputStream in = new FileInputStream("simple.yaml")) {
 
 ## Java Reference implementation example 
 
-You can dive right in by using [one of the examples](https://github.com/serverlessworkflow/sdk-java/tree/main/examples) available in the implementation repository or by checking the [Readme](https://github.com/serverlessworkflow/sdk-java/tree/main/impl). 
+You can dive right in using [one of the examples](https://github.com/serverlessworkflow/sdk-java/tree/main/examples) available in the implementation repository or by checking the [README](https://github.com/serverlessworkflow/sdk-java/tree/main/impl). 
 
 Here's a quick example to get you started:
 
@@ -54,7 +54,7 @@ To use reference implementation, simply add it as a dependency to your Maven pro
 </dependency>
 ```
 
-Then, you can write following code to execute a workflow
+Then, you can write the following code to execute a workflow
 
 ``` java 
 // Make sure simple.yaml is in your src/main/resources folder
@@ -70,17 +70,17 @@ try (WorkflowApplication appl = WorkflowApplication.builder().build()) {
 
 ## Whats new?
 
-With this release:
+In this release:
 
-- We update to the latest schema revision. 
-- We improve POJO generation from specification schema by:
-     - Fixing generation of Pojos related with EventComsuption strategy. 
-- We release the first documented version of the [reference implementation](https://github.com/serverlessworkflow/sdk-java/tree/main/impl), completing [phase 1](https://github.com/serverlessworkflow/sdk-java/issues/459).
+- We updated the latest schema revision. 
+- We improved POJO generation from specification schema by:
+     - Fixing generation of POJOs related to the `EventComsuption` strategy. 
+- We released the first documented version of the [reference implementation](https://github.com/serverlessworkflow/sdk-java/tree/main/impl), completing [phase 1](https://github.com/serverlessworkflow/sdk-java/issues/459).
 
 
 ### Future plans 
 
-Check out our plans [here](https://github.com/serverlessworkflow/sdk-java/milestone/2)
+Check out our roadmap [here](https://github.com/serverlessworkflow/sdk-java/milestone/2)
 
 ### Previous Versions and Support for the Specification 0.8
 
