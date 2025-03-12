@@ -1,3 +1,25 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: oklch(46.2% 0.0713 255.54);
+  --color-secondary: oklch(78.95% 0.0554 234.08);
+  --color-accent: oklch(68.35% 0.1676 34.7);
+}
+@plugin "daisyui/theme" {
+  name: "dark";
+  default: false;
+  --color-primary: oklch(96.89% 0.0281 199.41);
+  --color-primary-content: #293241;
+  --color-secondary: oklch(78.95% 0.0554 234.08);
+  --color-accent: oklch(68.35% 0.1676 34.7);
+  --color-accent-content: oklab(0.14 0.03 0.02);
+  --color-neutral: #293241;
+  --color-neutral-content: #A6ADBB;
+}
+
 html[data-theme="dark"] .astro-code,
 html[data-theme="dark"] .astro-code span {
   color: var(--shiki-dark) !important;
