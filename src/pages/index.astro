@@ -6,9 +6,8 @@ import Section from '../components/Section.astro';
 import { Code } from 'astro:components';
 import { getCollection } from 'astro:content';
 
-const examples = (await getCollection('example'));
+const examples = (await getCollection('example')).sort((a,b) => a.data.title.localeCompare(b.data.title));
 ---
-
 <Layout>
   <!-- Hero -->
   <div class="hero min-h-[60vh]">
@@ -68,7 +67,7 @@ const examples = (await getCollection('example'));
 
   <!-- Samples -->
   <Section title="User-Friendly DSL: Workflows Made Simple" class="bg-base-200">
-      <div role="tablist" class="tabs tabs-lifted tabs-sm overflow-auto">
+      <div role="tablist" class="tabs tabs-lift tabs-sm overflow-auto">
         {
           examples.map((entry, idx) => (
             <input type="radio" name="code_tabs" role="tab" class="tab h-12" aria-label={entry.data.title} checked={idx===0} />
@@ -174,3 +173,9 @@ const examples = (await getCollection('example'));
     </div>
   </Section>
 </Layout>
+
+<style>
+  .hero-content {
+    z-index: 0;
+  }
+</style>
