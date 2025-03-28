@@ -9,12 +9,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.1.1",
-    "@astrojs/netlify": "^6.2.3",
+    "@astrojs/mdx": "^4.2.2",
+    "@astrojs/netlify": "^6.2.4",
     "@astrojs/rss": "^4.0.11",
-    "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/sitemap": "^3.3.0",
     "@tailwindcss/vite": "^4.0.13",
-    "astro": "^5.4.3",
+    "astro": "^5.5.5",
     "tailwindcss": "^4.0.13"
   },
   "devDependencies": {
