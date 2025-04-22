@@ -1,5 +1,7 @@
 import { glob } from 'astro/loaders';
 import { defineCollection, z } from 'astro:content';
+import { docsLoader } from '@astrojs/starlight/loaders';
+import { docsSchema } from '@astrojs/starlight/schema';
 
 const mdExtensions = ['markdown', 'mdown', 'mkdn', 'mkd', 'mdwn', 'md', 'mdx'];
 const getGlobLoader = (contentType: string, extensions: string) => glob({
@@ -39,20 +41,14 @@ const example = defineCollection({
   loader: getGlobLoader('examples', `{${mdExtensions.join(',')}}`),
   schema: exampleSchema
 });
-/*
-const docs = defineCollection({
-  loader: getLoader('docs'),
-  schema: z.object({
-		title: z.string(),
-		description: z.string()
-  })
-});
-*/
+
+const docs = defineCollection({ loader: docsLoader(), schema: docsSchema() });
+
 export const collections = {
   blog,
   specErrorV1,
   example,
-  //docs,
+  docs,
 };
 
 export type CollectionContent = {
