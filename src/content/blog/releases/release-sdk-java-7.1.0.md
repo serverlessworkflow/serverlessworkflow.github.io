@@ -24,7 +24,7 @@ To use the SDK, simply add it as a dependency to your Maven project:
 <dependency>
     <groupId>io.serverlessworkflow</groupId>
     <artifactId>serverlessworkflow-api</artifactId>
-    <version>7.0.0</version>
+    <version>7.1.0.Final</version>
 </dependency>
 ```
 
