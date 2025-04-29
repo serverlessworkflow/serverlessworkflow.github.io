@@ -10,7 +10,7 @@ description: >
 
 Hello, Serverless Workflow community!
 
-We're excited to announce the release of the latest Java SDK, version 7.1.0, which is now compatible with the upcoming Serverless Workflow Specification 1.0.0 and includes a reference implementation. The reference implementation provides a ready-to-use runtime that supports the Serverless Workflow Specification. It includes a workflow execution engine, validation utilities, and illustrative examples to help you quickly test and deploy your workflows. 
+We're excited to announce the release of the latest Java SDK, version 7.1.0, which is now compatible with the upcoming Serverless Workflow Specification 1.0.0 and includes a reference implementation. The reference implementation provides a ready-to-use runtime that supports the Serverless Workflow Specification. It consists of a workflow execution engine, validation utilities, and example workflows to help you quickly test and deploy your workflows. 
 
 
 ## Java SDK example
