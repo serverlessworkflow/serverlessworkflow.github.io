@@ -4,6 +4,9 @@ sidebar:
   order: 20
 ---
 
+import CommonTaskDataFlow from './src/content/docs/shared/common-task-data-flow.mdx';
+import CommonTaskFlowControl from './src/content/docs/shared/common-task-flow-control.mdx';
+
 ## Purpose
 
 The `For` task provides a mechanism to iterate over a collection of items (an array or list). For each item in the
@@ -67,7 +70,7 @@ for:
   at: "userIndex"        # Access the current index as $userIndex
 ```
 
-### `do` (List<String: Object>, Required)
+### `do` (List\<String: Object>, Required)
 
 Defines the block of tasks to execute for each item in the collection (subject to the `while` condition).
 
@@ -108,7 +111,7 @@ do:
 
 ## Data Flow
 
-<include from="_common-task-data-flow.md" element-id="common-data-flow"/>
+<CommonTaskDataFlow />
 
 **Note**:
 
@@ -120,7 +123,7 @@ do:
 
 ## Flow Control
 
-<include from="_common-task-flow_control.md" element-id="common-flow-control"/>
+<CommonTaskFlowControl />
 
 **Note**: A `then :exit` directive within the `do` block of a `For` task will terminate the loop immediately,
 skipping any remaining items in the `for.in` collection.

@@ -4,7 +4,11 @@ sidebar:
   order: 40
   label: OpenAPI Call
 ---
-<!-- Examples are validated -->
+
+import CommonTaskDataFlow from './src/content/docs/shared/common-task-data-flow.mdx';
+import CommonTaskFlowControl from './src/content/docs/shared/common-task-flow-control.mdx';
+
+{/* Examples are validated */}
 
 ## Purpose
 
@@ -129,7 +133,7 @@ raised as `Communication` errors.
 
 ### Data Flow
 
-<include from="_common-task-data-flow.md" element-id="common-data-flow"/>
+<CommonTaskDataFlow />
 **Note**:
 *   The `transformedInput` to the task is available for use within runtime expressions in the `with.parameters`.
 *   The `rawOutput` of the task depends on the `with.output` setting (`content`, `response`, or `raw`), derived from the HTTP response of the underlying API call.
@@ -137,5 +141,5 @@ raised as `Communication` errors.
 
 ### Flow Control
 
-<include from="_common-task-flow_control.md" element-id="common-flow-control"/>
+<CommonTaskFlowControl />
 **Note**: If the underlying API call fails (e.g., validation error based on OpenAPI spec, unhandled error status code), a `Communication` or potentially `Validation` error is raised, and the `then` directive is *not* followed (unless caught by `Try`). 

@@ -4,6 +4,9 @@ siderbar:
   order: 10
 ---
 
+import CommonTaskDataFlow from './src/content/docs/shared/common-task-data-flow.mdx';
+import CommonTaskFlowControl from './src/content/docs/shared/common-task-flow-control.mdx';
+
 ## Purpose
 
 The `Try` task provides robust error handling and optional retry mechanisms within a workflow. It allows you to attempt
@@ -98,7 +101,7 @@ caught (because there's no `catch.do`), and the workflow likely faults unless a 
 
 ## Configuration Options
 
-### `try` (List<String, Object>, Required)
+### `try` (List\<String, Object>, Required)
 
 This mandatory property contains a list defining the sequence of tasks to be attempted.
 
@@ -274,7 +277,7 @@ The `catch` block can contain the following properties:
             attempt:
               count: 3
         ```
-* **`do`** (List<String, Object>, Optional): A block of tasks to execute sequentially *only if* an error is successfully
+* **`do`** (List\<String, Object>, Optional): A block of tasks to execute sequentially *only if* an error is successfully
   caught (passes `errors.with`, `when`, and `exceptWhen` filters).
     * **Output**: If the `catch.do` block executes, its final transformed output becomes the `rawOutput` of the entire
       `Try` task.
@@ -292,7 +295,7 @@ The `catch` block can contain the following properties:
 
 ## Data Flow
 
-<include from="_common-task-data-flow.md" element-id="common-data-flow"/>
+<CommonTaskDataFlow />
 **Note on `Try` Data Flow**:
 *   The `rawOutput` used by `output.as` and `export.as` is determined as follows:
     *   If the `try` block completes successfully, `rawOutput` is the `transformedOutput` of the last task within `try`.
@@ -301,7 +304,7 @@ The `catch` block can contain the following properties:
 
 ## Flow Control
 
-<include from="_common-task-flow_control.md" element-id="common-flow-control"/>
+<CommonTaskFlowControl />
 **Note on `Try` Flow Control**:
 *   The `Try` task's `then` directive is followed **if and only if** the task completes successfully. Successful completion occurs under these conditions:
     1.  The `try` block finishes without raising any error that is caught by the `catch` filters.

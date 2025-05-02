@@ -2,6 +2,9 @@
 title: Wait
 ---
 
+import CommonTaskDataFlow from './src/content/docs/shared/common-task-data-flow.mdx';
+import CommonTaskFlowControl from './src/content/docs/shared/common-task-flow-control.mdx';
+
 ## Purpose
 
 The `Wait` task is used to introduce a pause or delay into the workflow execution. It halts the workflow for a specified
@@ -55,12 +58,12 @@ This mandatory object defines the duration of the pause.
 
 ## Data Flow
 
-<include from="_common-task-data-flow.md" element-id="common-data-flow"/>
+<CommonTaskDataFlow />
 **Note**: The `Wait` task typically acts as a pass-through for data; its `rawOutput` is identical to its `transformedInput` unless explicitly changed by `output.as`.
 
 ## Flow Control
 
-<include from="_common-task-flow_control.md" element-id="common-flow-control"/>
+<CommonTaskFlowControl />
 
 ## Wait Task Examples
 

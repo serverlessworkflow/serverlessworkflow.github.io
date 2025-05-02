@@ -40,7 +40,7 @@ A Serverless Workflow definition document consists of the following top-level pr
   things like function definitions, event definitions, authentication configurations, etc.
   See [Resource Catalog](dsl-resource-catalog.md) for details.
 
-* **`do`** (Array<String, Task>, Required): Defines the core execution logic of the workflow as a sequence (or
+* **`do`** (Array\<String, Task>, Required): Defines the core execution logic of the workflow as a sequence (or
   structure)
   of Tasks. This is where the main steps, control flow, and actions are specified.
 
@@ -97,7 +97,7 @@ A Serverless Workflow definition document consists of the following top-level pr
   ```
   These settings affect how all runtime expressions throughout the workflow are processed.
 
-* **`metadata`** (Map<String, Object>, Optional): An optional map of custom key-value pairs that can be used to attach arbitrary
+* **`metadata`** (Map\<String, Object>, Optional): An optional map of custom key-value pairs that can be used to attach arbitrary
   metadata to the workflow definition (e.g., author, team, deployment environment tags). These values are typically used
   for documentation, governance, or filtering workflows in management UIs, but don't affect runtime behavior.
   ```yaml
@@ -109,7 +109,7 @@ A Serverless Workflow definition document consists of the following top-level pr
     lastReviewDate: "2023-10-15"
   ```
 
-* **`extensions`** (Map<String: Object>, Optional): Defines extensions that enhance or modify the behavior of tasks in
+* **`extensions`** (Map\<String: Object>, Optional): Defines extensions that enhance or modify the behavior of tasks in
   the
   workflow. Extensions can be used to implement cross-cutting concerns like logging, monitoring, or mocking. Each
   extension consists of a name, specification for which tasks it extends, and the tasks to execute before and/or after

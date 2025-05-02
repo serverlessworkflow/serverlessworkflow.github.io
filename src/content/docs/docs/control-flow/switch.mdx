@@ -4,6 +4,9 @@ sidebar:
   order: 30
 ---
 
+import CommonTaskDataFlow from './src/content/docs/shared/common-task-data-flow.mdx';
+import CommonTaskFlowControl from './src/content/docs/shared/common-task-flow-control.mdx';
+
 ## Purpose
 
 The `Switch` task provides conditional branching based on evaluating a series of conditions. It allows the workflow to
@@ -58,7 +61,7 @@ jumping to `handleOtherStatus`.
 
 ## Configuration Options
 
-### `switch` (List<String, Object>, Required)
+### `switch` (List\<String, Object>, Required)
 
 This mandatory property contains a list of cases, each representing a potential branch or case.
 
@@ -103,11 +106,11 @@ Targeted tasks typically have a `then: exit` to prevent further execution.
 
 ## Data Flow
 
-<include from="_common-task-data-flow.md" element-id="common-data-flow"/>
+<CommonTaskDataFlow />
 **Note**: The `rawOutput` of the `Switch` task (feeding into its `output.as`/`export.as`) is its own `transformedInput`. The `Switch` itself doesn't modify the data; it only directs the flow.
 
 ## Flow Control
 
-<include from="_common-task-flow_control.md" element-id="common-flow-control"/>
+<CommonTaskFlowControl />
 **Note**: The `Switch` task has unique flow control. Instead of using its own `then` property, flow continues based on the `then` property of the *matched* `case` within the `switch` block. If no case matches, flow follows the `Switch` task's own `then` property.
 

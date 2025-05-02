@@ -2,6 +2,9 @@
 title: Set
 ---
 
+import CommonTaskDataFlow from './src/content/docs/shared/common-task-data-flow.mdx';
+import CommonTaskFlowControl from './src/content/docs/shared/common-task-flow-control.mdx';
+
 ## Purpose
 
 The `Set` task is used to dynamically create or modify data within the workflow's execution flow. Its primary function
@@ -84,12 +87,12 @@ set:
 
 ## Data Flow
 
-<include from="_common-task-data-flow.md" element-id="common-data-flow"/>
+<CommonTaskDataFlow />
 **Note**: The `Set` task's primary purpose is to generate its `rawOutput` based on the `set` configuration. Standard `output.as` and `export.as` then process this generated output.
 
 ## Flow Control
 
-<include from="_common-task-flow_control.md" element-id="common-flow-control"/>
+<CommonTaskFlowControl />
 
 
 ## Set Task Examples

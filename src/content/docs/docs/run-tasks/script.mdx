@@ -5,6 +5,9 @@ sidebar:
   label: Run Script
 ---
 
+import CommonTaskDataFlow from './src/content/docs/shared/common-task-data-flow.mdx';
+import CommonTaskFlowControl from './src/content/docs/shared/common-task-flow-control.mdx';
+
 ## Purpose
 
 The `run: script` task allows a workflow to execute a script written in a supported language (e.g., JavaScript, Python) directly within the runtime environment. This is useful for custom logic, data transformations, or simple integrations that don't warrant a full container or external function call.
@@ -132,8 +135,8 @@ The configuration is provided under the `run` property, specifically within the 
         *   `endpoint` (Object, Required): Defines the location of the script file.
             *   `uri` (String | Object, Required): The URI (string or URI template object) pointing to the script file.
             *   `authentication` (String | Object, Optional): Authentication details (inline or reference) needed to access the script file URI.
-    *   **`arguments`** (Map<String, Any>, Optional): A key/value map defining arguments or variables made available to the script's execution environment. Values can be static or derived using [Runtime Expressions](dsl-runtime-expressions.md). How these are exposed depends on the language (e.g., global variables in JS, injected context in Python).
-    *   **`environment`** (Map<String, String>, Optional): A key/value map of environment variables to set for the script execution process. Values can be static strings or evaluated from [Runtime Expressions](dsl-runtime-expressions.md).
+    *   **`arguments`** (Map\<String, Any>, Optional): A key/value map defining arguments or variables made available to the script's execution environment. Values can be static or derived using [Runtime Expressions](dsl-runtime-expressions.md). How these are exposed depends on the language (e.g., global variables in JS, injected context in Python).
+    *   **`environment`** (Map\<String, String>, Optional): A key/value map of environment variables to set for the script execution process. Values can be static strings or evaluated from [Runtime Expressions](dsl-runtime-expressions.md).
 *   **`await`** (Boolean, Optional, Default: `true`):
     *   `true`: The workflow task waits for the script process to complete before proceeding. The task's output is determined by the `return` property.
     *   `false`: The task starts the script and proceeds immediately. The task's `rawOutput` is its `transformedInput`.
@@ -148,7 +151,8 @@ The configuration is provided under the `run` property, specifically within the 
     *   `none`: The task produces no output (evaluates to `null`).
 
 ### Data Flow
-<include from="_common-task-data-flow.md" element-id="common-data-flow"/>
+
+<CommonTaskDataFlow />
 **Note**:
 *   The `transformedInput` to the task is available for use within runtime expressions in the `run.script.arguments` and `run.script.environment`.
 *   The script itself typically accesses data passed via `run.script.arguments`.
@@ -156,5 +160,6 @@ The configuration is provided under the `run` property, specifically within the 
 *   Standard `output.as` and `export.as` process this resulting `rawOutput`.
 
 ### Flow Control
-<include from="_common-task-flow_control.md" element-id="common-flow-control"/>
+
+<CommonTaskFlowControl />
 **Note**: If `await` is `true` and the script process exits with a non-zero status code or throws an unhandled exception, a `Runtime` error is typically raised, and the `then` directive is *not* followed (unless caught by `Try`). 

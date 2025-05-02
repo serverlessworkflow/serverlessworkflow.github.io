@@ -5,6 +5,9 @@ sidebar:
   label: RunShell Workflow
 ---
 
+import CommonTaskDataFlow from './src/content/docs/shared/common-task-data-flow.mdx';
+import CommonTaskFlowControl from './src/content/docs/shared/common-task-flow-control.mdx';
+
 ## Purpose
 
 The `run: workflow` task allows a workflow to invoke and execute another Serverless Workflow definition as a sub-workflow. This facilitates modular design, reusability, and the composition of complex processes from smaller, focused workflows.
@@ -157,7 +160,8 @@ The configuration is provided under the `run` property, specifically within the 
     *   `none`: The task produces no output (evaluates to `null`).
 
 ### Data Flow
-<include from="_common-task-data-flow.md" element-id="common-data-flow"/>
+
+<CommonTaskDataFlow />
 **Note**:
 *   The `transformedInput` to the `run: workflow` task is available for use within runtime expressions when defining the `run.workflow.input`.
 *   The `run.workflow.input` becomes the initial raw input for the sub-workflow.
@@ -165,5 +169,6 @@ The configuration is provided under the `run` property, specifically within the 
 *   Standard `output.as` and `export.as` process this resulting `rawOutput`.
 
 ### Flow Control
-<include from="_common-task-flow_control.md" element-id="common-flow-control"/>
+
+<CommonTaskFlowControl />
 **Note**: If `await` is `true` and the sub-workflow terminates in a `faulted` or `cancelled` state, a `Runtime` error (potentially containing the sub-workflow's error details in its `stderr` component if `return: all` or `return: stderr` is used) is typically raised by the `run: workflow` task, and the `then` directive is *not* followed (unless caught by `Try`). 

@@ -4,7 +4,11 @@ sidebar:
   order: 30
   label: gRPC Call
 ---
-<!-- Examples are validated -->
+
+import CommonTaskDataFlow from './src/content/docs/shared/common-task-data-flow.mdx';
+import CommonTaskFlowControl from './src/content/docs/shared/common-task-flow-control.mdx';
+
+{/* Examples are validated */}
 
 ## Purpose
 
@@ -106,12 +110,14 @@ See the main [Authentication](dsl-authentication.md) page for details on support
 **Error Handling**: If the specified authentication fails during the connection attempt to the gRPC service (e.g., invalid token, credentials rejected), the runtime should typically raise an `Authentication` (401) or `Authorization` (403) error. This prevents the RPC method call and halts the task unless the error is caught by a `Try` block.
 
 ### Data Flow
-<include from="_common-task-data-flow.md" element-id="common-data-flow"/>
+
+<CommonTaskDataFlow />
 **Note**:
 *   The `transformedInput` to the task is available for use within runtime expressions in the `with.arguments`.
 *   The `rawOutput` of the task is the response message returned by the invoked gRPC method.
 *   Standard `output.as` and `export.as` process this resulting response message.
 
 ### Flow Control
-<include from="_common-task-flow_control.md" element-id="common-flow-control"/>
+
+<CommonTaskFlowControl />
 **Note**: If the gRPC call fails (e.g., connection error, method not found, server error), a `Communication` error is typically raised, and the `then` directive is *not* followed (unless caught by `Try`). 

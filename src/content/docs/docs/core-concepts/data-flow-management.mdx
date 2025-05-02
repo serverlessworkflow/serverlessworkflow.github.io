@@ -52,7 +52,7 @@ Data flows through a sequence of validation and transformation steps:
 
 These properties are defined at the top level of the workflow document.
 
-### `input` (Object, Optional) {#workflow-input}
+### `input` (Object, Optional)
 
 Controls processing of the initial data the workflow receives.
 
@@ -84,7 +84,7 @@ do:
     # ...
 ```
 
-### `output` (Object, Optional) {#workflow-output}
+### `output` (Object, Optional)
 
 Controls processing of the final data returned by the workflow.
 
@@ -117,7 +117,7 @@ output:
 
 These properties can be defined within individual task definitions.
 
-### `input` (Object, Optional) {#task-input}
+### `input` (Object, Optional)
 
 Controls processing of data entering a specific task.
 
@@ -140,7 +140,7 @@ Controls processing of data entering a specific task.
       doubled: "${ $input.value * 2 }" # Use the transformed input ($input)
 ```
 
-### `output` (Object, Optional) {#task-output}
+### `output` (Object, Optional)
 
 Controls processing of data produced by a specific task.
 

@@ -5,6 +5,9 @@ sidebar:
   label: Run Container
 ---
 
+import CommonTaskDataFlow from './src/content/docs/shared/common-task-data-flow.mdx';
+import CommonTaskFlowControl from './src/content/docs/shared/common-task-flow-control.mdx';
+
 ## Purpose
 
 The `run: container` task allows a workflow to execute an external process encapsulated within a containerized environment (e.g., Docker). This is useful for running complex applications, specific versions of tools, or any process that benefits from isolation and reproducible environments.
@@ -101,9 +104,9 @@ The configuration is provided under the `run` property, specifically within the 
     *   **`image`** (String, Required): The name and tag of the container image to run (e.g., `ubuntu:latest`, `my-custom-app:1.2`).
     *   **`name`** (String, Optional): A [Runtime Expression](dsl-runtime-expressions.md) evaluated to assign a specific name to the running container instance. Useful for identification and management. Runtimes may have a default naming convention (e.g., `{workflow.name}-{uuid}.{workflow.namespace}-{task.name}`).
     *   **`command`** (String, Optional): The command and its arguments to execute inside the container. If not specified, the image's default command (e.g., `ENTRYPOINT` or `CMD` in a Dockerfile) is used.
-    *   **`ports`** (Map<String, String | Integer>, Optional): Defines port mappings between the host and the container (e.g., `{"8080": "80/tcp"}`). The exact format and capabilities may depend on the container runtime.
-    *   **`volumes`** (Map<String, String>, Optional): Defines volume mappings between the host and the container (e.g., `{"/host/data": "/container/data:ro"}`). The exact format and capabilities may depend on the container runtime.
-    *   **`environment`** (Map<String, String>, Optional): A key/value map of environment variables to set inside the container. Values can be static strings or evaluated from [Runtime Expressions](dsl-runtime-expressions.md).
+    *   **`ports`** (Map\<String, String | Integer>, Optional): Defines port mappings between the host and the container (e.g., `{"8080": "80/tcp"}`). The exact format and capabilities may depend on the container runtime.
+    *   **`volumes`** (Map\<String, String>, Optional): Defines volume mappings between the host and the container (e.g., `{"/host/data": "/container/data:ro"}`). The exact format and capabilities may depend on the container runtime.
+    *   **`environment`** (Map\<String, String>, Optional): A key/value map of environment variables to set inside the container. Values can be static strings or evaluated from [Runtime Expressions](dsl-runtime-expressions.md).
     *   **`lifetime`** (Object, Optional): Configures the container's lifecycle management after execution. Contains:
         *   `cleanup` (String, Required, Default: `never`): The cleanup policy. Supported values:
             *   `always`: The container is deleted immediately after execution.
@@ -124,12 +127,14 @@ The configuration is provided under the `run` property, specifically within the 
     *   `none`: The task produces no output (evaluates to `null`).
 
 ### Data Flow
-<include from="_common-task-data-flow.md" element-id="common-data-flow"/>
+
+<CommonTaskDataFlow />
 **Note**:
 *   The `transformedInput` to the task is available for use within runtime expressions in the `run.container.environment` and potentially `run.container.name` or `run.container.command`.
 *   The `rawOutput` depends on the `run.await` and `run.return` settings. If `await` is `false`, output is the `transformedInput`. Otherwise, it's determined by `return`.
 *   Standard `output.as` and `export.as` process this resulting `rawOutput`.
 
 ### Flow Control
-<include from="_common-task-flow_control.md" element-id="common-flow-control"/>
+
+<CommonTaskFlowControl />
 **Note**: If `await` is `true` and the container process exits with a non-zero status code (indicating an error), a `Runtime` error is typically raised, and the `then` directive is *not* followed (unless caught by `Try`). If `await` is `false`, process errors are generally not automatically caught by the workflow task itself. 

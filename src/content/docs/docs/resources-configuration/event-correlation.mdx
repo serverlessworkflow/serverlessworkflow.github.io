@@ -4,7 +4,7 @@ sidebar:
   order: 40
 ---
 
-<!-- Examples are validated -->
+{/* Examples are validated */}
 
 
 # Event Correlation
@@ -30,7 +30,7 @@ For an incoming event to match the filter based on correlation, **all** defined 
 An `Event Filter` object is used in tasks like [Listen](dsl-task-listen.md) and potentially in event-driven `schedule` definitions. It contains:
 
 *   **`with`** (Object, Required): Defines matching criteria based on standard event properties (like `type`, `source`, `subject`, `data`). Values can be static strings, regular expressions, or runtime expressions.
-*   **`correlate`** (Map<String, [`Correlation`](#correlation-object-structure)>, Optional): A map where each key is a user-defined name for a correlation check (e.g., `matchOrderId`), and the value is a `Correlation` object defining the matching logic.
+*   **`correlate`** (Map\<String, [`Correlation`](#correlation-object-structure)>, Optional): A map where each key is a user-defined name for a correlation check (e.g., `matchOrderId`), and the value is a `Correlation` object defining the matching logic.
 
 ### Correlation Object Structure
 

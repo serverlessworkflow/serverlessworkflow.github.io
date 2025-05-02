@@ -4,7 +4,11 @@ sidebar:
   order: 10
   label: Function Call
 ---
-<!-- Examples are validated -->
+
+import CommonTaskDataFlow from './src/content/docs/shared/common-task-data-flow.mdx';
+import CommonTaskFlowControl from './src/content/docs/shared/common-task-flow-control.mdx';
+
+{/* Examples are validated */}
 
 ## Purpose
 
@@ -115,11 +119,13 @@ If the function *definition* itself is hosted in a protected location (like a se
 **Error Handling**: If authentication fails while trying to *access the function definition* from a protected catalog, the runtime should raise an `Authentication` or `Authorization` error related to accessing the catalog endpoint. Errors related to authentication *within* the called function's logic are the responsibility of the function itself to handle or raise appropriately.
 
 ### Data Flow
-<include from="_common-task-data-flow.md" element-id="common-data-flow"/>
+
+<CommonTaskDataFlow />
 **Note**:
 *   The `transformedInput` to the `Call` task is available for use within runtime expressions in the `with` arguments.
 *   The `rawOutput` of the `Call` task is the result returned by the executed function.
 *   Standard `output.as` and `export.as` process this function result.
 
 ### Flow Control
-<include from="_common-task-flow_control.md" element-id="common-flow-control"/> 
+
+<CommonTaskFlowControl />
