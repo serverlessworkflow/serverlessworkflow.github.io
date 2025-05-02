@@ -33,7 +33,7 @@ By default, expressions are written using the syntax of the configured expressio
   `com.lemline.core.expressions.JQExpression.kt`).
 * **Configuration**: Runtimes *may* support other languages. If so, the language for a workflow can typically be
   specified using the top-level `evaluate.language` property in the workflow definition (refer to the
-  [Resources Configuration Overview](dsl-resources-configuration-overview.md)).
+  [Resources Configuration Overview](/docs/resources-configuration/overview/)).
 
 ## Available Arguments
 
@@ -128,4 +128,4 @@ runtime raises a standard error:
 * **Type**: `https://serverlessworkflow.io/spec/1.0.0/errors/expression`
 * **Status**: `400` (Bad Request)
 
-This error can be caught and handled using a [`Try`](dsl-task-try.md) task. 
+This error can be caught and handled using a [`Try`](/docs/error-handling/try/) task. 

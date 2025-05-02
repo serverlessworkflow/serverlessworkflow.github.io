@@ -38,7 +38,7 @@ A Serverless Workflow definition document consists of the following top-level pr
 
 * **`use`** (Optional): Defines reusable resources and definitions used throughout the workflow. This includes
   things like function definitions, event definitions, authentication configurations, etc.
-  See [Resource Catalog](dsl-resource-catalog.md) for details.
+  See [Resource Catalog](/docs/resources-configuration/resource-catalog/) for details.
 
 * **`do`** (Array\<String, Task>, Required): Defines the core execution logic of the workflow as a sequence (or
   structure)
@@ -85,7 +85,7 @@ A Serverless Workflow definition document consists of the following top-level pr
     hours: 1
     minutes: 30  # Total timeout of 1 hour and 30 minutes
   ```
-  See [Timeouts](dsl-timeouts.md) for more details on timeout configurations.
+  See [Timeouts](/docs/resources-configuration/timeouts/) for more details on timeout configurations.
 
 * **`evaluate`** (Optional): Configures how runtime expressions are evaluated within the workflow. This allows
   customization of the expression language and evaluation mode.

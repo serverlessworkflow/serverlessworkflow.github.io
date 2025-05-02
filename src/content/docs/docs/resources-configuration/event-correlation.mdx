@@ -27,7 +27,7 @@ For an incoming event to match the filter based on correlation, **all** defined 
 
 ### Event Filter Object Structure
 
-An `Event Filter` object is used in tasks like [Listen](dsl-task-listen.md) and potentially in event-driven `schedule` definitions. It contains:
+An `Event Filter` object is used in tasks like [Listen](/docs/event-tasks/listen/) and potentially in event-driven `schedule` definitions. It contains:
 
 *   **`with`** (Object, Required): Defines matching criteria based on standard event properties (like `type`, `source`, `subject`, `data`). Values can be static strings, regular expressions, or runtime expressions.
 *   **`correlate`** (Map\<String, [`Correlation`](#correlation-object-structure)>, Optional): A map where each key is a user-defined name for a correlation check (e.g., `matchOrderId`), and the value is a `Correlation` object defining the matching logic.
@@ -36,10 +36,10 @@ An `Event Filter` object is used in tasks like [Listen](dsl-task-listen.md) and 
 
 Each `Correlation` object within the `correlate` map defines a single data-based matching rule:
 
-*   **`from`** (String, Required): A [Runtime Expression](dsl-runtime-expressions.md) evaluated against the **incoming event** (its context attributes and `data` payload) to extract a value. For example, `${ .data.transactionId }`.
+*   **`from`** (String, Required): A [Runtime Expression](/docs/core-concepts/runtime-expressions/) evaluated against the **incoming event** (its context attributes and `data` payload) to extract a value. For example, `${ .data.transactionId }`.
 *   **`expect`** (String, Optional): Defines the value that the extracted `from` value must match.
     *   Can be a **static (constant) value** (e.g., `expect: "processed"`).
-    *   Can be a [Runtime Expression](dsl-runtime-expressions.md) evaluated against the **workflow's context** (`$context`, `$secrets`, etc.) *at the time the filter is checked* (e.g., `expect: "${ $context.currentTransactionId }"`).
+    *   Can be a [Runtime Expression](/docs/core-concepts/runtime-expressions/) evaluated against the **workflow's context** (`$context`, `$secrets`, etc.) *at the time the filter is checked* (e.g., `expect: "${ $context.currentTransactionId }"`).
     *   **If omitted:** The value extracted by the `from` expression from the *first* matching event encountered establishes the expectation for subsequent events within the same filter evaluation (this behavior is primarily relevant for specific `Listen` scenarios where multiple events might be processed sequentially against the same filter instance).
 
 **Matching Logic:** An event satisfies a single correlation definition if the value produced by the `from` expression (evaluated on the event) is equal to the value produced by the `expect` expression (evaluated on the workflow context) or the static `expect` value.

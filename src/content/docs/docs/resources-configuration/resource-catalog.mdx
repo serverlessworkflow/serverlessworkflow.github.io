@@ -6,7 +6,7 @@ sidebar:
 
 ## Purpose
 
-A **Resource Catalog** is an external collection of reusable components, primarily [Functions](dsl-call-function.md) in
+A **Resource Catalog** is an external collection of reusable components, primarily [Functions](/docs/call-tasks/function/) in
 current usage, that can be referenced and imported into Serverless Workflows.
 
 The main goals of using catalogs are:
@@ -42,7 +42,7 @@ do:
   - # ... tasks ...
 ```
 
-**Key Properties (from [Resources Configuration Overview](dsl-resources-configuration-overview.md)):**
+**Key Properties (from [Resources Configuration Overview](/docs/resources-configuration/overview/)):**
 
 * **`use.catalogs`** (Map\<String, Catalog>): A map where each key is a user-defined name for the catalog (e.g.,
   `sharedUtils`, `publicApis`) and the value is a `Catalog` object definition.
@@ -206,7 +206,7 @@ do:
 The process for creating and sharing resources involves defining the resource in a structured way and making it
 accessible via a catalog endpoint.
 
-While the most concrete example provided by the specification is for [Functions](dsl-call-function.md), the general
+While the most concrete example provided by the specification is for [Functions](/docs/call-tasks/function/), the general
 steps apply to any resource type potentially supported by a catalog:
 
 1. **Define the Resource**: Create a definition file (e.g., `function.yaml` for functions) that describes the resource

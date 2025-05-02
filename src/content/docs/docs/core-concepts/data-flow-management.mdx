@@ -56,7 +56,7 @@ These properties are defined at the top level of the workflow document.
 
 Controls processing of the initial data the workflow receives.
 
-* **`from`** (String | Object | Array | ..., Optional): A [Runtime Expression](dsl-runtime-expressions.md) or literal
+* **`from`** (String | Object | Array | ..., Optional): A [Runtime Expression](/docs/core-concepts/runtime-expressions/) or literal
   value defining how to transform the raw workflow input. The result initializes `$context` and is passed as raw input
   to the first task. Defaults to identity (`${. }`)
 * **`schema`** (Schema Definition, Optional): A [JSON Schema](https://json-schema.org/) used to validate the *raw*
@@ -88,7 +88,7 @@ do:
 
 Controls processing of the final data returned by the workflow.
 
-* **`as`** (String | Object | Array | ..., Optional): A [Runtime Expression](dsl-runtime-expressions.md) or literal
+* **`as`** (String | Object | Array | ..., Optional): A [Runtime Expression](/docs/core-concepts/runtime-expressions/) or literal
   value defining how to transform the *transformed output* of the *last* task. Defaults to identity (`${. }`)
 * **`schema`** (Schema Definition, Optional): A [JSON Schema](https://json-schema.org/) used to validate the *final
   transformed workflow output* (after `output.as` is applied). If validation fails, the workflow faults
@@ -172,7 +172,7 @@ Controls processing of data produced by a specific task.
 
 Controls how the task's results update the shared workflow context (`$context`).
 
-* **`as`** (String | Object | Array | ..., Optional): A [Runtime Expression](dsl-runtime-expressions.md) evaluated
+* **`as`** (String | Object | Array | ..., Optional): A [Runtime Expression](/docs/core-concepts/runtime-expressions/) evaluated
   against the task's *transformed output* (`$output`). The result of this expression **updates** the current value of
   `$context`. Use `$context + { newField: ... }` (jq syntax) to merge with existing context
 * **`schema`** (Schema Definition, Optional): Validates the data structure produced by `export.as` *before* it updates

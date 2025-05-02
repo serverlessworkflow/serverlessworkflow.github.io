@@ -9,7 +9,7 @@ import CommonTaskFlowControl from './src/content/docs/shared/common-task-flow-co
 
 The `Set` task is used to dynamically create or modify data within the workflow's execution flow. Its primary function
 is to define the exact output of the task by evaluating a specified structure, often
-using [Runtime Expressions](dsl-runtime-expressions.md) to incorporate data from the task's input or the workflow
+using [Runtime Expressions](/docs/core-concepts/runtime-expressions/) to incorporate data from the task's input or the workflow
 context.
 
 It's commonly used for:
@@ -67,7 +67,7 @@ do:
 
 This mandatory property defines the structure and content of the task's output.
 
-The value provided for `set` is evaluated as a template where [Runtime Expressions](dsl-runtime-expressions.md) (e.g.,
+The value provided for `set` is evaluated as a template where [Runtime Expressions](/docs/core-concepts/runtime-expressions/) (e.g.,
 `${.fieldName}`, `${ $context.someValue }`) can be used.
 
 The result of evaluating this structure becomes the **raw output** of the `Set` task.

@@ -129,14 +129,14 @@ The configuration is provided under the `run` property, specifically within the 
 ### `run` (Object, Required)
 
 *   **`script`** (Object, Required): Defines the script process configuration.
-    *   **`language`** (String, Required): The language of the script. Supported values are defined by the specification (e.g., `js`, `python`). Check the DSL reference for specific supported versions (e.g., `JavaScript ES2024`, `Python 3.13.x`). Using other versions might require the [Run Container Task](dsl-run-container.md).
+    *   **`language`** (String, Required): The language of the script. Supported values are defined by the specification (e.g., `js`, `python`). Check the DSL reference for specific supported versions (e.g., `JavaScript ES2024`, `Python 3.13.x`). Using other versions might require the [Run Container Task](/docs/run-tasks/container/).
     *   **`code`** (String, Conditionally Required): The inline source code of the script to execute. Required if `source` is not provided.
     *   **`source`** (Object, Conditionally Required): An object pointing to an external file containing the script source code. Required if `code` is not provided. It contains:
         *   `endpoint` (Object, Required): Defines the location of the script file.
             *   `uri` (String | Object, Required): The URI (string or URI template object) pointing to the script file.
             *   `authentication` (String | Object, Optional): Authentication details (inline or reference) needed to access the script file URI.
-    *   **`arguments`** (Map\<String, Any>, Optional): A key/value map defining arguments or variables made available to the script's execution environment. Values can be static or derived using [Runtime Expressions](dsl-runtime-expressions.md). How these are exposed depends on the language (e.g., global variables in JS, injected context in Python).
-    *   **`environment`** (Map\<String, String>, Optional): A key/value map of environment variables to set for the script execution process. Values can be static strings or evaluated from [Runtime Expressions](dsl-runtime-expressions.md).
+    *   **`arguments`** (Map\<String, Any>, Optional): A key/value map defining arguments or variables made available to the script's execution environment. Values can be static or derived using [Runtime Expressions](/docs/core-concepts/runtime-expressions/). How these are exposed depends on the language (e.g., global variables in JS, injected context in Python).
+    *   **`environment`** (Map\<String, String>, Optional): A key/value map of environment variables to set for the script execution process. Values can be static strings or evaluated from [Runtime Expressions](/docs/core-concepts/runtime-expressions/).
 *   **`await`** (Boolean, Optional, Default: `true`):
     *   `true`: The workflow task waits for the script process to complete before proceeding. The task's output is determined by the `return` property.
     *   `false`: The task starts the script and proceeds immediately. The task's `rawOutput` is its `transformedInput`.

@@ -111,7 +111,7 @@ The configuration for an HTTP call is provided within the `with` property of the
 *   **`method`** (String, Required): The HTTP request method (e.g., `get`, `post`, `put`, `delete`, `patch`).
 *   **`endpoint`** (String | Object, Required): The target URL. Can be:
     *   A simple string URL.
-    *   A [URI Template](dsl-uri-templates.md) string for simple variable substitution (e.g., `https://.../items/{itemId}`).
+    *   A [URI Template](/docs/resources-configuration/uri-templates/) string for simple variable substitution (e.g., `https://.../items/{itemId}`).
     *   An `Endpoint` object (inline definition or reference by name from `use.resources`) allowing specification of `uri` (String | Object, Required) and optional `authentication` (String | Object).
 *   **`headers`** (Object, Optional): A key/value map of HTTP headers to include in the request.
 *   **`body`** (Any, Optional): The HTTP request body. Can be any valid JSON/YAML structure or a string. The runtime typically serializes this based on the `Content-Type` header.
@@ -131,7 +131,7 @@ The configuration for an HTTP call is provided within the `with` property of the
 
 Authentication for HTTP calls is typically defined within the `Endpoint` object if you are using the object structure for the `endpoint` property. This allows you to associate an authentication policy (defined globally in `use.authentications` or inline) directly with the target URI.
 
-See the main [Authentication](dsl-authentication.md) page for details on defining different authentication schemes (Basic, Bearer, OAuth2, etc.).
+See the main [Authentication](/docs/resources-configuration/authentication/) page for details on defining different authentication schemes (Basic, Bearer, OAuth2, etc.).
 
 **Error Handling**: If the authentication process itself fails (e.g., invalid credentials, unable to obtain OAuth2 token, token rejected by the server *before* the main request is processed), the runtime should typically raise an `Authentication` (401) or `Authorization` (403) error. This would prevent the actual HTTP request from being sent and halt the task unless the error is caught by a `Try` block.
 

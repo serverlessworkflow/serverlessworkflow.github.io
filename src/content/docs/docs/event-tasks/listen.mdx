@@ -98,7 +98,7 @@ This object defines the core parameters for the listening behavior.
           ```
     * Each condition is typically defined using a `with` object specifying:
         * CloudEvent attributes to match (e.g., `type`, `source`).
-        * An optional `data` property containing a [Runtime Expression](dsl-runtime-expressions.md) evaluated against
+        * An optional `data` property containing a [Runtime Expression](/docs/core-concepts/runtime-expressions/) evaluated against
           the *event data* for further filtering.
     * The strategy may also include an optional `until` clause, defining a separate event condition.
         * **Use Case**: Providing an alternative, event-based exit condition for the listening state, often used for

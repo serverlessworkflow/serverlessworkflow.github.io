@@ -10,9 +10,9 @@ import CommonTaskFlowControl from './src/content/docs/shared/common-task-flow-co
 ## Purpose
 
 The `Raise` task is used to explicitly signal an error condition within the workflow.
-It constructs and throws a specific [Workflow Error](dsl-error-handling.md) object,
+It constructs and throws a specific [Workflow Error](/docs/core-concepts/error-handling/) object,
 which then interrupts the normal flow and triggers the error handling mechanism
-(typically caught by an enclosing [`Try`](dsl-task-try.md) task).
+(typically caught by an enclosing [`Try`](/docs/error-handling/try/) task).
 
 It's primarily used for:
 
@@ -142,7 +142,7 @@ This mandatory object defines the error to be raised.
 **Note on `Raise` Flow Control**:
 *   The standard `if` condition is evaluated first. If `false`, the `Raise` task is skipped entirely, and its `then` directive is followed as usual.
 *   However, if the `if` condition is `true` (or absent), the `Raise` task *will* execute.
-*   Upon execution, it **immediately raises the specified error** and transfers control to the [Error Handling](dsl-error-handling.md) mechanism (searching for a suitable `Try` block).
+*   Upon execution, it **immediately raises the specified error** and transfers control to the [Error Handling](/docs/core-concepts/error-handling/) mechanism (searching for a suitable `Try` block).
 *   Consequently, the `Raise` task's `then` directive is **completely ignored** when the task executes and raises its error.
 
 

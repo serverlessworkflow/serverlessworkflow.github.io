@@ -104,18 +104,18 @@ The configuration for an OpenAPI call is provided within the `with` property of 
 * **`parameters`** (Object, Optional): A key/value map representing the parameters required by the specified
   `operationId`. The runtime uses the OpenAPI document to determine how each parameter should be sent (e.g., path,
   query, header, cookie, request body). Values can be static or derived
-  using [Runtime Expressions](dsl-runtime-expressions.md).
+  using [Runtime Expressions](/docs/core-concepts/runtime-expressions/).
 * **`authentication`** (String | Object, Optional): Authentication details (inline definition or reference by name from
   `use.authentications`) needed to access the API, often corresponding to security schemes defined in the OpenAPI
   document.
 * **`output`** (String - `content` | `response` | `raw`, Optional, Default: `content`): Specifies the desired format of
-  the task's `rawOutput` (same behavior as the `output` property in the [HTTP Call Task](dsl-call-http.md)).
+  the task's `rawOutput` (same behavior as the `output` property in the [HTTP Call Task](/docs/call-tasks/http/)).
     * When `response` is chosen, the output is an object typically containing:
         * `status` (Integer): The HTTP status code.
         * `headers` (Object): A map of response headers.
         * `body` (Any): The deserialized response body.
 * **`redirect`** (Boolean, Optional, Default: `false`): Controls handling of HTTP redirect status codes (3xx) (same
-  behavior as the `redirect` property in the [HTTP Call Task](dsl-call-http.md)).
+  behavior as the `redirect` property in the [HTTP Call Task](/docs/call-tasks/http/)).
 
 ### Authentication
 
@@ -123,7 +123,7 @@ The `with` object contains an optional `authentication` property. You can provid
 name) a policy from `use.authentications`. This authentication mechanism is used to access the API described by the
 OpenAPI document, often corresponding to `securitySchemes` defined within that document.
 
-See the main [Authentication](dsl-authentication.md) page for details on defining authentication policies.
+See the main [Authentication](/docs/resources-configuration/authentication/) page for details on defining authentication policies.
 
 **Error Handling**: If the authentication specified fails *before* the underlying HTTP request is made (e.g., cannot
 retrieve OAuth2 token) or if the server rejects the credentials provided with a 401/403 status *specifically due to

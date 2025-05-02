@@ -71,12 +71,12 @@ Each case contains:
 
 * **A unique name** for the case (e.g., `caseApproved`).
 * **An object** containing:
-    * **`when`** (String, Optional): A [Runtime Expression](dsl-runtime-expressions.md). If present, this expression is
+    * **`when`** (String, Optional): A [Runtime Expression](/docs/core-concepts/runtime-expressions/). If present, this expression is
       evaluated against the *transformed input* of the `Switch` task. If it evaluates to `true`, this case is selected,
       and its `then` directive is followed. If omitted, this case acts as the default branch (executed only if no
       preceding `when` condition was met).
     * **`then`** (String, Required): Defines the next step if this case is selected. It follows the
-      standard [Flow Control](dsl-flow-control.md) rules (`continue`, `exit`, `end`, or a task name).
+      standard [Flow Control](/docs/core-concepts/flow-control/) rules (`continue`, `exit`, `end`, or a task name).
 
 ```yaml
 do:

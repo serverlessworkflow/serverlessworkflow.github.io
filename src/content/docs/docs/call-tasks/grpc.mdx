@@ -99,13 +99,13 @@ The configuration for a gRPC call is provided within the `with` property of the 
     *   **`port`** (Integer, Optional): The port number of the gRPC server.
     *   **`authentication`** (String | Object, Optional): Authentication details (inline definition or reference by name from `use.authentications`) needed to connect to the service.
 *   **`method`** (String, Required): The name of the specific RPC method to call within the service, as defined in the `.proto` file.
-*   **`arguments`** (Object, Optional): A key/value map representing the arguments required by the specified gRPC `method`. Values can be static or derived using [Runtime Expressions](dsl-runtime-expressions.md).
+*   **`arguments`** (Object, Optional): A key/value map representing the arguments required by the specified gRPC `method`. Values can be static or derived using [Runtime Expressions](/docs/core-concepts/runtime-expressions/).
 
 ### Authentication
 
 The `service` object contains an optional `authentication` property where you can specify the authentication details needed to connect to the gRPC service. This can be an inline definition or a reference (by name) to a policy defined in `use.authentications`.
 
-See the main [Authentication](dsl-authentication.md) page for details on supported schemes like OAuth2, Bearer, etc.
+See the main [Authentication](/docs/resources-configuration/authentication/) page for details on supported schemes like OAuth2, Bearer, etc.
 
 **Error Handling**: If the specified authentication fails during the connection attempt to the gRPC service (e.g., invalid token, credentials rejected), the runtime should typically raise an `Authentication` (401) or `Authorization` (403) error. This prevents the RPC method call and halts the task unless the error is caught by a `Try` block.
 

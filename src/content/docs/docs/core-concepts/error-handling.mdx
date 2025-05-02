@@ -68,7 +68,7 @@ Errors can enter the system in two main ways:
     * Authentication/Authorization issues arise (`authentication`/`authorization` errors)
     * Workflow definition issues are detected (`configuration` error)
 
-2. **Explicitly using the `Raise` Task**: Authors can use the [`Raise` task](dsl-task-raise.md) to explicitly throw a
+2. **Explicitly using the `Raise` Task**: Authors can use the [`Raise` task](/docs/error-handling/raise/) to explicitly throw a
    specific error (either predefined in `use.errors` or defined inline) based on workflow logic:
    ```yaml
    - checkInventory:
@@ -82,7 +82,7 @@ Errors can enter the system in two main ways:
 
 ## Catching and Handling Errors (`Try...Catch`)
 
-The primary mechanism for handling errors is the [`Try` task](dsl-task-try.md). A `Try` task consists of:
+The primary mechanism for handling errors is the [`Try` task](/docs/error-handling/try/). A `Try` task consists of:
 
 1. A `try` block containing the tasks that might raise errors
 2. A `catch` block defining how to handle those errors
@@ -130,7 +130,7 @@ The primary mechanism for handling errors is the [`Try` task](dsl-task-try.md). 
     * If an error is caught, a retry policy can be defined
     * The retry policy determines how many times to retry and with what delay
     * The *entire* `try` block is re-executed after the delay
-    * See [`Try` task documentation](dsl-task-try.md) for retry policy details
+    * See [`Try` task documentation](/docs/error-handling/try/) for retry policy details
 
 5. **Compensation (`catch.do`)**:
     * Executed if an error is caught and not retried (or retries are exhausted)

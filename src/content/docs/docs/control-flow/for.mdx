@@ -56,7 +56,7 @@ index via the default `$index` variable within the runtime expression scope.
 
 This object defines the core iteration parameters.
 
-* **`in`** (String, Required): A [Runtime Expression](dsl-runtime-expressions.md) that **must** evaluate to an
+* **`in`** (String, Required): A [Runtime Expression](/docs/core-concepts/runtime-expressions/) that **must** evaluate to an
   array/list. The workflow iterates over the elements of this array.
 * **`each`** (String, Optional): Specifies the variable name used within the `do` block's scope to access the current
   item being processed. Defaults to `item` (accessible as `$item` in expressions).
@@ -92,7 +92,7 @@ do:
 
 ### `while` (String, Optional)
 
-An optional [Runtime Expression](dsl-runtime-expressions.md) evaluated *before* executing the `do` block for each item (
+An optional [Runtime Expression](/docs/core-concepts/runtime-expressions/) evaluated *before* executing the `do` block for each item (
 including the first item).
 
 If the expression evaluates to `false`, the `do` block for the current item is skipped, and the loop terminates.

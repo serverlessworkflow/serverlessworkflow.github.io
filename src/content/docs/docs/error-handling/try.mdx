@@ -35,7 +35,7 @@ do:
       try:
         # Tasks to attempt inside the 'try' block (must be a list)
         - callMyApi:
-            call: http  # See [HTTP Call Task](dsl-call-http.md) for details
+            call: http  # See [HTTP Call Task](/docs/call-tasks/http/) for details
             with:
               method: get
               uri: https://api.unreliable.com/data
@@ -152,7 +152,7 @@ The `catch` block can contain the following properties:
             ```
 * **`as`** (String, Optional): Specifies the variable name used to store the caught error object within the scope of the
   `catch` block (`when`, `exceptWhen`, `retry`, `do`). Defaults to `error` (accessible as `$error` in expressions).
-* **`when`** (String, Optional): A [Runtime Expression](dsl-runtime-expressions.md) evaluated *if* an error matches the
+* **`when`** (String, Optional): A [Runtime Expression](/docs/core-concepts/runtime-expressions/) evaluated *if* an error matches the
   `errors.with` filter. The expression has access to the caught error via the variable named by `as`. The error is only
   caught if this expression evaluates to `true`.
     * **Example**: Catch communication errors only if they occurred for a specific instance:
@@ -164,7 +164,7 @@ The `catch` block can contain the following properties:
         when: "${ $commErr.instance == '/do/0/unreliableApiCall' }"
         # ... retry or do ...
       ```
-* **`exceptWhen`** (String, Optional): A [Runtime Expression](dsl-runtime-expressions.md) evaluated *if* an error
+* **`exceptWhen`** (String, Optional): A [Runtime Expression](/docs/core-concepts/runtime-expressions/) evaluated *if* an error
   matches the `errors.with` filter *and* the `when` condition (if present) was true. The expression has access to the
   caught error. The error is *not* caught if this expression evaluates to `true`.
     * **Example**: Catch all validation errors *except* those related to a specific field:

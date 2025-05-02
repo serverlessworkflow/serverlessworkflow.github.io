@@ -102,11 +102,11 @@ The configuration is provided under the `run` property, specifically within the 
 
 *   **`container`** (Object, Required): Defines the container process configuration.
     *   **`image`** (String, Required): The name and tag of the container image to run (e.g., `ubuntu:latest`, `my-custom-app:1.2`).
-    *   **`name`** (String, Optional): A [Runtime Expression](dsl-runtime-expressions.md) evaluated to assign a specific name to the running container instance. Useful for identification and management. Runtimes may have a default naming convention (e.g., `{workflow.name}-{uuid}.{workflow.namespace}-{task.name}`).
+    *   **`name`** (String, Optional): A [Runtime Expression](/docs/core-concepts/runtime-expressions/) evaluated to assign a specific name to the running container instance. Useful for identification and management. Runtimes may have a default naming convention (e.g., `{workflow.name}-{uuid}.{workflow.namespace}-{task.name}`).
     *   **`command`** (String, Optional): The command and its arguments to execute inside the container. If not specified, the image's default command (e.g., `ENTRYPOINT` or `CMD` in a Dockerfile) is used.
     *   **`ports`** (Map\<String, String | Integer>, Optional): Defines port mappings between the host and the container (e.g., `{"8080": "80/tcp"}`). The exact format and capabilities may depend on the container runtime.
     *   **`volumes`** (Map\<String, String>, Optional): Defines volume mappings between the host and the container (e.g., `{"/host/data": "/container/data:ro"}`). The exact format and capabilities may depend on the container runtime.
-    *   **`environment`** (Map\<String, String>, Optional): A key/value map of environment variables to set inside the container. Values can be static strings or evaluated from [Runtime Expressions](dsl-runtime-expressions.md).
+    *   **`environment`** (Map\<String, String>, Optional): A key/value map of environment variables to set inside the container. Values can be static strings or evaluated from [Runtime Expressions](/docs/core-concepts/runtime-expressions/).
     *   **`lifetime`** (Object, Optional): Configures the container's lifecycle management after execution. Contains:
         *   `cleanup` (String, Required, Default: `never`): The cleanup policy. Supported values:
             *   `always`: The container is deleted immediately after execution.
