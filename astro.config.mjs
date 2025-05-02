@@ -13,6 +13,13 @@ export default defineConfig({
     sitemap(), 
     starlight({
       title: 'Serverless Workflow Docs',
+      logo: {
+        src: './public/icons/logo.svg'
+      },
+      favicon: '/icons/favicon-32x32.png',
+      customCss: [
+        './src/styles/site.css',
+      ],
       social: [
         { icon: 'github', label: 'GitHub', href: 'https://github.com/serverlessworkflow/specification' },
       ],
