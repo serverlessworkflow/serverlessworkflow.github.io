@@ -26,12 +26,10 @@
   --color-neutral-content: #A6ADBB;
 }
 
-@theme {
-}
-
 html {
-  
   --sl-color-text-accent: var(--color-accent);
+  --sl-color-bg-nav: var(--color-base-100);
+  --sl-color-bg-sidebar: var(--color-base-100);
 }
 
 html[data-theme="dark"] {
