@@ -2,10 +2,8 @@
 
 @import '@astrojs/starlight-tailwind';
 @import 'tailwindcss/theme.css' layer(theme);
-@import "tailwindcss/preflight.css" layer(base);
 @import 'tailwindcss/utilities.css' layer(utilities);
 
-@plugin "@tailwindcss/typography";
 @plugin "daisyui";
 @plugin "daisyui/theme" {
   name: "light";
@@ -38,15 +36,6 @@ html[data-theme="dark"] {
     color: var(--shiki-dark) !important;
     background-color: transparent !important;
   }
-}
-
-.main-pane .sl-container {  
-  @apply prose;
-  max-width: var(--sl-content-width);
-  --sl-text-h1: var(--sl-text-base);
-  --sl-text-h2: var(--sl-text-base);
-  --sl-text-h3: var(--sl-text-base);
-  --sl-text-h4: var(--sl-text-base);
 }
 
 /* header logo */
