@@ -1,10 +1,4 @@
-@layer base, starlight, theme, components, utilities;
-
 @import "tailwindcss";
-@import '@astrojs/starlight-tailwind';
-@import 'tailwindcss/theme.css' layer(theme);
-@import 'tailwindcss/utilities.css' layer(utilities);
-
 @plugin "@tailwindcss/typography";
 @plugin "daisyui";
 @plugin "daisyui/theme" {
@@ -26,33 +20,14 @@
   --color-neutral-content: #A6ADBB;
 }
 
-html[data-theme="dark"] .astro-code,
-html[data-theme="dark"] .astro-code span {
-  color: var(--shiki-dark) !important;
-  background-color: transparent !important;
-  /*font-style: var(--shiki-dark-font-style) !important;
-  font-weight: var(--shiki-dark-font-weight) !important;
-  text-decoration: var(--shiki-dark-text-decoration) !important;*/
-} 
-
-/* header logo */
-.site-title {
-  gap: calc(var(--spacing) * 2);
-}
-.site-title img {
-  width: 24px;
-  height: 28px;
-  filter: brightness(0) saturate(100%);
+html[data-theme="dark"] {
+  .astro-code, 
+  .astro-code span {
+    color: var(--shiki-dark) !important;
+    background-color: transparent !important;
+  }
 }
 
-html[data-theme="dark"] .site-title img {
-  filter: brightness(0) invert(1);
-}
-
-/* header title */
-.title-wrapper span {
-  color: var(--color-base-content);
-  font-size: var(--text-xl);
-  --tw-font-weight: var(--font-weight-bold);
-  font-weight: var(--font-weight-bold);
+.sl-anchor-link {
+  display: none;
 }

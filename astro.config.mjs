@@ -18,7 +18,7 @@ export default defineConfig({
       },
       favicon: '/icons/favicon-32x32.png',
       customCss: [
-        './src/styles/site.css',
+        './src/styles/docs.css',
       ],
       social: [
         { icon: 'github', label: 'GitHub', href: 'https://github.com/serverlessworkflow/specification' },
@@ -71,6 +71,18 @@ export default defineConfig({
           autogenerate: { directory: 'docs/reference' },
         },
       ],
+      components: {
+        ThemeSelect: './src/overrides/ThemeSelect.astro'
+      },
+      head: [
+        {
+          tag: 'script',
+          attrs: {
+            src: '/webcomponents/version-select/version-select.js',
+            defer: true
+          }
+        }
+      ]
     }),
     mdx(), 
   ],
