@@ -1,0 +1,7 @@
+---
+/** Overrides Starlight theme selector componenent to include version selector */
+import Default from '@astrojs/starlight/components/ThemeSelect.astro';
+---
+
+<version-select></version-select><!-- <-- WebComponent, loaded in astro config -> integrations -> starlight -> head -->
+<Default><slot /></Default>
