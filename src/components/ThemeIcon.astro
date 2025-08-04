@@ -22,9 +22,10 @@
 </label >
 
 <script is:inline>
+  const themeKey = 'starlight-theme';
   const theme = (() => {
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme') ?? 'light';
+    if (typeof localStorage !== 'undefined' && localStorage.getItem(themeKey)) {
+      return localStorage.getItem(themeKey) ?? 'light';
     }
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       return 'dark';
@@ -35,12 +36,12 @@
   const handleThemeChange = () => {
     const newTheme = checkbox.checked ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
+    localStorage.setItem(themeKey, newTheme);
   };
   checkbox.addEventListener('change', handleThemeChange);
   if (theme==='light') {
     checkbox.checked = true;
   }
   document.documentElement.setAttribute('data-theme', theme);
-  window.localStorage.setItem('theme', theme);
+  window.localStorage.setItem(themeKey, theme);
 </script>
