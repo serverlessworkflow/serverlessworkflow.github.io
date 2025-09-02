@@ -20,11 +20,14 @@
   --color-neutral-content: #A6ADBB;
 }
 
-html[data-theme="dark"] .astro-code,
-html[data-theme="dark"] .astro-code span {
-  color: var(--shiki-dark) !important;
-  background-color: transparent !important;
-  /*font-style: var(--shiki-dark-font-style) !important;
-  font-weight: var(--shiki-dark-font-weight) !important;
-  text-decoration: var(--shiki-dark-text-decoration) !important;*/
-} 
+html[data-theme="dark"] {
+  .astro-code, 
+  .astro-code span {
+    color: var(--shiki-dark) !important;
+    background-color: transparent !important;
+  }
+}
+
+.sl-anchor-link {
+  display: none;
+}

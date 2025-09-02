@@ -1,0 +1,25 @@
+---
+title: Core Concepts Overview
+sidebar:
+  order: 0
+  label: Overview
+---
+{/* Examples are validated */}
+
+## Introduction
+
+Before diving into specific workflow tasks, it's essential to understand the fundamental concepts that underpin the Serverless Workflow DSL. These core concepts define how data moves, how dynamic values are evaluated, how execution proceeds, and how errors are managed within a workflow.
+
+Mastering these concepts will enable you to design more effective, robust, and maintainable workflows that follow best practices and industry standards.
+
+## Concepts Covered
+
+This section covers the following critical mechanisms:
+
+*   **[Data Flow](/docs/core-concepts/data-flow-management/):** Explains how data is initialized, manipulated, passed between tasks, and ultimately influences the workflow's outcome. Covers the workflow context, task inputs/outputs, and data filtering/transformation.
+*   **[Runtime Expressions](/docs/core-concepts/runtime-expressions/):** Details the syntax and usage of expressions evaluated *during* workflow execution. These are crucial for accessing data, making decisions, and dynamically configuring tasks based on the current context.
+*   **[Flow Control](/docs/core-concepts/flow-control/):** Describes the mechanisms that dictate the sequence of execution, including conditional branching (`Switch`), looping (`For`), parallel execution (`Fork`), and sequential progression (`Do`, `then`).
+*   **[Error Handling](/docs/core-concepts/error-handling/):** Covers how workflows detect, manage, and recover from errors using mechanisms like `Try/Catch` blocks, standard error types, and custom error definitions (`Raise`).
+*   **[Lifecycle Events](/docs/core-concepts/lifecycle-events/):** Explains the standardized events emitted during workflow and task execution, providing observability into state changes and enabling monitoring, auditing, and event-driven reactions to workflow status.
+
+Understanding these building blocks provides the foundation necessary to effectively utilize the various [Tasks](/docs/control-flow/overview/) and [Event](/docs/event-tasks/overview/) handling capabilities of the DSL. 

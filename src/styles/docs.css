@@ -1,0 +1,61 @@
+@layer base, starlight, theme, components, utilities;
+
+@import '@astrojs/starlight-tailwind';
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+@plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: oklch(46.2% 0.0713 255.54);
+  --color-secondary: oklch(78.95% 0.0554 234.08);
+  --color-accent: oklch(68.35% 0.1676 34.7);
+}
+@plugin "daisyui/theme" {
+  name: "dark";
+  default: false;
+  --color-primary: oklch(96.89% 0.0281 199.41);
+  --color-primary-content: #293241;
+  --color-secondary: oklch(78.95% 0.0554 234.08);
+  --color-accent: oklch(68.35% 0.1676 34.7);
+  --color-accent-content: oklab(0.14 0.03 0.02);
+  --color-neutral: #293241;
+  --color-neutral-content: #A6ADBB;
+}
+
+html {
+  --sl-color-text-accent: var(--color-accent);
+  --sl-color-bg-nav: var(--color-base-100);
+  --sl-color-bg-sidebar: var(--color-base-100);
+}
+
+html[data-theme="dark"] {
+  .astro-code, 
+  .astro-code span {
+    color: var(--shiki-dark) !important;
+    background-color: transparent !important;
+  }
+}
+
+/* header logo */
+.site-title {
+  gap: calc(var(--spacing) * 2);
+}
+.site-title img {
+  width: 24px;
+  height: 28px;
+  filter: brightness(0) saturate(100%);
+}
+
+html[data-theme="dark"] .site-title img {
+  filter: brightness(0) invert(1);
+}
+
+/* header title */
+.title-wrapper span {
+  color: var(--color-base-content);
+  font-size: var(--text-xl);
+  --tw-font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-bold);
+}
