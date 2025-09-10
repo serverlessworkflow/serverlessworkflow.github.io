@@ -3,7 +3,7 @@ title: Serverless Workflow Java SDK 7.2.0
 author: Ricardo Zanini
 date: 2025-09-10
 description: >-
-We’ve shipped Serverless Workflow Java SDK 7.2.0, aligned with Specification 1.0.0, with a brand-new Fluent DSL, experimental Func DSL, Mermaid diagrams, auth enhancements, and more.
+ We’ve shipped Serverless Workflow Java SDK 7.2.0, aligned with Specification 1.0.0, with a brand-new Fluent DSL, experimental Func DSL, Mermaid diagrams, auth enhancements, and more.
 ---
 
 ## Announcing the Release of Serverless Workflow Java SDK 7.2.0
