@@ -2,7 +2,7 @@
 title: Switch
 ---
 document:
-  dsl: '1.0.0'
+  dsl: '1.0.3'
   namespace: default
   name: switch-example
   version: '0.1.0'

@@ -2,7 +2,7 @@
 title: gRPC
 ---
 document:
-  dsl: '1.0.0'
+  dsl: '1.0.3'
   namespace: default
   name: call-grpc
   version: '1.0.0'

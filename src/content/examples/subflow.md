@@ -2,7 +2,7 @@
 title: Subflow
 ---
 document:
-  dsl: '1.0.0'
+  dsl: '1.0.3'
   namespace: default
   name: run-subflow
   version: '0.1.0'

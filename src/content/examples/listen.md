@@ -2,7 +2,7 @@
 title: Listen Event
 ---
 document:
-  dsl: '1.0.0'
+  dsl: '1.0.3'
   namespace: default
   name: listen-to-all
   version: '0.1.0'

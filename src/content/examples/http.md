@@ -2,7 +2,7 @@
 title: HTTP
 ---
 document:
-  dsl: '1.0.0'
+  dsl: '1.0.3'
   namespace: default
   name: call-http
   version: '1.0.0'

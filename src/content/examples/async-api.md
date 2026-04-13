@@ -2,7 +2,7 @@
 title: Async API
 ---
 document:
-  dsl: '1.0.0'
+  dsl: '1.0.3'
   namespace: default
   name: call-asyncapi
   version: '1.0.0'
