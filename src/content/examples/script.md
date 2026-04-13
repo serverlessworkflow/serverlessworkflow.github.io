@@ -2,7 +2,7 @@
 title: Script
 ---
 document:
-  dsl: '1.0.0'
+  dsl: '1.0.3'
   namespace: samples
   name: run-script-with-arguments
   version: 0.1.0

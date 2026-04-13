@@ -2,7 +2,7 @@
 title: Wait
 ---
 document:
-  dsl: '1.0.0'
+  dsl: '1.0.3'
   namespace: default
   name: wait-duration-inline
   version: '0.1.0'

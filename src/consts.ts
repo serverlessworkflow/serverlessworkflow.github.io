@@ -1,7 +1,7 @@
 export const DEFAULT_TITLE = 'Serverless Workflow';
 export const DEFAULT_DESC = `Serverless Workflow presents a vendor-neutral, open-source, and entirely community-driven ecosystem tailored for defining and executing DSL-based workflows in the realm of Serverless technology.`;
 
-export const CURRENT_VERSION = '1.0.0';
+export const CURRENT_VERSION = '1.0.3';
 
 export const GITHUB_ORG = 'https://github.com/serverlessworkflow/';
 export const GITHUB_LINK = GITHUB_ORG + 'specification/';
