@@ -18,8 +18,8 @@ const examples = (await getCollection('example')).sort((a,b) => a.data.title.loc
     <div class="hero-content text-center">
       <div class="max-w-3xl">
         <img src="/img/logos/sw-logo.png" width="150px" class="mb-4 mx-auto" />
-        <h1 class="text-5xl font-bold">Serverless Workflow</h1>
-        <p class="pt-6">Serverless Workflow presents a vendor-neutral, open-source, and entirely community-driven ecosystem tailored for defining and executing DSL-based workflows in the realm of Serverless technology.</p>
+        <h1 class="text-5xl font-bold">Open Workflow Specification</h1>
+        <p class="pt-6">Open Workflow Specification presents a vendor-neutral, open-source, and entirely community-driven ecosystem for defining and executing DSL-based workflows.</p>
         <p class="py-6">The current version is <span class="font-bold">{CURRENT_VERSION}</span>, get the JSON Schema here: <a class="link link-accent" href=`/schemas/${CURRENT_VERSION}/workflow.yaml` target="_blank" rel="noopener">YAML</a> or <a class="link link-accent" href=`/schemas/${CURRENT_VERSION}/workflow.json` target="_blank" rel="noopener">JSON</a></p>
         <a class="btn btn-accent border-accent bg-base-100 text-accent" href={GITHUB_LINK + 'blob/main/README.md'} target="_blank" rel="noopener">Learn More</a>
         <div class="dropdown dropdown-hover">
@@ -40,7 +40,7 @@ const examples = (await getCollection('example')).sort((a,b) => a.data.title.loc
   </div>
   <!-- Sub Hero -->
   <Section width="small" class="bg-primary text-primary-content">
-    <p class="text-2xl text-center font-bold">The Serverless Workflow DSL is a high-level language that reshapes the terrain of workflow creation, boasting a design that is ubiquitous, intuitive, imperative, and fluent.</p>
+    <p class="text-2xl text-center font-bold">The Open Workflow DSL is a high-level language that reshapes the terrain of workflow creation, boasting a design that is ubiquitous, intuitive, imperative, and fluent.</p>
   </Section>
 
   <!-- Selling points -->
@@ -55,7 +55,7 @@ const examples = (await getCollection('example')).sort((a,b) => a.data.title.loc
       <p>Seamlessly integrates with multiple protocols (HTTP, gRPC, OpenAPI, AsyncAPI), ensuring easy communication with external systems and services, along with support for custom interactions via scripts, containers, or shell commands.</p>
     </Card>
     <Card title="Platform-Agnostic" icon="fa-solid fa-cloud text-primary text-5xl">
-      <p>Serverless Workflow enables developers to build workflows that can operate across diverse platforms and environments, eliminating the need for platform-specific adaptations.</p>
+      <p>Open Workflow Specification enables developers to build workflows that can operate across diverse platforms and environments, eliminating the need for platform-specific adaptations.</p>
     </Card>
     <Card title="Extensibility" icon="fa-solid fa-maximize text-primary text-5xl">
       <p>Provides extensible components and supports defining custom functions and extensions, allowing developers to tailor workflows to unique business requirements without compromising compatibility.</p>
@@ -94,7 +94,7 @@ const examples = (await getCollection('example')).sort((a,b) => a.data.title.loc
       <a class="link link-accent" href={GITHUB_LINK} target="_blank" rel="noopener">To Repository</a>
     </Card>
     <Card title="Join us on Slack!" icon="fab fa-slack text-primary text-3xl">
-      <p>Chat with our community and follow announcements at <strong>#serverless-workflow</strong></p>
+      <p>Chat with our community and follow announcements at <strong>#open-workflow</strong></p>
       <a class="link link-accent" href="https://slack.cncf.io/" target="_blank" rel="noopener">Open Slack</a>
     </Card>
   </Section>
@@ -102,7 +102,7 @@ const examples = (await getCollection('example')).sort((a,b) => a.data.title.loc
   <!-- Projects -->
   <Section title="Open Source projects supporting our DSL" class="bg-base-200" isGrid={true}>
     <Card title="Apache EventMesh Workflow" image="img/logos/eventmesh.png">
-      <p>Apache EventMesh Workflow is a cloud vendor-independent, cloud-native-oriented Serverless Workflow Runtime based on Serverless Workflow specification, and provides durability, reliability, scalability, and observability capabilities.</p>
+      <p>Apache EventMesh Workflow is a cloud vendor-independent, cloud-native-oriented Workflow Runtime based on Open Workflow Specification, and provides durability, reliability, scalability, and observability capabilities.</p>
       <a class="link link-accent" href="https://github.com/apache/eventmesh-workflow" target="_blank" rel="noopener">Get Started</a>
     </Card>
     <Card title="Apache KIE SonataFlow" image="img/logos/sonataflowlogo.png">
@@ -114,23 +114,23 @@ const examples = (await getCollection('example')).sort((a,b) => a.data.title.loc
       <a class="link link-accent" href="https://github.com/lemline/lemline" target="_blank" rel="noopener">Get Started</a>
     </Card>
     <Card title="Synapse" image="img/logos/synapselogo.png">
-      <p>Synapse is a vendor-neutral, free, open-source, and community-driven Workflow Management System (WFMS) implementing the Serverless Workflow specification. You can deploy Synapse on Docker, Kubernetes, or natively on Windows, Mac, and Linux.</p>
+      <p>Synapse is a vendor-neutral, free, open-source, and community-driven Workflow Management System (WFMS) implementing the Open Workflow Specification. You can deploy Synapse on Docker, Kubernetes, or natively on Windows, Mac, and Linux.</p>
       <a class="link link-accent" href="https://github.com/serverlessworkflow/synapse" target="_blank" rel="noopener">Get Started</a>
     </Card>
     <Card title="Zigflow" image="img/logos/zigflowlogo.png">
-      <p>Zigflow provides a simple and declarative way to define and manage <a href="https://temporal.io" class="link link-accent" target="_blank" rel="noopener">Temporal</a> workflows using the CNCF Serverless Workflow specification. It enables low-code and no-code workflow creation that's easy to visualise, share, and maintain, without sacrificing the power and reliability of Temporal.</p>
+      <p>Zigflow provides a simple and declarative way to define and manage <a href="https://temporal.io" class="link link-accent" target="_blank" rel="noopener">Temporal</a> workflows using the Open Workflow Specification. It enables low-code and no-code workflow creation that's easy to visualise, share, and maintain, without sacrificing the power and reliability of Temporal.</p>
       <a class="link link-accent" href="https://zigflow.dev" target="_blank" rel="noopener">Get Started</a>
     </Card>
   </Section>
 
   <!-- Adopters -->
-  <Section title="Trusted by top brands in workflow technologies" subTitle="Already using Serverless Workflow? Join our list of top brands by letting us know here!" isGrid={true}>
+  <Section title="Trusted by top brands in workflow technologies" subTitle="Already using Open Workflow Specification? Join our list of top brands by letting us know here!" isGrid={true}>
     <Card title="Apache EventMesh" image="img/logos/eventmesh2.png" imageSize="medium">
       <p>A new generation serverless event middleware for building distributed event-driven applications.</p>
       <a class="link link-accent" href="https://github.com/apache/eventmesh" target="_blank" rel="noopener">Learn More</a>
     </Card>
     <Card title="Caf" image="img/logos/caf.png" imageSize="medium">
-      <p>Serverless Workflow is the core technology behind every KYC/KYB solution allowing them to customize it for their clients seamlessly.</p>
+      <p>Open Workflow Specification is the core technology behind every KYC/KYB solution allowing them to customize it for their clients seamlessly.</p>
       <a class="link link-accent" href="https://caf.io/" target="_blank" rel="noopener">Learn More</a>
     </Card>
     <Card title="FaasNet" image="img/logos/faasnet.png" imageSize="medium">
@@ -142,7 +142,7 @@ const examples = (await getCollection('example')).sort((a,b) => a.data.title.loc
       <a class="link link-accent" href="https://foxflow.com" target="_blank" rel="noopener">Learn More</a>
     </Card>
     <Card title="Huawei" image="img/logos/huawei.png" imageDark="img/logos/huawei.svg" imageSize="medium">
-      <p>Huawei leverages Serverless Workflow with FunctionGraph for scalable, event-driven functions and ROMA Connect for all-domain hybrid integration, connecting applications for seamless digital transformation.</p>
+      <p>Huawei leverages Open Workflow Specification with FunctionGraph for scalable, event-driven functions and ROMA Connect for all-domain hybrid integration, connecting applications for seamless digital transformation.</p>
       <a class="link link-accent" href="https://www.huaweicloud.com/intl/en-us/product/functiongraph.html" target="_blank" rel="noopener">Learn More</a>
     </Card>
     <Card title="Neuroglia" image="img/logos/neuroglia.png" imageSize="medium">
@@ -154,7 +154,7 @@ const examples = (await getCollection('example')).sort((a,b) => a.data.title.loc
       <a class="link link-accent" href="https://www.redhat.com/en/technologies/cloud-computing/openshift/serverless" target="_blank" rel="noopener">Learn More</a>
     </Card>
     <Card title="Warrify" image="img/logos/warrify.png" imageSize="medium">
-      <p>Warrify offers a leading data platform for the retail industry. With "warrify Journeys" (powered by Serverless Workflows) retailers are discovering new ways how to engage their customers in real time.</p>
+      <p>Warrify offers a leading data platform for the retail industry. With "warrify Journeys" (powered by Open Workflow Specification) retailers are discovering new ways how to engage their customers in real time.</p>
       <a class="link link-accent" href="https://www.warrify.com" target="_blank" rel="noopener">Learn More</a>
     </Card>
   </Section>
@@ -173,7 +173,7 @@ const examples = (await getCollection('example')).sort((a,b) => a.data.title.loc
   <!-- CNCF & LF -->
   <Section class="bg-base-300">
     <h2 class="text-primary text-3xl font-bold text-center mb-4">Innovation in the Open</h2>
-    <p class="text-center mb-4">Serverless Workflow is an open-source project under the governance of the <a class="link link-accent" href="https://www.cncf.io/" target="_blank"  rel="noopener">Cloud Native Computing Foundation (CNCF)</a> and a part of the <a class="link link-accent" href="https://www.linuxfoundation.org/" target="_blank"  rel="noopener">Linux Foundation</a>.</p>
+    <p class="text-center mb-4">Open Workflow Specification is an open-source project under the governance of the <a class="link link-accent" href="https://www.cncf.io/" target="_blank"  rel="noopener">Cloud Native Computing Foundation (CNCF)</a> and a part of the <a class="link link-accent" href="https://www.linuxfoundation.org/" target="_blank"  rel="noopener">Linux Foundation</a>.</p>
     <p class="text-center">The project is in the <a href="https://landscape.cncf.io/guide#app-definition-and-development--application-definition-image-build" target="_blank"  rel="noopener">Application Definition & Image Build</a> landscape.</p>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <Card image="img/logos/cncf-color-bg.svg" imageDark="img/logos/cncf-white-logo.svg" imageSize="medium"></Card>
