@@ -1,3 +1,33 @@
 [build]
-command = "npm run build"
-publish = "dist"
+  command = "echo 'Static site, no build needed'"
+  publish = "static"
+
+# CORS headers for schema files (browser-based tooling needs cross-origin access)
+[[headers]]
+  for = "/schemas/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "OPTIONS, GET"
+
+# Serve schemas locally (existing tools depend on these URLs)
+[[redirects]]
+  from = "/schemas/previous/*"
+  to = "/schemas/0.9/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/schemas/latest/*"
+  to = "/schemas/1.0.3/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/schemas/snapshot/*"
+  to = "/schemas/1.0.3/:splat"
+  status = 200
+
+# Redirect everything else to the new domain
+[[redirects]]
+  from = "/*"
+  to = "https://open-workflow-specification.org/:splat"
+  status = 301
+  force = true
